@@ -1,0 +1,5 @@
+//Data Ingestion per hour
+Usage
+| where TimeGenerated >=ago(24h)
+| summarize sum(Quantity) / 1024 by DataType, bin(TimeGenerated,1h)
+| render timechart 

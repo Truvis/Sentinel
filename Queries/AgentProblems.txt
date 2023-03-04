@@ -1,0 +1,7 @@
+//Detecting Agent problems
+//Based on: https://docs.microsoft.com/en-us/azure/azure-monitor/platform/monitor-workspace#_logsoperation-function
+
+_LogOperation
+| where Category == "Agent"
+| where Level == "Warning"
+| project TimeGenerated, Operation , Computer 

@@ -1,0 +1,9 @@
+//Show Computers sending the most Security Alerts
+
+union withsource = tt *
+| where TimeGenerated > startofday(ago(7d)) and TimeGenerated < startofday(now())
+| where _IsBillable == true
+| where tt == "SecurityEvent"
+| summarize GBytes=round(sum(_BilledSize/(1024*1024*1024)),2)  by  Solution=tt, Computer
+| sort by GBytes nulls last
+| render barchart kind=unstacked 

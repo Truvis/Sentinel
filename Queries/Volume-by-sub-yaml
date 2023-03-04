@@ -1,0 +1,5 @@
+//Data volume by Subscription
+
+find where TimeGenerated > ago(24h) project _BilledSize, _IsBillable, _SubscriptionId
+| where _IsBillable == true 
+| summarize BillableDataBytes = sum(_BilledSize) by _SubscriptionId | sort by BillableDataBytes nulls last

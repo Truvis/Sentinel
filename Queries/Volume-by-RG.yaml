@@ -1,0 +1,7 @@
+//Data volume by resource group
+
+find where TimeGenerated > ago(24h) project _ResourceId, _BilledSize, _IsBillable
+| where _IsBillable == true 
+| summarize BillableDataBytes = sum(_BilledSize) by _ResourceId
+| extend resourceGroup = tostring(split(_ResourceId, "/")[4] )
+| summarize BillableDataBytes = sum(BillableDataBytes) by resourceGroup | sort by BillableDataBytes nulls last

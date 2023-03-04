@@ -1,0 +1,5 @@
+//Looking for pkexec command-lines run by root
+
+DeviceProcessEvents
+| where ProcessCommandLine has "pkexec" and AccountName == "root"
+| project DeviceName, ProcessCommandLine, InitiatingProcessCommandLine, InitiatingProcessParentFileName 

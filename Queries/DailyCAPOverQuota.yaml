@@ -1,0 +1,5 @@
+//This query will report when the Daily CAP has been reached. Could make this an Analytics Rule - or just an Azure Monitor alert.
+
+_LogOperation 
+| where Operation == "Data collection Stopped" 
+| where Detail contains "OverQuota"

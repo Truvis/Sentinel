@@ -1,0 +1,6 @@
+//Monitor for Brute Force attack
+
+SigninLogs
+| where ResultType == "50126" or ResultType == "50053"
+| extend IPCustomEntity = IPAddress
+| extend AccountCustomEntity = UserDisplayName

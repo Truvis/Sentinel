@@ -1,0 +1,6 @@
+//Number of nodes reporting heartbeats from the agent each day in the last month
+
+Heartbeat 
+| where TimeGenerated > startofday(ago(31d))
+| summarize nodes = dcount(Computer) by bin(TimeGenerated, 1d)    
+| render timechart

@@ -1,0 +1,8 @@
+//Billable vs not billable data over the last 30 day period
+
+union withsource = tt * 
+| where TimeGenerated >= ago(30d)
+| summarize
+  BillableGB = round(sumif(_BilledSize, _IsBillable == "True")/1024/1024/1024, 1), 
+  NotBillableGB = round(sumif(_BilledSize, _IsBillable == "False")/1024/1024/1024, 1)
+  by Day = bin(startofday(TimeGenerated), 1d)	

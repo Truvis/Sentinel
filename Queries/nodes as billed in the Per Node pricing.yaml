@@ -1,0 +1,5 @@
+//Nodes as billed in the Per Node pricing
+find where TimeGenerated > ago(24h) project Computer, TimeGenerated
+| extend computerName = tolower(tostring(split(Computer, '.')[0]))
+| where computerName != ""
+| summarize billableNodes=dcount(computerName) by bin(TimeGenerated, 1h) | sort by TimeGenerated asc

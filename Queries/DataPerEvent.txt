@@ -1,0 +1,7 @@
+//Which Security Events are generating the most data for a specific computer. Replace <COMPUTERNAME> with the computer you want to investigate.
+
+SecurityEvent
+| where TimeGenerated > ago(7d)
+| where Computer contains "<COMPUTERNAME>"
+| summarize TotalEvents=count() by EventID
+| sort by TotalEvents desc

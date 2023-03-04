@@ -1,0 +1,6 @@
+//Count of nodes sending data in the last 24 hours
+
+find where TimeGenerated > ago(24h) project Computer
+| extend computerName = tolower(tostring(split(Computer, '.')[0]))
+| where computerName != ""
+| summarize nodes = dcount(computerName)

@@ -1,0 +1,7 @@
+//New Domain Admins and Enterprise Admins
+
+Event
+| where TimeGenerated > ago(7d)
+| extend eventData=parse_json(EventData)
+| project TimeGenerated, Computer, EventID, eventData.MemberName, eventData.SubjectDomainName, eventData.SubjectUserName, eventData.TargetUserName
+| where eventData_TargetUserName == "Domain Admins" or eventData_TargetUserName == "Enterprise Admins"

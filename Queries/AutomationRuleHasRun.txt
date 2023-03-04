@@ -1,0 +1,7 @@
+//Identify when Automation rules have run.
+
+SecurityIncident
+| where TimeGenerated >= ago(90d)
+| where ModifiedBy contains "Automation rule"
+| parse-where ModifiedBy with * "rule - " Rule_Name
+| distinct Incident_Number = ProviderIncidentId, Rule_Name, TimeGenerated

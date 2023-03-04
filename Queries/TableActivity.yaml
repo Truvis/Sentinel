@@ -1,0 +1,8 @@
+//Tables and activity
+
+union withsource=_TableName *
+| where TimeGenerated > ago(7d)
+| summarize Entries = count(), Size = sum(_BilledSize), last_log = datetime_diff("second", now(), max(TimeGenerated)), estimate  = sumif(_BilledSize, _IsBillable == true)  by _TableName, _IsBillable
+| project ['Table Name'] = _TableName, ['Table Size'] = Size, ['Table Entries'] = Entries,
+    ['Size per Entry'] = 1.0 * Size / Entries, ['IsBillable'] = _IsBillable
+| order by ['Table Size']  desc

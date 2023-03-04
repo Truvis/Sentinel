@@ -1,0 +1,17 @@
+//Getting the Analytics Rule name from the Incident ID
+
+SecurityIncident
+| where TimeGenerated >= ago(90d)
+| where IncidentNumber == toint("<enter your Incident ID here>") // Example: "118831"
+| summarize arg_max(TimeGenerated, IncidentNumber, AlertIds)
+| mv-expand AlertIds to typeof(string)
+| join kind=leftouter(
+    SecurityAlert
+    | where TimeGenerated >= ago(90d)
+    | project
+        AnalyticsRuleId = tostring(todynamic(tostring(todynamic(ExtendedProperties)["Analytic Rule Ids"]))[0]),
+        AnalyticsRuleName = tostring(todynamic(ExtendedProperties)["Analytic Rule Name"]),
+        AlertName,
+        SystemAlertId
+) on $left.AlertIds == $right.SystemAlertId
+| distinct AnalyticsRuleName, AlertName

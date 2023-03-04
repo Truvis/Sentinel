@@ -1,0 +1,9 @@
+//Total GB Volume per computer for SecurityEvent table
+
+SecurityEvent
+| where TimeGenerated > ago(7d)
+| project _BilledSize, Computer, EventID
+| extend computerName = tolower(tostring(split(Computer, '.')[0]))
+| where computerName != ""
+| summarize TotalVolumeGB=sum(_BilledSize) / 1000000000 by computerName
+| sort by TotalVolumeGB desc

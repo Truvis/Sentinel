@@ -1,0 +1,7 @@
+//Count of billable events ingested per computer
+
+find where TimeGenerated > ago(24h) project _IsBillable, Computer
+| where _IsBillable == true and Type != "Usage"
+| extend computerName = tolower(tostring(split(Computer, '.')[0]))
+| summarize eventCount = count() by computerName  
+| sort by eventCount desc nulls last
