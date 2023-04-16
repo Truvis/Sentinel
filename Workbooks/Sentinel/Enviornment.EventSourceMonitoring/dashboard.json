@@ -134,7 +134,7 @@
               "durationMs": 86400000
             },
             "value": {
-              "durationMs": 86400000
+              "durationMs": 604800000
             }
           },
           {
@@ -1193,7 +1193,7 @@
           {
             "type": 1,
             "content": {
-              "json": "<div style=\"margin-right:10px;margin-left:10px;margin-bottom:0px;background-color:#120052;padding-left:20px;padding-right:20px;padding-top:10px;padding-bottom:12px;border: 1px solid #000;filter: drop-shadow(0.2rem 0.2rem 0.2rem rgba(0, 0, 30, 0.5));color:#fff2df;border-radius: 10px / 30px;background: linear-gradient(to right, #120052 0%,#120052 100%);display:felx\">\r\n<span style=\"color:#F2914D;font-size:12pt;font-weight:bold;color:#F2914D;\">DataTables not seen sending events {TimeRange}</span></div>"
+              "json": "<div style=\"margin-right:10px;margin-left:10px;margin-bottom:0px;background-color:#120052;padding-left:20px;padding-right:20px;padding-top:10px;padding-bottom:12px;border: 1px solid #000;filter: drop-shadow(0.2rem 0.2rem 0.2rem rgba(0, 0, 30, 0.5));color:#fff2df;border-radius: 10px / 30px;background: linear-gradient(to right, #120052 0%,#120052 100%);display:felx\">\r\n<span style=\"color:#F2914D;font-size:12pt;font-weight:bold;color:#F2914D;\">DataTables not seen sending events in the last {LastLogRecivedThreshold} seconds</span></div>"
             },
             "customWidth": "50",
             "name": "text - 2 - Copy - Copy - Copy - Copy",
@@ -1216,7 +1216,7 @@
             "type": 3,
             "content": {
               "version": "KqlItem/1.0",
-              "query": "union withsource=_TableName *\r\n| where TimeGenerated {TimeRange:query}\r\n| summarize ['Days Since Last Log Received']  = datetime_diff(\"day\", now(), max(TimeGenerated)) by _TableName\r\n| where ['Days Since Last Log Received'] > 1\r\n| sort by ['Days Since Last Log Received'] asc ",
+              "query": "union withsource = _TableName *\r\n| where TimeGenerated {TimeRange:query}\r\n| summarize last_log = datetime_diff(\"second\",now(), max(TimeGenerated)) by _TableName\r\n| where last_log > {LastLogRecivedThreshold}\r\n| project ['Table Name'] = _TableName,  ['Last Record Received'] =  last_log \r\n| order by ['Last Record Received']  desc",
               "size": 0,
               "timeContextFromParameter": "TimeRange",
               "queryType": 0,
@@ -1225,13 +1225,129 @@
                 "{Workspace}"
               ],
               "gridSettings": {
-                "filter": true
-              }
+                "formatters": [
+                  {
+                    "columnMatch": "Last Record Received",
+                    "formatter": 8,
+                    "formatOptions": {
+                      "palette": "orangeRed"
+                    },
+                    "numberFormat": {
+                      "unit": 24,
+                      "options": {
+                        "style": "decimal",
+                        "useGrouping": false,
+                        "maximumSignificantDigits": 2
+                      }
+                    }
+                  },
+                  {
+                    "columnMatch": "Table Size",
+                    "formatter": 3,
+                    "formatOptions": {
+                      "min": 0,
+                      "palette": "coldHot"
+                    },
+                    "numberFormat": {
+                      "unit": 2,
+                      "options": {
+                        "style": "decimal",
+                        "useGrouping": false
+                      }
+                    }
+                  },
+                  {
+                    "columnMatch": "Table Entries",
+                    "formatter": 3,
+                    "formatOptions": {
+                      "min": 0,
+                      "palette": "green"
+                    },
+                    "numberFormat": {
+                      "unit": 17,
+                      "options": {
+                        "style": "decimal",
+                        "useGrouping": false
+                      }
+                    }
+                  },
+                  {
+                    "columnMatch": "Size per Entry",
+                    "formatter": 3,
+                    "formatOptions": {
+                      "min": 0,
+                      "palette": "orange"
+                    },
+                    "numberFormat": {
+                      "unit": 2,
+                      "options": {
+                        "style": "decimal",
+                        "maximumFractionDigits": 2
+                      }
+                    }
+                  },
+                  {
+                    "columnMatch": "IsBillable",
+                    "formatter": 18,
+                    "formatOptions": {
+                      "thresholdsOptions": "colors",
+                      "thresholdsGrid": [
+                        {
+                          "operator": "==",
+                          "thresholdValue": "True",
+                          "representation": "green",
+                          "text": "{0}{1}"
+                        },
+                        {
+                          "operator": "==",
+                          "thresholdValue": "False",
+                          "representation": "blueDark",
+                          "text": "{0}{1}"
+                        },
+                        {
+                          "operator": "Default",
+                          "thresholdValue": null,
+                          "representation": "blue",
+                          "text": "{0}{1}"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "columnMatch": "Estimated Table Price",
+                    "formatter": 3,
+                    "formatOptions": {
+                      "palette": "greenRed"
+                    },
+                    "numberFormat": {
+                      "unit": 0,
+                      "options": {
+                        "style": "decimal",
+                        "useGrouping": false
+                      }
+                    }
+                  },
+                  {
+                    "columnMatch": "Table Trend",
+                    "formatter": 10,
+                    "formatOptions": {
+                      "palette": "redGreen"
+                    }
+                  }
+                ],
+                "filter": true,
+                "labelSettings": [
+                  {
+                    "columnId": "Last Record Received",
+                    "label": "Last record received"
+                  }
+                ]
+              },
+              "sortBy": []
             },
             "customWidth": "50",
-            "name": "query - 9",
+            "name": "query - 2 - Copy - Copy - Copy - Copy",
             "styleSettings": {
-              "maxWidth": "50%",
               "showBorder": true
             }
           },
@@ -1304,7 +1420,7 @@
           {
             "type": 1,
             "content": {
-              "json": "<div style=\"margin-right:10px;margin-left:10px;margin-bottom:0px;background-color:#120052;padding-left:20px;padding-right:20px;padding-top:10px;padding-bottom:12px;border: 1px solid #000;filter: drop-shadow(0.2rem 0.2rem 0.2rem rgba(0, 0, 30, 0.5));color:#fff2df;border-radius: 10px / 30px;background: linear-gradient(to right, #120052 0%,#120052 100%);display:felx\">\r\n<span style=\"color:#F2914D;font-size:12pt;font-weight:bold;color:#F2914D;\">Endpoints Not Seen in {LastLogRecivedThreshold}</span></div>"
+              "json": "<div style=\"margin-right:10px;margin-left:10px;margin-bottom:0px;background-color:#120052;padding-left:20px;padding-right:20px;padding-top:10px;padding-bottom:12px;border: 1px solid #000;filter: drop-shadow(0.2rem 0.2rem 0.2rem rgba(0, 0, 30, 0.5));color:#fff2df;border-radius: 10px / 30px;background: linear-gradient(to right, #120052 0%,#120052 100%);display:felx\">\r\n<span style=\"color:#F2914D;font-size:12pt;font-weight:bold;color:#F2914D;\">Endpoints Not Seen in the last {LastLogRecivedThreshold} seconds</span></div>"
             },
             "customWidth": "50",
             "name": "text - 2 - Copy - Copy - Copy - Copy - Copy - Copy - Copy",
@@ -1348,7 +1464,7 @@
             "type": 3,
             "content": {
               "version": "KqlItem/1.0",
-              "query": "union withsource = _TableName *\r\n| where TimeGenerated {TimeRange:query}\r\n| summarize last_log = datetime_diff(\"second\",now(), max(TimeGenerated)) by _TableName\r\n| where last_log > {LastLogRecivedThreshold}\r\n| project ['Table Name'] = _TableName,  ['Last Record Received'] =  last_log \r\n| order by ['Last Record Received']  desc",
+              "query": "union withsource = _TableName *\r\n| where TimeGenerated {TimeRange:query}\r\n| summarize last_log = datetime_diff(\"second\",now(), max(TimeGenerated)) by Computer\r\n| where last_log > {LastLogRecivedThreshold}\r\n| project Computer,  ['Last Record Received'] =  last_log \r\n| order by ['Last Record Received']  desc",
               "size": 0,
               "timeContextFromParameter": "TimeRange",
               "queryType": 0,
