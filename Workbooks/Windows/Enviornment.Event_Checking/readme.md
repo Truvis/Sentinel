@@ -1,3 +1,3 @@
 # Windows.Enviornment.Event_Checking
 
-[![N|Solid](https://github.com/Truvis/Sentinel/blob/main/Workbooks/Windows/Enviornment.Event_Checking/EndPoint.png?raw=true)]
+(https://github.com/Truvis/Sentinel/blob/main/Workbooks/Windows/Enviornment.Event_Checking/EndPoint.png?raw=true)
