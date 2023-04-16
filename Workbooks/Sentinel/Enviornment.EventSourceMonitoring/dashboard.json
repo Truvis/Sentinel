@@ -1,0 +1,3344 @@
+{
+  "version": "Notebook/1.0",
+  "items": [
+    {
+      "type": 1,
+      "content": {
+        "json": "<!-- UPDATE notice -->\r\n<a href=\"http://www.truv.is/go/2\"><img src=\"https://raw.githubusercontent.com/Truvis/Sentinel/main/images/2-0.23.4.01.png\">\r\n<div style=\"background-color:#120052;padding-left:20px;padding-right:20px;padding-top:4px;padding-bottom:12px;border-left: 1px solid #000;border-right: 1px solid #000;border-top: 1px solid #000;;background: linear-gradient(to right, #0E67B4 0%,#0E67B4 300px,#120052 65%,#120052 100%);display:felx\"><a href=\"http://www.truv.is/go/2\">\r\n<img src=\"https://raw.githubusercontent.com/Truvis/Sentinel/main/images/header.png\" height=\"50px\"></a><br>\r\n<span style=\"color:#F2914D;font-size:30pt;font-weight:bold;filter: drop-shadow(0.5rem 0.5rem 0.9rem rgba(30, 30, 30, 1.0));color:#fff2df;\">Event Source Monitoring</span><br>\r\n</div>\r\n<div style=\"background-color:#120052;padding-left:20px;padding-right:20px;padding-top:8px;padding-bottom:10px;border-bottom: 1px solid #000;border-left: 1px solid #000;border-right: 1px solid #000;color:#fff2df;background: linear-gradient(to right, #120052 0%,#120052 25%,#120052 100%);display:felx;filter: drop-shadow(0.2rem 0.2rem 0.1rem rgba(30, 30, 30, 0.5))\">\r\n<span style=\"color:#F2914D;font-size:12pt;font-weight:bold;filter: (0.2rem 0.2rem 0.2rem rgba(0, 0, 30, 0.5));color:#fff2df;\"><span style=\"color:#F2914D;\">(</span>DASHBOARD<span style=\"color:#F2914D;\">) </span>Sentinel<span style=\"color:#F2914D;\"> :: </span>Environment <span style=\"color:#F2914D;\">»</span> Event Source Monitoring <span style=\"color:#F2914D;font-size:7pt;font-weight:bold;color:#F2914D;text-transform: uppercase;\">ver 0.23.4.01 (April 2023 Rev 1)</span><br></span>\r\n\r\n</div>"
+      },
+      "name": "text - 5 - Copy"
+    },
+    {
+      "type": 1,
+      "content": {
+        "json": "<div style=\"width:100%;height:100%;font-family:arial;padding-left:20px;padding-right:20px;padding-top:10px;padding-bottom:20px;border-top: 2px dashed #120052;border-bottom: 2px dashed #120052;background:#FFFFCC;border-radius: 10px / 20px;\">\r\n\r\n<span style=\"color:#120052;font-size:12pt;font-weight:bold;\">📌 IMPORTANT</span><br><br>\r\n\r\n<span style=\"color:#000;font-size:10pt\">In order for fields to populate properly, please configure settings under the documentation tab.<br>\r\n</span></div>"
+      },
+      "name": "text - 6"
+    },
+    {
+      "type": 11,
+      "content": {
+        "version": "LinkItem/1.0",
+        "style": "tabs",
+        "tabStyle": "bigger",
+        "links": [
+          {
+            "id": "44bb0da1-ffcf-49d7-aec4-ba21c8b2c98b",
+            "cellValue": "SelectedTab",
+            "linkTarget": "parameter",
+            "linkLabel": "📊 Global Overview",
+            "subTarget": "Global Overview",
+            "preText": "TimeRange",
+            "style": "link"
+          },
+          {
+            "id": "e98816fa-367a-4735-88e5-3e43eb830090",
+            "cellValue": "SelectedTab",
+            "linkTarget": "parameter",
+            "linkLabel": "🔌 By Event Source",
+            "subTarget": "Event Source",
+            "style": "link"
+          },
+          {
+            "id": "80bb64da-ba46-47a3-854d-2c08a1e86392",
+            "cellValue": "SelectedTab",
+            "linkTarget": "parameter",
+            "linkLabel": "🧮 By Data Connector",
+            "subTarget": "Data Connector",
+            "style": "link"
+          },
+          {
+            "id": "06b1789a-6f1d-4bb1-99c6-0219cd718f64",
+            "cellValue": "SelectedTab",
+            "linkTarget": "parameter",
+            "linkLabel": "🖥️ By End Point",
+            "subTarget": "End Point",
+            "style": "link"
+          },
+          {
+            "id": "8dd988db-cd1e-4a58-a7db-69a25fbced32",
+            "cellValue": "SelectedTab",
+            "linkTarget": "parameter",
+            "linkLabel": "📜 Queries",
+            "subTarget": "Queries",
+            "style": "link"
+          },
+          {
+            "id": "6d9c9ac2-c836-44f6-b02f-9e2fbf577d82",
+            "cellValue": "SelectedTab",
+            "linkTarget": "parameter",
+            "linkLabel": "🆘 Documentation",
+            "subTarget": "Documentation",
+            "style": "link"
+          }
+        ]
+      },
+      "name": "links - 0"
+    },
+    {
+      "type": 9,
+      "content": {
+        "version": "KqlParameterItem/1.0",
+        "crossComponentResources": [
+          "{Workspace}"
+        ],
+        "parameters": [
+          {
+            "id": "413ed618-1329-4734-bbf0-fe4d3c806d44",
+            "version": "KqlParameterItem/1.0",
+            "name": "TimeRange",
+            "label": "Time Range",
+            "type": 4,
+            "description": "Time range picker",
+            "isRequired": true,
+            "isGlobal": true,
+            "typeSettings": {
+              "selectableValues": [
+                {
+                  "durationMs": 14400000
+                },
+                {
+                  "durationMs": 43200000
+                },
+                {
+                  "durationMs": 86400000
+                },
+                {
+                  "durationMs": 172800000
+                },
+                {
+                  "durationMs": 259200000
+                },
+                {
+                  "durationMs": 604800000
+                },
+                {
+                  "durationMs": 1209600000
+                },
+                {
+                  "durationMs": 2419200000
+                },
+                {
+                  "durationMs": 2592000000
+                },
+                {
+                  "durationMs": 5184000000
+                },
+                {
+                  "durationMs": 7776000000
+                }
+              ],
+              "allowCustom": false
+            },
+            "timeContext": {
+              "durationMs": 86400000
+            },
+            "value": {
+              "durationMs": 86400000
+            }
+          },
+          {
+            "id": "232b0c20-e327-4677-ba99-b08083b8128d",
+            "version": "KqlParameterItem/1.0",
+            "name": "DefaultSubscription_Internal",
+            "type": 1,
+            "isRequired": true,
+            "query": "where type =~ 'microsoft.operationalinsights/workspaces'\r\n| take 1\r\n| project subscriptionId",
+            "crossComponentResources": [
+              "value::all"
+            ],
+            "isHiddenWhenLocked": true,
+            "queryType": 1,
+            "resourceType": "microsoft.resourcegraph/resources"
+          },
+          {
+            "id": "fbd67ae9-2fd4-4af0-9b26-056d6603b407",
+            "version": "KqlParameterItem/1.0",
+            "name": "Subscription",
+            "type": 6,
+            "isRequired": true,
+            "isGlobal": true,
+            "query": "summarize by subscriptionId\r\n| project value = strcat(\"/subscriptions/\", subscriptionId), label = subscriptionId, selected = iff(subscriptionId =~ '{DefaultSubscription_Internal}', true, false)\r\n",
+            "typeSettings": {
+              "additionalResourceOptions": [],
+              "showDefault": false
+            },
+            "queryType": 1,
+            "resourceType": "microsoft.resourcegraph/resources"
+          },
+          {
+            "id": "4c53f2f4-d952-4ff9-b01c-905f136528c5",
+            "version": "KqlParameterItem/1.0",
+            "name": "Workspace",
+            "type": 5,
+            "isRequired": true,
+            "isGlobal": true,
+            "query": "where type =~ 'microsoft.operationalinsights/workspaces'\r\n| project id",
+            "crossComponentResources": [
+              "{Subscription}"
+            ],
+            "typeSettings": {
+              "resourceTypeFilter": {
+                "microsoft.operationalinsights/workspaces": true
+              },
+              "additionalResourceOptions": []
+            },
+            "queryType": 1,
+            "resourceType": "microsoft.resourcegraph/resources",
+            "value": "/subscriptions/18fedf52-f250-4dc7-896d-d96dd4e10430/resourceGroups/security/providers/Microsoft.OperationalInsights/workspaces/security-instance"
+          },
+          {
+            "id": "9cd582ce-f8a1-4dd2-85cf-b227728bc7f8",
+            "version": "KqlParameterItem/1.0",
+            "name": "resourceGroup",
+            "type": 1,
+            "isRequired": true,
+            "isGlobal": true,
+            "query": "resources\r\n| where type =~ 'microsoft.operationalinsights/workspaces'\r\n| where id == \"{Workspace}\"\r\n| project resourceGroup",
+            "crossComponentResources": [
+              "{Workspace}"
+            ],
+            "queryType": 1,
+            "resourceType": "microsoft.resourcegraph/resources"
+          }
+        ],
+        "style": "pills",
+        "queryType": 1,
+        "resourceType": "microsoft.resourcegraph/resources"
+      },
+      "name": "parameters - 1"
+    },
+    {
+      "type": 12,
+      "content": {
+        "version": "NotebookGroup/1.0",
+        "groupType": "editable",
+        "items": [
+          {
+            "type": 1,
+            "content": {
+              "json": "<div style=\"background-color:#120052;padding-left:20px;padding-right:20px;padding-top:10px;padding-bottom:20px;border: 1px solid #000;filter: drop-shadow(0.2rem 0.2rem 0.2rem rgba(0, 0, 30, 0.5));color:#fff2df;border-radius: 10px / 30px;background: linear-gradient(to right, #120052 0%,#1584C0 100%);display:felx\">\r\n<span style=\"color:#F2914D;font-size:18pt;font-weight:bold;color:#F2914D;\">Global Settings</span><br>\r\nThese settings must be configured for the other pages to work. Configure these to the best of your knowledge. \r\n</div>"
+            },
+            "name": "text - 0"
+          },
+          {
+            "type": 1,
+            "content": {
+              "json": "<div style=\"width:100%;height:100%;font-family:arial;padding-left:20px;padding-right:20px;padding-top:10px;padding-bottom:20px;border-top: 2px dashed #120052;border-bottom: 2px dashed #120052;background:#E8F6FF;border-radius: 10px / 20px;\">\r\n\r\n<span style=\"color:#120052;font-size:12pt;font-weight:bold;\">📌 NOTE</span><br><br>\r\n\r\n<span style=\"color:#000;font-size:10pt\"><span style=\"color:#120052;font-size:10pt;font-weight:bold;\">Cost Per GB:</span><br>\r\n- Configure this to how much you pay per GB of storage. You can use the following site as a reference if needed:<br>\r\n- https://azure.microsoft.com/en-us/pricing/details/microsoft-sentinel/<br>\r\n- If you are Pay-As-You-Go, you can enter in 5.22 as the value.<br>\r\n<br>\r\n<span style=\"color:#120052;font-size:10pt;font-weight:bold;\">LastLog Recived Threshold:</span><br>\r\n- This setting is used to confiugure when a machine or endpoint is considered offline.<br>\r\n- Be mindful that the TimeRange must be greater than this numbber.<br>\r\n- Some tables may not send events as much as others. This doesnt mean that the connection is broken.<br>\r\n</span></div>"
+            },
+            "name": "text - 2"
+          },
+          {
+            "type": 9,
+            "content": {
+              "version": "KqlParameterItem/1.0",
+              "parameters": [
+                {
+                  "id": "82a439bf-cc94-46a0-934f-e408a95acd5a",
+                  "version": "KqlParameterItem/1.0",
+                  "name": "CostValue",
+                  "label": "Cost per GB",
+                  "type": 1,
+                  "description": "How much does your Sentinel Log Storage Cost?",
+                  "isRequired": true,
+                  "isGlobal": true,
+                  "timeContext": {
+                    "durationMs": 86400000
+                  },
+                  "value": "5.22"
+                },
+                {
+                  "id": "6035923f-e41b-4645-a750-b864cc70e717",
+                  "version": "KqlParameterItem/1.0",
+                  "name": "LastLogRecivedThreshold",
+                  "label": "LastLog Recived Threshold",
+                  "type": 2,
+                  "description": "When should a device been seen as offline",
+                  "isRequired": true,
+                  "isGlobal": true,
+                  "typeSettings": {
+                    "additionalResourceOptions": [],
+                    "showDefault": false
+                  },
+                  "jsonData": "[{\"value\":\"0\",\"label\":\"None\"},{\"value\":\"3600\",\"label\":\"1h\"},{\"value\":\"21600\",\"label\":\"6h\"},{\"value\":\"43200\",\"label\":\"12h\"}, {\"value\":\"86400\",\"label\":\"1d\"},{\"value\":\"172800\",\"label\":\"2d\"},{\"value\":\"604800\",\"label\":\"7d\"}]",
+                  "timeContext": {
+                    "durationMs": 86400000
+                  },
+                  "value": "3600"
+                }
+              ],
+              "style": "pills",
+              "queryType": 0,
+              "resourceType": "microsoft.operationalinsights/workspaces"
+            },
+            "name": "parameters - 1"
+          }
+        ],
+        "exportParameters": true
+      },
+      "conditionalVisibility": {
+        "parameterName": "SelectedTab",
+        "comparison": "isEqualTo",
+        "value": "Documentation"
+      },
+      "name": "group - 8"
+    },
+    {
+      "type": 12,
+      "content": {
+        "version": "NotebookGroup/1.0",
+        "groupType": "editable",
+        "items": [
+          {
+            "type": 1,
+            "content": {
+              "json": "<div style=\"background-color:#120052;padding-left:20px;padding-right:20px;padding-top:10px;padding-bottom:20px;border: 1px solid #000;filter: drop-shadow(0.2rem 0.2rem 0.2rem rgba(0, 0, 30, 0.5));color:#fff2df;border-radius: 10px / 30px;background: linear-gradient(to right, #120052 0%,#1584C0 100%);display:felx\">\r\n<span style=\"color:#F2914D;font-size:18pt;font-weight:bold;color:#F2914D;\">DataTable Ingestion Overview</span><br>\r\nThe items in this section are broken out by data table to give you an idea of what each data table is doing.\r\n</div>"
+            },
+            "name": "text - 2"
+          },
+          {
+            "type": 1,
+            "content": {
+              "json": "<div style=\"margin-right:30px;margin-left:10px;margin-bottom:0px;background-color:#120052;padding-left:20px;padding-right:20px;padding-top:10px;padding-bottom:12px;border: 1px solid #000;filter: drop-shadow(0.2rem 0.2rem 0.2rem rgba(0, 0, 30, 0.5));color:#fff2df;border-radius: 10px / 30px;background: linear-gradient(to right, #120052 0%,#120052 100%);display:felx\">\r\n<span style=\"color:#F2914D;font-size:12pt;font-weight:bold;color:#F2914D;\">Ingestion Size by Table - Top 7</span></div>"
+            },
+            "customWidth": "33",
+            "name": "text - 2 - Copy",
+            "styleSettings": {
+              "maxWidth": "33"
+            }
+          },
+          {
+            "type": 1,
+            "content": {
+              "json": "<div style=\"margin-right:30px;margin-left:10px;margin-bottom:0px;background-color:#120052;padding-left:20px;padding-right:20px;padding-top:10px;padding-bottom:12px;border: 1px solid #000;filter: drop-shadow(0.2rem 0.2rem 0.2rem rgba(0, 0, 30, 0.5));color:#fff2df;border-radius: 10px / 30px;background: linear-gradient(to right, #120052 0%,#120052 100%);display:felx\">\r\n<span style=\"color:#F2914D;font-size:12pt;font-weight:bold;color:#F2914D;\">Estimated Cost By Table - Top 7</span></div>"
+            },
+            "customWidth": "33",
+            "name": "text - 2 - Copy - Copy",
+            "styleSettings": {
+              "maxWidth": "33"
+            }
+          },
+          {
+            "type": 1,
+            "content": {
+              "json": "<div style=\"margin-right:30px;margin-left:10px;margin-bottom:0px;background-color:#120052;padding-left:20px;padding-right:20px;padding-top:10px;padding-bottom:12px;border: 1px solid #000;filter: drop-shadow(0.2rem 0.2rem 0.2rem rgba(0, 0, 30, 0.5));color:#fff2df;border-radius: 10px / 30px;background: linear-gradient(to right, #120052 0%,#120052 100%);display:felx\">\r\n<span style=\"color:#F2914D;font-size:12pt;font-weight:bold;color:#F2914D;\">Table change % this week over last week - Top 7</span></div>"
+            },
+            "customWidth": "33",
+            "name": "text - 2 - Copy - Copy - Copy",
+            "styleSettings": {
+              "maxWidth": "33"
+            }
+          },
+          {
+            "type": 3,
+            "content": {
+              "version": "KqlItem/1.0",
+              "query": "union withsource=_TableName *\r\n| where TimeGenerated {TimeRange}\r\n| summarize LogCount=count()by Type\r\n| sort by LogCount desc\r\n| limit 7\r\n| render piechart with (title=\"Top Log Sources\")",
+              "size": 3,
+              "timeContextFromParameter": "TimeRange",
+              "queryType": 0,
+              "resourceType": "microsoft.operationalinsights/workspaces",
+              "crossComponentResources": [
+                "{Workspace}"
+              ],
+              "chartSettings": {
+                "createOtherGroup": 88
+              }
+            },
+            "customWidth": "33",
+            "name": "query - 6",
+            "styleSettings": {
+              "maxWidth": "33"
+            }
+          },
+          {
+            "type": 3,
+            "content": {
+              "version": "KqlItem/1.0",
+              "query": "union withsource=TableName1 *\r\n| where TimeGenerated {TimeRange}\r\n| summarize estimate  = sumif(_BilledSize, _IsBillable==true)  by TableName1, _IsBillable\r\n| project ['Table Name'] = TableName1, ['Estimated Table Price'] =  (estimate/(1024*1024*1024)) * {CostValue}\r\n| order by ['Estimated Table Price'] desc\r\n| limit 7",
+              "size": 3,
+              "timeContextFromParameter": "TimeRange",
+              "queryType": 0,
+              "resourceType": "microsoft.operationalinsights/workspaces",
+              "crossComponentResources": [
+                "{Workspace}"
+              ],
+              "visualization": "piechart",
+              "chartSettings": {
+                "createOtherGroup": 8,
+                "ySettings": {
+                  "numberFormatSettings": {
+                    "unit": 0,
+                    "options": {
+                      "currency": "USD",
+                      "style": "currency",
+                      "useGrouping": true
+                    }
+                  }
+                }
+              }
+            },
+            "customWidth": "33",
+            "name": "query - 6 - Copy"
+          },
+          {
+            "type": 3,
+            "content": {
+              "version": "KqlItem/1.0",
+              "query": "let lastweek=\r\nunion withsource=_TableName *\r\n| where TimeGenerated > ago(14d) and TimeGenerated < ago(7d)\r\n| summarize\r\n    Entries = count(), Size = sum(_BilledSize) by Type\r\n| project ['Table Name'] = Type, ['Last Week Table Size'] = Size, ['Last Week Table Entries'] = Entries, ['Last Week Size per Entry'] = 1.0 * Size / Entries\r\n| order by ['Table Name']  desc;\r\nlet thisweek=\r\nunion withsource=_TableName *\r\n| where TimeGenerated > ago(7d)\r\n| summarize\r\n    Entries = count(), Size = sum(_BilledSize) by Type\r\n| project ['Table Name'] = Type, ['This Week Table Size'] = Size, ['This Week Table Entries'] = Entries, ['This Week Size per Entry'] = 1.0 * Size / Entries\r\n| order by ['Table Name']  desc;\r\nlastweek\r\n| join kind=inner thisweek on ['Table Name']\r\n| extend PercentageChange=todouble(['This Week Table Size']) * 100 / todouble(['Last Week Table Size']) - 100\r\n| project ['Table Name'], ['Last Week Table Size'], ['This Week Table Size'], round(PercentageChange,1)\r\n| sort by PercentageChange desc\r\n| limit 7",
+              "size": 3,
+              "queryType": 0,
+              "resourceType": "microsoft.operationalinsights/workspaces",
+              "crossComponentResources": [
+                "{Workspace}"
+              ],
+              "visualization": "piechart",
+              "chartSettings": {
+                "yAxis": [
+                  "PercentageChange"
+                ],
+                "group": "Table Name",
+                "createOtherGroup": 8,
+                "ySettings": {
+                  "numberFormatSettings": {
+                    "unit": 1,
+                    "options": {
+                      "style": "decimal",
+                      "useGrouping": true
+                    }
+                  }
+                }
+              }
+            },
+            "customWidth": "33",
+            "name": "query - 6 - Copy - Copy"
+          },
+          {
+            "type": 1,
+            "content": {
+              "json": "<div style=\"margin-right:10px;margin-left:10px;margin-bottom:0px;background-color:#120052;padding-left:20px;padding-right:20px;padding-top:10px;padding-bottom:12px;border: 1px solid #000;filter: drop-shadow(0.2rem 0.2rem 0.2rem rgba(0, 0, 30, 0.5));color:#fff2df;border-radius: 10px / 30px;background: linear-gradient(to right, #120052 0%,#120052 100%);display:felx\">\r\n<span style=\"color:#F2914D;font-size:12pt;font-weight:bold;color:#F2914D;\">Ingestion Size by Endpoint - Top 7</span></div>"
+            },
+            "customWidth": "33",
+            "name": "text - 2 - Copy - Copy - Copy",
+            "styleSettings": {
+              "maxWidth": "33"
+            }
+          },
+          {
+            "type": 1,
+            "content": {
+              "json": "<div style=\"margin-right:10px;margin-left:10px;margin-bottom:0px;background-color:#120052;padding-left:20px;padding-right:20px;padding-top:10px;padding-bottom:12px;border: 1px solid #000;filter: drop-shadow(0.2rem 0.2rem 0.2rem rgba(0, 0, 30, 0.5));color:#fff2df;border-radius: 10px / 30px;background: linear-gradient(to right, #120052 0%,#120052 100%);display:felx\">\r\n<span style=\"color:#F2914D;font-size:12pt;font-weight:bold;color:#F2914D;\">Estimated Total Cost</span></div>"
+            },
+            "customWidth": "33",
+            "name": "text - 2 - Copy - Copy - Copy - Copy",
+            "styleSettings": {
+              "maxWidth": "33"
+            }
+          },
+          {
+            "type": 1,
+            "content": {
+              "json": "<div style=\"margin-right:10px;margin-left:10px;margin-bottom:0px;background-color:#120052;padding-left:20px;padding-right:20px;padding-top:10px;padding-bottom:12px;border: 1px solid #000;filter: drop-shadow(0.2rem 0.2rem 0.2rem rgba(0, 0, 30, 0.5));color:#fff2df;border-radius: 10px / 30px;background: linear-gradient(to right, #120052 0%,#120052 100%);display:felx\">\r\n<span style=\"color:#F2914D;font-size:12pt;font-weight:bold;color:#F2914D;\">Endpoint change % this week over last week - Top 7</span></div>"
+            },
+            "customWidth": "33",
+            "name": "text - 2 - Copy - Copy - Copy - Copy - Copy",
+            "styleSettings": {
+              "maxWidth": "33"
+            }
+          },
+          {
+            "type": 3,
+            "content": {
+              "version": "KqlItem/1.0",
+              "query": "union withsource=_TableName *\r\n| where TimeGenerated {TimeRange}\r\n| where isnotempty(Computer)\r\n| summarize LogCount=count() by Computer\r\n| sort by LogCount desc\r\n| limit 7\r\n| render piechart with (title=\"Top Endpoint Sources\")",
+              "size": 3,
+              "queryType": 0,
+              "resourceType": "microsoft.operationalinsights/workspaces",
+              "crossComponentResources": [
+                "{Workspace}"
+              ],
+              "visualization": "piechart",
+              "chartSettings": {
+                "createOtherGroup": 88
+              }
+            },
+            "customWidth": "33",
+            "name": "query - 6 - Copy - Copy - Copy"
+          },
+          {
+            "type": 3,
+            "content": {
+              "version": "KqlItem/1.0",
+              "query": "union withsource=TableName1 *\r\n| where TimeGenerated {TimeRange}\r\n| summarize estimate  = sumif(_BilledSize, _IsBillable==true) \r\n| project ['Estimated Total Price'] = round((estimate/(1024*1024*1024)) * {CostValue},3) , Header = \"Estimated Total Price\"",
+              "size": 3,
+              "timeContextFromParameter": "TimeRange",
+              "queryType": 0,
+              "resourceType": "microsoft.operationalinsights/workspaces",
+              "crossComponentResources": [
+                "{Workspace}"
+              ],
+              "visualization": "tiles",
+              "tileSettings": {
+                "titleContent": {
+                  "columnMatch": "Header",
+                  "formatter": 12,
+                  "formatOptions": {
+                    "min": 0,
+                    "max": 0,
+                    "palette": "greenDark"
+                  }
+                },
+                "leftContent": {
+                  "columnMatch": "Estimated Total Price",
+                  "formatter": 12,
+                  "formatOptions": {
+                    "min": 0,
+                    "palette": "greenDark"
+                  },
+                  "numberFormat": {
+                    "unit": 0,
+                    "options": {
+                      "currency": "USD",
+                      "style": "currency",
+                      "useGrouping": true
+                    }
+                  }
+                },
+                "showBorder": false,
+                "sortCriteriaField": "Estimated Total Price",
+                "sortOrderField": 1,
+                "size": "auto"
+              },
+              "chartSettings": {
+                "createOtherGroup": 8,
+                "ySettings": {
+                  "numberFormatSettings": {
+                    "unit": 0,
+                    "options": {
+                      "currency": "USD",
+                      "style": "currency",
+                      "useGrouping": true
+                    }
+                  }
+                }
+              }
+            },
+            "customWidth": "33",
+            "name": "query - 6 - Copy - Copy"
+          },
+          {
+            "type": 3,
+            "content": {
+              "version": "KqlItem/1.0",
+              "query": "let lastweek=\r\nunion withsource=_TableName *\r\n| where TimeGenerated > ago(14d) and TimeGenerated < ago(7d)\r\n| where isnotempty(Computer)\r\n| summarize\r\n    Entries = count(), Size = sum(_BilledSize) by Computer\r\n| project ['Endpoint Name'] = Computer, ['Last Week Table Size'] = Size, ['Last Week Table Entries'] = Entries, ['Last Week Size per Entry'] = 1.0 * Size / Entries\r\n| order by ['Endpoint Name']  desc;\r\nlet thisweek=\r\nunion withsource=_TableName *\r\n| where TimeGenerated > ago(7d)\r\n| where isnotempty(Computer)\r\n| summarize\r\n    Entries = count(), Size = sum(_BilledSize) by Computer\r\n| project ['Endpoint Name'] = Computer, ['This Week Table Size'] = Size, ['This Week Table Entries'] = Entries, ['This Week Size per Entry'] = 1.0 * Size / Entries\r\n| order by ['Endpoint Name']  desc;\r\nlastweek\r\n| join kind=inner thisweek on ['Endpoint Name']\r\n| extend PercentageChange=todouble(['This Week Table Size']) * 100 / todouble(['Last Week Table Size']) - 100\r\n| project ['Endpoint Name'], ['Last Week Table Size'], ['This Week Table Size'], round(PercentageChange,1)\r\n| sort by PercentageChange desc\r\n| limit 7",
+              "size": 3,
+              "queryType": 0,
+              "resourceType": "microsoft.operationalinsights/workspaces",
+              "crossComponentResources": [
+                "{Workspace}"
+              ],
+              "visualization": "piechart",
+              "chartSettings": {
+                "createOtherGroup": 7,
+                "ySettings": {
+                  "numberFormatSettings": {
+                    "unit": 1,
+                    "options": {
+                      "style": "decimal",
+                      "useGrouping": true
+                    }
+                  }
+                }
+              }
+            },
+            "customWidth": "33",
+            "name": "query - 6 - Copy - Copy - Copy"
+          },
+          {
+            "type": 1,
+            "content": {
+              "json": "<div style=\"margin-right:10px;margin-left:10px;margin-bottom:0px;background-color:#120052;padding-left:20px;padding-right:20px;padding-top:10px;padding-bottom:12px;border: 1px solid #000;filter: drop-shadow(0.2rem 0.2rem 0.2rem rgba(0, 0, 30, 0.5));color:#fff2df;border-radius: 10px / 30px;background: linear-gradient(to right, #120052 0%,#120052 100%);display:felx\">\r\n<span style=\"color:#F2914D;font-size:12pt;font-weight:bold;color:#F2914D;\">Total Logs Ingested by Table</span></div>"
+            },
+            "customWidth": "100",
+            "name": "text - 2 - Copy - Copy - Copy",
+            "styleSettings": {
+              "maxWidth": "100"
+            }
+          },
+          {
+            "type": 3,
+            "content": {
+              "version": "KqlItem/1.0",
+              "query": "union withsource=_TableName *\r\n| where TimeGenerated {TimeRange:query}\r\n| summarize Entries = count(), Size = sum(_BilledSize), last_log = datetime_diff(\"second\",now(), max(TimeGenerated)), estimate  = sumif(_BilledSize, _IsBillable==true)  by _TableName, _IsBillable\r\n| project ['Table Name'] = _TableName, ['Table Size'] = Size, ['Table Entries'] = Entries,\r\n          ['Size per Entry'] = 1.0 * Size / Entries, ['IsBillable'] = _IsBillable, ['Last Record Received'] =  last_log , ['Estimated Table Price'] =  (estimate/(1024*1024*1024)) * {CostValue}\r\n| order by ['Table Size']  desc\r\n\r\n ",
+              "size": 0,
+              "timeContextFromParameter": "TimeRange",
+              "queryType": 0,
+              "resourceType": "microsoft.operationalinsights/workspaces",
+              "crossComponentResources": [
+                "{Workspace}"
+              ],
+              "gridSettings": {
+                "formatters": [
+                  {
+                    "columnMatch": "Table Name",
+                    "formatter": 0,
+                    "formatOptions": {
+                      "customColumnWidthSetting": "15%"
+                    }
+                  },
+                  {
+                    "columnMatch": "Table Size",
+                    "formatter": 3,
+                    "formatOptions": {
+                      "min": 0,
+                      "palette": "purpleRed",
+                      "customColumnWidthSetting": "24%"
+                    },
+                    "numberFormat": {
+                      "unit": 2,
+                      "options": {
+                        "style": "decimal",
+                        "useGrouping": false
+                      }
+                    }
+                  },
+                  {
+                    "columnMatch": "Table Entries",
+                    "formatter": 3,
+                    "formatOptions": {
+                      "min": 0,
+                      "palette": "grayBlue",
+                      "customColumnWidthSetting": "24%"
+                    },
+                    "numberFormat": {
+                      "unit": 17,
+                      "options": {
+                        "style": "decimal",
+                        "useGrouping": false
+                      }
+                    }
+                  },
+                  {
+                    "columnMatch": "Size per Entry",
+                    "formatter": 3,
+                    "formatOptions": {
+                      "min": 0,
+                      "palette": "turquoise",
+                      "customColumnWidthSetting": "24%"
+                    },
+                    "numberFormat": {
+                      "unit": 2,
+                      "options": {
+                        "style": "decimal",
+                        "maximumFractionDigits": 2
+                      }
+                    }
+                  },
+                  {
+                    "columnMatch": "IsBillable",
+                    "formatter": 1,
+                    "formatOptions": {
+                      "customColumnWidthSetting": "10%"
+                    }
+                  },
+                  {
+                    "columnMatch": "Last Record Received",
+                    "formatter": 8,
+                    "formatOptions": {
+                      "palette": "greenRed"
+                    },
+                    "numberFormat": {
+                      "unit": 24,
+                      "options": {
+                        "style": "decimal",
+                        "useGrouping": false,
+                        "maximumSignificantDigits": 2
+                      }
+                    }
+                  },
+                  {
+                    "columnMatch": "Estimated Table Price",
+                    "formatter": 3,
+                    "formatOptions": {
+                      "palette": "greenRed"
+                    },
+                    "numberFormat": {
+                      "unit": 0,
+                      "options": {
+                        "currency": "USD",
+                        "style": "currency",
+                        "useGrouping": false
+                      }
+                    }
+                  },
+                  {
+                    "columnMatch": "Table Trend",
+                    "formatter": 10,
+                    "formatOptions": {
+                      "palette": "redGreen"
+                    }
+                  }
+                ],
+                "filter": true,
+                "labelSettings": [
+                  {
+                    "columnId": "Table Name",
+                    "label": "Table name"
+                  },
+                  {
+                    "columnId": "Table Size",
+                    "label": "Table size",
+                    "comment": "Capacity of the Table"
+                  },
+                  {
+                    "columnId": "Table Entries",
+                    "label": "Table entries",
+                    "comment": "Count of Rows in the Table"
+                  },
+                  {
+                    "columnId": "Size per Entry",
+                    "label": "Size per entry",
+                    "comment": "Capacity of the Rows"
+                  },
+                  {
+                    "columnId": "IsBillable",
+                    "label": "Is billable"
+                  }
+                ]
+              },
+              "sortBy": []
+            },
+            "showPin": false,
+            "name": "query - 2",
+            "styleSettings": {
+              "showBorder": true
+            }
+          },
+          {
+            "type": 3,
+            "content": {
+              "version": "KqlItem/1.0",
+              "query": "union withsource = _TableName *\r\n| where _TimeReceived  > startofday({TimeRange:start})\r\n| summarize count()  by bin(_TimeReceived, {TimeRange:grain}), Type\r\n| project Type, _TimeReceived, count_\r\n\r\n\r\n",
+              "size": 0,
+              "color": "blue",
+              "timeContextFromParameter": "TimeRange",
+              "queryType": 0,
+              "resourceType": "microsoft.operationalinsights/workspaces",
+              "crossComponentResources": [
+                "{Workspace}"
+              ],
+              "visualization": "barchart",
+              "gridSettings": {
+                "formatters": [
+                  {
+                    "columnMatch": "Average Events per Second (eps)",
+                    "formatter": 3,
+                    "formatOptions": {
+                      "palette": "redGreen"
+                    },
+                    "numberFormat": {
+                      "unit": 0,
+                      "options": {
+                        "style": "decimal",
+                        "useGrouping": true,
+                        "maximumSignificantDigits": 3
+                      }
+                    }
+                  },
+                  {
+                    "columnMatch": "Minimum eps",
+                    "formatter": 3,
+                    "formatOptions": {
+                      "palette": "redGreen"
+                    },
+                    "numberFormat": {
+                      "unit": 0,
+                      "options": {
+                        "style": "decimal",
+                        "useGrouping": false,
+                        "maximumSignificantDigits": 3
+                      }
+                    }
+                  },
+                  {
+                    "columnMatch": "Maximum eps",
+                    "formatter": 3,
+                    "formatOptions": {
+                      "palette": "redGreen"
+                    },
+                    "numberFormat": {
+                      "unit": 0,
+                      "options": {
+                        "style": "decimal",
+                        "maximumSignificantDigits": 3
+                      }
+                    }
+                  },
+                  {
+                    "columnMatch": "Estimated Table Price",
+                    "formatter": 3,
+                    "formatOptions": {
+                      "palette": "greenRed"
+                    },
+                    "numberFormat": {
+                      "unit": 0,
+                      "options": {
+                        "style": "decimal",
+                        "useGrouping": false
+                      }
+                    }
+                  },
+                  {
+                    "columnMatch": "Table Entries",
+                    "formatter": 3,
+                    "formatOptions": {
+                      "min": 0,
+                      "palette": "green"
+                    },
+                    "numberFormat": {
+                      "unit": 17,
+                      "options": {
+                        "style": "decimal"
+                      }
+                    }
+                  },
+                  {
+                    "columnMatch": "Table Size",
+                    "formatter": 3,
+                    "formatOptions": {
+                      "min": 0,
+                      "palette": "blue"
+                    },
+                    "numberFormat": {
+                      "unit": 2,
+                      "options": {
+                        "style": "decimal"
+                      }
+                    }
+                  },
+                  {
+                    "columnMatch": "Table Size Trend",
+                    "formatter": 9,
+                    "formatOptions": {
+                      "min": 0,
+                      "palette": "blue"
+                    }
+                  }
+                ],
+                "filter": true
+              },
+              "sortBy": []
+            },
+            "customWidth": "100",
+            "name": "query - 7 - Copy - Copy - Copy",
+            "styleSettings": {
+              "showBorder": true
+            }
+          },
+          {
+            "type": 1,
+            "content": {
+              "json": "<div style=\"margin-right:10px;margin-left:10px;margin-bottom:0px;background-color:#120052;padding-left:20px;padding-right:20px;padding-top:10px;padding-bottom:12px;border: 1px solid #000;filter: drop-shadow(0.2rem 0.2rem 0.2rem rgba(0, 0, 30, 0.5));color:#fff2df;border-radius: 10px / 30px;background: linear-gradient(to right, #120052 0%,#120052 100%);display:felx\">\r\n<span style=\"color:#F2914D;font-size:12pt;font-weight:bold;color:#F2914D;\">EPS by Table</span></div>"
+            },
+            "customWidth": "100",
+            "name": "text - 2 - Copy - Copy - Copy - Copy",
+            "styleSettings": {
+              "maxWidth": "100"
+            }
+          },
+          {
+            "type": 3,
+            "content": {
+              "version": "KqlItem/1.0",
+              "query": "union withsource=_TableName *\r\n| where _TimeReceived {TimeRange}\r\n| summarize count() , Size = sum(_BilledSize) by bin(_TimeReceived, 1m), Type, _IsBillable\r\n| extend counttemp =count_ / 60\r\n| summarize \r\n           ['Average Events per Second (eps)'] = avg(counttemp), ['Minimum eps']=min (counttemp),\r\n           ['Maximum eps']=max(counttemp)\r\n  by ['Table Name']=Type\r\n| order  by ['Average Events per Second (eps)'] desc\r\n",
+              "size": 0,
+              "color": "blue",
+              "timeContextFromParameter": "TimeRange",
+              "queryType": 0,
+              "resourceType": "microsoft.operationalinsights/workspaces",
+              "crossComponentResources": [
+                "{Workspace}"
+              ],
+              "visualization": "table",
+              "gridSettings": {
+                "formatters": [
+                  {
+                    "columnMatch": "Table Name",
+                    "formatter": 0,
+                    "formatOptions": {
+                      "customColumnWidthSetting": "20%"
+                    }
+                  },
+                  {
+                    "columnMatch": "Average Events per Second (eps)",
+                    "formatter": 3,
+                    "formatOptions": {
+                      "palette": "greenBlue",
+                      "customColumnWidthSetting": "25%"
+                    },
+                    "numberFormat": {
+                      "unit": 0,
+                      "options": {
+                        "style": "decimal",
+                        "useGrouping": true,
+                        "maximumSignificantDigits": 3
+                      }
+                    }
+                  },
+                  {
+                    "columnMatch": "Minimum eps",
+                    "formatter": 3,
+                    "formatOptions": {
+                      "palette": "greenBlue",
+                      "customColumnWidthSetting": "25%"
+                    },
+                    "numberFormat": {
+                      "unit": 0,
+                      "options": {
+                        "style": "decimal",
+                        "useGrouping": false,
+                        "maximumSignificantDigits": 3
+                      }
+                    }
+                  },
+                  {
+                    "columnMatch": "Maximum eps",
+                    "formatter": 3,
+                    "formatOptions": {
+                      "palette": "greenBlue",
+                      "customColumnWidthSetting": "25%"
+                    },
+                    "numberFormat": {
+                      "unit": 0,
+                      "options": {
+                        "style": "decimal",
+                        "useGrouping": false,
+                        "maximumSignificantDigits": 3
+                      }
+                    }
+                  },
+                  {
+                    "columnMatch": "Estimated Table Price",
+                    "formatter": 3,
+                    "formatOptions": {
+                      "palette": "greenRed"
+                    },
+                    "numberFormat": {
+                      "unit": 0,
+                      "options": {
+                        "style": "decimal",
+                        "useGrouping": false
+                      }
+                    }
+                  },
+                  {
+                    "columnMatch": "Table Entries",
+                    "formatter": 3,
+                    "formatOptions": {
+                      "min": 0,
+                      "palette": "green"
+                    },
+                    "numberFormat": {
+                      "unit": 17,
+                      "options": {
+                        "style": "decimal"
+                      }
+                    }
+                  },
+                  {
+                    "columnMatch": "Table Size",
+                    "formatter": 3,
+                    "formatOptions": {
+                      "min": 0,
+                      "palette": "blue"
+                    },
+                    "numberFormat": {
+                      "unit": 2,
+                      "options": {
+                        "style": "decimal"
+                      }
+                    }
+                  },
+                  {
+                    "columnMatch": "Table Size Trend",
+                    "formatter": 9,
+                    "formatOptions": {
+                      "min": 0,
+                      "palette": "blue"
+                    }
+                  }
+                ],
+                "filter": true,
+                "labelSettings": [
+                  {
+                    "columnId": "Table Name",
+                    "label": "Table name"
+                  }
+                ]
+              },
+              "sortBy": []
+            },
+            "customWidth": "100",
+            "name": "query - 7 - Copy",
+            "styleSettings": {
+              "showBorder": true
+            }
+          },
+          {
+            "type": 1,
+            "content": {
+              "json": "<div style=\"margin-right:10px;margin-left:10px;margin-bottom:0px;background-color:#120052;padding-left:20px;padding-right:20px;padding-top:10px;padding-bottom:12px;border: 1px solid #000;filter: drop-shadow(0.2rem 0.2rem 0.2rem rgba(0, 0, 30, 0.5));color:#fff2df;border-radius: 10px / 30px;background: linear-gradient(to right, #120052 0%,#120052 100%);display:felx\">\r\n<span style=\"color:#F2914D;font-size:12pt;font-weight:bold;color:#F2914D;\">average EPS in CommonSecurityLog (CEF), by device vendor</span></div>"
+            },
+            "customWidth": "50",
+            "name": "text - 2 - Copy - Copy - Copy - Copy - Copy",
+            "styleSettings": {
+              "maxWidth": "50"
+            }
+          },
+          {
+            "type": 1,
+            "content": {
+              "json": "<div style=\"margin-right:10px;margin-left:10px;margin-bottom:0px;background-color:#120052;padding-left:20px;padding-right:20px;padding-top:10px;padding-bottom:12px;border: 1px solid #000;filter: drop-shadow(0.2rem 0.2rem 0.2rem rgba(0, 0, 30, 0.5));color:#fff2df;border-radius: 10px / 30px;background: linear-gradient(to right, #120052 0%,#120052 100%);display:felx\">\r\n<span style=\"color:#F2914D;font-size:12pt;font-weight:bold;color:#F2914D;\">average EPS in CommonSecurityLog (CEF), by computer</span></div>"
+            },
+            "customWidth": "50",
+            "name": "text - 2 - Copy - Copy - Copy - Copy - Copy - Copy",
+            "styleSettings": {
+              "maxWidth": "50"
+            }
+          },
+          {
+            "type": 3,
+            "content": {
+              "version": "KqlItem/1.0",
+              "query": "CommonSecurityLog\r\n| where _TimeReceived {TimeRange}\r\n| summarize count() by bin(_TimeReceived, 1m), Type, DeviceVendor\r\n| extend counttemp = todouble(count_ / 60)\r\n| summarize ['Events per Second (eps)'] = avg(counttemp) by DeviceVendor\r\n| order  by ['Events per Second (eps)'] desc",
+              "size": 1,
+              "color": "blue",
+              "queryType": 0,
+              "resourceType": "microsoft.operationalinsights/workspaces",
+              "crossComponentResources": [
+                "{Workspace}"
+              ],
+              "visualization": "table",
+              "gridSettings": {
+                "formatters": [
+                  {
+                    "columnMatch": "Events per Second (eps)",
+                    "formatter": 3,
+                    "formatOptions": {
+                      "palette": "turquoise",
+                      "customColumnWidthSetting": "50%"
+                    },
+                    "numberFormat": {
+                      "unit": 0,
+                      "options": {
+                        "style": "decimal",
+                        "useGrouping": true,
+                        "maximumSignificantDigits": 3
+                      }
+                    }
+                  },
+                  {
+                    "columnMatch": "Table Entries",
+                    "formatter": 3,
+                    "formatOptions": {
+                      "min": 0,
+                      "palette": "green"
+                    },
+                    "numberFormat": {
+                      "unit": 17,
+                      "options": {
+                        "style": "decimal"
+                      }
+                    }
+                  },
+                  {
+                    "columnMatch": "Table Size",
+                    "formatter": 3,
+                    "formatOptions": {
+                      "min": 0,
+                      "palette": "blue"
+                    },
+                    "numberFormat": {
+                      "unit": 2,
+                      "options": {
+                        "style": "decimal"
+                      }
+                    }
+                  },
+                  {
+                    "columnMatch": "Table Size Trend",
+                    "formatter": 9,
+                    "formatOptions": {
+                      "min": 0,
+                      "palette": "blue"
+                    }
+                  }
+                ],
+                "filter": true,
+                "sortBy": [
+                  {
+                    "itemKey": "$gen_bar_Events per Second (eps)_1",
+                    "sortOrder": 1
+                  }
+                ],
+                "labelSettings": [
+                  {
+                    "columnId": "DeviceVendor",
+                    "label": "Device Vendor"
+                  },
+                  {
+                    "columnId": "Events per Second (eps)",
+                    "label": "Events per second (EPS)"
+                  }
+                ]
+              },
+              "sortBy": [
+                {
+                  "itemKey": "$gen_bar_Events per Second (eps)_1",
+                  "sortOrder": 1
+                }
+              ]
+            },
+            "customWidth": "50",
+            "name": "query - 7 - Copy - Copy",
+            "styleSettings": {
+              "showBorder": true
+            }
+          },
+          {
+            "type": 3,
+            "content": {
+              "version": "KqlItem/1.0",
+              "query": "CommonSecurityLog\r\n| where _TimeReceived {TimeRange}\r\n| summarize count() by bin(_TimeReceived, 1m), Type, _ResourceId\r\n| extend counttemp =count_ / 60\r\n| summarize ['Events per Second (eps)'] = avg(counttemp) by Computer = _ResourceId\r\n| order  by ['Events per Second (eps)'] desc",
+              "size": 1,
+              "color": "blue",
+              "timeContextFromParameter": "EPStimerange",
+              "queryType": 0,
+              "resourceType": "microsoft.operationalinsights/workspaces",
+              "crossComponentResources": [
+                "{Workspace}"
+              ],
+              "visualization": "table",
+              "gridSettings": {
+                "formatters": [
+                  {
+                    "columnMatch": "Events per Second (eps)",
+                    "formatter": 3,
+                    "formatOptions": {
+                      "palette": "blue",
+                      "customColumnWidthSetting": "20%"
+                    },
+                    "numberFormat": {
+                      "unit": 0,
+                      "options": {
+                        "style": "decimal",
+                        "useGrouping": true,
+                        "maximumSignificantDigits": 3
+                      }
+                    }
+                  },
+                  {
+                    "columnMatch": "Table Entries",
+                    "formatter": 3,
+                    "formatOptions": {
+                      "min": 0,
+                      "palette": "green"
+                    },
+                    "numberFormat": {
+                      "unit": 17,
+                      "options": {
+                        "style": "decimal"
+                      }
+                    }
+                  },
+                  {
+                    "columnMatch": "Table Size",
+                    "formatter": 3,
+                    "formatOptions": {
+                      "min": 0,
+                      "palette": "blue"
+                    },
+                    "numberFormat": {
+                      "unit": 2,
+                      "options": {
+                        "style": "decimal"
+                      }
+                    }
+                  },
+                  {
+                    "columnMatch": "Table Size Trend",
+                    "formatter": 9,
+                    "formatOptions": {
+                      "min": 0,
+                      "palette": "blue"
+                    }
+                  }
+                ],
+                "filter": true,
+                "labelSettings": [
+                  {
+                    "columnId": "Events per Second (eps)",
+                    "label": "Events per second (EPS)"
+                  }
+                ]
+              },
+              "sortBy": []
+            },
+            "customWidth": "50",
+            "name": "query - 7 - Copy - Copy - Copy",
+            "styleSettings": {
+              "showBorder": true
+            }
+          },
+          {
+            "type": 1,
+            "content": {
+              "json": "<div style=\"margin-right:10px;margin-left:10px;margin-bottom:0px;background-color:#120052;padding-left:20px;padding-right:20px;padding-top:10px;padding-bottom:12px;border: 1px solid #000;filter: drop-shadow(0.2rem 0.2rem 0.2rem rgba(0, 0, 30, 0.5));color:#fff2df;border-radius: 10px / 30px;background: linear-gradient(to right, #120052 0%,#120052 100%);display:felx\">\r\n<span style=\"color:#F2914D;font-size:12pt;font-weight:bold;color:#F2914D;\">DataTables not seen sending events {TimeRange}</span></div>"
+            },
+            "customWidth": "50",
+            "name": "text - 2 - Copy - Copy - Copy - Copy",
+            "styleSettings": {
+              "maxWidth": "50"
+            }
+          },
+          {
+            "type": 1,
+            "content": {
+              "json": "<div style=\"margin-right:10px;margin-left:10px;margin-bottom:0px;background-color:#120052;padding-left:20px;padding-right:20px;padding-top:10px;padding-bottom:12px;border: 1px solid #000;filter: drop-shadow(0.2rem 0.2rem 0.2rem rgba(0, 0, 30, 0.5));color:#fff2df;border-radius: 10px / 30px;background: linear-gradient(to right, #120052 0%,#120052 100%);display:felx\">\r\n<span style=\"color:#F2914D;font-size:12pt;font-weight:bold;color:#F2914D;\">Top machines ingestion rate</span></div>"
+            },
+            "customWidth": "50",
+            "name": "text - 2 - Copy - Copy - Copy - Copy - Copy",
+            "styleSettings": {
+              "maxWidth": "50"
+            }
+          },
+          {
+            "type": 3,
+            "content": {
+              "version": "KqlItem/1.0",
+              "query": "union withsource=_TableName *\r\n| where TimeGenerated {TimeRange:query}\r\n| summarize ['Days Since Last Log Received']  = datetime_diff(\"day\", now(), max(TimeGenerated)) by _TableName\r\n| where ['Days Since Last Log Received'] > 1\r\n| sort by ['Days Since Last Log Received'] asc ",
+              "size": 0,
+              "timeContextFromParameter": "TimeRange",
+              "queryType": 0,
+              "resourceType": "microsoft.operationalinsights/workspaces",
+              "crossComponentResources": [
+                "{Workspace}"
+              ],
+              "gridSettings": {
+                "filter": true
+              }
+            },
+            "customWidth": "50",
+            "name": "query - 9",
+            "styleSettings": {
+              "maxWidth": "50%",
+              "showBorder": true
+            }
+          },
+          {
+            "type": 3,
+            "content": {
+              "version": "KqlItem/1.0",
+              "query": "find where TimeGenerated {TimeRange} project _BilledSize, _IsBillable, Computer, _ResourceId\r\n| where _isBillable=true and isnotempty(Computer) \r\n| summarize billedData = sumif(_BilledSize, _IsBillable=~true),\r\n            freeData   = sumif(_BilledSize, _IsBillable=~false) by Computer \r\n| extend Total_Data = billedData + freeData\r\n| order by billedData desc",
+              "size": 0,
+              "timeContextFromParameter": "TimeRange",
+              "queryType": 0,
+              "resourceType": "microsoft.operationalinsights/workspaces",
+              "crossComponentResources": [
+                "{Workspace}"
+              ],
+              "gridSettings": {
+                "formatters": [
+                  {
+                    "columnMatch": "billedData",
+                    "formatter": 0,
+                    "numberFormat": {
+                      "unit": 2,
+                      "options": {
+                        "style": "decimal"
+                      }
+                    }
+                  },
+                  {
+                    "columnMatch": "freeData",
+                    "formatter": 0,
+                    "numberFormat": {
+                      "unit": 2,
+                      "options": {
+                        "style": "decimal"
+                      }
+                    }
+                  },
+                  {
+                    "columnMatch": "Total_Data",
+                    "formatter": 0,
+                    "numberFormat": {
+                      "unit": 2,
+                      "options": {
+                        "style": "decimal"
+                      }
+                    }
+                  }
+                ],
+                "filter": true
+              }
+            },
+            "customWidth": "50",
+            "name": "query - 10",
+            "styleSettings": {
+              "maxWidth": "50%",
+              "showBorder": true
+            }
+          },
+          {
+            "type": 1,
+            "content": {
+              "json": "<div style=\"margin-right:10px;margin-left:10px;margin-bottom:0px;background-color:#120052;padding-left:20px;padding-right:20px;padding-top:10px;padding-bottom:12px;border: 1px solid #000;filter: drop-shadow(0.2rem 0.2rem 0.2rem rgba(0, 0, 30, 0.5));color:#fff2df;border-radius: 10px / 30px;background: linear-gradient(to right, #120052 0%,#120052 100%);display:felx\">\r\n<span style=\"color:#F2914D;font-size:12pt;font-weight:bold;color:#F2914D;\">Data Size Ingestion with {TimeRange:grain} steps</span></div>"
+            },
+            "customWidth": "50",
+            "name": "text - 2 - Copy - Copy - Copy - Copy - Copy - Copy",
+            "styleSettings": {
+              "maxWidth": "50"
+            }
+          },
+          {
+            "type": 1,
+            "content": {
+              "json": "<div style=\"margin-right:10px;margin-left:10px;margin-bottom:0px;background-color:#120052;padding-left:20px;padding-right:20px;padding-top:10px;padding-bottom:12px;border: 1px solid #000;filter: drop-shadow(0.2rem 0.2rem 0.2rem rgba(0, 0, 30, 0.5));color:#fff2df;border-radius: 10px / 30px;background: linear-gradient(to right, #120052 0%,#120052 100%);display:felx\">\r\n<span style=\"color:#F2914D;font-size:12pt;font-weight:bold;color:#F2914D;\">Endpoints Not Seen in {LastLogRecivedThreshold}</span></div>"
+            },
+            "customWidth": "50",
+            "name": "text - 2 - Copy - Copy - Copy - Copy - Copy - Copy - Copy",
+            "styleSettings": {
+              "maxWidth": "50"
+            }
+          },
+          {
+            "type": 3,
+            "content": {
+              "version": "KqlItem/1.0",
+              "query": "Usage \r\n| where TimeGenerated {TimeRange:query}\r\n| where StartTime {TimeRange:query} and EndTime < startofday(now())\r\n| where IsBillable == true\r\n| summarize BillableDataGB = sum(Quantity) / 1000. by bin(StartTime, {TimeRange:grain}), Solution | render barchart",
+              "size": 2,
+              "timeContextFromParameter": "TimeRange",
+              "queryType": 0,
+              "resourceType": "microsoft.operationalinsights/workspaces",
+              "crossComponentResources": [
+                "{Workspace}"
+              ],
+              "chartSettings": {
+                "createOtherGroup": null,
+                "xSettings": {
+                  "numberFormatSettings": {
+                    "unit": 2,
+                    "options": {
+                      "style": "decimal",
+                      "useGrouping": true
+                    }
+                  }
+                }
+              }
+            },
+            "customWidth": "50",
+            "name": "query - 11",
+            "styleSettings": {
+              "maxWidth": "50%",
+              "showBorder": true
+            }
+          },
+          {
+            "type": 3,
+            "content": {
+              "version": "KqlItem/1.0",
+              "query": "union withsource = _TableName *\r\n| where TimeGenerated {TimeRange:query}\r\n| summarize last_log = datetime_diff(\"second\",now(), max(TimeGenerated)) by _TableName\r\n| where last_log > {LastLogRecivedThreshold}\r\n| project ['Table Name'] = _TableName,  ['Last Record Received'] =  last_log \r\n| order by ['Last Record Received']  desc",
+              "size": 0,
+              "timeContextFromParameter": "TimeRange",
+              "queryType": 0,
+              "resourceType": "microsoft.operationalinsights/workspaces",
+              "crossComponentResources": [
+                "{Workspace}"
+              ],
+              "gridSettings": {
+                "formatters": [
+                  {
+                    "columnMatch": "Last Record Received",
+                    "formatter": 8,
+                    "formatOptions": {
+                      "palette": "orangeRed"
+                    },
+                    "numberFormat": {
+                      "unit": 24,
+                      "options": {
+                        "style": "decimal",
+                        "useGrouping": false,
+                        "maximumSignificantDigits": 2
+                      }
+                    }
+                  },
+                  {
+                    "columnMatch": "Table Size",
+                    "formatter": 3,
+                    "formatOptions": {
+                      "min": 0,
+                      "palette": "coldHot"
+                    },
+                    "numberFormat": {
+                      "unit": 2,
+                      "options": {
+                        "style": "decimal",
+                        "useGrouping": false
+                      }
+                    }
+                  },
+                  {
+                    "columnMatch": "Table Entries",
+                    "formatter": 3,
+                    "formatOptions": {
+                      "min": 0,
+                      "palette": "green"
+                    },
+                    "numberFormat": {
+                      "unit": 17,
+                      "options": {
+                        "style": "decimal",
+                        "useGrouping": false
+                      }
+                    }
+                  },
+                  {
+                    "columnMatch": "Size per Entry",
+                    "formatter": 3,
+                    "formatOptions": {
+                      "min": 0,
+                      "palette": "orange"
+                    },
+                    "numberFormat": {
+                      "unit": 2,
+                      "options": {
+                        "style": "decimal",
+                        "maximumFractionDigits": 2
+                      }
+                    }
+                  },
+                  {
+                    "columnMatch": "IsBillable",
+                    "formatter": 18,
+                    "formatOptions": {
+                      "thresholdsOptions": "colors",
+                      "thresholdsGrid": [
+                        {
+                          "operator": "==",
+                          "thresholdValue": "True",
+                          "representation": "green",
+                          "text": "{0}{1}"
+                        },
+                        {
+                          "operator": "==",
+                          "thresholdValue": "False",
+                          "representation": "blueDark",
+                          "text": "{0}{1}"
+                        },
+                        {
+                          "operator": "Default",
+                          "thresholdValue": null,
+                          "representation": "blue",
+                          "text": "{0}{1}"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "columnMatch": "Estimated Table Price",
+                    "formatter": 3,
+                    "formatOptions": {
+                      "palette": "greenRed"
+                    },
+                    "numberFormat": {
+                      "unit": 0,
+                      "options": {
+                        "style": "decimal",
+                        "useGrouping": false
+                      }
+                    }
+                  },
+                  {
+                    "columnMatch": "Table Trend",
+                    "formatter": 10,
+                    "formatOptions": {
+                      "palette": "redGreen"
+                    }
+                  }
+                ],
+                "filter": true,
+                "labelSettings": [
+                  {
+                    "columnId": "Last Record Received",
+                    "label": "Last record received"
+                  }
+                ]
+              },
+              "sortBy": []
+            },
+            "customWidth": "50",
+            "showPin": false,
+            "name": "query - 2 - Copy - Copy - Copy - Copy",
+            "styleSettings": {
+              "showBorder": true
+            }
+          },
+          {
+            "type": 1,
+            "content": {
+              "json": "<div style=\"background-color:#120052;padding-left:20px;padding-right:20px;padding-top:10px;padding-bottom:20px;border: 1px solid #000;filter: drop-shadow(0.2rem 0.2rem 0.2rem rgba(0, 0, 30, 0.5));color:#fff2df;border-radius: 10px / 30px;background: linear-gradient(to right, #120052 0%,#1584C0 100%);display:felx\">\r\n<span style=\"color:#F2914D;font-size:18pt;font-weight:bold;color:#F2914D;\">Total Event Count Overview</span><br>\r\nThe items in this section are broken out by data table to give you an idea of what each data table is doing.\r\n</div>"
+            },
+            "name": "text - 3"
+          },
+          {
+            "type": 1,
+            "content": {
+              "json": "<div style=\"margin-right:10px;margin-left:10px;margin-bottom:0px;background-color:#120052;padding-left:20px;padding-right:20px;padding-top:10px;padding-bottom:12px;border: 1px solid #000;filter: drop-shadow(0.2rem 0.2rem 0.2rem rgba(0, 0, 30, 0.5));color:#fff2df;border-radius: 10px / 30px;background: linear-gradient(to right, #120052 0%,#120052 100%);display:felx\">\r\n<span style=\"color:#F2914D;font-size:12pt;font-weight:bold;color:#F2914D;\">Total Event Count with {TimeRange:grain} steps</span></div>"
+            },
+            "customWidth": "100",
+            "name": "text - 2 - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy",
+            "styleSettings": {
+              "maxWidth": "100"
+            }
+          },
+          {
+            "type": 3,
+            "content": {
+              "version": "KqlItem/1.0",
+              "query": "let Now = now();\r\n            (range TimeGenerated from ago({TimeRange:start}) to Now step {TimeRange:grain}\r\n| extend Count = 0\r\n| union isfuzzy=true\r\n(search * \r\n| summarize Count = count() by bin_at(TimeGenerated, {TimeRange:grain}, Now))\r\n| summarize Count=max(Count) by bin_at(TimeGenerated, {TimeRange:grain}, Now)\r\n| sort by TimeGenerated\r\n| project Value = iff(isnull(Count), 0, Count), Time = TimeGenerated, Legend = \"Total Events\")\r\n| render timechart",
+              "size": 3,
+              "timeContextFromParameter": "TimeRange",
+              "queryType": 0,
+              "resourceType": "microsoft.operationalinsights/workspaces",
+              "crossComponentResources": [
+                "{Workspace}"
+              ]
+            },
+            "customWidth": "60",
+            "name": "query - 4",
+            "styleSettings": {
+              "maxWidth": "60",
+              "showBorder": true
+            }
+          },
+          {
+            "type": 3,
+            "content": {
+              "version": "KqlItem/1.0",
+              "query": "let Now = now();\r\n            (range TimeGenerated from ago({TimeRange:start}) to Now step {TimeRange:grain}\r\n| extend Count = 0\r\n| union isfuzzy=true\r\n(search * \r\n| summarize Count = count() by bin_at(TimeGenerated, {TimeRange:grain}, Now))\r\n| summarize Count=max(Count) by bin_at(TimeGenerated, {TimeRange:grain}, Now)\r\n| sort by TimeGenerated\r\n| project Value = iff(isnull(Count), 0, Count), Time = TimeGenerated, Legend = \"Total Events\")",
+              "size": 2,
+              "timeContextFromParameter": "TimeRange",
+              "queryType": 0,
+              "resourceType": "microsoft.operationalinsights/workspaces"
+            },
+            "customWidth": "40",
+            "name": "query - 5",
+            "styleSettings": {
+              "maxWidth": "40",
+              "showBorder": true
+            }
+          },
+          {
+            "type": 1,
+            "content": {
+              "json": "<div style=\"margin-right:10px;margin-left:10px;margin-bottom:0px;background-color:#120052;padding-left:20px;padding-right:20px;padding-top:10px;padding-bottom:12px;border: 1px solid #000;filter: drop-shadow(0.2rem 0.2rem 0.2rem rgba(0, 0, 30, 0.5));color:#fff2df;border-radius: 10px / 30px;background: linear-gradient(to right, #120052 0%,#120052 100%);display:felx\">\r\n<span style=\"color:#F2914D;font-size:12pt;font-weight:bold;color:#F2914D;\">Total Event Count Week over Week</span></div>"
+            },
+            "customWidth": "100",
+            "name": "text - 2 - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy",
+            "styleSettings": {
+              "maxWidth": "100"
+            }
+          },
+          {
+            "type": 3,
+            "content": {
+              "version": "KqlItem/1.0",
+              "query": "let Now = now();\r\n(range TimeGenerated from ago(14d) to 7d - 1d step 1d\r\n| extend Count = 0\r\n| union isfuzzy=true\r\n    (search * \r\n    | where TimeGenerated > ago(14d) and TimeGenerated < ago(7d)\r\n    | summarize Count = count() by Day=datetime_part(\"dayOfYear\", TimeGenerated)+7)\r\n| summarize Count = max(Count) by Day\r\n| project Value = iff(isnull(Count), 0, Count), Day, Legend = \"LAST WEEK\")\r\n| union isfuzzy = true(range TimeGenerated from ago(7d) to Now - 1d step 1d\r\n    | extend Count = 0\r\n    | union isfuzzy=true\r\n        (search * \r\n        | where TimeGenerated > ago(7d)\r\n        | summarize Count = count() by Day=datetime_part(\"dayOfYear\", TimeGenerated))\r\n    | summarize Count = max(Count) by Day\r\n    | project Value = iff(isnull(Count), 0, Count), Day, Legend = \"THIS WEEK\")\r\n",
+              "size": 0,
+              "queryType": 0,
+              "resourceType": "microsoft.operationalinsights/workspaces",
+              "crossComponentResources": [
+                "{Workspace}"
+              ],
+              "visualization": "timechart",
+              "chartSettings": {
+                "xAxis": "Day",
+                "yAxis": [
+                  "Value"
+                ],
+                "xSettings": {
+                  "numberFormatSettings": {
+                    "unit": 0,
+                    "options": {
+                      "style": "decimal",
+                      "useGrouping": true
+                    }
+                  }
+                },
+                "ySettings": {
+                  "numberFormatSettings": {
+                    "unit": 0,
+                    "options": {
+                      "style": "decimal",
+                      "useGrouping": true
+                    }
+                  }
+                }
+              }
+            },
+            "name": "query - 2 - Copy - Copy - Copy"
+          }
+        ]
+      },
+      "conditionalVisibility": {
+        "parameterName": "SelectedTab",
+        "comparison": "isEqualTo",
+        "value": "Global Overview"
+      },
+      "name": "group - Global Overview"
+    },
+    {
+      "type": 12,
+      "content": {
+        "version": "NotebookGroup/1.0",
+        "groupType": "editable",
+        "items": [
+          {
+            "type": 1,
+            "content": {
+              "json": "<div style=\"width:100%;height:100%;font-family:arial;padding-left:20px;padding-right:20px;padding-top:10px;padding-bottom:20px;border-top: 2px dashed #120052;border-bottom: 2px dashed #120052;background:#E8F6FF;border-radius: 10px / 20px;\">\r\n\r\n<span style=\"color:#120052;font-size:12pt;font-weight:bold;\">📌 NOTE</span><br>\r\n\r\n<span style=\"color:#000;font-size:10pt\">\r\n- Type in the FULL Computer name value in the Device Name field below to populate all information on said device.<br>\r\n- Some devices can send logs to several tables.\r\n</span></div>"
+            },
+            "name": "text - 0"
+          },
+          {
+            "type": 9,
+            "content": {
+              "version": "KqlParameterItem/1.0",
+              "parameters": [
+                {
+                  "id": "0cd4e7d2-c4b5-4d18-a001-d22ceab4b9c1",
+                  "version": "KqlParameterItem/1.0",
+                  "name": "DeviceName",
+                  "type": 1,
+                  "isRequired": true,
+                  "isGlobal": true,
+                  "timeContext": {
+                    "durationMs": 86400000
+                  },
+                  "value": "ADFS-HYBRID.truv.is"
+                }
+              ],
+              "style": "pills",
+              "queryType": 0,
+              "resourceType": "microsoft.operationalinsights/workspaces"
+            },
+            "name": "parameters - 1"
+          },
+          {
+            "type": 1,
+            "content": {
+              "json": "<div style=\"background-color:#120052;padding-left:20px;padding-right:20px;padding-top:10px;padding-bottom:15px;border: 1px solid #120052;filter: drop-shadow(0.2rem 0.2rem 0.2rem rgba(0, 0, 30, 0.5));color:#fff2df;border-radius: 10px / 30px;background: linear-gradient(to right, #120052 0%,#1584C0 100%);display:felx\">\r\n<span style=\"color:#F2914D;font-size:18pt;font-weight:bold;color:#F2914D;text-transform: uppercase;\">🖥️ {DeviceName}</span><br>\r\n</div>"
+            },
+            "name": "text - 0 - Copy"
+          },
+          {
+            "type": 1,
+            "content": {
+              "json": "<div style=\"margin-right:10px;margin-left:10px;margin-bottom:0px;background-color:#120052;padding-left:20px;padding-right:20px;padding-top:10px;padding-bottom:12px;border: 1px solid #000;filter: drop-shadow(0.2rem 0.2rem 0.2rem rgba(0, 0, 30, 0.5));color:#fff2df;border-radius: 10px / 30px;background: linear-gradient(to right, #120052 0%,#120052 100%);display:felx\">\r\n<span style=\"color:#F2914D;font-size:12pt;font-weight:bold;color:#F2914D;\">Events ingested stepped by {TimeRange:grain}</span></div>"
+            },
+            "customWidth": "100",
+            "name": "text - 2 - Copy - Copy - Copy - Copy - Copy - Copy - Copy",
+            "styleSettings": {
+              "maxWidth": "100"
+            }
+          },
+          {
+            "type": 3,
+            "content": {
+              "version": "KqlItem/1.0",
+              "query": " let Now = now();\r\n(range TimeGenerated from ago({TimeRange:start}) to Now step {TimeRange:grain}\r\n| extend Count = 0\r\n| union isfuzzy=true\r\n    (search *\r\n    | where Computer == '{DeviceName}'\r\n    | summarize Count = count() by bin_at(TimeGenerated, {TimeRange:grain}, Now))\r\n| summarize Count=max(Count) by bin_at(TimeGenerated, {TimeRange:grain}, Now)\r\n| sort by TimeGenerated\r\n| project Value = iff(isnull(Count), 0, Count), Time = TimeGenerated, Legend = \"{DeviceName} - EPS\")",
+              "size": 0,
+              "timeContextFromParameter": "TimeRange",
+              "queryType": 0,
+              "resourceType": "microsoft.operationalinsights/workspaces",
+              "crossComponentResources": [
+                "{Workspace}"
+              ],
+              "visualization": "linechart"
+            },
+            "name": "query - 2",
+            "styleSettings": {
+              "showBorder": true
+            }
+          },
+          {
+            "type": 1,
+            "content": {
+              "json": "<div style=\"margin-right:10px;margin-left:10px;margin-bottom:0px;background-color:#120052;padding-left:20px;padding-right:20px;padding-top:10px;padding-bottom:12px;border: 1px solid #000;filter: drop-shadow(0.2rem 0.2rem 0.2rem rgba(0, 0, 30, 0.5));color:#fff2df;border-radius: 10px / 30px;background: linear-gradient(to right, #120052 0%,#120052 100%);display:felx\">\r\n<span style=\"color:#F2914D;font-size:12pt;font-weight:bold;color:#F2914D;\">Events ingested Week over Week</span></div>"
+            },
+            "customWidth": "100",
+            "name": "text - 2 - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy",
+            "styleSettings": {
+              "maxWidth": "100"
+            }
+          },
+          {
+            "type": 3,
+            "content": {
+              "version": "KqlItem/1.0",
+              "query": "let Now = now();\r\n(range TimeGenerated from ago(14d) to 7d - 1d step 1d\r\n| extend Count = 0\r\n| union isfuzzy=true\r\n    (search *\r\n    | where Computer == '{DeviceName}'\r\n    | where TimeGenerated > ago(14d) and TimeGenerated < ago(7d)\r\n    | summarize Count = count() by Day=datetime_part(\"dayOfYear\", TimeGenerated)+7)\r\n| summarize Count = max(Count) by Day\r\n| project Value = iff(isnull(Count), 0, Count), Day, Legend = \"LAST WEEK\")\r\n| union isfuzzy = true(range TimeGenerated from ago(7d) to Now - 1d step 1d\r\n    | extend Count = 0\r\n    | union isfuzzy=true\r\n        (search *\r\n        | where Computer == '{DeviceName}'\r\n        | where TimeGenerated > ago(7d)\r\n        | summarize Count = count() by Day=datetime_part(\"dayOfYear\", TimeGenerated))\r\n    | summarize Count = max(Count) by Day\r\n    | project Value = iff(isnull(Count), 0, Count), Day, Legend = \"THIS WEEK\")\r\n\r\n\r\n\r\n\r\n\r\n",
+              "size": 0,
+              "queryType": 0,
+              "resourceType": "microsoft.operationalinsights/workspaces",
+              "crossComponentResources": [
+                "{Workspace}"
+              ],
+              "visualization": "timechart",
+              "chartSettings": {
+                "xAxis": "Day",
+                "yAxis": [
+                  "Value"
+                ]
+              }
+            },
+            "name": "query - 2 - Copy",
+            "styleSettings": {
+              "showBorder": true
+            }
+          },
+          {
+            "type": 1,
+            "content": {
+              "json": "<div style=\"margin-right:10px;margin-left:10px;margin-bottom:0px;background-color:#120052;padding-left:20px;padding-right:20px;padding-top:10px;padding-bottom:12px;border: 1px solid #000;filter: drop-shadow(0.2rem 0.2rem 0.2rem rgba(0, 0, 30, 0.5));color:#fff2df;border-radius: 10px / 30px;background: linear-gradient(to right, #120052 0%,#120052 100%);display:felx\">\r\n<span style=\"color:#F2914D;font-size:12pt;font-weight:bold;color:#F2914D;\">Events ingested by table</span></div>"
+            },
+            "customWidth": "100",
+            "name": "text - 2 - Copy - Copy - Copy - Copy - Copy - Copy",
+            "styleSettings": {
+              "maxWidth": "100"
+            }
+          },
+          {
+            "type": 3,
+            "content": {
+              "version": "KqlItem/1.0",
+              "query": "union withsource=TableName1 *\r\n| summarize Entries = count(), Size = sum(_BilledSize), last_log = datetime_diff(\"second\",now(), max(TimeGenerated)), estimate  = sumif(_BilledSize, _IsBillable==true) by Computer, TableName1, _IsBillable\r\n| project ['Table Name'] = TableName1, Computer, ['Table Entries'] = Entries, ['Table Size'] = Size,\r\n          ['Size per Entry'] = 1.0 * Size / Entries, ['IsBillable'] = _IsBillable, ['Last Record Received'] =  last_log , ['Estimated Table Price'] =  (estimate/(1024*1024*1024)) * {CostValue}\r\n| where Computer == '{DeviceName}'\r\n | order by ['Table Size']  desc",
+              "size": 1,
+              "timeContextFromParameter": "TimeRange",
+              "queryType": 0,
+              "resourceType": "microsoft.operationalinsights/workspaces",
+              "crossComponentResources": [
+                "{Workspace}"
+              ],
+              "gridSettings": {
+                "formatters": [
+                  {
+                    "columnMatch": "Table Size",
+                    "formatter": 0,
+                    "numberFormat": {
+                      "unit": 2,
+                      "options": {
+                        "style": "decimal"
+                      }
+                    }
+                  },
+                  {
+                    "columnMatch": "Size per Entry",
+                    "formatter": 0,
+                    "numberFormat": {
+                      "unit": 2,
+                      "options": {
+                        "style": "decimal"
+                      }
+                    }
+                  },
+                  {
+                    "columnMatch": "Estimated Table Price",
+                    "formatter": 0,
+                    "numberFormat": {
+                      "unit": 0,
+                      "options": {
+                        "currency": "USD",
+                        "style": "currency"
+                      }
+                    }
+                  }
+                ],
+                "filter": true
+              }
+            },
+            "name": "query - 2 - Copy",
+            "styleSettings": {
+              "showBorder": true
+            }
+          },
+          {
+            "type": 3,
+            "content": {
+              "version": "KqlItem/1.0",
+              "query": "union withsource = _TableName *\r\n| where Computer == '{DeviceName}'\r\n| where _TimeReceived  > startofday({TimeRange:start})\r\n| summarize count()  by bin(_TimeReceived, {TimeRange:grain}), Type\r\n| project Type, _TimeReceived, count_\r\n\r\n\r\n",
+              "size": 0,
+              "color": "blue",
+              "timeContextFromParameter": "TimeRange",
+              "exportFieldName": "Namespace",
+              "exportParameterName": "Namespace",
+              "exportDefaultValue": "All",
+              "queryType": 0,
+              "resourceType": "microsoft.operationalinsights/workspaces",
+              "crossComponentResources": [
+                "{Workspace}"
+              ],
+              "visualization": "barchart",
+              "gridSettings": {
+                "formatters": [
+                  {
+                    "columnMatch": "Average Events per Second (eps)",
+                    "formatter": 3,
+                    "formatOptions": {
+                      "palette": "redGreen"
+                    },
+                    "numberFormat": {
+                      "unit": 0,
+                      "options": {
+                        "style": "decimal",
+                        "useGrouping": true,
+                        "maximumSignificantDigits": 3
+                      }
+                    }
+                  },
+                  {
+                    "columnMatch": "Minimum eps",
+                    "formatter": 3,
+                    "formatOptions": {
+                      "palette": "redGreen"
+                    },
+                    "numberFormat": {
+                      "unit": 0,
+                      "options": {
+                        "style": "decimal",
+                        "useGrouping": false,
+                        "maximumSignificantDigits": 3
+                      }
+                    }
+                  },
+                  {
+                    "columnMatch": "Maximum eps",
+                    "formatter": 3,
+                    "formatOptions": {
+                      "palette": "redGreen"
+                    },
+                    "numberFormat": {
+                      "unit": 0,
+                      "options": {
+                        "style": "decimal",
+                        "maximumSignificantDigits": 3
+                      }
+                    }
+                  },
+                  {
+                    "columnMatch": "Estimated Table Price",
+                    "formatter": 3,
+                    "formatOptions": {
+                      "palette": "greenRed"
+                    },
+                    "numberFormat": {
+                      "unit": 0,
+                      "options": {
+                        "style": "decimal",
+                        "useGrouping": false
+                      }
+                    }
+                  },
+                  {
+                    "columnMatch": "Table Entries",
+                    "formatter": 3,
+                    "formatOptions": {
+                      "min": 0,
+                      "palette": "green"
+                    },
+                    "numberFormat": {
+                      "unit": 17,
+                      "options": {
+                        "style": "decimal"
+                      }
+                    }
+                  },
+                  {
+                    "columnMatch": "Table Size",
+                    "formatter": 3,
+                    "formatOptions": {
+                      "min": 0,
+                      "palette": "blue"
+                    },
+                    "numberFormat": {
+                      "unit": 2,
+                      "options": {
+                        "style": "decimal"
+                      }
+                    }
+                  },
+                  {
+                    "columnMatch": "Table Size Trend",
+                    "formatter": 9,
+                    "formatOptions": {
+                      "min": 0,
+                      "palette": "blue"
+                    }
+                  }
+                ],
+                "filter": true
+              },
+              "sortBy": []
+            },
+            "customWidth": "100",
+            "name": "query - 7 - Copy - Copy - Copy - Copy",
+            "styleSettings": {
+              "showBorder": true
+            }
+          },
+          {
+            "type": 1,
+            "content": {
+              "json": "<div style=\"margin-right:10px;margin-left:10px;margin-bottom:0px;background-color:#120052;padding-left:20px;padding-right:20px;padding-top:10px;padding-bottom:12px;border: 1px solid #000;filter: drop-shadow(0.2rem 0.2rem 0.2rem rgba(0, 0, 30, 0.5));color:#fff2df;border-radius: 10px / 30px;background: linear-gradient(to right, #120052 0%,#120052 100%);display:felx\">\r\n<span style=\"color:#F2914D;font-size:12pt;font-weight:bold;color:#F2914D;\">Table Specific Totals</span></div>"
+            },
+            "customWidth": "100",
+            "name": "text - 2 - Copy - Copy - Copy - Copy - Copy",
+            "styleSettings": {
+              "maxWidth": "100"
+            }
+          },
+          {
+            "type": 3,
+            "content": {
+              "version": "KqlItem/1.0",
+              "query": "union withsource=_TableName1 *\r\n| where _TimeReceived  {TimeRange:query}\r\n| where Computer == '{DeviceName}'\r\n| summarize count()  by bin(_TimeReceived, 1m), Type\r\n| extend counttemp =count_ / 60\r\n| summarize \r\n           ['Average Events per Second (eps)'] = avg(counttemp), E = 'Average EPS'",
+              "size": 4,
+              "timeContextFromParameter": "TimeRange",
+              "queryType": 0,
+              "resourceType": "microsoft.operationalinsights/workspaces",
+              "crossComponentResources": [
+                "{Workspace}"
+              ],
+              "visualization": "tiles",
+              "tileSettings": {
+                "titleContent": {
+                  "columnMatch": "E",
+                  "formatter": 1,
+                  "numberFormat": {
+                    "unit": 0,
+                    "options": {
+                      "style": "decimal"
+                    }
+                  }
+                },
+                "leftContent": {
+                  "columnMatch": "Average Events per Second (eps)",
+                  "formatter": 12,
+                  "formatOptions": {
+                    "min": 1,
+                    "palette": "blue"
+                  }
+                },
+                "showBorder": false,
+                "size": "auto"
+              },
+              "graphSettings": {
+                "type": 0
+              }
+            },
+            "customWidth": "25",
+            "name": "query - 3",
+            "styleSettings": {
+              "maxWidth": "25",
+              "showBorder": true
+            }
+          },
+          {
+            "type": 3,
+            "content": {
+              "version": "KqlItem/1.0",
+              "query": "union withsource=_TableName1 *\r\n| where _TimeReceived  {TimeRange:query}\r\n| where Computer == '{DeviceName}'\r\n| summarize count()  by bin(_TimeReceived, 1m), Type\r\n| extend counttemp =count_ / 60\r\n| summarize \r\n           ['Minimum eps']=min (counttemp), E = 'Minimum EPS'",
+              "size": 4,
+              "timeContextFromParameter": "TimeRange",
+              "queryType": 0,
+              "resourceType": "microsoft.operationalinsights/workspaces",
+              "crossComponentResources": [
+                "{Workspace}"
+              ],
+              "visualization": "tiles",
+              "tileSettings": {
+                "titleContent": {
+                  "columnMatch": "E",
+                  "formatter": 1,
+                  "numberFormat": {
+                    "unit": 0,
+                    "options": {
+                      "style": "decimal"
+                    }
+                  }
+                },
+                "leftContent": {
+                  "columnMatch": "Minimum eps",
+                  "formatter": 12,
+                  "formatOptions": {
+                    "min": 1,
+                    "palette": "blue"
+                  }
+                },
+                "showBorder": false,
+                "size": "auto"
+              },
+              "graphSettings": {
+                "type": 0
+              }
+            },
+            "customWidth": "25",
+            "name": "query - 3 - Copy",
+            "styleSettings": {
+              "maxWidth": "25",
+              "showBorder": true
+            }
+          },
+          {
+            "type": 3,
+            "content": {
+              "version": "KqlItem/1.0",
+              "query": "union withsource=_TableName1 *\r\n| where _TimeReceived  {TimeRange:query}\r\n| where Computer == '{DeviceName}'\r\n| summarize count()  by bin(_TimeReceived, 1m), Type\r\n| extend counttemp =count_ / 60\r\n| summarize \r\n           ['Maximum eps']=max(counttemp), E = 'Maximum EPS'",
+              "size": 4,
+              "timeContextFromParameter": "TimeRange",
+              "queryType": 0,
+              "resourceType": "microsoft.operationalinsights/workspaces",
+              "crossComponentResources": [
+                "{Workspace}"
+              ],
+              "visualization": "tiles",
+              "tileSettings": {
+                "titleContent": {
+                  "columnMatch": "E",
+                  "formatter": 1,
+                  "numberFormat": {
+                    "unit": 0,
+                    "options": {
+                      "style": "decimal"
+                    }
+                  }
+                },
+                "leftContent": {
+                  "columnMatch": "Maximum eps",
+                  "formatter": 12,
+                  "formatOptions": {
+                    "min": 1,
+                    "palette": "blue"
+                  }
+                },
+                "showBorder": false,
+                "size": "auto"
+              },
+              "graphSettings": {
+                "type": 0
+              }
+            },
+            "customWidth": "25",
+            "name": "query - 3 - Copy - Copy",
+            "styleSettings": {
+              "maxWidth": "25",
+              "showBorder": true
+            }
+          },
+          {
+            "type": 3,
+            "content": {
+              "version": "KqlItem/1.0",
+              "query": "union withsource=_TableName1 *\r\n| where _TimeReceived  {TimeRange:query}\r\n| where Computer == '{DeviceName}'\r\n| summarize Entries = count(), Size = sum(_BilledSize), last_log = datetime_diff(\"second\",now(), max(TimeGenerated)), estimate  = sumif(_BilledSize, _IsBillable==true)\r\n| project ['Estimated Table Price'] =  (estimate/(1024*1024*1024)) * {CostValue}, Title = 'Cost for Device'",
+              "size": 4,
+              "timeContextFromParameter": "TimeRange",
+              "queryType": 0,
+              "resourceType": "microsoft.operationalinsights/workspaces",
+              "crossComponentResources": [
+                "{Workspace}"
+              ],
+              "visualization": "tiles",
+              "tileSettings": {
+                "titleContent": {
+                  "columnMatch": "Title",
+                  "formatter": 1,
+                  "numberFormat": {
+                    "unit": 0,
+                    "options": {
+                      "style": "decimal"
+                    }
+                  }
+                },
+                "leftContent": {
+                  "columnMatch": "Estimated Table Price",
+                  "formatter": 12,
+                  "formatOptions": {
+                    "min": 1,
+                    "palette": "blue"
+                  },
+                  "numberFormat": {
+                    "unit": 0,
+                    "options": {
+                      "currency": "USD",
+                      "style": "currency"
+                    }
+                  }
+                },
+                "showBorder": false,
+                "size": "auto"
+              },
+              "graphSettings": {
+                "type": 0
+              }
+            },
+            "customWidth": "25",
+            "name": "query - 3 - Copy - Copy - Copy",
+            "styleSettings": {
+              "maxWidth": "25",
+              "showBorder": true
+            }
+          },
+          {
+            "type": 3,
+            "content": {
+              "version": "KqlItem/1.0",
+              "query": "union withsource=_TableName1 *\r\n| where Computer == '{DeviceName}'\r\n| where TimeGenerated {TimeRange:query} \r\n| summarize Entries = count(), Size = sum(_BilledSize), last_log = datetime_diff(\"second\",now(), max(TimeGenerated)), estimate  = sumif(_BilledSize, _IsBillable==true)\r\n| project ['Title'] = \"Table Entries\", ['Table Entries'] = Entries",
+              "size": 4,
+              "timeContextFromParameter": "TimeRange",
+              "queryType": 0,
+              "resourceType": "microsoft.operationalinsights/workspaces",
+              "crossComponentResources": [
+                "{Workspace}"
+              ],
+              "visualization": "tiles",
+              "tileSettings": {
+                "titleContent": {
+                  "columnMatch": "Title",
+                  "formatter": 1,
+                  "numberFormat": {
+                    "unit": 0,
+                    "options": {
+                      "style": "decimal"
+                    }
+                  }
+                },
+                "leftContent": {
+                  "columnMatch": "Table Entries",
+                  "formatter": 12,
+                  "formatOptions": {
+                    "min": 1,
+                    "palette": "blue"
+                  },
+                  "numberFormat": {
+                    "unit": 0,
+                    "options": {
+                      "style": "decimal"
+                    }
+                  }
+                },
+                "showBorder": false,
+                "size": "auto"
+              },
+              "graphSettings": {
+                "type": 0
+              }
+            },
+            "customWidth": "25",
+            "name": "query - 3 - Copy - Copy - Copy - Copy",
+            "styleSettings": {
+              "maxWidth": "25",
+              "showBorder": true
+            }
+          },
+          {
+            "type": 3,
+            "content": {
+              "version": "KqlItem/1.0",
+              "query": "union withsource=_TableName1 *\r\n| where Computer == '{DeviceName}'\r\n| where TimeGenerated {TimeRange:query} \r\n| summarize Entries = count(), Size = sum(_BilledSize), last_log = datetime_diff(\"second\",now(), max(TimeGenerated)), estimate  = sumif(_BilledSize, _IsBillable==true)\r\n| project ['Title'] = \"Table Size\", ['Table Size'] = Size",
+              "size": 4,
+              "timeContextFromParameter": "TimeRange",
+              "queryType": 0,
+              "resourceType": "microsoft.operationalinsights/workspaces",
+              "crossComponentResources": [
+                "{Workspace}"
+              ],
+              "visualization": "tiles",
+              "tileSettings": {
+                "titleContent": {
+                  "columnMatch": "Title",
+                  "formatter": 1,
+                  "numberFormat": {
+                    "unit": 0,
+                    "options": {
+                      "style": "decimal"
+                    }
+                  }
+                },
+                "leftContent": {
+                  "columnMatch": "Table Size",
+                  "formatter": 12,
+                  "formatOptions": {
+                    "min": 1,
+                    "palette": "blue"
+                  },
+                  "numberFormat": {
+                    "unit": 2,
+                    "options": {
+                      "style": "decimal"
+                    }
+                  }
+                },
+                "showBorder": false,
+                "size": "auto"
+              },
+              "graphSettings": {
+                "type": 0
+              }
+            },
+            "customWidth": "25",
+            "name": "query - 3 - Copy - Copy - Copy - Copy - Copy",
+            "styleSettings": {
+              "maxWidth": "25",
+              "showBorder": true
+            }
+          },
+          {
+            "type": 3,
+            "content": {
+              "version": "KqlItem/1.0",
+              "query": "union withsource=_TableName1 *\r\n| where Computer == '{DeviceName}'\r\n| where TimeGenerated {TimeRange:query} \r\n| summarize Entries = count(), Size = sum(_BilledSize), last_log = datetime_diff(\"second\",now(), max(TimeGenerated)), estimate  = sumif(_BilledSize, _IsBillable==true)\r\n| project ['Title'] = \"Last Record Received in Seconds\", ['Last Record Received'] =  last_log",
+              "size": 4,
+              "timeContextFromParameter": "TimeRange",
+              "queryType": 0,
+              "resourceType": "microsoft.operationalinsights/workspaces",
+              "crossComponentResources": [
+                "{Workspace}"
+              ],
+              "visualization": "tiles",
+              "tileSettings": {
+                "titleContent": {
+                  "columnMatch": "Title",
+                  "formatter": 1,
+                  "numberFormat": {
+                    "unit": 0,
+                    "options": {
+                      "style": "decimal"
+                    }
+                  }
+                },
+                "leftContent": {
+                  "columnMatch": "Last Record Received",
+                  "formatter": 12,
+                  "formatOptions": {
+                    "min": 1,
+                    "palette": "blue"
+                  },
+                  "numberFormat": {
+                    "unit": 0,
+                    "options": {
+                      "style": "decimal"
+                    }
+                  }
+                },
+                "showBorder": false,
+                "size": "auto"
+              },
+              "graphSettings": {
+                "type": 0
+              }
+            },
+            "customWidth": "25",
+            "name": "query - 3 - Copy - Copy - Copy - Copy - Copy - Copy - Copy",
+            "styleSettings": {
+              "maxWidth": "25",
+              "showBorder": true
+            }
+          },
+          {
+            "type": 3,
+            "content": {
+              "version": "KqlItem/1.0",
+              "query": "union withsource=_TableName1 *\r\n| where Computer == '{DeviceName}'\r\n| where TimeGenerated {TimeRange:query} \r\n| summarize Entries = count(), Size = sum(_BilledSize), last_log = datetime_diff(\"second\",now(), max(TimeGenerated)), estimate  = sumif(_BilledSize, _IsBillable==true)\r\n| project ['Title'] = \"Size per Entry\", ['Size per Entry'] = 1.0 * Size / Entries",
+              "size": 4,
+              "timeContextFromParameter": "TimeRange",
+              "queryType": 0,
+              "resourceType": "microsoft.operationalinsights/workspaces",
+              "crossComponentResources": [
+                "{Workspace}"
+              ],
+              "visualization": "tiles",
+              "tileSettings": {
+                "titleContent": {
+                  "columnMatch": "Title",
+                  "formatter": 1,
+                  "numberFormat": {
+                    "unit": 0,
+                    "options": {
+                      "style": "decimal"
+                    }
+                  }
+                },
+                "leftContent": {
+                  "columnMatch": "Size per Entry",
+                  "formatter": 12,
+                  "formatOptions": {
+                    "min": 1,
+                    "palette": "blue"
+                  },
+                  "numberFormat": {
+                    "unit": 2,
+                    "options": {
+                      "style": "decimal"
+                    }
+                  }
+                },
+                "showBorder": false,
+                "size": "auto"
+              },
+              "graphSettings": {
+                "type": 0
+              }
+            },
+            "customWidth": "25",
+            "name": "query - 3 - Copy - Copy - Copy - Copy - Copy - Copy",
+            "styleSettings": {
+              "maxWidth": "25",
+              "showBorder": true
+            }
+          }
+        ]
+      },
+      "conditionalVisibility": {
+        "parameterName": "SelectedTab",
+        "comparison": "isEqualTo",
+        "value": "End Point"
+      },
+      "name": "group - 4"
+    },
+    {
+      "type": 12,
+      "content": {
+        "version": "NotebookGroup/1.0",
+        "groupType": "editable",
+        "items": [
+          {
+            "type": 1,
+            "content": {
+              "json": "<div style=\"width:100%;height:100%;font-family:arial;padding-left:20px;padding-right:20px;padding-top:10px;padding-bottom:20px;border-top: 2px dashed #120052;border-bottom: 2px dashed #120052;background:#E8F6FF;border-radius: 10px / 20px;\">\r\n\r\n<span style=\"color:#120052;font-size:12pt;font-weight:bold;\">📌 NOTE</span><br>\r\n\r\n<span style=\"color:#000;font-size:10pt\">\r\n- Select the DataTable you wish to view and to show an overview in relation to it.<br>\r\n- Devices can send logs to more than one DataTable.<br>\r\n</span></div>"
+            },
+            "name": "text - 0 - Copy"
+          },
+          {
+            "type": 9,
+            "content": {
+              "version": "KqlParameterItem/1.0",
+              "crossComponentResources": [
+                "{Workspace}"
+              ],
+              "parameters": [
+                {
+                  "id": "c2a39f6f-3ec1-483a-9002-d5c01ddf09ea",
+                  "version": "KqlParameterItem/1.0",
+                  "name": "TableName",
+                  "type": 2,
+                  "isRequired": true,
+                  "isGlobal": true,
+                  "query": "union withsource= table *\r\n| distinct table",
+                  "crossComponentResources": [
+                    "{Workspace}"
+                  ],
+                  "typeSettings": {
+                    "additionalResourceOptions": [],
+                    "showDefault": false
+                  },
+                  "timeContext": {
+                    "durationMs": 2592000000
+                  },
+                  "queryType": 0,
+                  "resourceType": "microsoft.operationalinsights/workspaces",
+                  "value": "Event"
+                }
+              ],
+              "style": "pills",
+              "queryType": 0,
+              "resourceType": "microsoft.operationalinsights/workspaces"
+            },
+            "name": "parameters - 0"
+          },
+          {
+            "type": 1,
+            "content": {
+              "json": "<div style=\"background-color:#120052;padding-left:20px;padding-right:20px;padding-top:10px;padding-bottom:15px;border: 1px solid #120052;filter: drop-shadow(0.2rem 0.2rem 0.2rem rgba(0, 0, 30, 0.5));color:#fff2df;border-radius: 10px / 30px;background: linear-gradient(to right, #120052 0%,#1584C0 100%);display:felx\">\r\n<span style=\"color:#F2914D;font-size:18pt;font-weight:bold;color:#F2914D;\">🔌 {TableName:label}</span><br>\r\n</div>"
+            },
+            "name": "text - 1"
+          },
+          {
+            "type": 1,
+            "content": {
+              "json": "<div style=\"margin-right:10px;margin-left:10px;margin-bottom:0px;background-color:#120052;padding-left:20px;padding-right:20px;padding-top:10px;padding-bottom:12px;border: 1px solid #000;filter: drop-shadow(0.2rem 0.2rem 0.2rem rgba(0, 0, 30, 0.5));color:#fff2df;border-radius: 10px / 30px;background: linear-gradient(to right, #120052 0%,#120052 100%);display:felx\">\r\n<span style=\"color:#F2914D;font-size:12pt;font-weight:bold;color:#F2914D;\">Events Ingested stepped by {TimeRange:grain}</span></div>"
+            },
+            "customWidth": "100",
+            "name": "text - 2 - Copy - Copy - Copy - Copy - Copy - Copy",
+            "styleSettings": {
+              "maxWidth": "100"
+            }
+          },
+          {
+            "type": 3,
+            "content": {
+              "version": "KqlItem/1.0",
+              "query": " let Now = now();\r\n(range TimeGenerated from ago({TimeRange:start}) to Now step {TimeRange:grain}\r\n| extend Count = 0\r\n| union isfuzzy=true\r\n    ({TableName}\r\n    | summarize Count = count() by bin_at(TimeGenerated, {TimeRange:grain}, Now))\r\n| summarize Count=max(Count) by bin_at(TimeGenerated, {TimeRange:grain}, Now)\r\n| sort by TimeGenerated\r\n| project Value = iff(isnull(Count), 0, Count), Time = TimeGenerated, Legend = \"{TableName} - EPS\")",
+              "size": 0,
+              "timeContextFromParameter": "TimeRange",
+              "queryType": 0,
+              "resourceType": "microsoft.operationalinsights/workspaces",
+              "crossComponentResources": [
+                "{Workspace}"
+              ],
+              "visualization": "linechart"
+            },
+            "name": "query - 2 - Copy"
+          },
+          {
+            "type": 1,
+            "content": {
+              "json": "<div style=\"margin-right:10px;margin-left:10px;margin-bottom:0px;background-color:#120052;padding-left:20px;padding-right:20px;padding-top:10px;padding-bottom:12px;border: 1px solid #000;filter: drop-shadow(0.2rem 0.2rem 0.2rem rgba(0, 0, 30, 0.5));color:#fff2df;border-radius: 10px / 30px;background: linear-gradient(to right, #120052 0%,#120052 100%);display:felx\">\r\n<span style=\"color:#F2914D;font-size:12pt;font-weight:bold;color:#F2914D;\">EndPoints Sending logs to Table Totals</span></div>"
+            },
+            "customWidth": "100",
+            "name": "text - 2 - Copy - Copy - Copy - Copy - Copy",
+            "styleSettings": {
+              "maxWidth": "100"
+            }
+          },
+          {
+            "type": 3,
+            "content": {
+              "version": "KqlItem/1.0",
+              "query": "union withsource=TableName1 *\r\n| summarize Entries = count(), Size = sum(_BilledSize), last_log = datetime_diff(\"second\",now(), max(TimeGenerated)), estimate  = sumif(_BilledSize, _IsBillable==true) by Computer, TableName1, _IsBillable\r\n| project Computer, ['Table Entries'] = Entries, ['Table Size'] = Size,\r\n          ['Size per Entry'] = 1.0 * Size / Entries, ['IsBillable'] = _IsBillable, ['Last Record Received'] =  last_log , ['Estimated Table Price'] =  (estimate/(1024*1024*1024)) * {CostValue}, ['Table Name'] = TableName1\r\n| where ['Table Name'] == '{TableName}'\r\n | order by ['Table Size']  desc",
+              "size": 0,
+              "timeContextFromParameter": "TimeRange",
+              "queryType": 0,
+              "resourceType": "microsoft.operationalinsights/workspaces",
+              "crossComponentResources": [
+                "{Workspace}"
+              ],
+              "gridSettings": {
+                "formatters": [
+                  {
+                    "columnMatch": "Table Size",
+                    "formatter": 0,
+                    "numberFormat": {
+                      "unit": 2,
+                      "options": {
+                        "style": "decimal"
+                      }
+                    }
+                  },
+                  {
+                    "columnMatch": "Size per Entry",
+                    "formatter": 0,
+                    "numberFormat": {
+                      "unit": 2,
+                      "options": {
+                        "style": "decimal"
+                      }
+                    }
+                  },
+                  {
+                    "columnMatch": "Estimated Table Price",
+                    "formatter": 0,
+                    "numberFormat": {
+                      "unit": 0,
+                      "options": {
+                        "currency": "USD",
+                        "style": "currency"
+                      }
+                    }
+                  }
+                ],
+                "filter": true
+              }
+            },
+            "name": "query - 3",
+            "styleSettings": {
+              "showBorder": true
+            }
+          },
+          {
+            "type": 3,
+            "content": {
+              "version": "KqlItem/1.0",
+              "query": "union withsource = _TableName *\r\n| where Type == '{TableName}'\r\n| where _TimeReceived  > startofday({TimeRange:start})\r\n| summarize count()  by bin(_TimeReceived, {TimeRange:grain}), Computer\r\n| project Computer, _TimeReceived, count_\r\n\r\n\r\n",
+              "size": 0,
+              "color": "blue",
+              "timeContextFromParameter": "TimeRange",
+              "exportFieldName": "Namespace",
+              "exportParameterName": "Namespace",
+              "exportDefaultValue": "All",
+              "queryType": 0,
+              "resourceType": "microsoft.operationalinsights/workspaces",
+              "crossComponentResources": [
+                "{Workspace}"
+              ],
+              "visualization": "barchart",
+              "gridSettings": {
+                "formatters": [
+                  {
+                    "columnMatch": "Average Events per Second (eps)",
+                    "formatter": 3,
+                    "formatOptions": {
+                      "palette": "redGreen"
+                    },
+                    "numberFormat": {
+                      "unit": 0,
+                      "options": {
+                        "style": "decimal",
+                        "useGrouping": true,
+                        "maximumSignificantDigits": 3
+                      }
+                    }
+                  },
+                  {
+                    "columnMatch": "Minimum eps",
+                    "formatter": 3,
+                    "formatOptions": {
+                      "palette": "redGreen"
+                    },
+                    "numberFormat": {
+                      "unit": 0,
+                      "options": {
+                        "style": "decimal",
+                        "useGrouping": false,
+                        "maximumSignificantDigits": 3
+                      }
+                    }
+                  },
+                  {
+                    "columnMatch": "Maximum eps",
+                    "formatter": 3,
+                    "formatOptions": {
+                      "palette": "redGreen"
+                    },
+                    "numberFormat": {
+                      "unit": 0,
+                      "options": {
+                        "style": "decimal",
+                        "maximumSignificantDigits": 3
+                      }
+                    }
+                  },
+                  {
+                    "columnMatch": "Estimated Table Price",
+                    "formatter": 3,
+                    "formatOptions": {
+                      "palette": "greenRed"
+                    },
+                    "numberFormat": {
+                      "unit": 0,
+                      "options": {
+                        "style": "decimal",
+                        "useGrouping": false
+                      }
+                    }
+                  },
+                  {
+                    "columnMatch": "Table Entries",
+                    "formatter": 3,
+                    "formatOptions": {
+                      "min": 0,
+                      "palette": "green"
+                    },
+                    "numberFormat": {
+                      "unit": 17,
+                      "options": {
+                        "style": "decimal"
+                      }
+                    }
+                  },
+                  {
+                    "columnMatch": "Table Size",
+                    "formatter": 3,
+                    "formatOptions": {
+                      "min": 0,
+                      "palette": "blue"
+                    },
+                    "numberFormat": {
+                      "unit": 2,
+                      "options": {
+                        "style": "decimal"
+                      }
+                    }
+                  },
+                  {
+                    "columnMatch": "Table Size Trend",
+                    "formatter": 9,
+                    "formatOptions": {
+                      "min": 0,
+                      "palette": "blue"
+                    }
+                  }
+                ],
+                "filter": true
+              },
+              "sortBy": []
+            },
+            "customWidth": "100",
+            "showPin": false,
+            "name": "query - 7 - Copy - Copy - Copy - Copy - Copy",
+            "styleSettings": {
+              "showBorder": true
+            }
+          },
+          {
+            "type": 1,
+            "content": {
+              "json": "<div style=\"margin-right:10px;margin-left:10px;margin-bottom:0px;background-color:#120052;padding-left:20px;padding-right:20px;padding-top:10px;padding-bottom:12px;border: 1px solid #000;filter: drop-shadow(0.2rem 0.2rem 0.2rem rgba(0, 0, 30, 0.5));color:#fff2df;border-radius: 10px / 30px;background: linear-gradient(to right, #120052 0%,#120052 100%);display:felx\">\r\n<span style=\"color:#F2914D;font-size:12pt;font-weight:bold;color:#F2914D;\">Week over Week log ingestion</span></div>"
+            },
+            "customWidth": "100",
+            "name": "text - 2 - Copy - Copy - Copy - Copy - Copy - Copy",
+            "styleSettings": {
+              "maxWidth": "100"
+            }
+          },
+          {
+            "type": 3,
+            "content": {
+              "version": "KqlItem/1.0",
+              "query": "let Now = now();\r\n(range TimeGenerated from ago(14d) to 7d - 1d step 1d\r\n| extend Count = 0\r\n| union isfuzzy=true\r\n    ({TableName}\r\n    | where TimeGenerated > ago(14d) and TimeGenerated < ago(7d)\r\n    | summarize Count = count() by Day=datetime_part(\"dayOfYear\", TimeGenerated)+7)\r\n| summarize Count = max(Count) by Day\r\n| project Value = iff(isnull(Count), 0, Count), Day, Legend = \"LAST WEEK\")\r\n| union isfuzzy = true(range TimeGenerated from ago(7d) to Now - 1d step 1d\r\n    | extend Count = 0\r\n    | union isfuzzy=true\r\n        ({TableName}\r\n        | where TimeGenerated > ago(7d)\r\n        | summarize Count = count() by Day=datetime_part(\"dayOfYear\", TimeGenerated))\r\n    | summarize Count = max(Count) by Day\r\n    | project Value = iff(isnull(Count), 0, Count), Day, Legend = \"THIS WEEK\")\r\n",
+              "size": 0,
+              "exportFieldName": "Namespace",
+              "exportParameterName": "Namespace",
+              "exportDefaultValue": "All",
+              "queryType": 0,
+              "resourceType": "microsoft.operationalinsights/workspaces",
+              "crossComponentResources": [
+                "{Workspace}"
+              ],
+              "visualization": "timechart",
+              "gridSettings": {
+                "formatters": [
+                  {
+                    "columnMatch": "Average Events per Second (eps)",
+                    "formatter": 3,
+                    "formatOptions": {
+                      "palette": "redGreen"
+                    },
+                    "numberFormat": {
+                      "unit": 0,
+                      "options": {
+                        "style": "decimal",
+                        "useGrouping": true,
+                        "maximumSignificantDigits": 3
+                      }
+                    }
+                  },
+                  {
+                    "columnMatch": "Minimum eps",
+                    "formatter": 3,
+                    "formatOptions": {
+                      "palette": "redGreen"
+                    },
+                    "numberFormat": {
+                      "unit": 0,
+                      "options": {
+                        "style": "decimal",
+                        "useGrouping": false,
+                        "maximumSignificantDigits": 3
+                      }
+                    }
+                  },
+                  {
+                    "columnMatch": "Maximum eps",
+                    "formatter": 3,
+                    "formatOptions": {
+                      "palette": "redGreen"
+                    },
+                    "numberFormat": {
+                      "unit": 0,
+                      "options": {
+                        "style": "decimal",
+                        "maximumSignificantDigits": 3
+                      }
+                    }
+                  },
+                  {
+                    "columnMatch": "Estimated Table Price",
+                    "formatter": 3,
+                    "formatOptions": {
+                      "palette": "greenRed"
+                    },
+                    "numberFormat": {
+                      "unit": 0,
+                      "options": {
+                        "style": "decimal",
+                        "useGrouping": false
+                      }
+                    }
+                  },
+                  {
+                    "columnMatch": "Table Entries",
+                    "formatter": 3,
+                    "formatOptions": {
+                      "min": 0,
+                      "palette": "green"
+                    },
+                    "numberFormat": {
+                      "unit": 17,
+                      "options": {
+                        "style": "decimal"
+                      }
+                    }
+                  },
+                  {
+                    "columnMatch": "Table Size",
+                    "formatter": 3,
+                    "formatOptions": {
+                      "min": 0,
+                      "palette": "blue"
+                    },
+                    "numberFormat": {
+                      "unit": 2,
+                      "options": {
+                        "style": "decimal"
+                      }
+                    }
+                  },
+                  {
+                    "columnMatch": "Table Size Trend",
+                    "formatter": 9,
+                    "formatOptions": {
+                      "min": 0,
+                      "palette": "blue"
+                    }
+                  }
+                ]
+              },
+              "sortBy": [],
+              "chartSettings": {
+                "xAxis": "Day",
+                "yAxis": [
+                  "Value"
+                ],
+                "xSettings": {
+                  "numberFormatSettings": {
+                    "unit": 0,
+                    "options": {
+                      "style": "decimal",
+                      "useGrouping": true
+                    }
+                  }
+                },
+                "ySettings": {
+                  "numberFormatSettings": {
+                    "unit": 0,
+                    "options": {
+                      "style": "decimal",
+                      "useGrouping": true
+                    }
+                  }
+                }
+              }
+            },
+            "name": "query - 2 - Copy - Copy - Copy"
+          },
+          {
+            "type": 1,
+            "content": {
+              "json": "<div style=\"margin-right:10px;margin-left:10px;margin-bottom:0px;background-color:#120052;padding-left:20px;padding-right:20px;padding-top:10px;padding-bottom:12px;border: 1px solid #000;filter: drop-shadow(0.2rem 0.2rem 0.2rem rgba(0, 0, 30, 0.5));color:#fff2df;border-radius: 10px / 30px;background: linear-gradient(to right, #120052 0%,#120052 100%);display:felx\">\r\n<span style=\"color:#F2914D;font-size:12pt;font-weight:bold;color:#F2914D;\">Table Specific Totals</span></div>"
+            },
+            "customWidth": "100",
+            "name": "text - 2 - Copy - Copy - Copy - Copy",
+            "styleSettings": {
+              "maxWidth": "100"
+            }
+          },
+          {
+            "type": 3,
+            "content": {
+              "version": "KqlItem/1.0",
+              "query": "union withsource=_TableName1 *\r\n| where _TimeReceived  {TimeRange:query}\r\n| where _TableName1 == '{TableName}'\r\n| summarize count()  by bin(_TimeReceived, 1m), Type\r\n| extend counttemp =count_ / 60\r\n| summarize \r\n           ['Average Events per Second (eps)'] = avg(counttemp), E = 'Average EPS'",
+              "size": 4,
+              "timeContextFromParameter": "TimeRange",
+              "queryType": 0,
+              "resourceType": "microsoft.operationalinsights/workspaces",
+              "crossComponentResources": [
+                "{Workspace}"
+              ],
+              "visualization": "tiles",
+              "tileSettings": {
+                "titleContent": {
+                  "columnMatch": "E",
+                  "formatter": 1,
+                  "numberFormat": {
+                    "unit": 0,
+                    "options": {
+                      "style": "decimal"
+                    }
+                  }
+                },
+                "leftContent": {
+                  "columnMatch": "Average Events per Second (eps)",
+                  "formatter": 12,
+                  "formatOptions": {
+                    "min": 1,
+                    "palette": "blue"
+                  }
+                },
+                "showBorder": false,
+                "size": "auto"
+              },
+              "graphSettings": {
+                "type": 0
+              }
+            },
+            "customWidth": "25",
+            "name": "query - 3 - Copy",
+            "styleSettings": {
+              "maxWidth": "25",
+              "showBorder": true
+            }
+          },
+          {
+            "type": 3,
+            "content": {
+              "version": "KqlItem/1.0",
+              "query": "union withsource=_TableName1 *\r\n| where _TimeReceived  {TimeRange:query}\r\n| where _TableName1 == '{TableName}'\r\n| summarize count()  by bin(_TimeReceived, 1m), Type\r\n| extend counttemp =count_ / 60\r\n| summarize \r\n           ['Minimum eps']=min (counttemp), E = 'Minimum EPS'",
+              "size": 4,
+              "timeContextFromParameter": "TimeRange",
+              "queryType": 0,
+              "resourceType": "microsoft.operationalinsights/workspaces",
+              "crossComponentResources": [
+                "{Workspace}"
+              ],
+              "visualization": "tiles",
+              "tileSettings": {
+                "titleContent": {
+                  "columnMatch": "E",
+                  "formatter": 1,
+                  "numberFormat": {
+                    "unit": 0,
+                    "options": {
+                      "style": "decimal"
+                    }
+                  }
+                },
+                "leftContent": {
+                  "columnMatch": "Minimum eps",
+                  "formatter": 12,
+                  "formatOptions": {
+                    "min": 1,
+                    "palette": "blue"
+                  }
+                },
+                "showBorder": false,
+                "size": "auto"
+              },
+              "graphSettings": {
+                "type": 0
+              }
+            },
+            "customWidth": "25",
+            "name": "query - 3 - Copy - Copy",
+            "styleSettings": {
+              "maxWidth": "25",
+              "showBorder": true
+            }
+          },
+          {
+            "type": 3,
+            "content": {
+              "version": "KqlItem/1.0",
+              "query": "union withsource=_TableName1 *\r\n| where _TimeReceived  {TimeRange:query}\r\n| where _TableName1 == '{TableName}'\r\n| summarize count()  by bin(_TimeReceived, 1m), Type\r\n| extend counttemp =count_ / 60\r\n| summarize \r\n           ['Maximum eps']=max(counttemp), E = 'Maximum EPS'",
+              "size": 4,
+              "timeContextFromParameter": "TimeRange",
+              "queryType": 0,
+              "resourceType": "microsoft.operationalinsights/workspaces",
+              "crossComponentResources": [
+                "{Workspace}"
+              ],
+              "visualization": "tiles",
+              "tileSettings": {
+                "titleContent": {
+                  "columnMatch": "E",
+                  "formatter": 1,
+                  "numberFormat": {
+                    "unit": 0,
+                    "options": {
+                      "style": "decimal"
+                    }
+                  }
+                },
+                "leftContent": {
+                  "columnMatch": "Maximum eps",
+                  "formatter": 12,
+                  "formatOptions": {
+                    "min": 1,
+                    "palette": "blue"
+                  }
+                },
+                "showBorder": false,
+                "size": "auto"
+              },
+              "graphSettings": {
+                "type": 0
+              }
+            },
+            "customWidth": "25",
+            "name": "query - 3 - Copy - Copy - Copy",
+            "styleSettings": {
+              "maxWidth": "25",
+              "showBorder": true
+            }
+          },
+          {
+            "type": 3,
+            "content": {
+              "version": "KqlItem/1.0",
+              "query": "union withsource=_TableName1 *\r\n| where _TimeReceived  {TimeRange:query}\r\n| where _TableName1 == '{TableName}'\r\n| summarize Entries = count(), Size = sum(_BilledSize), last_log = datetime_diff(\"second\",now(), max(TimeGenerated)), estimate  = sumif(_BilledSize, _IsBillable==true)\r\n| project ['Estimated Table Price'] =  (estimate/(1024*1024*1024)) * {CostValue}, Title = 'Cost for Table'",
+              "size": 4,
+              "timeContextFromParameter": "TimeRange",
+              "queryType": 0,
+              "resourceType": "microsoft.operationalinsights/workspaces",
+              "crossComponentResources": [
+                "{Workspace}"
+              ],
+              "visualization": "tiles",
+              "tileSettings": {
+                "titleContent": {
+                  "columnMatch": "Title",
+                  "formatter": 1,
+                  "numberFormat": {
+                    "unit": 0,
+                    "options": {
+                      "style": "decimal"
+                    }
+                  }
+                },
+                "leftContent": {
+                  "columnMatch": "Estimated Table Price",
+                  "formatter": 12,
+                  "formatOptions": {
+                    "min": 1,
+                    "palette": "blue"
+                  },
+                  "numberFormat": {
+                    "unit": 0,
+                    "options": {
+                      "currency": "USD",
+                      "style": "currency"
+                    }
+                  }
+                },
+                "showBorder": false,
+                "size": "auto"
+              },
+              "graphSettings": {
+                "type": 0
+              }
+            },
+            "customWidth": "25",
+            "name": "query - 3 - Copy - Copy - Copy - Copy",
+            "styleSettings": {
+              "maxWidth": "25",
+              "showBorder": true
+            }
+          },
+          {
+            "type": 3,
+            "content": {
+              "version": "KqlItem/1.0",
+              "query": "union withsource=_TableName1 *\r\n| where _TableName1 == '{TableName}'\r\n| where TimeGenerated {TimeRange:query} \r\n| summarize Entries = count(), Size = sum(_BilledSize), last_log = datetime_diff(\"second\",now(), max(TimeGenerated)), estimate  = sumif(_BilledSize, _IsBillable==true)\r\n| project ['Title'] = \"Table Entries\", ['Table Entries'] = Entries",
+              "size": 4,
+              "timeContextFromParameter": "TimeRange",
+              "queryType": 0,
+              "resourceType": "microsoft.operationalinsights/workspaces",
+              "crossComponentResources": [
+                "{Workspace}"
+              ],
+              "visualization": "tiles",
+              "tileSettings": {
+                "titleContent": {
+                  "columnMatch": "Title",
+                  "formatter": 1,
+                  "numberFormat": {
+                    "unit": 0,
+                    "options": {
+                      "style": "decimal"
+                    }
+                  }
+                },
+                "leftContent": {
+                  "columnMatch": "Table Entries",
+                  "formatter": 12,
+                  "formatOptions": {
+                    "min": 1,
+                    "palette": "blue"
+                  },
+                  "numberFormat": {
+                    "unit": 17,
+                    "options": {
+                      "style": "decimal"
+                    }
+                  }
+                },
+                "showBorder": false,
+                "size": "auto"
+              },
+              "graphSettings": {
+                "type": 0
+              }
+            },
+            "customWidth": "25",
+            "name": "query - 3 - Copy - Copy - Copy - Copy - Copy",
+            "styleSettings": {
+              "maxWidth": "25",
+              "showBorder": true
+            }
+          },
+          {
+            "type": 3,
+            "content": {
+              "version": "KqlItem/1.0",
+              "query": "union withsource=_TableName1 *\r\n| where _TableName1 == '{TableName}'\r\n| where TimeGenerated {TimeRange:query} \r\n| summarize Entries = count(), Size = sum(_BilledSize), last_log = datetime_diff(\"second\",now(), max(TimeGenerated)), estimate  = sumif(_BilledSize, _IsBillable==true)\r\n| project ['Title'] = \"Table Size\", ['Table Size'] = Size",
+              "size": 4,
+              "timeContextFromParameter": "TimeRange",
+              "queryType": 0,
+              "resourceType": "microsoft.operationalinsights/workspaces",
+              "crossComponentResources": [
+                "{Workspace}"
+              ],
+              "visualization": "tiles",
+              "tileSettings": {
+                "titleContent": {
+                  "columnMatch": "Title",
+                  "formatter": 1,
+                  "numberFormat": {
+                    "unit": 0,
+                    "options": {
+                      "style": "decimal"
+                    }
+                  }
+                },
+                "leftContent": {
+                  "columnMatch": "Table Size",
+                  "formatter": 12,
+                  "formatOptions": {
+                    "min": 1,
+                    "palette": "blue"
+                  },
+                  "numberFormat": {
+                    "unit": 2,
+                    "options": {
+                      "style": "decimal"
+                    }
+                  }
+                },
+                "showBorder": false,
+                "size": "auto"
+              },
+              "graphSettings": {
+                "type": 0
+              }
+            },
+            "customWidth": "25",
+            "name": "query - 3 - Copy - Copy - Copy - Copy - Copy - Copy",
+            "styleSettings": {
+              "maxWidth": "25",
+              "showBorder": true
+            }
+          },
+          {
+            "type": 3,
+            "content": {
+              "version": "KqlItem/1.0",
+              "query": "union withsource=_TableName1 *\r\n| where _TableName1 == '{TableName}'\r\n| where TimeGenerated {TimeRange:query} \r\n| summarize Entries = count(), Size = sum(_BilledSize), last_log = datetime_diff(\"second\",now(), max(TimeGenerated)), estimate  = sumif(_BilledSize, _IsBillable==true)\r\n| project ['Title'] = \"Last Record Received in Seconds\", ['Last Record Received'] =  last_log",
+              "size": 4,
+              "timeContextFromParameter": "TimeRange",
+              "queryType": 0,
+              "resourceType": "microsoft.operationalinsights/workspaces",
+              "crossComponentResources": [
+                "{Workspace}"
+              ],
+              "visualization": "tiles",
+              "tileSettings": {
+                "titleContent": {
+                  "columnMatch": "Title",
+                  "formatter": 1,
+                  "numberFormat": {
+                    "unit": 0,
+                    "options": {
+                      "style": "decimal"
+                    }
+                  }
+                },
+                "leftContent": {
+                  "columnMatch": "Last Record Received",
+                  "formatter": 12,
+                  "formatOptions": {
+                    "min": 1,
+                    "palette": "blue"
+                  },
+                  "numberFormat": {
+                    "unit": 0,
+                    "options": {
+                      "style": "decimal"
+                    }
+                  }
+                },
+                "showBorder": false,
+                "size": "auto"
+              },
+              "graphSettings": {
+                "type": 0
+              }
+            },
+            "customWidth": "25",
+            "name": "query - 3 - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy",
+            "styleSettings": {
+              "maxWidth": "25",
+              "showBorder": true
+            }
+          },
+          {
+            "type": 3,
+            "content": {
+              "version": "KqlItem/1.0",
+              "query": "union withsource=_TableName1 *\r\n| where _TableName1 == '{TableName}'\r\n| where TimeGenerated {TimeRange:query} \r\n| summarize Entries = count(), Size = sum(_BilledSize), last_log = datetime_diff(\"second\",now(), max(TimeGenerated)), estimate  = sumif(_BilledSize, _IsBillable==true)\r\n| project ['Title'] = \"Size per Entry\", ['Size per Entry'] = 1.0 * Size / Entries",
+              "size": 4,
+              "timeContextFromParameter": "TimeRange",
+              "queryType": 0,
+              "resourceType": "microsoft.operationalinsights/workspaces",
+              "crossComponentResources": [
+                "{Workspace}"
+              ],
+              "visualization": "tiles",
+              "tileSettings": {
+                "titleContent": {
+                  "columnMatch": "Title",
+                  "formatter": 1,
+                  "numberFormat": {
+                    "unit": 0,
+                    "options": {
+                      "style": "decimal"
+                    }
+                  }
+                },
+                "leftContent": {
+                  "columnMatch": "Size per Entry",
+                  "formatter": 12,
+                  "formatOptions": {
+                    "min": 1,
+                    "palette": "blue"
+                  },
+                  "numberFormat": {
+                    "unit": 2,
+                    "options": {
+                      "style": "decimal"
+                    }
+                  }
+                },
+                "showBorder": false,
+                "size": "auto"
+              },
+              "graphSettings": {
+                "type": 0
+              }
+            },
+            "customWidth": "25",
+            "name": "query - 3 - Copy - Copy - Copy - Copy - Copy - Copy - Copy",
+            "styleSettings": {
+              "maxWidth": "25",
+              "showBorder": true
+            }
+          }
+        ]
+      },
+      "conditionalVisibility": {
+        "parameterName": "SelectedTab",
+        "comparison": "isEqualTo",
+        "value": "Event Source"
+      },
+      "name": "group - 6"
+    },
+    {
+      "type": 12,
+      "content": {
+        "version": "NotebookGroup/1.0",
+        "groupType": "editable",
+        "items": [
+          {
+            "type": 1,
+            "content": {
+              "json": "<div style=\"background-color:#120052;padding-left:20px;padding-right:20px;padding-top:10px;padding-bottom:20px;border: 1px solid #000;filter: drop-shadow(0.2rem 0.2rem 0.2rem rgba(0, 0, 30, 0.5));color:#fff2df;border-radius: 10px / 30px;background: linear-gradient(to right, #120052 0%,#1584C0 100%);display:felx\">\r\n<span style=\"color:#F2914D;font-size:18pt;font-weight:bold;color:#F2914D;\">Event Source Monitoring :: Alert Queries</span><br>\r\nThis section contains queries that can be ran set up for alerts.\r\n</div>"
+            },
+            "name": "text - 0"
+          },
+          {
+            "type": 1,
+            "content": {
+              "json": "<div style=\"width:100%;height:100%;font-family:arial;padding-left:20px;padding-right:20px;padding-top:10px;padding-bottom:20px;border-top: 2px dashed #120052;border-bottom: 2px dashed #120052;background:#E8F6FF;border-radius: 10px / 20px;\">\r\n\r\n<span style=\"color:#120052;font-size:12pt;font-weight:bold;\">📌 NOTE</span><br><br>\r\n\r\n<span style=\"color:#000;font-size:10pt\">\r\nBelow is an explanation for the pros and cons of doing ESM based alert monitoring for Sentinel listed from the ideal way down to the least.<br><br>\r\n<span style=\"color:#120052;font-size:12pt;font-weight:bold;\">By Endpoint</span><br>\r\nThis is the best way as we are cutting out all the noise and just searching but endpoint name where the logs are coming directly from. The only issue with this is you have to know the names directly or search by a type or group in table(s). This can be an issue in a DHCP envirnment where you may only want DCs and no other Windows machines so naming convention with contains can fix this.<br>\r\n<br>\r\n<span style=\"color:#120052;font-size:12pt;font-weight:bold;\">By EPS/Baseline</span><br>\r\nThis can be a good way to detect if a source table lost sources as there is a drop or if a endpoint sends in different types of sources and one drops bring the total EPS down. The downside to this is the threshold has to be adjusted and tuned per device or source to account for the variation change sizes based on EPS. This also may miss if a smaller device drop and weekends when less activity is happening.<br>\r\n<br>\r\n<span style=\"color:#120052;font-size:12pt;font-weight:bold;\">By Data Connector</span><br>\r\nWhile this may seem like the ideal move, it's not. Dataconnectors can still show online even if no sources are coming in. This can be especially an issue if the connector takes several sources and they all stop sending in but one, but still shows online. This also can't detect if one device drops from sending for example.<br>\r\n</span></div>\r\n"
+            },
+            "name": "text - 0 - Copy"
+          },
+          {
+            "type": 1,
+            "content": {
+              "json": "<div style=\"margin-right:30px;margin-left:10px;margin-bottom:0px;background-color:#120052;padding-left:20px;padding-right:20px;padding-top:10px;padding-bottom:12px;border: 1px solid #000;filter: drop-shadow(0.2rem 0.2rem 0.2rem rgba(0, 0, 30, 0.5));color:#fff2df;border-radius: 10px / 30px;background: linear-gradient(to right, #120052 0%,#120052 100%);display:felx\">\r\n<span style=\"color:#F2914D;font-size:12pt;font-weight:bold;color:#F2914D;\">Global search all tables find a dropped source(Endpoint)</span></div>\r\n\r\n"
+            },
+            "customWidth": "50",
+            "name": "text - 1"
+          },
+          {
+            "type": 1,
+            "content": {
+              "json": "<div style=\"margin-right:30px;margin-left:10px;margin-bottom:0px;background-color:#120052;padding-left:20px;padding-right:20px;padding-top:10px;padding-bottom:12px;border: 1px solid #000;filter: drop-shadow(0.2rem 0.2rem 0.2rem rgba(0, 0, 30, 0.5));color:#fff2df;border-radius: 10px / 30px;background: linear-gradient(to right, #120052 0%,#120052 100%);display:felx\">\r\n<span style=\"color:#F2914D;font-size:12pt;font-weight:bold;color:#F2914D;\">a specific table by type to find a dropped source(Endpoint)</span></div>\r\n\r\n"
+            },
+            "customWidth": "50",
+            "name": "text - 1 - Copy"
+          },
+          {
+            "type": 1,
+            "content": {
+              "json": "\t// Find any endpoint anywhere that went down\r\n\t// Taken From 'Event Source Monitoring Dashboard' at https://github.com/Truvis/Sentinel\r\n\tunion withsource = _TableName *\r\n\t| where isnotempty(Computer)\r\n\t| summarize last_log = datetime_diff(\"hour\",now(), max(TimeGenerated)) by Computer\r\n\t| where last_log > 1\r\n\t| project ['Endpoint Name'] = Computer,  ['Last Record Received (Minutes)'] =  last_log\r\n\t| order by ['Last Record Received (Minutes)']  desc\r\n"
+            },
+            "customWidth": "50",
+            "name": "text - 3",
+            "styleSettings": {
+              "showBorder": true
+            }
+          },
+          {
+            "type": 1,
+            "content": {
+              "json": "\t// Find end point that went down by table\r\n\t// Taken From 'Event Source Monitoring Dashboard' at https://github.com/Truvis/Sentinel\r\n\tSecurityEvent\r\n\t| where isnotempty(Computer)\r\n\t| summarize last_log = datetime_diff(\"hour\",now(), max(TimeGenerated)) by Computer\r\n\t| where last_log > 1\r\n\t| project ['Endpoint Name'] = Computer,  ['Last Record Received (Minutes)'] =  last_log\r\n\t| order by ['Last Record Received (Minutes)']  desc\r\n"
+            },
+            "customWidth": "50",
+            "name": "text - 3 - Copy",
+            "styleSettings": {
+              "showBorder": true
+            }
+          },
+          {
+            "type": 1,
+            "content": {
+              "json": "<div style=\"margin-right:30px;margin-left:10px;margin-bottom:0px;background-color:#120052;padding-left:20px;padding-right:20px;padding-top:10px;padding-bottom:12px;border: 1px solid #000;filter: drop-shadow(0.2rem 0.2rem 0.2rem rgba(0, 0, 30, 0.5));color:#fff2df;border-radius: 10px / 30px;background: linear-gradient(to right, #120052 0%,#120052 100%);display:felx\">\r\n<span style=\"color:#F2914D;font-size:12pt;font-weight:bold;color:#F2914D;\">Detects a spike in events on a data table</span></div>\r\n\r\n"
+            },
+            "customWidth": "50",
+            "name": "text - 5"
+          },
+          {
+            "type": 1,
+            "content": {
+              "json": "<div style=\"margin-right:30px;margin-left:10px;margin-bottom:0px;background-color:#120052;padding-left:20px;padding-right:20px;padding-top:10px;padding-bottom:12px;border: 1px solid #000;filter: drop-shadow(0.2rem 0.2rem 0.2rem rgba(0, 0, 30, 0.5));color:#fff2df;border-radius: 10px / 30px;background: linear-gradient(to right, #120052 0%,#120052 100%);display:felx\">\r\n<span style=\"color:#F2914D;font-size:12pt;font-weight:bold;color:#F2914D;\">Detects a percent change in a table/span></div>\r\n\r\n"
+            },
+            "customWidth": "50",
+            "name": "text - 5 - Copy"
+          },
+          {
+            "type": 1,
+            "content": {
+              "json": "\t// Taken From 'Event Source Monitoring Dashboard' at https://github.com/Truvis/Sentinel\r\n\t//+3 is the suggested number and it indicates a strong anomaly though you can modify it : Outlier - Wikipedia\r\n\tlet UpperThreshold = 30; \r\n\tUsage\r\n\t//we are only interested in tables getting notified when a spike is detected in a billable table \r\n\t| where IsBillable == \"true\"\r\n\t//Allows you to report only on variations that are above a certain threshold that you deem significant enough to warrant an alert\r\n\t| where Quantity > 10\r\n\t//creates a time series to look at the ingestion pattern over the period defined in the LookBack variable\r\n\t| make-series Qty=sum(Quantity) on TimeGenerated from ago(30d) to now() step 1d by DataType\r\n\t//takes the time series of ingested data across the days specified in the ‘LookBack’ variable and extract anomalous points with scores based on predicted values using the linear regression concept. See https://docs.microsoft.com/en-us/azure/data-explorer/kusto/query/series-decompose-anomaliesfunction for a detailed explanation of each argument. For an explanation of 'ctukey' read: Outlier - Wikipedia.\r\n\t| extend (anomalies, score, baseline) = series_decompose_anomalies(Qty, 1.5, 7, 'linefit', 1, 'ctukey', 0.01)\r\n\t//the output of series_decompose_anomalies function is three things: A ternary (as opposed to binary) series containing (+1, -1, 0) marking up/down/no anomaly respectively, the Anomaly score and the predicted value or baseline. \r\n\t| where anomalies[-1] == 1 or anomalies[-1] == -1\r\n\t//this part picks up the anomaly state from the most recent run. -1 indicates a position in the array. \r\n\t| extend Score = score[-1]\r\n\t//compare with strong anomaly indicator values extracted from the time series data\r\n\t| where Score >= 30\r\n\t| extend PercentageQtyIncrease = ((round(todouble(Qty[-1]),0)-round(todouble(baseline[-1]),1))/round(todouble(Qty[-1]),0) * 100)\r\n\t| project DataType,ExpectedQty=round(todouble(baseline[-1]),0), ActualQty=round(todouble(Qty[-1]),0),round(PercentageQtyIncrease,0)  \r\n\t| order by  round(todouble(PercentageQtyIncrease),0) desc \r\n\t//only alert if the percentage increase exceeds the threshold beyond which you specified that you wish to be notified\r\n\t| where PercentageQtyIncrease > 10"
+            },
+            "customWidth": "50",
+            "name": "text - 7"
+          },
+          {
+            "type": 1,
+            "content": {
+              "json": "\t// Taken From 'Event Source Monitoring Dashboard' at https://github.com/Truvis/Sentinel\r\n\tlet lookback = Syslog\r\n\t| where TimeGenerated between (ago(2h) .. ago(1h))\r\n\t| summarize count() by bin(TimeGenerated, 1m)\r\n\t| extend counttemp = count_ / 60\r\n\t| summarize jo = \"jo\", preveps = avg(counttemp);\r\n\tSyslog\r\n\t| where TimeGenerated between (ago(1h) .. now())\r\n\t| summarize count() by bin(TimeGenerated, 1m)\r\n\t| extend counttemp = count_ / 60\r\n\t| summarize jo = \"jo\", noweps = avg(counttemp)\r\n\t| join lookback on $left.jo == $right.jo\r\n\t| extend PercentageChange=todouble(preveps) / todouble(noweps) * 100\r\n\t// no change is 100. go up or down to detect a spike over the specified timeframe\r\n\t| where PercentageChange < 95"
+            },
+            "customWidth": "50",
+            "name": "text - 7 - Copy"
+          },
+          {
+            "type": 1,
+            "content": {
+              "json": "<div style=\"margin-right:30px;margin-left:10px;margin-bottom:0px;background-color:#120052;padding-left:20px;padding-right:20px;padding-top:10px;padding-bottom:12px;border: 1px solid #000;filter: drop-shadow(0.2rem 0.2rem 0.2rem rgba(0, 0, 30, 0.5));color:#fff2df;border-radius: 10px / 30px;background: linear-gradient(to right, #120052 0%,#120052 100%);display:felx\">\r\n<span style=\"color:#F2914D;font-size:12pt;font-weight:bold;color:#F2914D;\">Detect connectors with changes from fail to success state</span></div>\r\n\r\n"
+            },
+            "customWidth": "50",
+            "name": "text - 5 - Copy"
+          },
+          {
+            "type": 1,
+            "content": {
+              "json": "<div style=\"margin-right:30px;margin-left:10px;margin-bottom:0px;background-color:#120052;padding-left:20px;padding-right:20px;padding-top:10px;padding-bottom:12px;border: 1px solid #000;filter: drop-shadow(0.2rem 0.2rem 0.2rem rgba(0, 0, 30, 0.5));color:#fff2df;border-radius: 10px / 30px;background: linear-gradient(to right, #120052 0%,#120052 100%);display:felx\">\r\n<span style=\"color:#F2914D;font-size:12pt;font-weight:bold;color:#F2914D;\">Detect connectors with changes from success to fail state</span></div>\r\n\r\n"
+            },
+            "customWidth": "50",
+            "name": "text - 5 - Copy - Copy"
+          },
+          {
+            "type": 1,
+            "content": {
+              "json": "\tlet lastestStatus = SentinelHealth\r\n\t| where TimeGenerated > ago(12h)\r\n\t| where OperationName == 'Data fetch status change'\r\n\t| where Status in ('Success', 'Failure')\r\n\t| project TimeGenerated, SentinelResourceName, SentinelResourceId, LastStatus = Status\r\n\t| summarize TimeGenerated = arg_max(TimeGenerated,*) by SentinelResourceName, SentinelResourceId;\r\n\tlet nextToLastestStatus = SentinelHealth\r\n\t| where TimeGenerated > ago(12h)\r\n\t| where OperationName == 'Data fetch status change'\r\n\t| where Status in ('Success', 'Failure')\r\n\t| join kind = leftanti (lastestStatus) on SentinelResourceName, SentinelResourceId, TimeGenerated\r\n\t| project TimeGenerated, SentinelResourceName, SentinelResourceId, NextToLastStatus = Status\r\n\t| summarize TimeGenerated = arg_max(TimeGenerated,*) by SentinelResourceName, SentinelResourceId;\r\n\tlastestStatus\r\n\t| join kind=inner (nextToLastestStatus) on SentinelResourceName, SentinelResourceId\r\n\t| where NextToLastStatus == 'Failure' and LastStatus == 'Success'"
+            },
+            "customWidth": "50",
+            "name": "text - 7 - Copy - Copy"
+          },
+          {
+            "type": 1,
+            "content": {
+              "json": "\tlet lastestStatus = SentinelHealth\r\n\t| where TimeGenerated > ago(12h)\r\n\t| where OperationName == 'Data fetch status change'\r\n\t| where Status in ('Success', 'Failure')\r\n\t| project TimeGenerated, SentinelResourceName, SentinelResourceId, LastStatus = Status\r\n\t| summarize TimeGenerated = arg_max(TimeGenerated,*) by SentinelResourceName, SentinelResourceId;\r\n\tlet nextToLastestStatus = SentinelHealth\r\n\t| where TimeGenerated > ago(12h)\r\n\t| where OperationName == 'Data fetch status change'\r\n\t| where Status in ('Success', 'Failure')\r\n\t| join kind = leftanti (lastestStatus) on SentinelResourceName, SentinelResourceId, TimeGenerated\r\n\t| project TimeGenerated, SentinelResourceName, SentinelResourceId, NextToLastStatus = Status\r\n\t| summarize TimeGenerated = arg_max(TimeGenerated,*) by SentinelResourceName, SentinelResourceId;\r\n\tlastestStatus\r\n\t| join kind=inner (nextToLastestStatus) on SentinelResourceName, SentinelResourceId\r\n\t| where NextToLastStatus == 'Success' and LastStatus == 'Failure'"
+            },
+            "customWidth": "50",
+            "name": "text - 7 - Copy - Copy - Copy"
+          }
+        ]
+      },
+      "conditionalVisibility": {
+        "parameterName": "SelectedTab",
+        "comparison": "isEqualTo",
+        "value": "Queries"
+      },
+      "name": "group - 9"
+    },
+    {
+      "type": 12,
+      "content": {
+        "version": "NotebookGroup/1.0",
+        "groupType": "editable",
+        "items": [
+          {
+            "type": 1,
+            "content": {
+              "json": "<div style=\"background-color:#120052;padding-left:20px;padding-right:20px;padding-top:10px;padding-bottom:20px;border: 1px solid #000;filter: drop-shadow(0.2rem 0.2rem 0.2rem rgba(0, 0, 30, 0.5));color:#fff2df;border-radius: 10px / 30px;background: linear-gradient(to right, #120052 0%,#1584C0 100%);display:felx\">\r\n<span style=\"color:#F2914D;font-size:18pt;font-weight:bold;color:#F2914D;\">Data Connector Overview</span><br>\r\nThis section and functionality is still in preview mode\r\n</div>"
+            },
+            "name": "text - 0"
+          },
+          {
+            "type": 3,
+            "content": {
+              "version": "KqlItem/1.0",
+              "query": "SentinelHealth\r\n| where OperationName == 'Data fetch status change'\r\n| where Status in ('Success', 'Failure')\r\n| summarize TimeGenerated = arg_max(TimeGenerated,*) by SentinelResourceName, SentinelResourceId\r\n| sort by TimeGenerated desc ",
+              "size": 0,
+              "timeContextFromParameter": "TimeRange",
+              "queryType": 0,
+              "resourceType": "microsoft.operationalinsights/workspaces",
+              "crossComponentResources": [
+                "{Workspace}"
+              ]
+            },
+            "name": "query - 1"
+          }
+        ]
+      },
+      "conditionalVisibility": {
+        "parameterName": "SelectedTab",
+        "comparison": "isEqualTo",
+        "value": "Data Connector"
+      },
+      "name": "group - 10"
+    },
+    {
+      "type": 1,
+      "content": {
+        "json": "<div style=\"background-color:#efefef;padding-left:20px;padding-right:20px;padding-top:30px;padding-bottom:30px;border-top: 2px solid #120052;border-bottom: 2px solid #120052;color:#120052;\">\r\n\r\n<img src=\"https://raw.githubusercontent.com/Truvis/Sentinel/main/images/sentinelcat.png\" style=\"float: left;padding-right: 20px;border-radius: 25px;\">\r\n**Version:**  VER 0.23.4.01 (APRIL 2023 REV 1)<br>\r\n**Download:** https://truv.is/go/2<br>\r\n**Support:** truvis.thornton@truv.is<br>\r\n**Author:** Truvis Thornton - <a href=\"https://www.linkedin.com/in/truvisthornton/\" target=\"_blank\">LinkedIn</a> | <a href=\"https://twitter.com/thattechkitten\" target=\"_blank\">Twitter</a> | <a href=\"https://github.com/Truvis/\" target=\"_blank\">GitHub</a><br>\r\n_Copyright 2023. License Terms on GitHub/Website._<br><br>\r\nThis dashboard provides insights into Event Ingestion Sources and allows you to compare view estimated costs and where event spikes/drops happen.<br>\r\n</div>"
+      },
+      "name": "text - 5 - Copy - Copy"
+    }
+  ],
+  "fallbackResourceIds": [
+    "/subscriptions/18fedf52-f250-4dc7-896d-d96dd4e10430/resourcegroups/security/providers/microsoft.operationalinsights/workspaces/security-instance"
+  ],
+  "fromTemplateId": "sentinel-UserWorkbook",
+  "$schema": "https://github.com/Microsoft/Application-Insights-Workbooks/blob/master/schema/workbook.json"
+}
