@@ -1,0 +1,788 @@
+{
+  "version": "Notebook/1.0",
+  "items": [
+    {
+      "type": 1,
+      "content": {
+        "json": "<!-- UPDATE notice -->\r\n<a href=\"http://www.truv.is/go/1\"><img src=\"https://raw.githubusercontent.com/Truvis/Sentinel/main/images/1-0.23.4.01.png\">\r\n<div style=\"background-color:#120052;padding-left:20px;padding-right:20px;padding-top:4px;padding-bottom:12px;border-left: 1px solid #000;border-right: 1px solid #000;border-top: 1px solid #000;;background: linear-gradient(to right, #0E67B4 0%,#0E67B4 300px,#120052 65%,#120052 100%);display:felx\"><a href=\"http://www.truv.is/go/1\">\r\n<img src=\"https://raw.githubusercontent.com/Truvis/Sentinel/main/images/header-blue.png\" height=\"50px\"></a><br>\r\n<span style=\"color:#F2914D;font-size:30pt;font-weight:bold;filter: drop-shadow(0.5rem 0.5rem 0.9rem rgba(30, 30, 30, 1.0));color:#fff2df;\">Windows EventID Checking</span><br>\r\n</div>\r\n<div style=\"background-color:#120052;padding-left:20px;padding-right:20px;padding-top:8px;padding-bottom:10px;border-bottom: 1px solid #000;border-left: 1px solid #000;border-right: 1px solid #000;color:#fff2df;background: linear-gradient(to right, #120052 0%,#120052 25%,#120052 100%);display:felx;filter: drop-shadow(0.2rem 0.2rem 0.1rem rgba(30, 30, 30, 0.5))\">\r\n<span style=\"color:#F2914D;font-size:12pt;font-weight:bold;filter: (0.2rem 0.2rem 0.2rem rgba(0, 0, 30, 0.5));color:#fff2df;\"><span style=\"color:#F2914D;\">(</span>DASHBOARD<span style=\"color:#F2914D;\">) </span>Sentinel<span style=\"color:#F2914D;\"> :: </span>Environment <span style=\"color:#F2914D;\">»</span> Windows Event Checking <span style=\"color:#F2914D;font-size:7pt;font-weight:bold;color:#F2914D;text-transform: uppercase;\">ver 0.23.4.01 (April 2023 Rev 1)</span><br></span>\r\n\r\n</div>"
+      },
+      "name": "text - 8"
+    },
+    {
+      "type": 11,
+      "content": {
+        "version": "LinkItem/1.0",
+        "style": "tabs",
+        "tabStyle": "bigger",
+        "links": [
+          {
+            "id": "894d5e66-a5b7-4dfd-97df-ead87f245ad6",
+            "cellValue": "SelectedTab",
+            "linkTarget": "parameter",
+            "linkLabel": "📊 Global Overview",
+            "subTarget": "Global Overview",
+            "style": "link",
+            "linkIsContextBlade": true
+          },
+          {
+            "id": "ea9cfc51-463a-4095-a6b4-0f9b62d9bf2c",
+            "cellValue": "SelectedTab",
+            "linkTarget": "parameter",
+            "linkLabel": "🖥️ By Endpoint",
+            "subTarget": "Endpoint",
+            "style": "link"
+          },
+          {
+            "id": "e8cf4832-88db-4991-92a6-0a8a28b1b3ca",
+            "cellValue": "SelectedTab",
+            "linkTarget": "parameter",
+            "linkLabel": "🆔 By EventID",
+            "subTarget": "EventID",
+            "style": "link"
+          },
+          {
+            "id": "b67e4315-ad4d-428f-b07d-1cf003664cde",
+            "cellValue": "SelectedTab",
+            "linkTarget": "parameter",
+            "linkLabel": "📜 Queries",
+            "subTarget": "Queries",
+            "style": "link"
+          },
+          {
+            "id": "449eed2c-be5f-480d-a3ac-8f8f6f98ccc1",
+            "cellValue": "SelectedTab",
+            "linkTarget": "parameter",
+            "linkLabel": "🆘 Documentation",
+            "subTarget": "Documentation",
+            "style": "link"
+          }
+        ]
+      },
+      "name": "links - 7"
+    },
+    {
+      "type": 9,
+      "content": {
+        "version": "KqlParameterItem/1.0",
+        "crossComponentResources": [
+          "{Workspace}"
+        ],
+        "parameters": [
+          {
+            "id": "bc86dadd-9931-4df7-b267-4fc5c5253e92",
+            "version": "KqlParameterItem/1.0",
+            "name": "TimeRange",
+            "label": "Time Range",
+            "type": 4,
+            "isRequired": true,
+            "isGlobal": true,
+            "typeSettings": {
+              "selectableValues": [
+                {
+                  "durationMs": 300000
+                },
+                {
+                  "durationMs": 900000
+                },
+                {
+                  "durationMs": 1800000
+                },
+                {
+                  "durationMs": 3600000
+                },
+                {
+                  "durationMs": 14400000
+                },
+                {
+                  "durationMs": 43200000
+                },
+                {
+                  "durationMs": 86400000
+                },
+                {
+                  "durationMs": 172800000
+                },
+                {
+                  "durationMs": 259200000
+                },
+                {
+                  "durationMs": 604800000
+                },
+                {
+                  "durationMs": 1209600000
+                },
+                {
+                  "durationMs": 2419200000
+                },
+                {
+                  "durationMs": 2592000000
+                },
+                {
+                  "durationMs": 5184000000
+                },
+                {
+                  "durationMs": 7776000000
+                }
+              ],
+              "allowCustom": true
+            },
+            "timeContext": {
+              "durationMs": 86400000
+            },
+            "value": {
+              "durationMs": 7776000000
+            }
+          },
+          {
+            "id": "74fdf171-f6a7-4ee3-871b-30f06b69831a",
+            "version": "KqlParameterItem/1.0",
+            "name": "EventList",
+            "label": "Compare List",
+            "type": 2,
+            "isRequired": true,
+            "isGlobal": true,
+            "typeSettings": {
+              "additionalResourceOptions": [],
+              "showDefault": false
+            },
+            "jsonData": " [{ \"value\": \"minimal\", \"label\": \"Minimal\", \"group\":\"Microsoft Standards\" }, { \"value\": \"common\", \"label\": \"Common\", \"group\":\"Microsoft Standards\", \"selected\":true }, { \"value\": \"all\", \"label\": \"All\" , \"group\":\"Microsoft Standards\" } , { \"value\": \"t1\", \"label\": \"Common + PS & CLI\" , \"group\":\"{TRUV.IS} Standards\" }]",
+            "value": "minimal"
+          },
+          {
+            "id": "9b83217c-e790-45b4-9add-0b352cbe1a43",
+            "version": "KqlParameterItem/1.0",
+            "name": "Subscription",
+            "type": 6,
+            "isRequired": true,
+            "isGlobal": true,
+            "typeSettings": {
+              "additionalResourceOptions": [],
+              "includeAll": true
+            },
+            "value": "/subscriptions/18fedf52-f250-4dc7-896d-d96dd4e10430"
+          },
+          {
+            "id": "ef99b4af-4bde-4351-b6dd-0ac67745f016",
+            "version": "KqlParameterItem/1.0",
+            "name": "DefaultSubscription_Internal",
+            "type": 1,
+            "isRequired": true,
+            "query": "",
+            "isHiddenWhenLocked": true,
+            "queryType": 1,
+            "resourceType": "microsoft.resourcegraph/resources"
+          },
+          {
+            "id": "e6642c3b-5d28-4e21-8502-26315a02e9fa",
+            "version": "KqlParameterItem/1.0",
+            "name": "Workspace",
+            "type": 5,
+            "isRequired": true,
+            "isGlobal": true,
+            "query": "where type =~ 'microsoft.operationalinsights/workspaces'\r\n| project id",
+            "crossComponentResources": [
+              "{Subscription}"
+            ],
+            "typeSettings": {
+              "resourceTypeFilter": {
+                "microsoft.operationalinsights/workspaces": true
+              },
+              "additionalResourceOptions": []
+            },
+            "queryType": 1,
+            "resourceType": "microsoft.resourcegraph/resources",
+            "value": "/subscriptions/18fedf52-f250-4dc7-896d-d96dd4e10430/resourceGroups/security/providers/Microsoft.OperationalInsights/workspaces/security-instance"
+          },
+          {
+            "id": "c668d22b-893f-4c05-b3af-42e4d6d2bec4",
+            "version": "KqlParameterItem/1.0",
+            "name": "resourceGroup",
+            "type": 1,
+            "isRequired": true,
+            "isGlobal": true,
+            "query": "resources\r\n| where type =~ 'microsoft.operationalinsights/workspaces'\r\n| where id == \"{Workspace}\"\r\n| project resourceGroup",
+            "crossComponentResources": [
+              "{Workspace}"
+            ],
+            "queryType": 1,
+            "resourceType": "microsoft.resourcegraph/resources"
+          }
+        ],
+        "style": "pills",
+        "queryType": 1,
+        "resourceType": "microsoft.resourcegraph/resources"
+      },
+      "name": "parameters - 8"
+    },
+    {
+      "type": 12,
+      "content": {
+        "version": "NotebookGroup/1.0",
+        "groupType": "editable",
+        "loadType": "always",
+        "items": [
+          {
+            "type": 1,
+            "content": {
+              "json": "<div style=\"width:100%;height:100%;font-family:arial;padding-left:20px;padding-right:20px;padding-top:10px;padding-bottom:20px;border-top: 2px dashed #120052;border-bottom: 2px dashed #120052;background:#E8F6FF;border-radius: 10px / 20px;\">\r\n\r\n<span style=\"color:#120052;font-size:12pt;font-weight:bold;\">📌 NOTE</span><br><br>\r\n\r\n<span style=\"color:#000;font-size:10pt\">\r\n- The below items show ingestion of events or events not being seen. Some events might not fire often and show up in some timeframes.<br>\r\n- The bottom part shows the count of each EventID and marks them if they are in the recommend list or not.<br>\r\n- The list is based off the official MS list: https://learn.microsoft.com/en-us/azure/sentinel/windows-security-event-id-reference. Some events may not be applicable to your environment(legacy EIDs).<br>\r\n- EventID Ref Page: https://github.com/Truvis/CheatSheets/blob/master/WindowsEventLogs.md<br>\r\n- Clicking the EventID or field will take you to a page on how to enable/disable logging for that EventID.<br>\r\n- You can change the EventID list to compare against MS recommend or see ALL Windows EventIDs<br>\r\n</span></div>\r\n"
+            },
+            "name": "text - 5"
+          },
+          {
+            "type": 1,
+            "content": {
+              "json": "<div style=\"background-color:#120052;padding-left:20px;padding-right:20px;padding-top:10px;padding-bottom:20px;border: 1px solid #000;filter: drop-shadow(0.2rem 0.2rem 0.2rem rgba(0, 0, 30, 0.5));color:#fff2df;border-radius: 10px / 30px;background: linear-gradient(to right, #120052 0%,#1584C0 100%);display:felx\">\r\n<span style=\"color:#F2914D;font-size:18pt;font-weight:bold;color:#F2914D;\">Windows Event Ingestion Overview</span><br>\r\nThe items in this section are broken out to give you an Overview of Windows Event Log Ingestion\r\n</div>"
+            },
+            "name": "text - 3"
+          },
+          {
+            "type": 1,
+            "content": {
+              "json": "<div style=\"margin-right:30px;margin-left:10px;margin-bottom:0px;background-color:#120052;padding-left:20px;padding-right:20px;padding-top:10px;padding-bottom:12px;border: 1px solid #000;filter: drop-shadow(0.2rem 0.2rem 0.2rem rgba(0, 0, 30, 0.5));color:#fff2df;border-radius: 10px / 30px;background: linear-gradient(to right, #120052 0%,#120052 100%);display:felx\">\r\n<span style=\"color:#F2914D;font-size:12pt;font-weight:bold;color:#F2914D;\">Windows EventIDs Seen and Count</span></div>"
+            },
+            "customWidth": "50",
+            "name": "text - 3 - Copy"
+          },
+          {
+            "type": 1,
+            "content": {
+              "json": "<div style=\"margin-right:30px;margin-left:10px;margin-bottom:0px;background-color:#120052;padding-left:20px;padding-right:20px;padding-top:10px;padding-bottom:12px;border: 1px solid #000;filter: drop-shadow(0.2rem 0.2rem 0.2rem rgba(0, 0, 30, 0.5));color:#fff2df;border-radius: 10px / 30px;background: linear-gradient(to right, #120052 0%,#120052 100%);display:felx\">\r\n<span style=\"color:#F2914D;font-size:12pt;font-weight:bold;color:#F2914D;\">Windows EventIDs Ingestion over time</span></div>"
+            },
+            "customWidth": "50",
+            "name": "text - 3 - Copy - Copy"
+          },
+          {
+            "type": 3,
+            "content": {
+              "version": "KqlItem/1.0",
+              "query": "//let WinIDLists = WindowsEventIDs\r\n//| where EList contains '{EventList}';\r\nlet WinIDLists = externaldata (EventID: int, EventDesc: string, EDLink: string, EList: string) [@\"https://raw.githubusercontent.com/Truvis/Sentinel/main/windows_eventids_descriptions.csv\"] with (format=\"csv\")\r\n| where EList contains '{EventList}';\r\nSecurityEvent\r\n| summarize count() by EventID\r\n| join kind = fullouter (WinIDLists) on EventID\r\n| extend EventIDs = iff(isnotempty(EventID1), EventID1,EventID)\r\n//| extend FoundEventID = iff(isnotempty(count_),strcat(\"✅ \", EventIDs),strcat(\"❌ \", EventIDs))\r\n| extend Seen = iff(isnotempty(count_),\"✅\",\"❌\")\r\n| project [\"Total Events Seen\"] = count_, Seen, [\"Event ID\"] = EventIDs, [\"Event Description\"] = EventDesc//,  [\"Recomendation List\"] = EList\r\n| sort by [\"Event ID\"] asc \r\n",
+              "size": 2,
+              "timeContextFromParameter": "TimeRange",
+              "showExportToExcel": true,
+              "queryType": 0,
+              "resourceType": "microsoft.operationalinsights/workspaces",
+              "crossComponentResources": [
+                "{Workspace}"
+              ],
+              "gridSettings": {
+                "filter": true
+              }
+            },
+            "customWidth": "50",
+            "name": "query - 2",
+            "styleSettings": {
+              "showBorder": true
+            }
+          },
+          {
+            "type": 3,
+            "content": {
+              "version": "KqlItem/1.0",
+              "query": "let Now = now();\r\n(range TimeGenerated from ago('{TimeRange}') to Now step {TimeRange:grain}\r\n| extend Count = 0\r\n| union isfuzzy=true\r\n    (SecurityEvent\r\n| summarize Count = count() by bin_at(TimeGenerated, {TimeRange:grain}, Now))\r\n| summarize Count=max(Count) by bin_at(TimeGenerated, {TimeRange:grain}, Now)\r\n| sort by TimeGenerated\r\n| project\r\n    Value = iff(isnull(Count), 0, Count),\r\n    Time = TimeGenerated,\r\n    Legend = \"SecurityEvents\")\r\n| render timechart",
+              "size": 3,
+              "color": "greenDark",
+              "timeContextFromParameter": "TimeRange",
+              "queryType": 0,
+              "resourceType": "microsoft.operationalinsights/workspaces",
+              "crossComponentResources": [
+                "{Workspace}"
+              ],
+              "visualization": "timechart"
+            },
+            "customWidth": "50",
+            "name": "query - 5",
+            "styleSettings": {
+              "showBorder": true
+            }
+          }
+        ]
+      },
+      "conditionalVisibility": {
+        "parameterName": "SelectedTab",
+        "comparison": "isEqualTo",
+        "value": "Global Overview"
+      },
+      "name": "group - Global Overview"
+    },
+    {
+      "type": 12,
+      "content": {
+        "version": "NotebookGroup/1.0",
+        "groupType": "editable",
+        "items": [
+          {
+            "type": 1,
+            "content": {
+              "json": "<div style=\"background-color:#120052;padding-left:20px;padding-right:20px;padding-top:10px;padding-bottom:20px;border: 1px solid #000;filter: drop-shadow(0.2rem 0.2rem 0.2rem rgba(0, 0, 30, 0.5));color:#fff2df;border-radius: 10px / 30px;background: linear-gradient(to right, #120052 0%,#1584C0 100%);display:felx\">\r\n<span style=\"color:#F2914D;font-size:18pt;font-weight:bold;color:#F2914D;\">Event Source Monitoring :: Alert Queries</span><br>\r\nThis section contains queries that can be ran set up for alerts.\r\n</div>"
+            },
+            "name": "text - 1"
+          },
+          {
+            "type": 1,
+            "content": {
+              "json": "<div style=\"margin-right:30px;margin-left:10px;margin-bottom:0px;background-color:#120052;padding-left:20px;padding-right:20px;padding-top:10px;padding-bottom:12px;border: 1px solid #000;filter: drop-shadow(0.2rem 0.2rem 0.2rem rgba(0, 0, 30, 0.5));color:#fff2df;border-radius: 10px / 30px;background: linear-gradient(to right, #120052 0%,#120052 100%);display:felx\">\r\n<span style=\"color:#F2914D;font-size:12pt;font-weight:bold;color:#F2914D;\">Specific EventID(s) stop sending in, organized by which EndPoint.</span></div>\r\n\r\n"
+            },
+            "customWidth": "50",
+            "name": "text - 6"
+          },
+          {
+            "type": 1,
+            "content": {
+              "json": "<div style=\"margin-right:30px;margin-left:10px;margin-bottom:0px;background-color:#120052;padding-left:20px;padding-right:20px;padding-top:10px;padding-bottom:12px;border: 1px solid #000;filter: drop-shadow(0.2rem 0.2rem 0.2rem rgba(0, 0, 30, 0.5));color:#fff2df;border-radius: 10px / 30px;background: linear-gradient(to right, #120052 0%,#120052 100%);display:felx\">\r\n<span style=\"color:#F2914D;font-size:12pt;font-weight:bold;color:#F2914D;\">Specifc EndPoint(s) stop sending in EventID(s), organized by EvendIDs.</span></div>\r\n\r\n"
+            },
+            "customWidth": "50",
+            "name": "text - 6 - Copy"
+          },
+          {
+            "type": 1,
+            "content": {
+              "json": "\t// Configure which EventIDs you would like to monitor,.\r\n\t// Make 'GetWindowsEndpoints' a dynamic list if you only want speciifc machines.\r\n\t// Create Analytics Rule. Set lookback based on EventID type. Some don't get seen as often.\r\n\t// Taken From 'Sentinel Windows Event Checking Dashboard' at https://github.com/Truvis/Sentinel\r\n\tlet MonitorEventIDs = dynamic(['ID','ID']);\r\n\tlet GetWindowsEndpoints =\r\n\tSecurityEvent\r\n\t| distinct Computer;\r\n\tSecurityEvent\r\n\t| where Computer in~ (GetWindowsEndpoints)\r\n\t| where EventID !in(MonitorEventIDs)\r\n\t| distinct Computer\r\n"
+            },
+            "customWidth": "50",
+            "name": "text - 6 - Copy",
+            "styleSettings": {
+              "showBorder": true
+            }
+          },
+          {
+            "type": 1,
+            "content": {
+              "json": "\t// This will look for Computers that have not sent in a previously seen EventID\r\n\t// Create Analytics Rule. Set lookback based on EventID type. Some don't get seen as often.\r\n\t// Taken From 'Sentinel Windows Event Checking Dashboard' at https://github.com/Truvis/Sentinel\r\n\tlet getSeenIDS = SecurityEvent\r\n\t| where TimeGenerated between (ago(31d) .. ago(1d))\r\n\t| summarize by Computer, EventID;\r\n\tSecurityEvent\r\n\t| where TimeGenerated between (ago(1d) .. now())\r\n\t| summarize by Computer, EventID\r\n\t| join kind = rightanti (getSeenIDS) on Computer, EventID"
+            },
+            "customWidth": "50",
+            "name": "text - 6 - Copy - Copy",
+            "styleSettings": {
+              "showBorder": true
+            }
+          },
+          {
+            "type": 1,
+            "content": {
+              "json": "<div style=\"background-color:#120052;padding-left:20px;padding-right:20px;padding-top:10px;padding-bottom:20px;border: 1px solid #000;filter: drop-shadow(0.2rem 0.2rem 0.2rem rgba(0, 0, 30, 0.5));color:#fff2df;border-radius: 10px / 30px;background: linear-gradient(to right, #120052 0%,#1584C0 100%);display:felx\">\r\n<span style=\"color:#F2914D;font-size:18pt;font-weight:bold;color:#F2914D;\">Manual Searching :: Text Based Viewing</span><br>\r\nThis section contains queries that can be ran manually for easy copy and paste of results or  for alerts.\r\n</div>"
+            },
+            "name": "text - 1 - Copy"
+          },
+          {
+            "type": 1,
+            "content": {
+              "json": "<div style=\"margin-right:30px;margin-left:10px;margin-bottom:0px;background-color:#120052;padding-left:20px;padding-right:20px;padding-top:10px;padding-bottom:12px;border: 1px solid #000;filter: drop-shadow(0.2rem 0.2rem 0.2rem rgba(0, 0, 30, 0.5));color:#fff2df;border-radius: 10px / 30px;background: linear-gradient(to right, #120052 0%,#120052 100%);display:felx\">\r\n<span style=\"color:#F2914D;font-size:12pt;font-weight:bold;color:#F2914D;\">Get all the seen EventIDs and sort by count.</span></div>\r\n\r\n"
+            },
+            "customWidth": "50",
+            "name": "text - 6 - Copy"
+          },
+          {
+            "type": 1,
+            "content": {
+              "json": "<div style=\"margin-right:30px;margin-left:10px;margin-bottom:0px;background-color:#120052;padding-left:20px;padding-right:20px;padding-top:10px;padding-bottom:12px;border: 1px solid #000;filter: drop-shadow(0.2rem 0.2rem 0.2rem rgba(0, 0, 30, 0.5));color:#fff2df;border-radius: 10px / 30px;background: linear-gradient(to right, #120052 0%,#120052 100%);display:felx\">\r\n<span style=\"color:#F2914D;font-size:12pt;font-weight:bold;color:#F2914D;\">Get all the seen EndPoints and sort by amount of EventIDs seen.</span></div>\r\n\r\n"
+            },
+            "customWidth": "50",
+            "name": "text - 6 - Copy - Copy"
+          },
+          {
+            "type": 1,
+            "content": {
+              "json": "    SecurityEvent\r\n\t| summarize count() by EventID\r\n\t| sort by count_ desc \r\n\r\n\t"
+            },
+            "customWidth": "50",
+            "name": "text - 2",
+            "styleSettings": {
+              "showBorder": true
+            }
+          },
+          {
+            "type": 1,
+            "content": {
+              "json": "    SecurityEvent\r\n\t| where isnotempty(EventID)\r\n\t| summarize count() by Computer\r\n\t| sort by count_ desc \r\n\r\n\t"
+            },
+            "customWidth": "50",
+            "name": "text - 2 - Copy",
+            "styleSettings": {
+              "showBorder": true
+            }
+          }
+        ]
+      },
+      "conditionalVisibility": {
+        "parameterName": "SelectedTab",
+        "comparison": "isEqualTo",
+        "value": "Queries"
+      },
+      "name": "group - Queries"
+    },
+    {
+      "type": 12,
+      "content": {
+        "version": "NotebookGroup/1.0",
+        "groupType": "editable",
+        "items": [
+          {
+            "type": 1,
+            "content": {
+              "json": "<div style=\"width:100%;height:100%;font-family:arial;padding-left:20px;padding-right:20px;padding-top:10px;padding-bottom:20px;border-top: 2px dashed #120052;border-bottom: 2px dashed #120052;background:#E8F6FF;border-radius: 10px / 20px;\">\r\n\r\n<span style=\"color:#120052;font-size:12pt;font-weight:bold;\">📌 NOTE</span><br><br>\r\n\r\n<span style=\"color:#000;font-size:10pt\">\r\n-- Enter the Computer/Endpoint Name in the below text field to pull up all information in regards to that Device.<br>\r\n</span></div>\r\n"
+            },
+            "name": "text - 1"
+          },
+          {
+            "type": 9,
+            "content": {
+              "version": "KqlParameterItem/1.0",
+              "parameters": [
+                {
+                  "id": "3d662ddc-d8f7-4c2c-b286-9e1810bdfbec",
+                  "version": "KqlParameterItem/1.0",
+                  "name": "Computer_Endpoint_Name",
+                  "label": "Computer/Endpoint Name",
+                  "type": 1,
+                  "isRequired": true,
+                  "isGlobal": true,
+                  "timeContext": {
+                    "durationMs": 86400000
+                  },
+                  "value": "ADFS-HYBRID.truv.is"
+                }
+              ],
+              "style": "pills",
+              "queryType": 0,
+              "resourceType": "microsoft.operationalinsights/workspaces"
+            },
+            "name": "parameters - 0"
+          },
+          {
+            "type": 1,
+            "content": {
+              "json": "<div style=\"background-color:#120052;padding-left:20px;padding-right:20px;padding-top:10px;padding-bottom:20px;border: 1px solid #000;filter: drop-shadow(0.2rem 0.2rem 0.2rem rgba(0, 0, 30, 0.5));color:#fff2df;border-radius: 10px / 30px;background: linear-gradient(to right, #120052 0%,#1584C0 100%);display:felx\">\r\n<span style=\"color:#F2914D;font-size:18pt;font-weight:bold;color:#F2914D;\">🖥️ {Computer_Endpoint_Name}</span><br>\r\n</div>"
+            },
+            "name": "text - 1 - Copy"
+          },
+          {
+            "type": 1,
+            "content": {
+              "json": "<div style=\"margin-right:30px;margin-left:10px;margin-bottom:0px;background-color:#120052;padding-left:20px;padding-right:20px;padding-top:10px;padding-bottom:12px;border: 1px solid #000;filter: drop-shadow(0.2rem 0.2rem 0.2rem rgba(0, 0, 30, 0.5));color:#fff2df;border-radius: 10px / 30px;background: linear-gradient(to right, #120052 0%,#120052 100%);display:felx\">\r\n<span style=\"color:#F2914D;font-size:12pt;font-weight:bold;color:#F2914D;\">Windows EventIDs Seen and Count</span></div>"
+            },
+            "customWidth": "50",
+            "name": "text - 1 - Copy - Copy"
+          },
+          {
+            "type": 1,
+            "content": {
+              "json": "<div style=\"margin-right:30px;margin-left:10px;margin-bottom:0px;background-color:#120052;padding-left:20px;padding-right:20px;padding-top:10px;padding-bottom:12px;border: 1px solid #000;filter: drop-shadow(0.2rem 0.2rem 0.2rem rgba(0, 0, 30, 0.5));color:#fff2df;border-radius: 10px / 30px;background: linear-gradient(to right, #120052 0%,#120052 100%);display:felx\">\r\n<span style=\"color:#F2914D;font-size:12pt;font-weight:bold;color:#F2914D;\">Windows EventIDs Ingestion over time</span></div>"
+            },
+            "customWidth": "50",
+            "name": "text - 1 - Copy - Copy - Copy"
+          },
+          {
+            "type": 3,
+            "content": {
+              "version": "KqlItem/1.0",
+              "query": "let WinIDLists = externaldata (EventID: int, EventDesc: string, EDLink: string, EList: string) [@\"https://raw.githubusercontent.com/Truvis/Sentinel/main/windows_eventids_descriptions.csv\"] with (format=\"csv\")\r\n| where EList contains '{EventList}';\r\nSecurityEvent\r\n| where Computer == \"{Computer_Endpoint_Name}\"\r\n| summarize count() by EventID\r\n| join kind = fullouter (WinIDLists) on EventID\r\n| extend EventIDs = iff(isnotempty(EventID1), EventID1,EventID)\r\n| extend Seen = iff(isnotempty(count_),\"✅\",\"❌\")\r\n| project [\"Total Events Seen\"] = count_, Seen, [\"Event ID\"] = EventIDs, [\"Event Description\"] = EventDesc\r\n| sort by [\"Event ID\"] asc \r\n",
+              "size": 2,
+              "timeContextFromParameter": "TimeRange",
+              "showExportToExcel": true,
+              "queryType": 0,
+              "resourceType": "microsoft.operationalinsights/workspaces",
+              "crossComponentResources": [
+                "{Workspace}"
+              ],
+              "visualization": "table",
+              "gridSettings": {
+                "formatters": [
+                  {
+                    "columnMatch": "EventID",
+                    "formatter": 8,
+                    "formatOptions": {
+                      "min": 0,
+                      "max": 1,
+                      "palette": "greenDarkDark",
+                      "linkColumn": "EDLink",
+                      "linkTarget": "Url",
+                      "customColumnWidthSetting": "10%"
+                    }
+                  },
+                  {
+                    "columnMatch": "EventDesc",
+                    "formatter": 8,
+                    "formatOptions": {
+                      "min": 0,
+                      "max": 0,
+                      "palette": "green",
+                      "linkColumn": "EDLink",
+                      "linkTarget": "Url",
+                      "linkIsContextBlade": false,
+                      "customColumnWidthSetting": "90%"
+                    }
+                  }
+                ],
+                "filter": true
+              },
+              "tileSettings": {
+                "titleContent": {
+                  "columnMatch": "EventID",
+                  "formatter": 8,
+                  "formatOptions": {
+                    "min": 0,
+                    "max": 1,
+                    "palette": "greenDark"
+                  }
+                },
+                "subtitleContent": {
+                  "columnMatch": "EventDesc",
+                  "formatter": 1,
+                  "formatOptions": {
+                    "linkColumn": "EDLink",
+                    "linkTarget": "Url"
+                  }
+                },
+                "showBorder": true,
+                "sortCriteriaField": "EventID",
+                "sortOrderField": 1,
+                "size": "auto"
+              },
+              "mapSettings": {
+                "locInfo": "LatLong",
+                "sizeSettings": "EventID",
+                "sizeAggregation": "Sum",
+                "legendMetric": "EventID",
+                "legendAggregation": "Sum",
+                "itemColorSettings": {
+                  "type": "heatmap",
+                  "colorAggregation": "Sum",
+                  "nodeColorField": "EventID",
+                  "heatmapPalette": "greenRed"
+                }
+              }
+            },
+            "customWidth": "50",
+            "name": "query - 0 - Copy - Copy",
+            "styleSettings": {
+              "showBorder": true
+            }
+          },
+          {
+            "type": 3,
+            "content": {
+              "version": "KqlItem/1.0",
+              "query": "let Now = now();\r\n(range TimeGenerated from ago('{TimeRange}') to Now step {TimeRange:grain}\r\n| extend Count = 0\r\n| union isfuzzy=true\r\n    (SecurityEvent\r\n    | where Computer == \"{Computer_Endpoint_Name}\"\r\n| summarize Count = count() by bin_at(TimeGenerated, {TimeRange:grain}, Now))\r\n| summarize Count=max(Count) by bin_at(TimeGenerated, {TimeRange:grain}, Now)\r\n| sort by TimeGenerated\r\n| project\r\n    Value = iff(isnull(Count), 0, Count),\r\n    Time = TimeGenerated,\r\n    Legend = \"SecurityEvents\")\r\n| render timechart",
+              "size": 3,
+              "title": "Windows Events being ingested by day",
+              "color": "greenDark",
+              "timeContextFromParameter": "TimeRange",
+              "queryType": 0,
+              "resourceType": "microsoft.operationalinsights/workspaces",
+              "crossComponentResources": [
+                "{Workspace}"
+              ],
+              "visualization": "timechart"
+            },
+            "customWidth": "50",
+            "name": "query - 5 - Copy",
+            "styleSettings": {
+              "showBorder": true
+            }
+          }
+        ]
+      },
+      "conditionalVisibility": {
+        "parameterName": "SelectedTab",
+        "comparison": "isEqualTo",
+        "value": "Endpoint"
+      },
+      "name": "By Endpoint"
+    },
+    {
+      "type": 12,
+      "content": {
+        "version": "NotebookGroup/1.0",
+        "groupType": "editable",
+        "items": [
+          {
+            "type": 1,
+            "content": {
+              "json": "<div style=\"width:100%;height:100%;font-family:arial;padding-left:20px;padding-right:20px;padding-top:10px;padding-bottom:20px;border-top: 2px dashed #120052;border-bottom: 2px dashed #120052;background:#E8F6FF;border-radius: 10px / 20px;\">\r\n\r\n<span style=\"color:#120052;font-size:12pt;font-weight:bold;\">📌 NOTE</span><br><br>\r\n\r\n<span style=\"color:#000;font-size:10pt\">\r\n- Enter the EventID in the below text field to pull up all information in regards to that Event ID.<br>\r\n</span></div>\r\n"
+            },
+            "name": "text - 0"
+          },
+          {
+            "type": 9,
+            "content": {
+              "version": "KqlParameterItem/1.0",
+              "parameters": [
+                {
+                  "id": "9acbee1f-4dac-4113-a92a-5817ed554b69",
+                  "version": "KqlParameterItem/1.0",
+                  "name": "EVID",
+                  "label": "Event ID #",
+                  "type": 1,
+                  "isRequired": true,
+                  "isGlobal": true,
+                  "timeContext": {
+                    "durationMs": 86400000
+                  },
+                  "value": "4624"
+                }
+              ],
+              "style": "pills",
+              "queryType": 0,
+              "resourceType": "microsoft.operationalinsights/workspaces"
+            },
+            "name": "parameters - 1"
+          },
+          {
+            "type": 1,
+            "content": {
+              "json": "<div style=\"margin-right:30px;margin-left:10px;margin-bottom:0px;background-color:#120052;padding-left:20px;padding-right:20px;padding-top:10px;padding-bottom:12px;border: 1px solid #000;filter: drop-shadow(0.2rem 0.2rem 0.2rem rgba(0, 0, 30, 0.5));color:#fff2df;border-radius: 10px / 30px;background: linear-gradient(to right, #120052 0%,#120052 100%);display:felx\">\r\n<span style=\"color:#F2914D;font-size:12pt;font-weight:bold;color:#F2914D;\">Computers seen with Event ID {EVID}</span></div>"
+            },
+            "customWidth": "33",
+            "name": "text - 5"
+          },
+          {
+            "type": 1,
+            "content": {
+              "json": "<div style=\"margin-right:30px;margin-left:10px;margin-bottom:0px;background-color:#120052;padding-left:20px;padding-right:20px;padding-top:10px;padding-bottom:12px;border: 1px solid #000;filter: drop-shadow(0.2rem 0.2rem 0.2rem rgba(0, 0, 30, 0.5));color:#fff2df;border-radius: 10px / 30px;background: linear-gradient(to right, #120052 0%,#120052 100%);display:felx\">\r\n<span style=\"color:#F2914D;font-size:12pt;font-weight:bold;color:#F2914D;\">Computers not seen with Event ID {EVID}</span></div>"
+            },
+            "customWidth": "33",
+            "name": "text - 5 - Copy"
+          },
+          {
+            "type": 1,
+            "content": {
+              "json": "<div style=\"margin-right:30px;margin-left:10px;margin-bottom:0px;background-color:#120052;padding-left:20px;padding-right:20px;padding-top:10px;padding-bottom:12px;border: 1px solid #000;filter: drop-shadow(0.2rem 0.2rem 0.2rem rgba(0, 0, 30, 0.5));color:#fff2df;border-radius: 10px / 30px;background: linear-gradient(to right, #120052 0%,#120052 100%);display:felx\">\r\n<span style=\"color:#F2914D;font-size:12pt;font-weight:bold;color:#F2914D;\">Ingestion of Event ID {EVID}</span></div>"
+            },
+            "customWidth": "33",
+            "name": "text - 5 - Copy - Copy"
+          },
+          {
+            "type": 3,
+            "content": {
+              "version": "KqlItem/1.0",
+              "query": "SecurityEvent\r\n| where EventID == '{EVID}'\r\n| summarize count() by Computer",
+              "size": 2,
+              "timeContextFromParameter": "TimeRange",
+              "showExportToExcel": true,
+              "queryType": 0,
+              "resourceType": "microsoft.operationalinsights/workspaces",
+              "crossComponentResources": [
+                "{Workspace}"
+              ],
+              "gridSettings": {
+                "formatters": [
+                  {
+                    "columnMatch": "Computer",
+                    "formatter": 8,
+                    "formatOptions": {
+                      "min": 1,
+                      "max": 1,
+                      "palette": "greenDark"
+                    }
+                  }
+                ],
+                "filter": true
+              }
+            },
+            "customWidth": "33",
+            "name": "query - 2",
+            "styleSettings": {
+              "showBorder": true
+            }
+          },
+          {
+            "type": 3,
+            "content": {
+              "version": "KqlItem/1.0",
+              "query": "let cList = SecurityEvent\r\n| distinct Computer;\r\nSecurityEvent\r\n| where EventID == '{EVID}'\r\n| join kind = rightantisemi (cList) on Computer",
+              "size": 2,
+              "timeContextFromParameter": "TimeRange",
+              "showExportToExcel": true,
+              "queryType": 0,
+              "resourceType": "microsoft.operationalinsights/workspaces",
+              "crossComponentResources": [
+                "{Workspace}"
+              ],
+              "gridSettings": {
+                "filter": true
+              }
+            },
+            "customWidth": "33",
+            "name": "query - 3",
+            "styleSettings": {
+              "showBorder": true
+            }
+          },
+          {
+            "type": 3,
+            "content": {
+              "version": "KqlItem/1.0",
+              "query": "let Now = now();\r\n(range TimeGenerated from ago('{TimeRange}') to Now step {TimeRange:grain}\r\n| extend Count = 0\r\n| union isfuzzy=true\r\n    (SecurityEvent\r\n    | where EventID == '{EVID}'\r\n| summarize Count = count() by bin_at(TimeGenerated, {TimeRange:grain}, Now))\r\n| summarize Count=max(Count) by bin_at(TimeGenerated, {TimeRange:grain}, Now)\r\n| sort by TimeGenerated\r\n| project\r\n    Value = iff(isnull(Count), 0, Count),\r\n    Time = TimeGenerated,\r\n    Legend = \"SecurityEvents\")\r\n| render timechart",
+              "size": 3,
+              "timeContextFromParameter": "TimeRange",
+              "queryType": 0,
+              "resourceType": "microsoft.operationalinsights/workspaces",
+              "crossComponentResources": [
+                "{Workspace}"
+              ],
+              "visualization": "timechart"
+            },
+            "customWidth": "33",
+            "name": "query - 4",
+            "styleSettings": {
+              "showBorder": true
+            }
+          }
+        ]
+      },
+      "conditionalVisibility": {
+        "parameterName": "SelectedTab",
+        "comparison": "isEqualTo",
+        "value": "EventID"
+      },
+      "name": "group - 6"
+    },
+    {
+      "type": 12,
+      "content": {
+        "version": "NotebookGroup/1.0",
+        "groupType": "editable",
+        "items": [
+          {
+            "type": 1,
+            "content": {
+              "json": "<div style=\"background-color:#120052;padding-left:20px;padding-right:20px;padding-top:10px;padding-bottom:20px;border: 1px solid #000;filter: drop-shadow(0.2rem 0.2rem 0.2rem rgba(0, 0, 30, 0.5));color:#fff2df;border-radius: 10px / 30px;background: linear-gradient(to right, #120052 0%,#1584C0 100%);display:felx\">\r\n<span style=\"color:#F2914D;font-size:18pt;font-weight:bold;color:#F2914D;\">Windows Event ID Database</span><br>\r\nThere are many ways this can be done, but this is needed for EventID referencing.\r\n</div>"
+            },
+            "name": "text - 1"
+          },
+          {
+            "type": 1,
+            "content": {
+              "json": "<div style=\"width:100%;height:100%;font-family:arial;padding-left:20px;padding-right:20px;padding-top:10px;padding-bottom:20px;border-top: 2px dashed #120052;border-bottom: 2px dashed #120052;background:#FFFFCC;border-radius: 10px / 20px;\">\r\n\r\n<span style=\"color:#120052;font-size:12pt;font-weight:bold;\">📌 FUNCTION WAY</span><br><br>\r\n\r\n<span style=\"color:#000;font-size:10pt\">\r\nThe EventID Database is saved under the function **'WindowsEventIDs'**. This can be edited to add, remove or create new lists. This is also useful if your organization blocks connections to github and you need to cost the list locally in Sentinel.<br>\r\n<br>\r\n<blockquote>let WEIDs = datatable(EventID: int, EventDesc: string, EDLink: string, EList: string) [<br>\r\n\"EventID#\", \"Description\", \"Support Link\", \"common||all||t1\",<br>\r\n...<br>\r\n...<br>\r\n]<br>;\r\nWEIDs<br>\r\n</blockquote>\r\n<br>\r\nAt the end under **'EList: string'** is where you can add/remove an Event ID to a **Compare List**. <br>For example you have **common||all||t1**.<br>\r\n<br>\r\n<b>Create Database(function)</b><br>\r\nThe following below needs to be copied and saved as a function named **'WindowsEventIDs'**<br><br>\r\n<textarea>let WEIDs = datatable(EventID: int, EventDesc: string, EDLink: string, EList: string) [\r\n\"1\", \"TEXT\", \"http://\", \"common||all||t1\",\r\n\"299\", \"TEXT\", \"http://\", \"common||all||t1\",\r\n\"300\", \"TEXT\", \"http://\", \"common||all||t1\",\r\n\"324\", \"TEXT\", \"http://\", \"common||all||t1\",\r\n\"340\", \"TEXT\", \"http://\", \"common||all||t1\",\r\n\"403\", \"TEXT\", \"http://\", \"common||all||t1\",\r\n\"404\", \"TEXT\", \"http://\", \"common||all||t1\",\r\n\"410\", \"TEXT\", \"http://\", \"common||all||t1\",\r\n\"411\", \"TEXT\", \"http://\", \"common||all||t1\",\r\n\"412\", \"TEXT\", \"http://\", \"common||all||t1\",\r\n\"413\", \"TEXT\", \"http://\", \"common||all||t1\",\r\n\"431\", \"TEXT\", \"http://\", \"common||all||t1\",\r\n\"500\", \"TEXT\", \"http://\", \"common||all||t1\",\r\n\"501\", \"TEXT\", \"http://\", \"common||all||t1\",\r\n\"1100\", \"The event logging service has shut down\", \"http://\", \"common||all||t1\",\r\n\"1102\", \"The audit log was cleared\", \"http://\", \"minimal||common||all||t1\",\r\n\"1107\", \"TEXT\", \"http://\", \"common||all||t1\",\r\n\"1108\", \"The event logging service encountered an error\", \"http://\", \"common||all||t1\",\r\n\"4608\", \"Windows is starting up\", \"http://\", \"common||all||t1\",\r\n\"4610\", \"An authentication package has been loaded by the Local Security Authority\", \"http://\", \"common||all||t1\",\r\n\"4611\", \"A trusted logon process has been registered with the Local Security Authority\", \"http://\", \"common||all||t1\",\r\n\"4614\", \"A notification package has been loaded by the Security Account Manager.\", \"http://\", \"common||all||t1\",\r\n\"4622\", \"A security package has been loaded by the Local Security Authority.\", \"http://\", \"common||all||t1\",\r\n\"4624\", \"An account was successfully logged on\", \"http://\", \"minimal||common||all||t1\",\r\n\"4625\", \"An account failed to log on\", \"http://\", \"minimal||common||all||t1\",\r\n\"4634\", \"An account was logged off\", \"http://\", \"common||all||t1\",\r\n\"4647\", \"User initiated logoff\", \"http://\", \"common||all||t1\",\r\n\"4648\", \"A logon was attempted using explicit credentials\", \"http://\", \"common||all||t1\",\r\n\"4649\", \"A replay attack was detected\", \"http://\", \"common||all||t1\",\r\n\"4657\", \"A registry value was modified\", \"http://\", \"minimal||common||all||t1\",\r\n\"4661\", \"A handle to an object was requested\", \"http://\", \"common||all||t1\",\r\n\"4662\", \"An operation was performed on an object\", \"http://\", \"common||all||t1\",\r\n\"4663\", \"An attempt was made to access an object\", \"http://\", \"minimal||common||all||t1\",\r\n\"4665\", \"An attempt was made to create an application client context.\", \"http://\", \"common||all||t1\",\r\n\"4666\", \"An application attempted an operation\", \"http://\", \"common||all||t1\",\r\n\"4667\", \"An application client context was deleted\", \"http://\", \"common||all||t1\",\r\n\"4688\", \"A new process has been created\", \"http://\", \"minimal||common||all||t1\",\r\n\"4670\", \"Permissions on an object were changed\", \"http://\", \"common||all||t1\",\r\n\"4672\", \"Special privileges assigned to new logon\", \"http://\", \"common||all||t1\",\r\n\"4673\", \"A privileged service was called\", \"http://\", \"common||all||t1\",\r\n\"4674\", \"An operation was attempted on a privileged object\", \"http://\", \"common||all||t1\",\r\n\"4675\", \"SIDs were filtered\", \"http://\", \"common||all||t1\",\r\n\"4689\", \"A process has exited\", \"http://\", \"common||all||t1\",\r\n\"4697\", \"A service was installed in the system\", \"http://\", \"common||all||t1\",\r\n\"4700\", \"A scheduled task was enabled\", \"http://\", \"minimal||common||all||t1\",\r\n\"4702\", \"A scheduled task was updated\", \"http://\", \"minimal||common||all||t1\",\r\n\"4704\", \"A user right was assigned\", \"http://\", \"common||all||t1\",\r\n\"4705\", \"A user right was removed\", \"http://\", \"common||all||t1\",\r\n\"4716\", \"Trusted domain information was modified\", \"http://\", \"common||all||t1\",\r\n\"4717\", \"System security access was granted to an account\", \"http://\", \"common||all||t1\",\r\n\"4718\", \"System security access was removed from an account\", \"http://\", \"common||all||t1\",\r\n\"4719\", \"System audit policy was changed\", \"http://\", \"minimal||common||all||t1\",\r\n\"4720\", \"A user account was created\", \"http://\", \"minimal||common||all||t1\",\r\n\"4722\", \"A user account was enabled\", \"http://\", \"minimal||common||all||t1\",\r\n\"4723\", \"An attempt was made to change an account's password\", \"http://\", \"minimal||common||all||t1\",\r\n\"4724\", \"An attempt was made to reset an accounts password\", \"http://\", \"minimal||common||all||t1\",\r\n\"4725\", \"A user account was disabled\", \"http://\", \"common||all||t1\",\r\n\"4726\", \"A user account was deleted\", \"http://\", \"common||all||t1\",\r\n\"4727\", \"A security-enabled global group was created\", \"http://\", \"minimal||common||all||t1\",\r\n\"4728\", \"A member was added to a security-enabled global group\", \"http://\", \"minimal||common||all||t1\",\r\n\"4729\", \"A member was removed from a security-enabled global group\", \"http://\", \"common||all||t1\",\r\n\"4733\", \"A member was removed from a security-enabled local group\", \"http://\", \"common||all||t1\",\r\n\"4732\", \"A member was added to a security-enabled local group\", \"http://\", \"minimal||common||all||t1\",\r\n\"4735\", \"A security-enabled local group was changed\", \"http://\", \"minimal||common||all||t1\",\r\n\"4737\", \"A security-enabled global group was changed\", \"http://\", \"minimal||common||all||t1\",\r\n\"4738\", \"A user account was changed\", \"http://\", \"common||all||t1\",\r\n\"4739\", \"Domain Policy was changed\", \"http://\", \"minimal||common||all||t1\",\r\n\"4740\", \"A user account was locked out\", \"http://\", \"minimal||common||all||t1\",\r\n\"4742\", \"A computer account was changed\", \"http://\", \"common||all||t1\",\r\n\"4744\", \"A security-disabled local group was created\", \"http://\", \"minimal||common||all||t1\",\r\n\"4745\", \"A security-disabled local group was changed\", \"http://\", \"minimal||common||all||t1\",\r\n\"4746\", \"A member was added to a security-disabled local group\", \"http://\", \"minimal||common||all||t1\",\r\n\"4750\", \"A security-disabled global group was changed\", \"http://\", \"common||all||t1\",\r\n\"4751\", \"A member was added to a security-disabled global group\", \"http://\", \"common||all||t1\",\r\n\"4752\", \"A member was removed from a security-disabled global group\", \"http://\", \"common||all||t1\",\r\n\"4754\", \"A security-enabled universal group was created\", \"http://\", \"common||all||t1\",\r\n\"4755\", \"A security-enabled universal group was changed\", \"http://\", \"common||all||t1\",\r\n\"4756\", \"A member was added to a security-enabled universal group\", \"http://\", \"common||all||t1\",\r\n\"4757\", \"A member was removed from a security-enabled universal group\", \"http://\", \"common||all||t1\",\r\n\"4760\", \"A security-disabled universal group was changed\", \"http://\", \"common||all||t1\",\r\n\"4761\", \"A member was added to a security-disabled universal group\", \"http://\", \"common||all||t1\",\r\n\"4762\", \"A member was removed from a security-disabled universal group\", \"http://\", \"common||all||t1\",\r\n\"4764\", \"A groups type was changed\", \"http://\", \"common||all||t1\",\r\n\"4767\", \"A user account was unlocked\", \"http://\", \"minimal||common||all||t1\",\r\n\"4768\", \"A Kerberos authentication ticket (TGT) was requested\", \"http://\", \"common||all||t1\",\r\n\"4771\", \"Kerberos pre-authentication failed\", \"http://\", \"common||all||t1\",\r\n\"4774\", \"An account was mapped for logon\", \"http://\", \"common||all||t1\",\r\n\"4778\", \"A session was reconnected to a Window Station\", \"http://\", \"common||all||t1\",\r\n\"4779\", \"A session was disconnected from a Window Station\", \"http://\", \"common||all||t1\",\r\n\"4781\", \"The name of an account was changed\", \"http://\", \"common||all||t1\",\r\n\"4793\", \"The Password Policy Checking API was called\", \"http://\", \"common||all||t1\",\r\n\"4797\", \"An attempt was made to query the existence of a blank password for an account\", \"http://\", \"common||all||t1\",\r\n\"4798\", \"A user's local group membership was enumerated.\", \"http://\", \"common||all||t1\",\r\n\"4799\", \"A security-enabled local group membership was enumerated\", \"http://\", \"minimal||common||all||t1\",\r\n\"4800\", \"The workstation was locked\", \"http://\", \"common||all||t1\",\r\n\"4801\", \"The workstation was unlocked\", \"http://\", \"common||all||t1\",\r\n\"4802\", \"The screen saver was invoked\", \"http://\", \"common||all||t1\",\r\n\"4803\", \"The screen saver was dismissed\", \"http://\", \"common||all||t1\",\r\n\"4825\", \"A user was denied the access to Remote Desktop. By default, users are allowed to connect only if they are members of the Remote Desktop Users group or Administrators group\", \"http://\", \"minimal||common||all||t1\",\r\n\"4826\", \"Boot Configuration Data loaded\", \"http://\", \"common||all||t1\",\r\n\"4870\", \"Certificate Services revoked a certificate\", \"http://\", \"common||all||t1\",\r\n\"4886\", \"Certificate Services received a certificate request\", \"http://\", \"common||all||t1\",\r\n\"4887\", \"Certificate Services approved a certificate request and issued a certificate\", \"http://\", \"common||all||t1\",\r\n\"4888\", \"Certificate Services denied a certificate request\", \"http://\", \"common||all||t1\",\r\n\"4893\", \"Certificate Services archived a key\", \"http://\", \"common||all||t1\",\r\n\"4898\", \"Certificate Services loaded a template\", \"http://\", \"common||all||t1\",\r\n\"4902\", \"The Per-user audit policy table was created\", \"http://\", \"common||all||t1\",\r\n\"4904\", \"An attempt was made to register a security event source\", \"http://\", \"common||all||t1\",\r\n\"4905\", \"An attempt was made to unregister a security event source\", \"http://\", \"common||all||t1\",\r\n\"4907\", \"Auditing settings on object were changed\", \"http://\", \"common||all||t1\",\r\n\"4931\", \"An Active Directory replica destination naming context was modified\", \"http://\", \"common||all||t1\",\r\n\"4932\", \"Synchronization of a replica of an Active Directory naming context has begun\", \"http://\", \"common||all||t1\",\r\n\"4933\", \"Synchronization of a replica of an Active Directory naming context has ended\", \"http://\", \"common||all||t1\",\r\n\"4946\", \"A change has been made to Windows Firewall exception list. A rule was added\", \"http://\", \"minimal||common||all||t1\",\r\n\"4948\", \"A change has been made to Windows Firewall exception list. A rule was deleted\", \"http://\", \"minimal||common||all||t1\",\r\n\"4956\", \"Windows Firewall has changed the active profile\", \"http://\", \"minimal||common||all||t1\",\r\n\"4985\", \"The state of a transaction has changed\", \"http://\", \"common||all||t1\",\r\n\"5024\", \"The Windows Firewall Service has started successfully\", \"http://\", \"minimal||common||all||t1\",\r\n\"5033\", \"The Windows Firewall Driver has started successfully\", \"http://\", \"minimal||common||all||t1\",\r\n\"5059\", \"A registry key was virtualized.\", \"http://\", \"common||all||t1\",\r\n\"5136\", \"A directory service object was modified\", \"http://\", \"common||all||t1\",\r\n\"5137\", \"A directory service object was created\", \"http://\", \"common||all||t1\",\r\n\"5140\", \"A network share object was accessed\", \"http://\", \"common||all||t1\",\r\n\"5145\", \"A network share object was checked to see whether client can be granted desired access\", \"http://\", \"common||all||t1\",\r\n\"5632\", \"A request was made to authenticate to a wireless network\", \"http://\", \"common||all||t1\",\r\n\"6144\", \"Security policy in the group policy objects has been applied successfully\", \"http://\", \"common||all||t1\",\r\n\"6145\", \"One or more errors occured while processing security policy in the group policy objects\", \"http://\", \"common||all||t1\",\r\n\"6272\", \"Network Policy Server granted access to a user\", \"http://\", \"common||all||t1\",\r\n\"6273\", \"Network Policy Server denied access to a user\", \"http://\", \"common||all||t1\",\r\n\"6278\", \"Network Policy Server granted full access to a user because the host met the defined health policy\", \"http://\", \"common||all||t1\",\r\n\"6416\", \"A new external device was recognized by the system.\", \"http://\", \"common||all||t1\",\r\n\"6423\", \"The installation of this device is forbidden by system policy\", \"http://\", \"common||all||t1\",\r\n\"6424\", \"The installation of this device was allowed, after having previously been forbidden by policy\", \"http://\", \"common||all||t1\",\r\n\"8001\", \"TEXT\", \"http://\", \"minimal||common||all||t1\",\r\n\"8002\", \"TEXT\", \"http://\", \"minimal||common||all||t1\",\r\n\"8003\", \"TEXT\", \"http://\", \"minimal||common||all||t1\",\r\n\"8004\", \"TEXT\", \"http://\", \"minimal||common||all||t1\",\r\n\"8005\", \"TEXT\", \"http://\", \"minimal||common||all||t1\",\r\n\"8006\", \"TEXT\", \"http://\", \"minimal||common||all||t1\",\r\n\"8007\", \"TEXT\", \"http://\", \"minimal||common||all||t1\",\r\n\"8222\", \"TEXT\", \"http://\", \"minimal||common||all||t1\",\r\n\"26401\", \"TEXT\", \"http://\", \"common||all||t1\",\r\n\"30004\", \"TEXT\", \"http://\", \"common\"\r\n];\r\nWEIDs</textarea>\r\n\r\n<br>\r\n</span></div>"
+            },
+            "name": "text - 0"
+          },
+          {
+            "type": 1,
+            "content": {
+              "json": "<div style=\"width:100%;height:100%;font-family:arial;padding-left:20px;padding-right:20px;padding-top:10px;padding-bottom:20px;border-top: 2px dashed #120052;border-bottom: 2px dashed #120052;background:#FFFFCC;border-radius: 10px / 20px;\">\r\n\r\n<span style=\"color:#120052;font-size:12pt;font-weight:bold;\">📌 EXTERNAL/WATCHLIST WAY</span><br><br>\r\n\r\n<span style=\"color:#000;font-size:10pt\">The current way is using a remote maintained Excel spreadsheet. This can be ideal when several isntances are in play.<br>\r\n<br>\r\n<blockquote>let WinIDLists = externaldata (EventID: int, EventDesc: string, EDLink: string, EList: string)<br> \r\n[@\"https://raw.githubusercontent.com/Truvis/Sentinel/main/windows_eventids_descriptions.csv\"] with (format=\"csv\")<br>\r\n| where EList contains '{EventList}';<br>\r\n</blockquote>\r\n<br>\r\nYou can add your compare list string to the column Class.\r\n</span></div>"
+            },
+            "name": "text - 2"
+          }
+        ]
+      },
+      "conditionalVisibility": {
+        "parameterName": "SelectedTab",
+        "comparison": "isEqualTo",
+        "value": "Documentation"
+      },
+      "name": "group - 7"
+    },
+    {
+      "type": 1,
+      "content": {
+        "json": "<div style=\"background-color:#efefef;padding-left:20px;padding-right:20px;padding-top:30px;padding-bottom:30px;border-top: 2px solid #120052;border-bottom: 2px solid #120052;color:#120052;\">\r\n\r\n<img src=\"https://raw.githubusercontent.com/Truvis/Sentinel/main/images/sentinelcat.png\" style=\"float: left;padding-right: 20px;border-radius: 25px;\">\r\n**Version:**  VER 0.23.4.01 (APRIL 2023 REV 1)<br>\r\n**Download:** https://truv.is/go/1<br>\r\n**Support:** truvis.thornton@truv.is<br>\r\n**Author:** Truvis Thornton - <a href=\"https://www.linkedin.com/in/truvisthornton/\" target=\"_blank\">LinkedIn</a> | <a href=\"https://twitter.com/thattechkitten\" target=\"_blank\">Twitter</a> | <a href=\"https://github.com/Truvis/\" target=\"_blank\">GitHub</a><br>\r\n_Copyright 2023. License Terms on GitHub/Website_<br><br>\r\nThis dashboard provides insights into Windows Event Ingestion and allows you to compare the ingested Event IDs with recommend and custom lists easily.<br>\r\n</div>"
+      },
+      "name": "text - 2"
+    }
+  ],
+  "fallbackResourceIds": [
+    "/subscriptions/18fedf52-f250-4dc7-896d-d96dd4e10430/resourcegroups/security/providers/microsoft.operationalinsights/workspaces/security-instance"
+  ],
+  "fromTemplateId": "sentinel-UserWorkbook",
+  "$schema": "https://github.com/Microsoft/Application-Insights-Workbooks/blob/master/schema/workbook.json"
+}
