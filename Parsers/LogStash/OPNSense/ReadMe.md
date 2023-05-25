@@ -1,17 +1,6 @@
-# pfSense/OPNsense > LogStash > Azure Sentinel
+# OPNsense > LogStash > Azure Sentinel
 
-## Table of Contents
-
-- [pfSense/OPNsense > LogStash > Azure Sentinel](#pfsenseopnsense--logstash--azure-sentinel)
-  - [Table of Contents](#table-of-contents)
-    - [Ubuntu (v18.04-v20.04+) Server onPrem](#ubuntu-v1804-v2004-server-onprem)
-    - [Install MaxMind Database (Optional)](#install-maxmind-database-optional)
-    - [Logstash Configuration](#logstash-configuration)
-    - [Forwarding pfSense Logs to Logstash](#forwarding-pfsense-logs-to-logstash)
-  - [Install and Configure the Log Analytics Plugin For Logstash](#install-and-configure-the-log-analytics-plugin-for-logstash)
-    - [View pfSense Logs in Azure Sentinel](#view-pfsense-logs-in-azure-sentinel)
-    - [Query logs in Azure Sentinel](#query-logs-in-azure-sentinel)
-  - [Troubleshooting](#troubleshooting)
+NOTE: This guide does not touch on the parsing of the other log types from other services within OpnSense(expect that to come later).
 
 ### Ubuntu (v18.04-v20.04+) Server onPrem
   
@@ -119,7 +108,7 @@ if "IP_Private_Source" not in [tags] {
 
 ### Forwarding pfSense Logs to Logstash
 
-4. Confirm that syslogs are being collected by listening to port 5140.
+1. Confirm that syslogs are being collected by listening to port 5140.
 
     ```BASH
     sudo tcpdump -A -ni any port 5140 -vv
@@ -196,7 +185,7 @@ Make a note of your Azure Configuration, you will need it to configure the the L
 
 1. Wait for logs to arrive in Azure Sentinel.
 
-  The new custom log will be created automatically by the Azure Log Analytics plugin for Logstash. You should find the pfSense/opnSense table in Azure Sentinel -> Logs -> Custom Logs.
+  The new custom log will be created automatically by the Azure Log Analytics plugin for Logstash. You should find the opnSense table in Azure Sentinel -> Logs -> Custom Logs.
 
   `You do not need to configure a custom log source in Azure Sentinel "Advanced settings".`
   
@@ -215,9 +204,6 @@ OPNSense_CL
 | summarize count() by destination_geo_geo_country_iso_code_s
 ```
 ![image](https://github.com/Truvis/Sentinel/assets/23244379/1428062d-ca3d-4e72-9b51-14f6c1a1e8f4)
-
-
-Additional queries for pfSense can be found [here](https://github.com/noodlemctwoodle/pf-azure-sentinel/tree/main/KQL/pfSense/Queries)
 
 ## Troubleshooting
 
