@@ -92,7 +92,7 @@ if "IP_Private_Source" not in [tags] {
     sudo nano /etc/logstash/conf.d/20-interfaces.conf
     ```
 
-    Adjust the interface name(s) `igb0` to correspond with your hardware, the interface below is referenced as igb0 with a corresponding alias `WAN`, It is also possible to add a friendly name in the `[network][name]` field.
+    Adjust the interface name(s) to correspond with your hardware, the interface below is referenced as `ovpnc1` with a corresponding alias `OpenVPN`, It is also possible to add a friendly name in the `[network][name]` field.
 
     Add/remove sections, depending on the number of interfaces you have.
 
