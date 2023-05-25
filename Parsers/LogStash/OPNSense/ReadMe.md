@@ -71,7 +71,7 @@ Example:
 ```BASH
 if "IP_Private_Source" not in [tags] {
   geoip {
-    source => "[source][ip]"
+    source => "[truvis_sourceip]"
     database => "/usr/share/GeoIP/GeoLite2-City.mmdb"
     target => "[source][geo]"
   }
@@ -85,13 +85,7 @@ if "IP_Private_Source" not in [tags] {
     sudo apt update && sudo apt install logstash -y
     ```
 
-2. Create Required Directories.
-
-    ```BASH
-    sudo mkdir /etc/logstash/conf.d/{databases,patterns,templates}
-    ```
-
-3. Download the following configuration files. (Required)
+2. Download the following configuration files. (Required)
 
     ```BASH
     sudo wget https://raw.githubusercontent.com/Truvis/Sentinel/main/Parsers/LogStash/OPNSense/conf.d/01-inputs.conf -P /etc/logstash/conf.d/
@@ -101,7 +95,7 @@ if "IP_Private_Source" not in [tags] {
     sudo wget https://raw.githubusercontent.com/Truvis/Sentinel/main/Parsers/LogStash/OPNSense/conf.d/49-cleanup.conf /etc/logstash/conf.d/
     sudo wget https://raw.githubusercontent.com/Truvis/Sentinel/main/Parsers/LogStash/OPNSense/conf.d/50-output.conf -P /etc/logstash/conf.d/
 
-4. Update firewall interfaces.
+3. Update firewall interfaces.
 
     Amend the 20-interfaces.conf file.
 
@@ -115,19 +109,17 @@ if "IP_Private_Source" not in [tags] {
 
     ```BASH
     ### Change interface as desired ###
-    if [interface][name] =~ /^igb0$/ {
-    mutate {
-        add_field => { "[interface][alias]" => "WAN" }
-        add_field => { "[network][name]" => "ISP Provider" }
-        }
+    if [truvis_interface] =~ /^ovpnc1$/ {
+      mutate {
+        add_field => { "[interface][alias]" => "OpenVPN-1" }
+        add_field => { "[network][name]" => "Outgoing Connections" }
+      }
     }
     ```
 
 ### Forwarding pfSense Logs to Logstash
 
-
-
-5. Confirm that syslogs are being collected by listening to port 5140.
+4. Confirm that syslogs are being collected by listening to port 5140.
 
     ```BASH
     sudo tcpdump -A -ni any port 5140 -vv
@@ -200,7 +192,7 @@ Make a note of your Azure Configuration, you will need it to configure the the L
 
   `Note: If you are seeing errors in the log please refer to the [troubleshooting](#troubleshooting) steps below.
 
-### View pfSense Logs in Azure Sentinel
+### View Logs in Azure Sentinel
 
 1. Wait for logs to arrive in Azure Sentinel.
 
