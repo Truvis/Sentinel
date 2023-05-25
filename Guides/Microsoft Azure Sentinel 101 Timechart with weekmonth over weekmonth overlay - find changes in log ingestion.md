@@ -25,10 +25,12 @@ Looking at the the options that we have, the one that stands out the most is the
 
 Now that we have a cheap type of array that is integeer based, we can do some fancy logic and shift the previous data to align with our current data by 7 to account for the data being 7 days behind current:
 
-| summarize Count = count() by Day=datetime_part("dayOfYear", TimeGenerated)+7)
+> | summarize Count = count() by Day=datetime_part("dayOfYear", TimeGenerated)+7)
 
 And with that we have the following:
+
 ![](https://media.licdn.com/dms/image/D4E12AQF7plqsBVYCCQ/article-inline_image-shrink_1500_2232/0/1680979375204?e=1690416000&v=beta&t=DQwAx4UVA67oGRy3WoR4-uwqqtV8wBtR3EVM5hRDIOk)
+
 ![](https://media.licdn.com/dms/image/D4E12AQH4aJWphaVRxQ/article-inline_image-shrink_1500_2232/0/1680979416817?e=1690416000&v=beta&t=TXiw1d5t4zu6eksYSKso3MU0IzNU0pVuAFZL1OFenzo)
 
 And that is exactly what we want to see. We should see a tight line showing that the data ingestion has not changed.
