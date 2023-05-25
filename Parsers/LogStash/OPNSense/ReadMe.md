@@ -106,7 +106,7 @@ if "IP_Private_Source" not in [tags] {
     }
     ```
 
-### Forwarding pfSense Logs to Logstash
+### Forwarding OPNsense Logs to Logstash
 
 1. Confirm that syslogs are being collected by listening to port 5140.
 
