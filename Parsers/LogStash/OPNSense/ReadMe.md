@@ -1,6 +1,7 @@
 # OPNsense > LogStash > Azure Sentinel
 
 NOTE: This guide does not touch on the parsing of the other log types from other services within OpnSense(expect that to come later).
+UPDATE: Suricata parsing was added
 
 ### Ubuntu (v18.04-v20.04+) Server onPrem
   
@@ -78,11 +79,13 @@ if "IP_Private_Source" not in [tags] {
 
     ```BASH
     sudo wget https://raw.githubusercontent.com/Truvis/Sentinel/main/Parsers/LogStash/OPNSense/conf.d/01-inputs.conf -P /etc/logstash/conf.d/
+    sudo wget https://raw.githubusercontent.com/Truvis/Sentinel/main/Parsers/LogStash/OPNSense/conf.d/05-apps.conf -P /etc/logstash/conf.d/
     sudo wget https://raw.githubusercontent.com/Truvis/Sentinel/main/Parsers/LogStash/OPNSense/conf.d/03-filter.conf -P /etc/logstash/conf.d/
     sudo wget https://raw.githubusercontent.com/Truvis/Sentinel/main/Parsers/LogStash/OPNSense/conf.d/20-interfaces.conf -P /etc/logstash/conf.d/
     sudo wget https://raw.githubusercontent.com/Truvis/Sentinel/main/Parsers/LogStash/OPNSense/conf.d/30-geoip.conf -P /etc/logstash/conf.d/
     sudo wget https://raw.githubusercontent.com/Truvis/Sentinel/main/Parsers/LogStash/OPNSense/conf.d/49-cleanup.conf /etc/logstash/conf.d/
     sudo wget https://raw.githubusercontent.com/Truvis/Sentinel/main/Parsers/LogStash/OPNSense/conf.d/50-output.conf -P /etc/logstash/conf.d/
+    sudo wget https://raw.githubusercontent.com/Truvis/Sentinel/main/Parsers/LogStash/OPNSense/conf.d/patterns/pfelk.grok -P /etc/logstash/conf.d/patterns/
 
 3. Update firewall interfaces.
 
