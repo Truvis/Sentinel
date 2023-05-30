@@ -159,9 +159,9 @@ Make a note of your Azure Configuration, you will need it to configure the the L
     ```BASH
     output {
         microsoft-logstash-output-azure-loganalytics {
-            workspace_id => "1234567-7654321-345678-12334445"
-            workspace_key => "kflsdjkgfslfjsdf0ife0f0efe0-09f0we9f-ef-w00e-0w-f0w-0fwe-f0d0-w=="
-            custom_log_table_name => "firewall"
+            workspace_id => ""
+            workspace_key => ""
+            custom_log_table_name => "OPNSense"
             }
         }
     ```
