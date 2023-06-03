@@ -154,18 +154,6 @@ Make a note of your Azure Configuration, you will need it to configure the the L
     - workspace_key = `"Primary Key"`
     - custom_log_table_name =  `"firewall_log"` (This can be any name of your choosing)
 
-    `Example:`
-
-    ```BASH
-    output {
-        microsoft-logstash-output-azure-loganalytics {
-            workspace_id => "1234567-7654321-345678-12334445"
-            workspace_key => "kflsdjkgfslfjsdf0ife0f0efe0-09f0we9f-ef-w00e-0w-f0w-0fwe-f0d0-w=="
-            custom_log_table_name => "firewall"
-            }
-        }
-    ```
-
     - `Note: custom_log_table_name can only have these characters [a-z] [0-9] no spaces or any other characters`
     - `Note: Please use the example in your 50-outputs.conf with does not include any comments '#'`
 
