@@ -1,3 +1,5 @@
+Basic description template for TLP that can be used elsewhere and used to tag alerts/incidents by playbooks
+
 
 ![2023-08-13 14_26_30-](https://github.com/Truvis/Sentinel/assets/23244379/12d4c9b1-8b7e-4956-98e7-b0e70ef30cff)
 
