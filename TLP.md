@@ -1,4 +1,7 @@
-<div style="background-color: #000;border-left: 3px solid #f44336;"><p style="padding: 5px">🚦 <strong style="color:#FF2B2B">TLP:RED - Not for disclosure, restricted to participants only</strong></p></div><p style="padding:3px;border:1px solid #f44336;background-color:#fefefe">Sources may use TLP:RED when information cannot be effectively acted upon without significant risk for the privacy, reputation, or operations of the organizations involved. For the eyes and ears of individual recipients only, no further.
+
+![2023-08-13 14_26_30-](https://github.com/Truvis/Sentinel/assets/23244379/12d4c9b1-8b7e-4956-98e7-b0e70ef30cff)
+
+```<div style="background-color: #000;border-left: 3px solid #f44336;"><p style="padding: 5px">🚦 <strong style="color:#FF2B2B">TLP:RED - Not for disclosure, restricted to participants only</strong></p></div><p style="padding:3px;border:1px solid #f44336;background-color:#fefefe">Sources may use TLP:RED when information cannot be effectively acted upon without significant risk for the privacy, reputation, or operations of the organizations involved. For the eyes and ears of individual recipients only, no further.
 <br>
 Recipients may not share TLP:RED information with any parties outside of the specific exchange, meeting, or conversation in which it was originally disclosed. In the context of a meeting, for example, TLP:RED information is limited to those present at the meeting. In most circumstances, TLP:RED should be exchanged verbally or in person.</p>
 
@@ -21,4 +24,4 @@ Recipients may share TLP:GREEN information with peers and partner organizations 
 Sources may use TLP:CLEAR when information carries minimal or no foreseeable risk of misuse, in accordance with applicable rules and procedures for public release.
 <br>
 Recipients may share this information without restriction. Information is subject to standard copyright rules.
-</p>
+</p>```
