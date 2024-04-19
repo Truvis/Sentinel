@@ -1,11 +1,14 @@
 # OPNsense > LogStash > Azure Sentinel
 
-NOTE: This guide does not touch on the parsing of the other log types from other services within OpnSense(expect that to come later).
-UPDATE: Suricata parsing was added
+>NOTE: This guide does not touch on the parsing of the other log types from other services within OpnSense(expect that to come later).
 
-### Ubuntu (v18.04-v20.04+) Server onPrem
+>NOTE: This guide currently is primarily for using a Custom Log Analytics table. Expect a modification to use ASIM-formatted NetworkSessions log later.
+
+>UPDATE: Suricata parsing was added. Make sure 
+
+### Ubuntu (v22.04) Server in Azure
   
-1. Install Ubuntu Server (v18.04-v20.04+) on a Virtual Machine or Computer and update the OS.
+1. Install Ubuntu Server (v22.04) on an Azure Virtual Machine (or maybe computer connected to Azure with ARC?).
 
     ```BASH
     sudo apt update; sudo apt upgrade -y
@@ -44,13 +47,9 @@ UPDATE: Suricata parsing was added
     echo "deb https://artifacts.elastic.co/packages/7.x/apt stable main" | sudo tee -a /etc/apt/sources.list.d/elastic-7.x.list
     ```
 
-7. Install Java 14 LTS.
-
-    ```bash
-    sudo apt install openjdk-14-jre-headless
-    ```
-
 ### Install MaxMind Database
+
+> NOTE: I had to install Maxmind for the pipeline to work.
 
 Maxmind isn't required for GeoIP lookups as this is also handled by Logstash by default.
 
@@ -78,14 +77,15 @@ if "IP_Private_Source" not in [tags] {
 2. Download the following configuration files. (Required)
 
     ```BASH
-    sudo wget https://raw.githubusercontent.com/Truvis/Sentinel/main/Parsers/LogStash/OPNSense/conf.d/01-inputs.conf -P /etc/logstash/conf.d/
-    sudo wget https://raw.githubusercontent.com/Truvis/Sentinel/main/Parsers/LogStash/OPNSense/conf.d/05-apps.conf -P /etc/logstash/conf.d/
-    sudo wget https://raw.githubusercontent.com/Truvis/Sentinel/main/Parsers/LogStash/OPNSense/conf.d/03-filter.conf -P /etc/logstash/conf.d/
-    sudo wget https://raw.githubusercontent.com/Truvis/Sentinel/main/Parsers/LogStash/OPNSense/conf.d/20-interfaces.conf -P /etc/logstash/conf.d/
-    sudo wget https://raw.githubusercontent.com/Truvis/Sentinel/main/Parsers/LogStash/OPNSense/conf.d/30-geoip.conf -P /etc/logstash/conf.d/
-    sudo wget https://raw.githubusercontent.com/Truvis/Sentinel/main/Parsers/LogStash/OPNSense/conf.d/49-cleanup.conf /etc/logstash/conf.d/
-    sudo wget https://raw.githubusercontent.com/Truvis/Sentinel/main/Parsers/LogStash/OPNSense/conf.d/50-output.conf -P /etc/logstash/conf.d/
-    sudo wget https://raw.githubusercontent.com/Truvis/Sentinel/main/Parsers/LogStash/OPNSense/conf.d/patterns/pfelk.grok -P /etc/logstash/conf.d/patterns/
+    sudo wget https://raw.githubusercontent.com/HartD92/Sentinel/main/Parsers/LogStash/OPNSense/conf.d/01-inputs.conf -P /etc/logstash/conf.d/
+    sudo wget https://raw.githubusercontent.com/HartD92/Sentinel/main/Parsers/LogStash/OPNSense/conf.d/05-apps.conf -P /etc/logstash/conf.d/
+    sudo wget https://raw.githubusercontent.com/HartD92/Sentinel/main/Parsers/LogStash/OPNSense/conf.d/03-filter.conf -P /etc/logstash/conf.d/
+    sudo wget https://raw.githubusercontent.com/HartD92/Sentinel/main/Parsers/LogStash/OPNSense/conf.d/20-interfaces.conf -P /etc/logstash/conf.d/
+    sudo wget https://raw.githubusercontent.com/HartD92/Sentinel/main/Parsers/LogStash/OPNSense/conf.d/30-geoip.conf -P /etc/logstash/conf.d/
+    sudo wget https://raw.githubusercontent.com/HartD92/Sentinel/main/Parsers/LogStash/OPNSense/conf.d/49-cleanup.conf /etc/logstash/conf.d/
+    sudo wget https://raw.githubusercontent.com/HartD92/Sentinel/main/Parsers/LogStash/OPNSense/conf.d/50-output.conf -P /etc/logstash/conf.d/
+    sudo wget https://raw.githubusercontent.com/HartD92/Sentinel/main/Parsers/LogStash/OPNSense/conf.d/patterns/pfelk.grok -P /etc/logstash/conf.d/patterns/
+    ```
 
 3. Update firewall interfaces.
 
@@ -121,18 +121,62 @@ if "IP_Private_Source" not in [tags] {
 
 Make a note of your Azure Configuration, you will need it to configure the the Log Analytics Plugin for logstash in `step 4`.
 
-1. Login to Azure and browse to your `Log Analytics workspace` settings.
-2. Select `Agents Management` and make a note of your `Workspace ID` and `Primary Key`.
+1. Login to Entra and browse to your `App Registrations` settings.
+2. Create a new `App Registration` per the [Microsoft Documentation](https://learn.microsoft.com/en-us/azure/azure-monitor/logs/tutorial-logs-ingestion-portal#create-microsoft-entra-application).
+3. Create a new `App Secret` and make a note of it, as well as the `Application (client) ID` and `Directory (tenant) ID`.
+4. Navigate to `Azure Monitor`, select `Data Collection Endpoint`, and create a new one as per the [Microsoft Documentation](https://learn.microsoft.com/en-us/azure/azure-monitor/logs/tutorial-logs-ingestion-portal#create-data-collection-endpoint).
 
-    ![image](https://github.com/Truvis/Sentinel/assets/23244379/6fef583e-9409-4dc2-8201-9a33a225508d)
-
-3. Run the command to install the [Microsoft Logstash LogAnalytics](https://github.com/Azure/Azure-Sentinel/tree/master/DataConnectors/microsoft-logstash-output-azure-loganalytics) plugin.
+5. Run the command to install the [Microsoft Logstash LogAnalytics](https://github.com/Azure/Azure-Sentinel/tree/master/DataConnectors/microsoft-logstash-output-azure-loganalytics) plugin.
 
     ```BASH
-    sudo /usr/share/logstash/bin/logstash-plugin install microsoft-logstash-output-azure-loganalytics
+    sudo /usr/share/logstash/bin/logstash-plugin install microsoft-sentinel-log-analytics-logstash-output-plugin
     ```
 
-4. Edit the Logstash configuration.
+6. If using a Custom Table, generate a sample file.
+    1. Edit the Logstash configuration to generate a sample file.
+
+        ```BASH
+        sudo nano /etc/logstash/conf.d/50-outputs.conf
+        ```
+
+        ```BASH
+        output {
+            microsoft-sentinel-log-analytics-logstash-output-plugin {
+                create_sample_file => true
+                sample_file_path => "/tmp"
+            }
+        }
+        ```
+
+    2. Enable and Start LogStash to generate a sample file.
+
+        ```BASH
+        sudo systemctl enable logstash
+        sudo systemctl start logstash
+        ```
+
+    3. Once you have enabled the Logstash service and it has been started check `logstash-plain.log` to confirm there are no errors. Wait until you see confirmation that `sampleFile<epoch seconds>.json` is created.
+
+        ```BASH
+        tail -f /var/log/logstash/logstash-plain.log
+        ```
+
+        >Note: If you are seeing errors in the log please refer to the [troubleshooting](#troubleshooting) steps below.
+
+    4. Stop Logstash once the sample file has been generated.
+
+        ```BASH
+        sudo systemctl stop logstash
+        ```
+
+7. Create the `Data Collection Rule`.
+    1. If creating a custom Log Analytics table, create one as per the [Microsoft Documentation](https://learn.microsoft.com/en-us/azure/azure-monitor/logs/tutorial-logs-ingestion-portal#create-new-table-in-log-analytics-workspace). When providing the schema, use the sample file generated in `Step 8`.
+
+        ![image](https://github.com/Truvis/Sentinel/assets/23244379/6fef583e-9409-4dc2-8201-9a33a225508d)
+    
+    2. If not creating a custom table, create the `Data Collection Rule` using the [Microsoft Documentation](https://learn.microsoft.com/en-us/azure/azure-monitor/logs/tutorial-logs-ingestion-api#create-data-collection-rule).
+
+8. Reconfigure the output plugin file to send data to the Sentinel Log Ingestion API using the data gathered in `steps 3, 4, and 7`.
 
     ```BASH
     sudo nano /etc/logstash/conf.d/50-outputs.conf
@@ -140,47 +184,34 @@ Make a note of your Azure Configuration, you will need it to configure the the L
 
     ```BASH
     output {
-        microsoft-logstash-output-azure-loganalytics {
-            workspace_id => "<WORKSPACE ID>" # <your workspace id>
-            workspace_key => "<Primary Key>" # <your workspace key>
-            custom_log_table_name => "<Name of Log>"
-            }
+        microsoft-sentinel-log-analytics-logstash-output-plugin {
+            client_app_Id => ""
+            client_app_secret => ""
+            tenant_id => ""
+            data_collection_endpoint => ""
+            dcr_immutable_id => ""
+            dcr_stream_name => ""
+
+            create_sample_file => false
+            sample_file_path => "/tmp"
         }
+    }
     ```
 
-    Using the information we previously noted down from the `Log Analytics workspace` settings, use it to populated the `50-outputs.conf` file.
+    > NOTE: It is recommended to store this information in the Logstash KeyStore instead of in the pipeline configuration.
 
-    - workspace_id = `"WORKSPACE ID"`
-    - workspace_key = `"Primary Key"`
-    - custom_log_table_name =  `"firewall_log"` (This can be any name of your choosing)
-
-    - `Note: custom_log_table_name can only have these characters [a-z] [0-9] no spaces or any other characters`
-    - `Note: Please use the example in your 50-outputs.conf with does not include any comments '#'`
-
-5. Enable and Start LogStash.
+9. Restart Logstash
 
     ```BASH
-    sudo systemctl enable logstash
     sudo systemctl start logstash
     ```
-
-6. Once you have enabled the Logstash service and it has been started check `logstash-plain.log` to confirm there are no errors.
-
-    ```BASH
-    cat /var/log/logstash/logstash-plain.log
-    ```
-
-  `Note: If you are seeing errors in the log please refer to the [troubleshooting](#troubleshooting) steps below.
 
 ### View Logs in Azure Sentinel
 
 1. Wait for logs to arrive in Azure Sentinel.
 
-  The new custom log will be created automatically by the Azure Log Analytics plugin for Logstash. You should find the opnSense table in Azure Sentinel -> Logs -> Custom Logs.
-
-  `You do not need to configure a custom log source in Azure Sentinel "Advanced settings".`
   
-- It can take up to 20 minutes for the Custom Logs table to be populated.
+- It can take up to 30 minutes for the role assignment granted to the Entra ID App registration on the DCR to take effect. Until then, you may see 403 errors in the Logstash log.
 
     ![image](https://github.com/Truvis/Sentinel/assets/23244379/4e586445-5681-4184-993d-aecfba31d818)
 
