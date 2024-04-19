@@ -82,7 +82,7 @@ if "IP_Private_Source" not in [tags] {
     sudo wget https://raw.githubusercontent.com/HartD92/Sentinel/main/Parsers/LogStash/OPNSense/conf.d/03-filter.conf -P /etc/logstash/conf.d/
     sudo wget https://raw.githubusercontent.com/HartD92/Sentinel/main/Parsers/LogStash/OPNSense/conf.d/20-interfaces.conf -P /etc/logstash/conf.d/
     sudo wget https://raw.githubusercontent.com/HartD92/Sentinel/main/Parsers/LogStash/OPNSense/conf.d/30-geoip.conf -P /etc/logstash/conf.d/
-    sudo wget https://raw.githubusercontent.com/HartD92/Sentinel/main/Parsers/LogStash/OPNSense/conf.d/49-cleanup.conf /etc/logstash/conf.d/
+    sudo wget https://raw.githubusercontent.com/HartD92/Sentinel/main/Parsers/LogStash/OPNSense/conf.d/49-cleanup.conf -P /etc/logstash/conf.d/
     sudo wget https://raw.githubusercontent.com/HartD92/Sentinel/main/Parsers/LogStash/OPNSense/conf.d/50-output.conf -P /etc/logstash/conf.d/
     sudo wget https://raw.githubusercontent.com/HartD92/Sentinel/main/Parsers/LogStash/OPNSense/conf.d/patterns/pfelk.grok -P /etc/logstash/conf.d/patterns/
     ```
