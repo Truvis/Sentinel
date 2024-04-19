@@ -1,10 +1,10 @@
 # OPNsense > LogStash > Azure Sentinel
 
->NOTE: This guide does not touch on the parsing of the other log types from other services within OpnSense(expect that to come later).
+>NOTE: This guide does not touch on the parsing of the other log types from other services within OPNSense(expect that to come later).
 
 >NOTE: This guide currently is primarily for using a Custom Log Analytics table. Expect a modification to use ASIM-formatted NetworkSessions log later.
 
->UPDATE: Suricata parsing was added. Make sure 
+>UPDATE: Suricata parsing was added. Make sure you have EVE logging checked in the IDPS configuration in OPNSense.
 
 ### Ubuntu (v22.04) Server in Azure
   
@@ -124,7 +124,12 @@ Make a note of your Azure Configuration, you will need it to configure the the L
 1. Login to Entra and browse to your `App Registrations` settings.
 2. Create a new `App Registration` per the [Microsoft Documentation](https://learn.microsoft.com/en-us/azure/azure-monitor/logs/tutorial-logs-ingestion-portal#create-microsoft-entra-application).
 3. Create a new `App Secret` and make a note of it, as well as the `Application (client) ID` and `Directory (tenant) ID`.
-4. Navigate to `Azure Monitor`, select `Data Collection Endpoint`, and create a new one as per the [Microsoft Documentation](https://learn.microsoft.com/en-us/azure/azure-monitor/logs/tutorial-logs-ingestion-portal#create-data-collection-endpoint).
+    
+    ![image](https://raw.githubusercontent.com/HartD92/Sentinel/3857dbf6623c033f8415599ae00b74551ccbf4ae/entraAppReg.png)
+
+4. Navigate to `Azure Monitor`, select `Data Collection Endpoint`, and create a new one as per the [Microsoft Documentation](https://learn.microsoft.com/en-us/azure/azure-monitor/logs/tutorial-logs-ingestion-portal#create-data-collection-endpoint). Make note of the `Logs Ingestion URL`.
+
+    ![image](https://raw.githubusercontent.com/HartD92/Sentinel/3857dbf6623c033f8415599ae00b74551ccbf4ae/DCEEndpoint.png)
 
 5. Run the command to install the [Microsoft Logstash LogAnalytics](https://github.com/Azure/Azure-Sentinel/tree/master/DataConnectors/microsoft-logstash-output-azure-loganalytics) plugin.
 
@@ -148,7 +153,7 @@ Make a note of your Azure Configuration, you will need it to configure the the L
         }
         ```
 
-    2. Enable and Start LogStash to generate a sample file.
+    2. Enable and Start Logstash to generate a sample file.
 
         ```BASH
         sudo systemctl enable logstash
@@ -171,10 +176,12 @@ Make a note of your Azure Configuration, you will need it to configure the the L
 
 7. Create the `Data Collection Rule`.
     1. If creating a custom Log Analytics table, create one as per the [Microsoft Documentation](https://learn.microsoft.com/en-us/azure/azure-monitor/logs/tutorial-logs-ingestion-portal#create-new-table-in-log-analytics-workspace). When providing the schema, use the sample file generated in `Step 8`.
-
-        ![image](https://github.com/Truvis/Sentinel/assets/23244379/6fef583e-9409-4dc2-8201-9a33a225508d)
     
-    2. If not creating a custom table, create the `Data Collection Rule` using the [Microsoft Documentation](https://learn.microsoft.com/en-us/azure/azure-monitor/logs/tutorial-logs-ingestion-api#create-data-collection-rule).
+    2. If not creating a custom table, create the `Data Collection Rule` using the [Microsoft Documentation](https://learn.microsoft.com/en-us/azure/azure-monitor/logs/tutorial-logs-ingestion-api#create-data-collection-rule). Take note of the `immutableId` from the `JSON View`.
+
+        ![image](https://raw.githubusercontent.com/HartD92/Sentinel/3857dbf6623c033f8415599ae00b74551ccbf4ae/DCRJson.png)
+        ![image](https://raw.githubusercontent.com/HartD92/Sentinel/3857dbf6623c033f8415599ae00b74551ccbf4ae/DCRImmutableId.png)
+
 
 8. Reconfigure the output plugin file to send data to the Sentinel Log Ingestion API using the data gathered in `steps 3, 4, and 7`.
 
