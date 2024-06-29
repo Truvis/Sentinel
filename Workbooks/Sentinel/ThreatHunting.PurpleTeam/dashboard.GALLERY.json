@@ -12,9 +12,6 @@
       "type": 9,
       "content": {
         "version": "KqlParameterItem/1.0",
-        "crossComponentResources": [
-          "/subscriptions/18fedf52-f250-4dc7-896d-d96dd4e10430/resourcegroups/security/providers/microsoft.operationalinsights/workspaces/security-instance"
-        ],
         "parameters": [
           {
             "id": "413ed618-1329-4734-bbf0-fe4d3c806d44",
@@ -153,14 +150,14 @@
         ],
         "style": "pills",
         "queryType": 0,
-        "resourceType": "microsoft.resourcegraph/resources"
+        "resourceType": "microsoft.operationalinsights/workspaces"
       },
       "name": "parameters - 1"
     },
     {
       "type": 1,
       "content": {
-        "json": "<div style=\"width:100%;height:100%;font-family:arial;padding-left:20px;padding-right:20px;padding-top:10px;padding-bottom:20px;border-top: 2px dashed #371F76;border-bottom: 2px dashed #371F76;background:#e9e6f3;border-radius: 10px / 20px;\">\r\n\r\n<span style=\"color:#371F76;font-size:12pt;font-weight:bold;\">📌 NOTE</span><br><br>\r\n\r\n<span style=\"color:#000;font-size:10pt\">Use the ⚙️CONFIG tab to add additional/custom tables or parses to be searched here. MAKE SURE TO SAVE this dashboard after making changes!<br><br>The Endpoint_Name, Search_String and Search_String2 need to be filled to search. <b>If searching by OR make Search_String and Search_String2 the same value.</b><br>\r\n</span></div>"
+        "json": "<div style=\"width:100%;height:100%;font-family:arial;padding-left:20px;padding-right:20px;padding-top:10px;padding-bottom:20px;border-top: 2px dashed #371F76;border-bottom: 2px dashed #371F76;background:#e9e6f3;border-radius: 10px / 20px;\">\r\n\r\n<span style=\"color:#371F76;font-size:12pt;font-weight:bold;\">📌 NOTE</span><br><br>\r\n\r\n<span style=\"color:#000;font-size:10pt\">Use the ⚙️CONFIG tab to add additional/custom tables or parses to be searched here. **MAKE SURE TO SAVE this dashboard after making changes!**<br><br>**❗  IMPORTANT:** You will need to visit the CONFIG page first to load the custom tables so they load on all the tabs.<br><br>The Endpoint_Name, Search_String and Search_String2 need to be filled to search. <b>If searching by OR make Search_String and Search_String2 the same value.</b><br>\r\n</span></div>"
       },
       "name": "text - 2"
     },
@@ -3579,7 +3576,7 @@
     {
       "type": 1,
       "content": {
-        "json": "<div style=\"background-color:#efefef;padding-left:20px;padding-right:20px;padding-top:30px;padding-bottom:30px;border-top: 2px solid #120052;border-bottom: 2px solid #120052;color:#120052;\">\r\n\r\n<img src=\"https://i.postimg.cc/ZK73CJZX/sentinelcat.png\" style=\"float: left;padding-right: 20px;border-radius: 25px;\">\r\n**Version:** 1.24.6.01 (June 2024 Rev 1)<br>\r\n**Download:** https://truv.is/go/[ID]<br>\r\n**Support:** support@truv.is<br>\r\n**Author:** Truvis Thornton - <a href=\"https://www.linkedin.com/in/truvis\" target=\"_blank\">LinkedIn</a> | <a href=\"https://x.com/thattechkitten\" target=\"_blank\">Twitter</a> | <a href=\"https://github.com/truvis\" target=\"_blank\">GitHub</a><br>\r\n_Copyright 2024 TruValue Information Security. All rights reservered._<br><br>\r\nThis dashboard is used to quickly view events triggered by a pentest or an engagement. Fill in the endpoint and then search for specific strings that were used in the engagement<br>\r\n</div>"
+        "json": "<div style=\"background-color:#efefef;padding-left:20px;padding-right:20px;padding-top:30px;padding-bottom:30px;border-top: 2px solid #120052;border-bottom: 2px solid #120052;color:#120052;\">\r\n\r\n<img src=\"https://i.postimg.cc/ZK73CJZX/sentinelcat.png\" style=\"float: left;padding-right: 20px;border-radius: 25px;\">\r\n**Version:** 1.24.6.01 (June 2024 Rev 1)<br>\r\n**Download:** https://truv.is/go/1243<br>\r\n**Support:** support@truv.is<br>\r\n**Author:** Truvis Thornton - <a href=\"https://www.linkedin.com/in/truvis\" target=\"_blank\">LinkedIn</a> | <a href=\"https://x.com/thattechkitten\" target=\"_blank\">Twitter</a> | <a href=\"https://github.com/truvis\" target=\"_blank\">GitHub</a> | <a href=\"https://medium.com/@truvis.thornton\" target=\"_blank\">Medium</a> <br>\r\n_Copyright 2024 TruValue Information Security. All rights reservered._<br><br>\r\nThis dashboard is used to quickly view events triggered by an engagement, DFIR, or other by searching for specific strings.<br>\r\n</div>"
       },
       "name": "text - 6"
     }
