@@ -1,0 +1,3592 @@
+{
+  "version": "Notebook/1.0",
+  "items": [
+    {
+      "type": 1,
+      "content": {
+        "json": "<div style=\"background-color:#371F76;padding-left:20px;padding-right:20px;padding-top:4px;padding-bottom:12px;border-left: 1px solid #000;border-right: 1px solid #000;border-top: 1px solid #000;;background: linear-gradient(to right, #AC94F4 0%,#AC94F4 300px,#371F76 65%,#371F76 100%);display:felx\">\r\n<img src=\"https://i.ibb.co/R9gcgmR/2023-03-05-22-43-49-Adobe-Express-2.png\" height=\"50px\"><br>\r\n<span style=\"color:#F2914D;font-size:30pt;font-weight:bold;filter: drop-shadow(0.5rem 0.5rem 0.9rem rgba(30, 30, 30, 1.0));color:#fff2df;\">PurpleTeam Event Viewing Dashboard</span><br>\r\n</div>\r\n<div style=\"background-color:#371F76;padding-left:20px;padding-right:20px;padding-top:8px;padding-bottom:10px;border-bottom: 1px solid #000;border-left: 1px solid #000;border-right: 1px solid #000;color:#fff2df;background: linear-gradient(to right, #371F76 0%,#371F76 25%,#371F76 100%);display:felx;filter: drop-shadow(0.2rem 0.2rem 0.1rem rgba(30, 30, 30, 0.5))\">\r\n<span style=\"color:#F2914D;font-size:12pt;font-weight:bold;filter: (0.2rem 0.2rem 0.2rem rgba(0, 0, 30, 0.5));color:#fff2df;\"><span style=\"color:#F2914D;\">(</span>DASHBOARD<span style=\"color:#F2914D;\">) </span>PurpleTeam<span style=\"color:#F2914D;\"> :: </span>EventViewer <span style=\"color:#F2914D;\">»</span> Activities <span style=\"color:#F2914D;font-size:7pt;font-weight:bold;color:#F2914D;text-transform: uppercase;\">ver 1.24.6.01 (June 2024 Rev 1)</span><br></span>\r\n\r\n</div>"
+      },
+      "name": "text - 0"
+    },
+    {
+      "type": 9,
+      "content": {
+        "version": "KqlParameterItem/1.0",
+        "crossComponentResources": [
+          "/subscriptions/18fedf52-f250-4dc7-896d-d96dd4e10430/resourcegroups/security/providers/microsoft.operationalinsights/workspaces/security-instance"
+        ],
+        "parameters": [
+          {
+            "id": "413ed618-1329-4734-bbf0-fe4d3c806d44",
+            "version": "KqlParameterItem/1.0",
+            "name": "TimeRange",
+            "label": "Time Range",
+            "type": 4,
+            "description": "Time range picker",
+            "isRequired": true,
+            "isGlobal": true,
+            "typeSettings": {
+              "selectableValues": [
+                {
+                  "durationMs": 300000
+                },
+                {
+                  "durationMs": 900000
+                },
+                {
+                  "durationMs": 1800000
+                },
+                {
+                  "durationMs": 3600000
+                },
+                {
+                  "durationMs": 14400000
+                },
+                {
+                  "durationMs": 43200000
+                },
+                {
+                  "durationMs": 86400000
+                },
+                {
+                  "durationMs": 172800000
+                },
+                {
+                  "durationMs": 259200000
+                },
+                {
+                  "durationMs": 604800000
+                },
+                {
+                  "durationMs": 1209600000
+                },
+                {
+                  "durationMs": 2419200000
+                },
+                {
+                  "durationMs": 2592000000
+                },
+                {
+                  "durationMs": 5184000000
+                },
+                {
+                  "durationMs": 7776000000
+                }
+              ],
+              "allowCustom": true
+            },
+            "timeContext": {
+              "durationMs": 86400000
+            },
+            "value": {
+              "durationMs": 3600000
+            }
+          },
+          {
+            "id": "232b0c20-e327-4677-ba99-b08083b8128d",
+            "version": "KqlParameterItem/1.0",
+            "name": "DefaultSubscription_Internal",
+            "type": 1,
+            "isRequired": true,
+            "query": "where type =~ 'microsoft.operationalinsights/workspaces'\r\n| take 1\r\n| project subscriptionId",
+            "crossComponentResources": [
+              "value::all"
+            ],
+            "isHiddenWhenLocked": true,
+            "queryType": 1,
+            "resourceType": "microsoft.resourcegraph/resources"
+          },
+          {
+            "id": "fbd67ae9-2fd4-4af0-9b26-056d6603b407",
+            "version": "KqlParameterItem/1.0",
+            "name": "Subscription",
+            "type": 6,
+            "isRequired": true,
+            "isGlobal": true,
+            "query": "summarize by subscriptionId\r\n| project value = strcat(\"/subscriptions/\", subscriptionId), label = subscriptionId, selected = iff(subscriptionId =~ '{DefaultSubscription_Internal}', true, false)\r\n",
+            "crossComponentResources": [
+              "value::all"
+            ],
+            "typeSettings": {
+              "additionalResourceOptions": [],
+              "showDefault": false
+            },
+            "queryType": 1,
+            "resourceType": "microsoft.resourcegraph/resources"
+          },
+          {
+            "id": "4c53f2f4-d952-4ff9-b01c-905f136528c5",
+            "version": "KqlParameterItem/1.0",
+            "name": "Workspace",
+            "type": 5,
+            "isRequired": true,
+            "isGlobal": true,
+            "query": "where type =~ 'microsoft.operationalinsights/workspaces'\r\n| project id",
+            "crossComponentResources": [
+              "value::all"
+            ],
+            "typeSettings": {
+              "resourceTypeFilter": {
+                "microsoft.operationalinsights/workspaces": true
+              },
+              "additionalResourceOptions": [],
+              "showDefault": false
+            },
+            "queryType": 1,
+            "resourceType": "microsoft.resourcegraph/resources",
+            "value": "/subscriptions/18fedf52-f250-4dc7-896d-d96dd4e10430/resourceGroups/security/providers/Microsoft.OperationalInsights/workspaces/security-instance"
+          },
+          {
+            "id": "9cd582ce-f8a1-4dd2-85cf-b227728bc7f8",
+            "version": "KqlParameterItem/1.0",
+            "name": "resourceGroup",
+            "type": 1,
+            "isRequired": true,
+            "isGlobal": true,
+            "query": "resources\r\n| where type =~ 'microsoft.operationalinsights/workspaces'\r\n| where id == \"{Workspace}\"\r\n| project resourceGroup",
+            "crossComponentResources": [
+              "{Workspace}"
+            ],
+            "queryType": 1,
+            "resourceType": "microsoft.resourcegraph/resources"
+          }
+        ],
+        "style": "pills",
+        "queryType": 0,
+        "resourceType": "microsoft.resourcegraph/resources"
+      },
+      "name": "parameters - 1"
+    },
+    {
+      "type": 1,
+      "content": {
+        "json": "<div style=\"width:100%;height:100%;font-family:arial;padding-left:20px;padding-right:20px;padding-top:10px;padding-bottom:20px;border-top: 2px dashed #371F76;border-bottom: 2px dashed #371F76;background:#e9e6f3;border-radius: 10px / 20px;\">\r\n\r\n<span style=\"color:#371F76;font-size:12pt;font-weight:bold;\">📌 NOTE</span><br><br>\r\n\r\n<span style=\"color:#000;font-size:10pt\">Use the ⚙️CONFIG tab to add additional/custom tables or parses to be searched here. MAKE SURE TO SAVE this dashboard after making changes!<br><br>The Endpoint_Name, Search_String and Search_String2 need to be filled to search. <b>If searching by OR make Search_String and Search_String2 the same value.</b><br>\r\n</span></div>"
+      },
+      "name": "text - 2"
+    },
+    {
+      "type": 11,
+      "content": {
+        "version": "LinkItem/1.0",
+        "style": "tabs",
+        "tabStyle": "bigger",
+        "links": [
+          {
+            "id": "06b1789a-6f1d-4bb1-99c6-0219cd718f64",
+            "cellValue": "SelectedTab",
+            "linkTarget": "parameter",
+            "linkLabel": "🖥️ Endpoint",
+            "subTarget": "Endpoint",
+            "style": "link"
+          },
+          {
+            "id": "e98816fa-367a-4735-88e5-3e43eb830090",
+            "cellValue": "SelectedTab",
+            "linkTarget": "parameter",
+            "linkLabel": "🔌 Network",
+            "subTarget": "Network",
+            "style": "link"
+          },
+          {
+            "id": "69c9610f-8561-4a51-8e40-c7e4db6b45ab",
+            "cellValue": "SelectedTab",
+            "linkTarget": "parameter",
+            "linkLabel": "👥 Identity",
+            "subTarget": "Identity",
+            "style": "link"
+          },
+          {
+            "id": "2a4c12da-4cde-45dc-8f54-429aa43ec906",
+            "cellValue": "SelectedTab",
+            "linkTarget": "parameter",
+            "linkLabel": "☁️ Cloud",
+            "subTarget": "Cloud",
+            "style": "link"
+          },
+          {
+            "id": "6806a830-095a-4f92-9339-8f71fe30d51a",
+            "cellValue": "SelectedTab",
+            "linkTarget": "parameter",
+            "linkLabel": "🛡️ Alerts/Incidents",
+            "subTarget": "Alerts",
+            "style": "link"
+          },
+          {
+            "id": "6d9c9ac2-c836-44f6-b02f-9e2fbf577d82",
+            "cellValue": "SelectedTab",
+            "linkTarget": "parameter",
+            "linkLabel": "⚙️ Config",
+            "subTarget": "Config",
+            "style": "link"
+          }
+        ]
+      },
+      "name": "links - 0"
+    },
+    {
+      "type": 12,
+      "content": {
+        "version": "NotebookGroup/1.0",
+        "groupType": "editable",
+        "items": [
+          {
+            "type": 1,
+            "content": {
+              "json": "<div style=\"background-color:#AC94F4;padding-left:20px;padding-right:20px;padding-top:10px;padding-bottom:20px;border: 1px solid #000;filter: drop-shadow(0.2rem 0.2rem 0.2rem rgba(0, 0, 30, 0.5));color:#fff2df;border-radius: 10px / 30px;background: linear-gradient(to right, #643B9F 0%,#AC94F4 100%);display:felx\">\r\n<span style=\"font-size:18pt;font-weight:bold;color:#F8F8F8;\">⚙️ Config</span><br>\r\nAssign custom tables to tab groups here\r\n</div>"
+            },
+            "name": "text - 3"
+          },
+          {
+            "type": 1,
+            "content": {
+              "json": "<div style=\"margin-right:30px;margin-left:10px;margin-bottom:0px;background-color:#371F76 ;padding-left:20px;padding-right:20px;padding-top:10px;padding-bottom:12px;border: 1px solid #000;filter: drop-shadow(0.2rem 0.2rem 0.2rem rgba(0, 0, 30, 0.5));color:#fff2df;border-radius: 10px / 30px;background: linear-gradient(to right, #371F76 0%,#371F76 100%);display:felx\">\r\n<span style=\"font-size:12pt;font-weight:bold;color:#ffffff;\">🖥️ Endpoint</span></div>"
+            },
+            "customWidth": "100",
+            "name": "text - 4 - Copy",
+            "styleSettings": {
+              "maxWidth": "100"
+            }
+          },
+          {
+            "type": 9,
+            "content": {
+              "version": "KqlParameterItem/1.0",
+              "parameters": [
+                {
+                  "id": "bf839284-dfba-4309-b284-1cdb159c3484",
+                  "version": "KqlParameterItem/1.0",
+                  "name": "Table_1_1",
+                  "label": "Endpoint_Custom_Table_1",
+                  "type": 1,
+                  "isGlobal": true,
+                  "timeContext": {
+                    "durationMs": 86400000
+                  },
+                  "value": "Table_Parser_Name_here"
+                },
+                {
+                  "id": "78844fb9-c019-4b2c-bb87-e8fa5c2fca8b",
+                  "version": "KqlParameterItem/1.0",
+                  "name": "Table_1_2",
+                  "label": "Endpoint Custom Table 2",
+                  "type": 1,
+                  "isGlobal": true,
+                  "timeContext": {
+                    "durationMs": 86400000
+                  },
+                  "value": "Table_Parser_Name_here"
+                },
+                {
+                  "id": "6a5f8b56-d178-4c30-a24a-cedceb32bb90",
+                  "version": "KqlParameterItem/1.0",
+                  "name": "Table_1_3",
+                  "label": "Endpoint Custom Table 3",
+                  "type": 1,
+                  "isGlobal": true,
+                  "timeContext": {
+                    "durationMs": 86400000
+                  },
+                  "value": "Table_Parser_Name_here"
+                }
+              ],
+              "style": "formHorizontal",
+              "queryType": 0,
+              "resourceType": "microsoft.operationalinsights/workspaces"
+            },
+            "name": "parameters - 6"
+          },
+          {
+            "type": 1,
+            "content": {
+              "json": "<div style=\"margin-right:30px;margin-left:10px;margin-bottom:0px;background-color:#371F76 ;padding-left:20px;padding-right:20px;padding-top:10px;padding-bottom:12px;border: 1px solid #000;filter: drop-shadow(0.2rem 0.2rem 0.2rem rgba(0, 0, 30, 0.5));color:#fff2df;border-radius: 10px / 30px;background: linear-gradient(to right, #371F76 0%,#371F76 100%);display:felx\">\r\n<span style=\"font-size:12pt;font-weight:bold;color:#ffffff;\">🔌 Network</span></div>"
+            },
+            "customWidth": "100",
+            "name": "text - 4",
+            "styleSettings": {
+              "maxWidth": "100"
+            }
+          },
+          {
+            "type": 9,
+            "content": {
+              "version": "KqlParameterItem/1.0",
+              "parameters": [
+                {
+                  "id": "8e46e679-fbdd-4efe-b429-8d52c932a738",
+                  "version": "KqlParameterItem/1.0",
+                  "name": "Table_2_1",
+                  "label": "Network Custom Table 1",
+                  "type": 1,
+                  "isGlobal": true,
+                  "timeContext": {
+                    "durationMs": 86400000
+                  },
+                  "value": "Table_Parser_Name_here"
+                },
+                {
+                  "id": "a6144575-dda9-4e32-8275-fdd63cf943cb",
+                  "version": "KqlParameterItem/1.0",
+                  "name": "Table_2_2",
+                  "label": "Network Custom Table 2",
+                  "type": 1,
+                  "isGlobal": true,
+                  "timeContext": {
+                    "durationMs": 86400000
+                  },
+                  "value": "Table_Parser_Name_here"
+                },
+                {
+                  "id": "fffac63f-30d8-4351-a3ac-c4074f632b74",
+                  "version": "KqlParameterItem/1.0",
+                  "name": "Table_2_3",
+                  "label": "Network Custom Table 3",
+                  "type": 1,
+                  "isGlobal": true,
+                  "timeContext": {
+                    "durationMs": 86400000
+                  },
+                  "value": "Table_Parser_Name_here"
+                }
+              ],
+              "style": "formHorizontal",
+              "queryType": 0,
+              "resourceType": "microsoft.operationalinsights/workspaces"
+            },
+            "name": "parameters - 6 - Copy"
+          },
+          {
+            "type": 1,
+            "content": {
+              "json": "<div style=\"margin-right:30px;margin-left:10px;margin-bottom:0px;background-color:#371F76 ;padding-left:20px;padding-right:20px;padding-top:10px;padding-bottom:12px;border: 1px solid #000;filter: drop-shadow(0.2rem 0.2rem 0.2rem rgba(0, 0, 30, 0.5));color:#fff2df;border-radius: 10px / 30px;background: linear-gradient(to right, #371F76 0%,#371F76 100%);display:felx\">\r\n<span style=\"font-size:12pt;font-weight:bold;color:#ffffff;\">👥 Identity</span></div>"
+            },
+            "customWidth": "100",
+            "name": "text - 4 - Copy",
+            "styleSettings": {
+              "maxWidth": "100"
+            }
+          },
+          {
+            "type": 9,
+            "content": {
+              "version": "KqlParameterItem/1.0",
+              "parameters": [
+                {
+                  "id": "7355b952-9c01-4385-a3c0-42bc177c0a03",
+                  "version": "KqlParameterItem/1.0",
+                  "name": "Table_3_1",
+                  "label": "Identity Custom Table 1",
+                  "type": 1,
+                  "isGlobal": true,
+                  "timeContext": {
+                    "durationMs": 86400000
+                  },
+                  "value": "Table_Parser_Name_here"
+                },
+                {
+                  "id": "0b77e9e3-7bae-4c3e-9121-82f68aca0f61",
+                  "version": "KqlParameterItem/1.0",
+                  "name": "Table_3_2",
+                  "label": "Identity Custom Table 2",
+                  "type": 1,
+                  "isGlobal": true,
+                  "timeContext": {
+                    "durationMs": 86400000
+                  },
+                  "value": "Table_Parser_Name_here"
+                },
+                {
+                  "id": "3bf8354e-0aca-4fce-a48b-5c7be8f2220e",
+                  "version": "KqlParameterItem/1.0",
+                  "name": "Table_3_3",
+                  "label": "Identity Custom Table 3",
+                  "type": 1,
+                  "isGlobal": true,
+                  "timeContext": {
+                    "durationMs": 86400000
+                  },
+                  "value": "Table_Parser_Name_here"
+                }
+              ],
+              "style": "formHorizontal",
+              "queryType": 0,
+              "resourceType": "microsoft.operationalinsights/workspaces"
+            },
+            "name": "parameters - 6 - Copy - Copy"
+          },
+          {
+            "type": 1,
+            "content": {
+              "json": "<div style=\"margin-right:30px;margin-left:10px;margin-bottom:0px;background-color:#371F76 ;padding-left:20px;padding-right:20px;padding-top:10px;padding-bottom:12px;border: 1px solid #000;filter: drop-shadow(0.2rem 0.2rem 0.2rem rgba(0, 0, 30, 0.5));color:#fff2df;border-radius: 10px / 30px;background: linear-gradient(to right, #371F76 0%,#371F76 100%);display:felx\">\r\n<span style=\"font-size:12pt;font-weight:bold;color:#ffffff;\">☁️ Cloud</span></div>"
+            },
+            "customWidth": "100",
+            "name": "text - 4 - Copy - Copy",
+            "styleSettings": {
+              "maxWidth": "100"
+            }
+          },
+          {
+            "type": 9,
+            "content": {
+              "version": "KqlParameterItem/1.0",
+              "parameters": [
+                {
+                  "id": "b5bd77cd-2ea2-455b-ae68-1126f7586457",
+                  "version": "KqlParameterItem/1.0",
+                  "name": "Table_4_1",
+                  "label": "Cloud Custom Table 1",
+                  "type": 1,
+                  "isGlobal": true,
+                  "timeContext": {
+                    "durationMs": 86400000
+                  },
+                  "value": "Table_Parser_Name_here"
+                },
+                {
+                  "id": "1c8d07e7-712c-45b9-9bfd-9b2a471a51b4",
+                  "version": "KqlParameterItem/1.0",
+                  "name": "Table_4_2",
+                  "label": "Cloud Custom Table 2",
+                  "type": 1,
+                  "isGlobal": true,
+                  "timeContext": {
+                    "durationMs": 86400000
+                  },
+                  "value": "Table_Parser_Name_here"
+                },
+                {
+                  "id": "b3470de9-3af0-4536-bd42-79c6ceed7769",
+                  "version": "KqlParameterItem/1.0",
+                  "name": "Table_4_3",
+                  "label": "Cloud Custom Table 3",
+                  "type": 1,
+                  "isGlobal": true,
+                  "timeContext": {
+                    "durationMs": 86400000
+                  },
+                  "value": "Table_Parser_Name_here"
+                }
+              ],
+              "style": "formHorizontal",
+              "queryType": 0,
+              "resourceType": "microsoft.operationalinsights/workspaces"
+            },
+            "name": "parameters - 6 - Copy - Copy - Copy"
+          },
+          {
+            "type": 1,
+            "content": {
+              "json": "<div style=\"margin-right:30px;margin-left:10px;margin-bottom:0px;background-color:#371F76 ;padding-left:20px;padding-right:20px;padding-top:10px;padding-bottom:12px;border: 1px solid #000;filter: drop-shadow(0.2rem 0.2rem 0.2rem rgba(0, 0, 30, 0.5));color:#fff2df;border-radius: 10px / 30px;background: linear-gradient(to right, #371F76 0%,#371F76 100%);display:felx\">\r\n<span style=\"font-size:12pt;font-weight:bold;color:#ffffff;\">🛡️ Alerts/Incidents</span></div>"
+            },
+            "customWidth": "100",
+            "name": "text - 4 - Copy - Copy - Copy",
+            "styleSettings": {
+              "maxWidth": "100"
+            }
+          },
+          {
+            "type": 9,
+            "content": {
+              "version": "KqlParameterItem/1.0",
+              "parameters": [
+                {
+                  "id": "885e7120-5f0f-42c2-a3c5-d824dea10fca",
+                  "version": "KqlParameterItem/1.0",
+                  "name": "Table_5_1",
+                  "label": "Alerts/Incidents Custom Table 1",
+                  "type": 1,
+                  "isGlobal": true,
+                  "timeContext": {
+                    "durationMs": 86400000
+                  },
+                  "value": "Table_Parser_Name_here"
+                },
+                {
+                  "id": "abe6267f-5c11-4095-a14f-c852063ff422",
+                  "version": "KqlParameterItem/1.0",
+                  "name": "Table_5_2",
+                  "label": "Alerts/Incidents Custom Table 2",
+                  "type": 1,
+                  "isGlobal": true,
+                  "timeContext": {
+                    "durationMs": 86400000
+                  },
+                  "value": "Table_Parser_Name_here"
+                },
+                {
+                  "id": "b6f9089b-500a-4cbc-aac0-48289da6dba2",
+                  "version": "KqlParameterItem/1.0",
+                  "name": "Table_5_3",
+                  "label": "Alerts/Incidents Custom Table 3",
+                  "type": 1,
+                  "isGlobal": true,
+                  "timeContext": {
+                    "durationMs": 86400000
+                  },
+                  "value": "Table_Parser_Name_here"
+                }
+              ],
+              "style": "formHorizontal",
+              "queryType": 0,
+              "resourceType": "microsoft.operationalinsights/workspaces"
+            },
+            "name": "parameters - 6 - Copy - Copy - Copy - Copy"
+          }
+        ],
+        "exportParameters": true
+      },
+      "conditionalVisibility": {
+        "parameterName": "SelectedTab",
+        "comparison": "isEqualTo",
+        "value": "Config"
+      },
+      "name": "group - 6 - Copy - Copy - Copy"
+    },
+    {
+      "type": 12,
+      "content": {
+        "version": "NotebookGroup/1.0",
+        "groupType": "editable",
+        "items": [
+          {
+            "type": 9,
+            "content": {
+              "version": "KqlParameterItem/1.0",
+              "parameters": [
+                {
+                  "id": "f53b1664-0cf8-4cde-a9d8-795ecb58b8dd",
+                  "version": "KqlParameterItem/1.0",
+                  "name": "Endpoint_Name",
+                  "type": 1,
+                  "description": "Search by endpoint name",
+                  "isRequired": true,
+                  "timeContext": {
+                    "durationMs": 86400000
+                  },
+                  "value": "adfs-hybrid.truv.is"
+                },
+                {
+                  "id": "bf839284-dfba-4309-b284-1cdb159c3484",
+                  "version": "KqlParameterItem/1.0",
+                  "name": "Search_String",
+                  "type": 1,
+                  "description": "Search by this string",
+                  "isRequired": true,
+                  "timeContext": {
+                    "durationMs": 86400000
+                  },
+                  "value": "truv.is"
+                },
+                {
+                  "id": "78844fb9-c019-4b2c-bb87-e8fa5c2fca8b",
+                  "version": "KqlParameterItem/1.0",
+                  "name": "OR_AND",
+                  "type": 2,
+                  "description": "OR_AND",
+                  "isRequired": true,
+                  "typeSettings": {
+                    "additionalResourceOptions": [],
+                    "showDefault": false
+                  },
+                  "jsonData": "[\r\n    { \"value\":\"and\", \"label\":\"AND\" },\r\n    { \"value\":\"or\", \"label\":\"OR\", \"selected\":true }\r\n]",
+                  "timeContext": {
+                    "durationMs": 86400000
+                  }
+                },
+                {
+                  "id": "6a5f8b56-d178-4c30-a24a-cedceb32bb90",
+                  "version": "KqlParameterItem/1.0",
+                  "name": "Search_String2",
+                  "type": 1,
+                  "description": "Search_String2",
+                  "isRequired": true,
+                  "timeContext": {
+                    "durationMs": 86400000
+                  },
+                  "value": "192.168.2.2"
+                }
+              ],
+              "style": "above",
+              "queryType": 0,
+              "resourceType": "microsoft.operationalinsights/workspaces"
+            },
+            "name": "parameters - 6"
+          },
+          {
+            "type": 1,
+            "content": {
+              "json": "<div style=\"background-color:#AC94F4;padding-left:20px;padding-right:20px;padding-top:10px;padding-bottom:20px;border: 1px solid #000;filter: drop-shadow(0.2rem 0.2rem 0.2rem rgba(0, 0, 30, 0.5));color:#fff2df;border-radius: 10px / 30px;background: linear-gradient(to right, #643B9F 0%,#AC94F4 100%);display:felx\">\r\n<span style=\"font-size:18pt;font-weight:bold;color:#F8F8F8;\">🖥️ {Endpoint_Name}</span><br>\r\nEvents associated to this end point by ➡️ {Search_String} {OR_AND} {Search_String2}\r\n</div>"
+            },
+            "name": "text - 3"
+          },
+          {
+            "type": 1,
+            "content": {
+              "json": "<div style=\"margin-right:30px;margin-left:10px;margin-bottom:0px;background-color:#371F76 ;padding-left:20px;padding-right:20px;padding-top:10px;padding-bottom:12px;border: 1px solid #000;filter: drop-shadow(0.2rem 0.2rem 0.2rem rgba(0, 0, 30, 0.5));color:#fff2df;border-radius: 10px / 30px;background: linear-gradient(to right, #371F76 0%,#371F76 100%);display:felx\">\r\n<span style=\"font-size:12pt;font-weight:bold;color:#ffffff;\">📖 DeviceFileEvents</span></div>"
+            },
+            "customWidth": "100",
+            "name": "text - 4 - Copy",
+            "styleSettings": {
+              "maxWidth": "100"
+            }
+          },
+          {
+            "type": 3,
+            "content": {
+              "version": "KqlItem/1.0",
+              "query": "DeviceFileEvents\r\n| where DeviceName contains \"{Endpoint_Name}\"\r\n| where (* contains \"{Search_String}\" {OR_AND} * contains \"{Search_String2}\")",
+              "size": 1,
+              "showAnalytics": true,
+              "noDataMessage": "No Events to show",
+              "timeContextFromParameter": "TimeRange",
+              "showRefreshButton": true,
+              "showExportToExcel": true,
+              "exportToExcelOptions": "all",
+              "queryType": 0,
+              "resourceType": "microsoft.operationalinsights/workspaces",
+              "gridSettings": {
+                "rowLimit": 10000
+              }
+            },
+            "name": "query - 3 - Copy",
+            "styleSettings": {
+              "showBorder": true
+            }
+          },
+          {
+            "type": 1,
+            "content": {
+              "json": "<div style=\"margin-right:30px;margin-left:10px;margin-bottom:0px;background-color:#371F76 ;padding-left:20px;padding-right:20px;padding-top:10px;padding-bottom:12px;border: 1px solid #000;filter: drop-shadow(0.2rem 0.2rem 0.2rem rgba(0, 0, 30, 0.5));color:#fff2df;border-radius: 10px / 30px;background: linear-gradient(to right, #371F76 0%,#371F76 100%);display:felx\">\r\n<span style=\"font-size:12pt;font-weight:bold;color:#ffffff;\">📖 DeviceEvents</span></div>"
+            },
+            "customWidth": "100",
+            "name": "text - 4",
+            "styleSettings": {
+              "maxWidth": "100"
+            }
+          },
+          {
+            "type": 3,
+            "content": {
+              "version": "KqlItem/1.0",
+              "query": "DeviceEvents\r\n| where DeviceName contains \"{Endpoint_Name}\"\r\n| where (* contains \"{Search_String}\" {OR_AND} * contains \"{Search_String2}\")",
+              "size": 1,
+              "showAnalytics": true,
+              "noDataMessage": "No Events to show",
+              "timeContextFromParameter": "TimeRange",
+              "showRefreshButton": true,
+              "showExportToExcel": true,
+              "exportToExcelOptions": "all",
+              "queryType": 0,
+              "resourceType": "microsoft.operationalinsights/workspaces",
+              "gridSettings": {
+                "rowLimit": 10000
+              }
+            },
+            "name": "query - 3",
+            "styleSettings": {
+              "showBorder": true
+            }
+          },
+          {
+            "type": 1,
+            "content": {
+              "json": "<div style=\"margin-right:30px;margin-left:10px;margin-bottom:0px;background-color:#371F76 ;padding-left:20px;padding-right:20px;padding-top:10px;padding-bottom:12px;border: 1px solid #000;filter: drop-shadow(0.2rem 0.2rem 0.2rem rgba(0, 0, 30, 0.5));color:#fff2df;border-radius: 10px / 30px;background: linear-gradient(to right, #371F76 0%,#371F76 100%);display:felx\">\r\n<span style=\"font-size:12pt;font-weight:bold;color:#ffffff;\">📖 DeviceFileCertificateInfo</span></div>"
+            },
+            "customWidth": "100",
+            "name": "text - 4 - Copy",
+            "styleSettings": {
+              "maxWidth": "100"
+            }
+          },
+          {
+            "type": 3,
+            "content": {
+              "version": "KqlItem/1.0",
+              "query": "DeviceFileCertificateInfo\r\n| where DeviceName contains \"{Endpoint_Name}\"\r\n| where (* contains \"{Search_String}\" {OR_AND} * contains \"{Search_String2}\")",
+              "size": 1,
+              "showAnalytics": true,
+              "noDataMessage": "No Events to show",
+              "timeContextFromParameter": "TimeRange",
+              "showRefreshButton": true,
+              "showExportToExcel": true,
+              "exportToExcelOptions": "all",
+              "queryType": 0,
+              "resourceType": "microsoft.operationalinsights/workspaces",
+              "gridSettings": {
+                "rowLimit": 10000
+              }
+            },
+            "name": "query - 3 - Copy",
+            "styleSettings": {
+              "showBorder": true
+            }
+          },
+          {
+            "type": 1,
+            "content": {
+              "json": "<div style=\"margin-right:30px;margin-left:10px;margin-bottom:0px;background-color:#371F76 ;padding-left:20px;padding-right:20px;padding-top:10px;padding-bottom:12px;border: 1px solid #000;filter: drop-shadow(0.2rem 0.2rem 0.2rem rgba(0, 0, 30, 0.5));color:#fff2df;border-radius: 10px / 30px;background: linear-gradient(to right, #371F76 0%,#371F76 100%);display:felx\">\r\n<span style=\"font-size:12pt;font-weight:bold;color:#ffffff;\">📖 DeviceImageLoadEvents</span></div>"
+            },
+            "customWidth": "100",
+            "name": "text - 4 - Copy - Copy",
+            "styleSettings": {
+              "maxWidth": "100"
+            }
+          },
+          {
+            "type": 3,
+            "content": {
+              "version": "KqlItem/1.0",
+              "query": "DeviceImageLoadEvents\r\n| where DeviceName contains \"{Endpoint_Name}\"\r\n| where (* contains \"{Search_String}\" {OR_AND} * contains \"{Search_String2}\")",
+              "size": 1,
+              "showAnalytics": true,
+              "noDataMessage": "No Events to show",
+              "timeContextFromParameter": "TimeRange",
+              "showRefreshButton": true,
+              "showExportToExcel": true,
+              "exportToExcelOptions": "all",
+              "queryType": 0,
+              "resourceType": "microsoft.operationalinsights/workspaces",
+              "gridSettings": {
+                "rowLimit": 10000
+              }
+            },
+            "name": "query - 3 - Copy - Copy",
+            "styleSettings": {
+              "showBorder": true
+            }
+          },
+          {
+            "type": 1,
+            "content": {
+              "json": "<div style=\"margin-right:30px;margin-left:10px;margin-bottom:0px;background-color:#371F76 ;padding-left:20px;padding-right:20px;padding-top:10px;padding-bottom:12px;border: 1px solid #000;filter: drop-shadow(0.2rem 0.2rem 0.2rem rgba(0, 0, 30, 0.5));color:#fff2df;border-radius: 10px / 30px;background: linear-gradient(to right, #371F76 0%,#371F76 100%);display:felx\">\r\n<span style=\"font-size:12pt;font-weight:bold;color:#ffffff;\">📖 DeviceLogonEvents</span></div>"
+            },
+            "customWidth": "100",
+            "name": "text - 4 - Copy - Copy - Copy",
+            "styleSettings": {
+              "maxWidth": "100"
+            }
+          },
+          {
+            "type": 3,
+            "content": {
+              "version": "KqlItem/1.0",
+              "query": "DeviceLogonEvents\r\n| where DeviceName contains \"{Endpoint_Name}\"\r\n| where (* contains \"{Search_String}\" {OR_AND} * contains \"{Search_String2}\")",
+              "size": 1,
+              "showAnalytics": true,
+              "noDataMessage": "No Events to show",
+              "timeContextFromParameter": "TimeRange",
+              "showRefreshButton": true,
+              "showExportToExcel": true,
+              "exportToExcelOptions": "all",
+              "queryType": 0,
+              "resourceType": "microsoft.operationalinsights/workspaces",
+              "gridSettings": {
+                "rowLimit": 10000
+              }
+            },
+            "name": "query - 3 - Copy - Copy - Copy",
+            "styleSettings": {
+              "showBorder": true
+            }
+          },
+          {
+            "type": 1,
+            "content": {
+              "json": "<div style=\"margin-right:30px;margin-left:10px;margin-bottom:0px;background-color:#371F76 ;padding-left:20px;padding-right:20px;padding-top:10px;padding-bottom:12px;border: 1px solid #000;filter: drop-shadow(0.2rem 0.2rem 0.2rem rgba(0, 0, 30, 0.5));color:#fff2df;border-radius: 10px / 30px;background: linear-gradient(to right, #371F76 0%,#371F76 100%);display:felx\">\r\n<span style=\"font-size:12pt;font-weight:bold;color:#ffffff;\">📖 DeviceNetworkEvents</span></div>"
+            },
+            "customWidth": "100",
+            "name": "text - 4 - Copy - Copy - Copy - Copy",
+            "styleSettings": {
+              "maxWidth": "100"
+            }
+          },
+          {
+            "type": 3,
+            "content": {
+              "version": "KqlItem/1.0",
+              "query": "DeviceNetworkEvents\r\n| where DeviceName contains \"{Endpoint_Name}\"\r\n| where (* contains \"{Search_String}\" {OR_AND} * contains \"{Search_String2}\")",
+              "size": 1,
+              "showAnalytics": true,
+              "noDataMessage": "No Events to show",
+              "timeContextFromParameter": "TimeRange",
+              "showRefreshButton": true,
+              "showExportToExcel": true,
+              "exportToExcelOptions": "all",
+              "queryType": 0,
+              "resourceType": "microsoft.operationalinsights/workspaces",
+              "gridSettings": {
+                "rowLimit": 10000
+              }
+            },
+            "showPin": true,
+            "name": "query - 3 - Copy - Copy - Copy - Copy",
+            "styleSettings": {
+              "showBorder": true
+            }
+          },
+          {
+            "type": 1,
+            "content": {
+              "json": "<div style=\"margin-right:30px;margin-left:10px;margin-bottom:0px;background-color:#371F76 ;padding-left:20px;padding-right:20px;padding-top:10px;padding-bottom:12px;border: 1px solid #000;filter: drop-shadow(0.2rem 0.2rem 0.2rem rgba(0, 0, 30, 0.5));color:#fff2df;border-radius: 10px / 30px;background: linear-gradient(to right, #371F76 0%,#371F76 100%);display:felx\">\r\n<span style=\"font-size:12pt;font-weight:bold;color:#ffffff;\">📖 DeviceProcessEvents</span></div>"
+            },
+            "customWidth": "100",
+            "name": "text - 4 - Copy - Copy - Copy - Copy - Copy",
+            "styleSettings": {
+              "maxWidth": "100"
+            }
+          },
+          {
+            "type": 3,
+            "content": {
+              "version": "KqlItem/1.0",
+              "query": "DeviceProcessEvents\r\n| where DeviceName contains \"{Endpoint_Name}\"\r\n| where (* contains \"{Search_String}\" {OR_AND} * contains \"{Search_String2}\")",
+              "size": 1,
+              "showAnalytics": true,
+              "noDataMessage": "No Events to show",
+              "timeContextFromParameter": "TimeRange",
+              "showRefreshButton": true,
+              "showExportToExcel": true,
+              "queryType": 0,
+              "resourceType": "microsoft.operationalinsights/workspaces",
+              "gridSettings": {
+                "rowLimit": 10000
+              }
+            },
+            "name": "query - 3 - Copy - Copy - Copy - Copy - Copy",
+            "styleSettings": {
+              "showBorder": true
+            }
+          },
+          {
+            "type": 1,
+            "content": {
+              "json": "<div style=\"margin-right:30px;margin-left:10px;margin-bottom:0px;background-color:#371F76 ;padding-left:20px;padding-right:20px;padding-top:10px;padding-bottom:12px;border: 1px solid #000;filter: drop-shadow(0.2rem 0.2rem 0.2rem rgba(0, 0, 30, 0.5));color:#fff2df;border-radius: 10px / 30px;background: linear-gradient(to right, #371F76 0%,#371F76 100%);display:felx\">\r\n<span style=\"font-size:12pt;font-weight:bold;color:#ffffff;\">📖 DeviceRegistryEvents</span></div>"
+            },
+            "customWidth": "100",
+            "name": "text - 4 - Copy - Copy - Copy - Copy - Copy - Copy",
+            "styleSettings": {
+              "maxWidth": "100"
+            }
+          },
+          {
+            "type": 3,
+            "content": {
+              "version": "KqlItem/1.0",
+              "query": "DeviceRegistryEvents\r\n| where DeviceName contains \"{Endpoint_Name}\"\r\n| where (* contains \"{Search_String}\" {OR_AND} * contains \"{Search_String2}\")",
+              "size": 1,
+              "showAnalytics": true,
+              "noDataMessage": "No Events to show",
+              "timeContextFromParameter": "TimeRange",
+              "showRefreshButton": true,
+              "showExportToExcel": true,
+              "exportToExcelOptions": "all",
+              "queryType": 0,
+              "resourceType": "microsoft.operationalinsights/workspaces",
+              "gridSettings": {
+                "rowLimit": 10000
+              }
+            },
+            "name": "query - 3 - Copy - Copy - Copy - Copy - Copy - Copy",
+            "styleSettings": {
+              "showBorder": true
+            }
+          },
+          {
+            "type": 1,
+            "content": {
+              "json": "<div style=\"margin-right:30px;margin-left:10px;margin-bottom:0px;background-color:#371F76 ;padding-left:20px;padding-right:20px;padding-top:10px;padding-bottom:12px;border: 1px solid #000;filter: drop-shadow(0.2rem 0.2rem 0.2rem rgba(0, 0, 30, 0.5));color:#fff2df;border-radius: 10px / 30px;background: linear-gradient(to right, #371F76 0%,#371F76 100%);display:felx\">\r\n<span style=\"font-size:12pt;font-weight:bold;color:#ffffff;\">📖 DeviceNetworkInfo</span></div>"
+            },
+            "customWidth": "100",
+            "name": "text - 4 - Copy - Copy - Copy - Copy - Copy - Copy - Copy",
+            "styleSettings": {
+              "maxWidth": "100"
+            }
+          },
+          {
+            "type": 3,
+            "content": {
+              "version": "KqlItem/1.0",
+              "query": "DeviceNetworkInfo\r\n| where DeviceName contains \"{Endpoint_Name}\"\r\n| where (* contains \"{Search_String}\" {OR_AND} * contains \"{Search_String2}\")",
+              "size": 1,
+              "showAnalytics": true,
+              "noDataMessage": "No Events to show",
+              "timeContextFromParameter": "TimeRange",
+              "showRefreshButton": true,
+              "showExportToExcel": true,
+              "exportToExcelOptions": "all",
+              "queryType": 0,
+              "resourceType": "microsoft.operationalinsights/workspaces",
+              "gridSettings": {
+                "rowLimit": 10000
+              }
+            },
+            "name": "query - 3 - Copy - Copy - Copy - Copy - Copy - Copy - Copy",
+            "styleSettings": {
+              "showBorder": true
+            }
+          },
+          {
+            "type": 1,
+            "content": {
+              "json": "<div style=\"margin-right:30px;margin-left:10px;margin-bottom:0px;background-color:#371F76 ;padding-left:20px;padding-right:20px;padding-top:10px;padding-bottom:12px;border: 1px solid #000;filter: drop-shadow(0.2rem 0.2rem 0.2rem rgba(0, 0, 30, 0.5));color:#fff2df;border-radius: 10px / 30px;background: linear-gradient(to right, #371F76 0%,#371F76 100%);display:felx\">\r\n<span style=\"font-size:12pt;font-weight:bold;color:#ffffff;\">📖 SecurityEvent</span></div>"
+            },
+            "customWidth": "100",
+            "name": "text - 4 - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy",
+            "styleSettings": {
+              "maxWidth": "100"
+            }
+          },
+          {
+            "type": 3,
+            "content": {
+              "version": "KqlItem/1.0",
+              "query": "SecurityEvent\r\n| where Computer contains \"{Endpoint_Name}\"\r\n| where (* contains \"{Search_String}\" {OR_AND} * contains \"{Search_String2}\")",
+              "size": 1,
+              "showAnalytics": true,
+              "noDataMessage": "No Events to show",
+              "timeContextFromParameter": "TimeRange",
+              "showRefreshButton": true,
+              "showExportToExcel": true,
+              "exportToExcelOptions": "all",
+              "queryType": 0,
+              "resourceType": "microsoft.operationalinsights/workspaces",
+              "gridSettings": {
+                "rowLimit": 10000
+              }
+            },
+            "name": "query - 3 - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy",
+            "styleSettings": {
+              "showBorder": true
+            }
+          },
+          {
+            "type": 1,
+            "content": {
+              "json": "<div style=\"margin-right:30px;margin-left:10px;margin-bottom:0px;background-color:#371F76 ;padding-left:20px;padding-right:20px;padding-top:10px;padding-bottom:12px;border: 1px solid #000;filter: drop-shadow(0.2rem 0.2rem 0.2rem rgba(0, 0, 30, 0.5));color:#fff2df;border-radius: 10px / 30px;background: linear-gradient(to right, #371F76 0%,#371F76 100%);display:felx\">\r\n<span style=\"font-size:12pt;font-weight:bold;color:#ffffff;\">📖 WindowsEvent</span></div>"
+            },
+            "customWidth": "100",
+            "name": "text - 4 - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy",
+            "styleSettings": {
+              "maxWidth": "100"
+            }
+          },
+          {
+            "type": 3,
+            "content": {
+              "version": "KqlItem/1.0",
+              "query": "WindowsEvent\r\n| where Computer contains \"{Endpoint_Name}\"\r\n| where (* contains \"{Search_String}\" {OR_AND} * contains \"{Search_String2}\")",
+              "size": 1,
+              "showAnalytics": true,
+              "noDataMessage": "No Events to show",
+              "timeContextFromParameter": "TimeRange",
+              "showRefreshButton": true,
+              "showExportToExcel": true,
+              "exportToExcelOptions": "all",
+              "queryType": 0,
+              "resourceType": "microsoft.operationalinsights/workspaces",
+              "gridSettings": {
+                "rowLimit": 10000
+              }
+            },
+            "name": "query - 3 - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy",
+            "styleSettings": {
+              "showBorder": true
+            }
+          },
+          {
+            "type": 1,
+            "content": {
+              "json": "<div style=\"margin-right:30px;margin-left:10px;margin-bottom:0px;background-color:#371F76 ;padding-left:20px;padding-right:20px;padding-top:10px;padding-bottom:12px;border: 1px solid #000;filter: drop-shadow(0.2rem 0.2rem 0.2rem rgba(0, 0, 30, 0.5));color:#fff2df;border-radius: 10px / 30px;background: linear-gradient(to right, #371F76 0%,#371F76 100%);display:felx\">\r\n<span style=\"font-size:12pt;font-weight:bold;color:#ffffff;\">📖 Syslog</span></div>"
+            },
+            "customWidth": "100",
+            "name": "text - 4 - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy",
+            "styleSettings": {
+              "maxWidth": "100"
+            }
+          },
+          {
+            "type": 3,
+            "content": {
+              "version": "KqlItem/1.0",
+              "query": "Syslog\r\n| where Computer contains \"{Endpoint_Name}\"\r\n| where (* contains \"{Search_String}\" {OR_AND} * contains \"{Search_String2}\")",
+              "size": 1,
+              "showAnalytics": true,
+              "noDataMessage": "No Events to show",
+              "timeContextFromParameter": "TimeRange",
+              "showRefreshButton": true,
+              "showExportToExcel": true,
+              "exportToExcelOptions": "all",
+              "queryType": 0,
+              "resourceType": "microsoft.operationalinsights/workspaces",
+              "gridSettings": {
+                "rowLimit": 10000
+              }
+            },
+            "name": "query - 3 - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy",
+            "styleSettings": {
+              "showBorder": true
+            }
+          },
+          {
+            "type": 1,
+            "content": {
+              "json": "<div style=\"margin-right:30px;margin-left:10px;margin-bottom:0px;background-color:#371F76 ;padding-left:20px;padding-right:20px;padding-top:10px;padding-bottom:12px;border: 1px solid #000;filter: drop-shadow(0.2rem 0.2rem 0.2rem rgba(0, 0, 30, 0.5));color:#fff2df;border-radius: 10px / 30px;background: linear-gradient(to right, #371F76 0%,#371F76 100%);display:felx\">\r\n<span style=\"font-size:12pt;font-weight:bold;color:#ffffff;\">📖 WindowsFirewall</span></div>"
+            },
+            "customWidth": "100",
+            "name": "text - 4 - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy",
+            "styleSettings": {
+              "maxWidth": "100"
+            }
+          },
+          {
+            "type": 3,
+            "content": {
+              "version": "KqlItem/1.0",
+              "query": "WindowsFirewall\r\n| where Computer contains \"{Endpoint_Name}\"\r\n| where (* contains \"{Search_String}\" {OR_AND} * contains \"{Search_String2}\")",
+              "size": 1,
+              "showAnalytics": true,
+              "noDataMessage": "No Events to show",
+              "timeContextFromParameter": "TimeRange",
+              "showRefreshButton": true,
+              "showExportToExcel": true,
+              "exportToExcelOptions": "all",
+              "queryType": 0,
+              "resourceType": "microsoft.operationalinsights/workspaces",
+              "gridSettings": {
+                "rowLimit": 10000
+              }
+            },
+            "name": "query - 3 - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy",
+            "styleSettings": {
+              "showBorder": true
+            }
+          },
+          {
+            "type": 1,
+            "content": {
+              "json": "<div style=\"margin-right:30px;margin-left:10px;margin-bottom:0px;background-color:#371F76 ;padding-left:20px;padding-right:20px;padding-top:10px;padding-bottom:12px;border: 1px solid #000;filter: drop-shadow(0.2rem 0.2rem 0.2rem rgba(0, 0, 30, 0.5));color:#fff2df;border-radius: 10px / 30px;background: linear-gradient(to right, #371F76 0%,#371F76 100%);display:felx\">\r\n<span style=\"font-size:12pt;font-weight:bold;color:#ffffff;\">📖 {Table_1_1}</span></div>"
+            },
+            "customWidth": "100",
+            "name": "text - 4 - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy",
+            "styleSettings": {
+              "maxWidth": "100"
+            }
+          },
+          {
+            "type": 3,
+            "content": {
+              "version": "KqlItem/1.0",
+              "query": "{Table_1_1}\r\n| where Computer contains \"{Endpoint_Name}\"\r\n| where (* contains \"{Search_String}\" {OR_AND} * contains \"{Search_String2}\")",
+              "size": 1,
+              "showAnalytics": true,
+              "noDataMessage": "No Events to show",
+              "timeContextFromParameter": "TimeRange",
+              "showRefreshButton": true,
+              "showExportToExcel": true,
+              "exportToExcelOptions": "all",
+              "queryType": 0,
+              "resourceType": "microsoft.operationalinsights/workspaces",
+              "gridSettings": {
+                "rowLimit": 10000
+              }
+            },
+            "name": "query - 3 - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy",
+            "styleSettings": {
+              "showBorder": true
+            }
+          },
+          {
+            "type": 1,
+            "content": {
+              "json": "<div style=\"margin-right:30px;margin-left:10px;margin-bottom:0px;background-color:#371F76 ;padding-left:20px;padding-right:20px;padding-top:10px;padding-bottom:12px;border: 1px solid #000;filter: drop-shadow(0.2rem 0.2rem 0.2rem rgba(0, 0, 30, 0.5));color:#fff2df;border-radius: 10px / 30px;background: linear-gradient(to right, #371F76 0%,#371F76 100%);display:felx\">\r\n<span style=\"font-size:12pt;font-weight:bold;color:#ffffff;\">📖 {Table_1_2}</span></div>"
+            },
+            "customWidth": "100",
+            "name": "text - 4 - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy",
+            "styleSettings": {
+              "maxWidth": "100"
+            }
+          },
+          {
+            "type": 3,
+            "content": {
+              "version": "KqlItem/1.0",
+              "query": "{Table_1_2}\r\n| where Computer contains \"{Endpoint_Name}\"\r\n| where (* contains \"{Search_String}\" {OR_AND} * contains \"{Search_String2}\")",
+              "size": 1,
+              "showAnalytics": true,
+              "noDataMessage": "No Events to show",
+              "timeContextFromParameter": "TimeRange",
+              "showRefreshButton": true,
+              "showExportToExcel": true,
+              "exportToExcelOptions": "all",
+              "queryType": 0,
+              "resourceType": "microsoft.operationalinsights/workspaces",
+              "gridSettings": {
+                "rowLimit": 10000
+              }
+            },
+            "name": "query - 3 - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy",
+            "styleSettings": {
+              "showBorder": true
+            }
+          },
+          {
+            "type": 1,
+            "content": {
+              "json": "<div style=\"margin-right:30px;margin-left:10px;margin-bottom:0px;background-color:#371F76 ;padding-left:20px;padding-right:20px;padding-top:10px;padding-bottom:12px;border: 1px solid #000;filter: drop-shadow(0.2rem 0.2rem 0.2rem rgba(0, 0, 30, 0.5));color:#fff2df;border-radius: 10px / 30px;background: linear-gradient(to right, #371F76 0%,#371F76 100%);display:felx\">\r\n<span style=\"font-size:12pt;font-weight:bold;color:#ffffff;\">📖 {Table_1_3}</span></div>"
+            },
+            "customWidth": "100",
+            "name": "text - 4 - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy",
+            "styleSettings": {
+              "maxWidth": "100"
+            }
+          },
+          {
+            "type": 3,
+            "content": {
+              "version": "KqlItem/1.0",
+              "query": "{Table_1_3}\r\n| where Computer contains \"{Endpoint_Name}\"\r\n| where (* contains \"{Search_String}\" {OR_AND} * contains \"{Search_String2}\")",
+              "size": 1,
+              "showAnalytics": true,
+              "noDataMessage": "No Events to show",
+              "timeContextFromParameter": "TimeRange",
+              "showRefreshButton": true,
+              "showExportToExcel": true,
+              "exportToExcelOptions": "all",
+              "queryType": 0,
+              "resourceType": "microsoft.operationalinsights/workspaces",
+              "gridSettings": {
+                "rowLimit": 10000
+              }
+            },
+            "name": "query - 3 - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy",
+            "styleSettings": {
+              "showBorder": true
+            }
+          }
+        ]
+      },
+      "conditionalVisibility": {
+        "parameterName": "SelectedTab",
+        "comparison": "isEqualTo",
+        "value": "Endpoint"
+      },
+      "name": "group - 6"
+    },
+    {
+      "type": 12,
+      "content": {
+        "version": "NotebookGroup/1.0",
+        "groupType": "editable",
+        "items": [
+          {
+            "type": 9,
+            "content": {
+              "version": "KqlParameterItem/1.0",
+              "parameters": [
+                {
+                  "id": "bf839284-dfba-4309-b284-1cdb159c3484",
+                  "version": "KqlParameterItem/1.0",
+                  "name": "Search_String",
+                  "type": 1,
+                  "description": "Search by this string",
+                  "isRequired": true,
+                  "timeContext": {
+                    "durationMs": 86400000
+                  },
+                  "value": "truv.is"
+                },
+                {
+                  "id": "78844fb9-c019-4b2c-bb87-e8fa5c2fca8b",
+                  "version": "KqlParameterItem/1.0",
+                  "name": "OR_AND",
+                  "type": 2,
+                  "description": "OR_AND",
+                  "isRequired": true,
+                  "typeSettings": {
+                    "additionalResourceOptions": [],
+                    "showDefault": false
+                  },
+                  "jsonData": "[\r\n    { \"value\":\"and\", \"label\":\"AND\" },\r\n    { \"value\":\"or\", \"label\":\"OR\", \"selected\":true }\r\n]",
+                  "timeContext": {
+                    "durationMs": 86400000
+                  }
+                },
+                {
+                  "id": "6a5f8b56-d178-4c30-a24a-cedceb32bb90",
+                  "version": "KqlParameterItem/1.0",
+                  "name": "Search_String2",
+                  "type": 1,
+                  "description": "Search_String2",
+                  "isRequired": true,
+                  "timeContext": {
+                    "durationMs": 86400000
+                  },
+                  "value": "192.168.2.2"
+                }
+              ],
+              "style": "above",
+              "queryType": 0,
+              "resourceType": "microsoft.operationalinsights/workspaces"
+            },
+            "name": "parameters - 6"
+          },
+          {
+            "type": 1,
+            "content": {
+              "json": "<div style=\"background-color:#AC94F4;padding-left:20px;padding-right:20px;padding-top:10px;padding-bottom:20px;border: 1px solid #000;filter: drop-shadow(0.2rem 0.2rem 0.2rem rgba(0, 0, 30, 0.5));color:#fff2df;border-radius: 10px / 30px;background: linear-gradient(to right, #643B9F 0%,#AC94F4 100%);display:felx\">\r\n<span style=\"font-size:18pt;font-weight:bold;color:#F8F8F8;\">🔌 Network</span><br>\r\nEvents associated to this end point by ➡️ {Search_String} {OR_AND} {Search_String2}\r\n</div>"
+            },
+            "name": "text - 3"
+          },
+          {
+            "type": 1,
+            "content": {
+              "json": "<div style=\"margin-right:30px;margin-left:10px;margin-bottom:0px;background-color:#371F76 ;padding-left:20px;padding-right:20px;padding-top:10px;padding-bottom:12px;border: 1px solid #000;filter: drop-shadow(0.2rem 0.2rem 0.2rem rgba(0, 0, 30, 0.5));color:#fff2df;border-radius: 10px / 30px;background: linear-gradient(to right, #371F76 0%,#371F76 100%);display:felx\">\r\n<span style=\"font-size:12pt;font-weight:bold;color:#ffffff;\">📖 CommonSecurityLog</span></div>"
+            },
+            "customWidth": "100",
+            "name": "text - 4 - Copy",
+            "styleSettings": {
+              "maxWidth": "100"
+            }
+          },
+          {
+            "type": 3,
+            "content": {
+              "version": "KqlItem/1.0",
+              "query": "CommonSecurityLog\r\n| where (* contains \"{Search_String}\" {OR_AND} * contains \"{Search_String2}\")",
+              "size": 1,
+              "showAnalytics": true,
+              "noDataMessage": "No Events to show",
+              "timeContextFromParameter": "TimeRange",
+              "showRefreshButton": true,
+              "showExportToExcel": true,
+              "exportToExcelOptions": "all",
+              "queryType": 0,
+              "resourceType": "microsoft.operationalinsights/workspaces",
+              "gridSettings": {
+                "rowLimit": 10000
+              }
+            },
+            "name": "query - 3 - Copy",
+            "styleSettings": {
+              "showBorder": true
+            }
+          },
+          {
+            "type": 1,
+            "content": {
+              "json": "<div style=\"margin-right:30px;margin-left:10px;margin-bottom:0px;background-color:#371F76 ;padding-left:20px;padding-right:20px;padding-top:10px;padding-bottom:12px;border: 1px solid #000;filter: drop-shadow(0.2rem 0.2rem 0.2rem rgba(0, 0, 30, 0.5));color:#fff2df;border-radius: 10px / 30px;background: linear-gradient(to right, #371F76 0%,#371F76 100%);display:felx\">\r\n<span style=\"font-size:12pt;font-weight:bold;color:#ffffff;\">📖 Syslog</span></div>"
+            },
+            "customWidth": "100",
+            "name": "text - 4",
+            "styleSettings": {
+              "maxWidth": "100"
+            }
+          },
+          {
+            "type": 3,
+            "content": {
+              "version": "KqlItem/1.0",
+              "query": "Syslog\r\n| where (* contains \"{Search_String}\" {OR_AND} * contains \"{Search_String2}\")",
+              "size": 1,
+              "showAnalytics": true,
+              "noDataMessage": "No Events to show",
+              "timeContextFromParameter": "TimeRange",
+              "showRefreshButton": true,
+              "showExportToExcel": true,
+              "exportToExcelOptions": "all",
+              "queryType": 0,
+              "resourceType": "microsoft.operationalinsights/workspaces",
+              "gridSettings": {
+                "rowLimit": 10000
+              }
+            },
+            "name": "query - 3",
+            "styleSettings": {
+              "showBorder": true
+            }
+          },
+          {
+            "type": 1,
+            "content": {
+              "json": "<div style=\"margin-right:30px;margin-left:10px;margin-bottom:0px;background-color:#371F76 ;padding-left:20px;padding-right:20px;padding-top:10px;padding-bottom:12px;border: 1px solid #000;filter: drop-shadow(0.2rem 0.2rem 0.2rem rgba(0, 0, 30, 0.5));color:#fff2df;border-radius: 10px / 30px;background: linear-gradient(to right, #371F76 0%,#371F76 100%);display:felx\">\r\n<span style=\"font-size:12pt;font-weight:bold;color:#ffffff;\">📖 DeviceNetworkEvents</span></div>"
+            },
+            "customWidth": "100",
+            "name": "text - 4 - Copy",
+            "styleSettings": {
+              "maxWidth": "100"
+            }
+          },
+          {
+            "type": 3,
+            "content": {
+              "version": "KqlItem/1.0",
+              "query": "DeviceNetworkEvents\r\n| where (* contains \"{Search_String}\" {OR_AND} * contains \"{Search_String2}\")",
+              "size": 1,
+              "showAnalytics": true,
+              "noDataMessage": "No Events to show",
+              "timeContextFromParameter": "TimeRange",
+              "showRefreshButton": true,
+              "showExportToExcel": true,
+              "exportToExcelOptions": "all",
+              "queryType": 0,
+              "resourceType": "microsoft.operationalinsights/workspaces",
+              "gridSettings": {
+                "rowLimit": 10000
+              }
+            },
+            "name": "query - 3 - Copy",
+            "styleSettings": {
+              "showBorder": true
+            }
+          },
+          {
+            "type": 1,
+            "content": {
+              "json": "<div style=\"margin-right:30px;margin-left:10px;margin-bottom:0px;background-color:#371F76 ;padding-left:20px;padding-right:20px;padding-top:10px;padding-bottom:12px;border: 1px solid #000;filter: drop-shadow(0.2rem 0.2rem 0.2rem rgba(0, 0, 30, 0.5));color:#fff2df;border-radius: 10px / 30px;background: linear-gradient(to right, #371F76 0%,#371F76 100%);display:felx\">\r\n<span style=\"font-size:12pt;font-weight:bold;color:#ffffff;\">📖 WindowsFirewall</span></div>"
+            },
+            "customWidth": "100",
+            "name": "text - 4 - Copy - Copy",
+            "styleSettings": {
+              "maxWidth": "100"
+            }
+          },
+          {
+            "type": 3,
+            "content": {
+              "version": "KqlItem/1.0",
+              "query": "WindowsFirewall\r\n| where (* contains \"{Search_String}\" {OR_AND} * contains \"{Search_String2}\")",
+              "size": 1,
+              "showAnalytics": true,
+              "noDataMessage": "No Events to show",
+              "timeContextFromParameter": "TimeRange",
+              "showRefreshButton": true,
+              "showExportToExcel": true,
+              "exportToExcelOptions": "all",
+              "queryType": 0,
+              "resourceType": "microsoft.operationalinsights/workspaces",
+              "gridSettings": {
+                "rowLimit": 10000
+              }
+            },
+            "name": "query - 3 - Copy - Copy",
+            "styleSettings": {
+              "showBorder": true
+            }
+          },
+          {
+            "type": 1,
+            "content": {
+              "json": "<div style=\"margin-right:30px;margin-left:10px;margin-bottom:0px;background-color:#371F76 ;padding-left:20px;padding-right:20px;padding-top:10px;padding-bottom:12px;border: 1px solid #000;filter: drop-shadow(0.2rem 0.2rem 0.2rem rgba(0, 0, 30, 0.5));color:#fff2df;border-radius: 10px / 30px;background: linear-gradient(to right, #371F76 0%,#371F76 100%);display:felx\">\r\n<span style=\"font-size:12pt;font-weight:bold;color:#ffffff;\">📖 AWSVPCFlow</span></div>"
+            },
+            "customWidth": "100",
+            "name": "text - 4 - Copy - Copy - Copy",
+            "styleSettings": {
+              "maxWidth": "100"
+            }
+          },
+          {
+            "type": 3,
+            "content": {
+              "version": "KqlItem/1.0",
+              "query": "AWSVPCFlow\r\n| where (* contains \"{Search_String}\" {OR_AND} * contains \"{Search_String2}\")",
+              "size": 1,
+              "showAnalytics": true,
+              "noDataMessage": "No Events to show",
+              "timeContextFromParameter": "TimeRange",
+              "showRefreshButton": true,
+              "showExportToExcel": true,
+              "exportToExcelOptions": "all",
+              "queryType": 0,
+              "resourceType": "microsoft.operationalinsights/workspaces",
+              "gridSettings": {
+                "rowLimit": 10000
+              }
+            },
+            "name": "query - 3 - Copy - Copy - Copy",
+            "styleSettings": {
+              "showBorder": true
+            }
+          },
+          {
+            "type": 1,
+            "content": {
+              "json": "<div style=\"margin-right:30px;margin-left:10px;margin-bottom:0px;background-color:#371F76 ;padding-left:20px;padding-right:20px;padding-top:10px;padding-bottom:12px;border: 1px solid #000;filter: drop-shadow(0.2rem 0.2rem 0.2rem rgba(0, 0, 30, 0.5));color:#fff2df;border-radius: 10px / 30px;background: linear-gradient(to right, #371F76 0%,#371F76 100%);display:felx\">\r\n<span style=\"font-size:12pt;font-weight:bold;color:#ffffff;\">📖 VMConnection</span></div>"
+            },
+            "customWidth": "100",
+            "name": "text - 4 - Copy - Copy - Copy - Copy",
+            "styleSettings": {
+              "maxWidth": "100"
+            }
+          },
+          {
+            "type": 3,
+            "content": {
+              "version": "KqlItem/1.0",
+              "query": "VMConnection\r\n| where (* contains \"{Search_String}\" {OR_AND} * contains \"{Search_String2}\")",
+              "size": 1,
+              "showAnalytics": true,
+              "noDataMessage": "No Events to show",
+              "timeContextFromParameter": "TimeRange",
+              "showRefreshButton": true,
+              "showExportToExcel": true,
+              "exportToExcelOptions": "all",
+              "queryType": 0,
+              "resourceType": "microsoft.operationalinsights/workspaces",
+              "gridSettings": {
+                "rowLimit": 10000
+              }
+            },
+            "showPin": true,
+            "name": "query - 3 - Copy - Copy - Copy - Copy",
+            "styleSettings": {
+              "showBorder": true
+            }
+          },
+          {
+            "type": 1,
+            "content": {
+              "json": "<div style=\"margin-right:30px;margin-left:10px;margin-bottom:0px;background-color:#371F76 ;padding-left:20px;padding-right:20px;padding-top:10px;padding-bottom:12px;border: 1px solid #000;filter: drop-shadow(0.2rem 0.2rem 0.2rem rgba(0, 0, 30, 0.5));color:#fff2df;border-radius: 10px / 30px;background: linear-gradient(to right, #371F76 0%,#371F76 100%);display:felx\">\r\n<span style=\"font-size:12pt;font-weight:bold;color:#ffffff;\">📖 DeviceNetworkInfo</span></div>"
+            },
+            "customWidth": "100",
+            "name": "text - 4 - Copy - Copy - Copy - Copy - Copy - Copy - Copy",
+            "styleSettings": {
+              "maxWidth": "100"
+            }
+          },
+          {
+            "type": 3,
+            "content": {
+              "version": "KqlItem/1.0",
+              "query": "DeviceNetworkInfo\r\n| where (* contains \"{Search_String}\" {OR_AND} * contains \"{Search_String2}\")",
+              "size": 1,
+              "showAnalytics": true,
+              "noDataMessage": "No Events to show",
+              "timeContextFromParameter": "TimeRange",
+              "showRefreshButton": true,
+              "showExportToExcel": true,
+              "exportToExcelOptions": "all",
+              "queryType": 0,
+              "resourceType": "microsoft.operationalinsights/workspaces",
+              "gridSettings": {
+                "rowLimit": 10000
+              }
+            },
+            "name": "query - 3 - Copy - Copy - Copy - Copy - Copy - Copy - Copy",
+            "styleSettings": {
+              "showBorder": true
+            }
+          },
+          {
+            "type": 1,
+            "content": {
+              "json": "<div style=\"margin-right:30px;margin-left:10px;margin-bottom:0px;background-color:#371F76 ;padding-left:20px;padding-right:20px;padding-top:10px;padding-bottom:12px;border: 1px solid #000;filter: drop-shadow(0.2rem 0.2rem 0.2rem rgba(0, 0, 30, 0.5));color:#fff2df;border-radius: 10px / 30px;background: linear-gradient(to right, #371F76 0%,#371F76 100%);display:felx\">\r\n<span style=\"font-size:12pt;font-weight:bold;color:#ffffff;\">📖 {Table_2_1}</span></div>"
+            },
+            "customWidth": "100",
+            "name": "text - 4 - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy",
+            "styleSettings": {
+              "maxWidth": "100"
+            }
+          },
+          {
+            "type": 3,
+            "content": {
+              "version": "KqlItem/1.0",
+              "query": "{Table_2_1}\r\n| where (* contains \"{Search_String}\" {OR_AND} * contains \"{Search_String2}\")",
+              "size": 1,
+              "showAnalytics": true,
+              "noDataMessage": "No Events to show",
+              "timeContextFromParameter": "TimeRange",
+              "showRefreshButton": true,
+              "showExportToExcel": true,
+              "exportToExcelOptions": "all",
+              "queryType": 0,
+              "resourceType": "microsoft.operationalinsights/workspaces",
+              "gridSettings": {
+                "rowLimit": 10000
+              }
+            },
+            "name": "query - 3 - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy",
+            "styleSettings": {
+              "showBorder": true
+            }
+          },
+          {
+            "type": 1,
+            "content": {
+              "json": "<div style=\"margin-right:30px;margin-left:10px;margin-bottom:0px;background-color:#371F76 ;padding-left:20px;padding-right:20px;padding-top:10px;padding-bottom:12px;border: 1px solid #000;filter: drop-shadow(0.2rem 0.2rem 0.2rem rgba(0, 0, 30, 0.5));color:#fff2df;border-radius: 10px / 30px;background: linear-gradient(to right, #371F76 0%,#371F76 100%);display:felx\">\r\n<span style=\"font-size:12pt;font-weight:bold;color:#ffffff;\">📖 {Table_2_2}</span></div>"
+            },
+            "customWidth": "100",
+            "name": "text - 4 - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy",
+            "styleSettings": {
+              "maxWidth": "100"
+            }
+          },
+          {
+            "type": 3,
+            "content": {
+              "version": "KqlItem/1.0",
+              "query": "{Table_2_2}\r\n| where (* contains \"{Search_String}\" {OR_AND} * contains \"{Search_String2}\")",
+              "size": 1,
+              "showAnalytics": true,
+              "noDataMessage": "No Events to show",
+              "timeContextFromParameter": "TimeRange",
+              "showRefreshButton": true,
+              "showExportToExcel": true,
+              "exportToExcelOptions": "all",
+              "queryType": 0,
+              "resourceType": "microsoft.operationalinsights/workspaces",
+              "gridSettings": {
+                "rowLimit": 10000
+              }
+            },
+            "name": "query - 3 - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy",
+            "styleSettings": {
+              "showBorder": true
+            }
+          },
+          {
+            "type": 1,
+            "content": {
+              "json": "<div style=\"margin-right:30px;margin-left:10px;margin-bottom:0px;background-color:#371F76 ;padding-left:20px;padding-right:20px;padding-top:10px;padding-bottom:12px;border: 1px solid #000;filter: drop-shadow(0.2rem 0.2rem 0.2rem rgba(0, 0, 30, 0.5));color:#fff2df;border-radius: 10px / 30px;background: linear-gradient(to right, #371F76 0%,#371F76 100%);display:felx\">\r\n<span style=\"font-size:12pt;font-weight:bold;color:#ffffff;\">📖 {Table_2_3}</span></div>"
+            },
+            "customWidth": "100",
+            "name": "text - 4 - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy",
+            "styleSettings": {
+              "maxWidth": "100"
+            }
+          },
+          {
+            "type": 3,
+            "content": {
+              "version": "KqlItem/1.0",
+              "query": "{Table_2_3}\r\n| where (* contains \"{Search_String}\" {OR_AND} * contains \"{Search_String2}\")",
+              "size": 1,
+              "showAnalytics": true,
+              "noDataMessage": "No Events to show",
+              "timeContextFromParameter": "TimeRange",
+              "showRefreshButton": true,
+              "showExportToExcel": true,
+              "exportToExcelOptions": "all",
+              "queryType": 0,
+              "resourceType": "microsoft.operationalinsights/workspaces",
+              "gridSettings": {
+                "rowLimit": 10000
+              }
+            },
+            "name": "query - 3 - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy",
+            "styleSettings": {
+              "showBorder": true
+            }
+          }
+        ]
+      },
+      "conditionalVisibility": {
+        "parameterName": "SelectedTab",
+        "comparison": "isEqualTo",
+        "value": "Network"
+      },
+      "name": "group - 6 - Copy"
+    },
+    {
+      "type": 12,
+      "content": {
+        "version": "NotebookGroup/1.0",
+        "groupType": "editable",
+        "items": [
+          {
+            "type": 9,
+            "content": {
+              "version": "KqlParameterItem/1.0",
+              "parameters": [
+                {
+                  "id": "bf839284-dfba-4309-b284-1cdb159c3484",
+                  "version": "KqlParameterItem/1.0",
+                  "name": "Search_String",
+                  "type": 1,
+                  "description": "Search by this string",
+                  "isRequired": true,
+                  "timeContext": {
+                    "durationMs": 86400000
+                  },
+                  "value": "truv.is"
+                },
+                {
+                  "id": "78844fb9-c019-4b2c-bb87-e8fa5c2fca8b",
+                  "version": "KqlParameterItem/1.0",
+                  "name": "OR_AND",
+                  "type": 2,
+                  "description": "OR_AND",
+                  "isRequired": true,
+                  "typeSettings": {
+                    "additionalResourceOptions": [],
+                    "showDefault": false
+                  },
+                  "jsonData": "[\r\n    { \"value\":\"and\", \"label\":\"AND\" },\r\n    { \"value\":\"or\", \"label\":\"OR\", \"selected\":true }\r\n]",
+                  "timeContext": {
+                    "durationMs": 86400000
+                  }
+                },
+                {
+                  "id": "6a5f8b56-d178-4c30-a24a-cedceb32bb90",
+                  "version": "KqlParameterItem/1.0",
+                  "name": "Search_String2",
+                  "type": 1,
+                  "description": "Search_String2",
+                  "isRequired": true,
+                  "timeContext": {
+                    "durationMs": 86400000
+                  },
+                  "value": "192.168.2.2"
+                }
+              ],
+              "style": "above",
+              "queryType": 0,
+              "resourceType": "microsoft.operationalinsights/workspaces"
+            },
+            "name": "parameters - 6"
+          },
+          {
+            "type": 1,
+            "content": {
+              "json": "<div style=\"background-color:#AC94F4;padding-left:20px;padding-right:20px;padding-top:10px;padding-bottom:20px;border: 1px solid #000;filter: drop-shadow(0.2rem 0.2rem 0.2rem rgba(0, 0, 30, 0.5));color:#fff2df;border-radius: 10px / 30px;background: linear-gradient(to right, #643B9F 0%,#AC94F4 100%);display:felx\">\r\n<span style=\"font-size:18pt;font-weight:bold;color:#F8F8F8;\">🛡️ Alerts/Incidents</span><br>\r\nEvents associated to this end point by ➡️ {Search_String} {OR_AND} {Search_String2}\r\n</div>"
+            },
+            "name": "text - 3"
+          },
+          {
+            "type": 1,
+            "content": {
+              "json": "<div style=\"margin-right:30px;margin-left:10px;margin-bottom:0px;background-color:#371F76 ;padding-left:20px;padding-right:20px;padding-top:10px;padding-bottom:12px;border: 1px solid #000;filter: drop-shadow(0.2rem 0.2rem 0.2rem rgba(0, 0, 30, 0.5));color:#fff2df;border-radius: 10px / 30px;background: linear-gradient(to right, #371F76 0%,#371F76 100%);display:felx\">\r\n<span style=\"font-size:12pt;font-weight:bold;color:#ffffff;\">📖 SecurityIncident</span></div>"
+            },
+            "customWidth": "100",
+            "name": "text - 4 - Copy",
+            "styleSettings": {
+              "maxWidth": "100"
+            }
+          },
+          {
+            "type": 3,
+            "content": {
+              "version": "KqlItem/1.0",
+              "query": "SecurityIncident\r\n| where (* contains \"{Search_String}\" {OR_AND} * contains \"{Search_String2}\")",
+              "size": 1,
+              "showAnalytics": true,
+              "noDataMessage": "No Events to show",
+              "timeContextFromParameter": "TimeRange",
+              "showRefreshButton": true,
+              "showExportToExcel": true,
+              "exportToExcelOptions": "all",
+              "queryType": 0,
+              "resourceType": "microsoft.operationalinsights/workspaces",
+              "gridSettings": {
+                "rowLimit": 10000
+              }
+            },
+            "name": "query - 3 - Copy",
+            "styleSettings": {
+              "showBorder": true
+            }
+          },
+          {
+            "type": 1,
+            "content": {
+              "json": "<div style=\"margin-right:30px;margin-left:10px;margin-bottom:0px;background-color:#371F76 ;padding-left:20px;padding-right:20px;padding-top:10px;padding-bottom:12px;border: 1px solid #000;filter: drop-shadow(0.2rem 0.2rem 0.2rem rgba(0, 0, 30, 0.5));color:#fff2df;border-radius: 10px / 30px;background: linear-gradient(to right, #371F76 0%,#371F76 100%);display:felx\">\r\n<span style=\"font-size:12pt;font-weight:bold;color:#ffffff;\">📖 SecurityAlert</span></div>"
+            },
+            "customWidth": "100",
+            "name": "text - 4",
+            "styleSettings": {
+              "maxWidth": "100"
+            }
+          },
+          {
+            "type": 3,
+            "content": {
+              "version": "KqlItem/1.0",
+              "query": "SecurityAlert\r\n| where (* contains \"{Search_String}\" {OR_AND} * contains \"{Search_String2}\")",
+              "size": 1,
+              "showAnalytics": true,
+              "noDataMessage": "No Events to show",
+              "timeContextFromParameter": "TimeRange",
+              "showRefreshButton": true,
+              "showExportToExcel": true,
+              "exportToExcelOptions": "all",
+              "queryType": 0,
+              "resourceType": "microsoft.operationalinsights/workspaces",
+              "gridSettings": {
+                "rowLimit": 10000
+              }
+            },
+            "name": "query - 3",
+            "styleSettings": {
+              "showBorder": true
+            }
+          },
+          {
+            "type": 1,
+            "content": {
+              "json": "<div style=\"margin-right:30px;margin-left:10px;margin-bottom:0px;background-color:#371F76 ;padding-left:20px;padding-right:20px;padding-top:10px;padding-bottom:12px;border: 1px solid #000;filter: drop-shadow(0.2rem 0.2rem 0.2rem rgba(0, 0, 30, 0.5));color:#fff2df;border-radius: 10px / 30px;background: linear-gradient(to right, #371F76 0%,#371F76 100%);display:felx\">\r\n<span style=\"font-size:12pt;font-weight:bold;color:#ffffff;\">📖 Anomalies</span></div>"
+            },
+            "customWidth": "100",
+            "name": "text - 4 - Copy",
+            "styleSettings": {
+              "maxWidth": "100"
+            }
+          },
+          {
+            "type": 3,
+            "content": {
+              "version": "KqlItem/1.0",
+              "query": "Anomalies\r\n| where (* contains \"{Search_String}\" {OR_AND} * contains \"{Search_String2}\")",
+              "size": 1,
+              "showAnalytics": true,
+              "noDataMessage": "No Events to show",
+              "timeContextFromParameter": "TimeRange",
+              "showRefreshButton": true,
+              "showExportToExcel": true,
+              "exportToExcelOptions": "all",
+              "queryType": 0,
+              "resourceType": "microsoft.operationalinsights/workspaces",
+              "gridSettings": {
+                "rowLimit": 10000
+              }
+            },
+            "name": "query - 3 - Copy",
+            "styleSettings": {
+              "showBorder": true
+            }
+          },
+          {
+            "type": 1,
+            "content": {
+              "json": "<div style=\"margin-right:30px;margin-left:10px;margin-bottom:0px;background-color:#371F76 ;padding-left:20px;padding-right:20px;padding-top:10px;padding-bottom:12px;border: 1px solid #000;filter: drop-shadow(0.2rem 0.2rem 0.2rem rgba(0, 0, 30, 0.5));color:#fff2df;border-radius: 10px / 30px;background: linear-gradient(to right, #371F76 0%,#371F76 100%);display:felx\">\r\n<span style=\"font-size:12pt;font-weight:bold;color:#ffffff;\">📖 {Table_5_1}</span></div>"
+            },
+            "customWidth": "100",
+            "name": "text - 4 - Copy - Copy",
+            "styleSettings": {
+              "maxWidth": "100"
+            }
+          },
+          {
+            "type": 3,
+            "content": {
+              "version": "KqlItem/1.0",
+              "query": "{Table_5_1}\r\n| where (* contains \"{Search_String}\" {OR_AND} * contains \"{Search_String2}\")",
+              "size": 1,
+              "showAnalytics": true,
+              "noDataMessage": "No Events to show",
+              "timeContextFromParameter": "TimeRange",
+              "showRefreshButton": true,
+              "showExportToExcel": true,
+              "exportToExcelOptions": "all",
+              "queryType": 0,
+              "resourceType": "microsoft.operationalinsights/workspaces",
+              "gridSettings": {
+                "rowLimit": 10000
+              }
+            },
+            "name": "query - 3 - Copy - Copy",
+            "styleSettings": {
+              "showBorder": true
+            }
+          },
+          {
+            "type": 1,
+            "content": {
+              "json": "<div style=\"margin-right:30px;margin-left:10px;margin-bottom:0px;background-color:#371F76 ;padding-left:20px;padding-right:20px;padding-top:10px;padding-bottom:12px;border: 1px solid #000;filter: drop-shadow(0.2rem 0.2rem 0.2rem rgba(0, 0, 30, 0.5));color:#fff2df;border-radius: 10px / 30px;background: linear-gradient(to right, #371F76 0%,#371F76 100%);display:felx\">\r\n<span style=\"font-size:12pt;font-weight:bold;color:#ffffff;\">📖 {Table_5_2}</span></div>"
+            },
+            "customWidth": "100",
+            "name": "text - 4 - Copy - Copy - Copy",
+            "styleSettings": {
+              "maxWidth": "100"
+            }
+          },
+          {
+            "type": 3,
+            "content": {
+              "version": "KqlItem/1.0",
+              "query": "{Table_5_2}\r\n| where (* contains \"{Search_String}\" {OR_AND} * contains \"{Search_String2}\")",
+              "size": 1,
+              "showAnalytics": true,
+              "noDataMessage": "No Events to show",
+              "timeContextFromParameter": "TimeRange",
+              "showRefreshButton": true,
+              "showExportToExcel": true,
+              "exportToExcelOptions": "all",
+              "queryType": 0,
+              "resourceType": "microsoft.operationalinsights/workspaces",
+              "gridSettings": {
+                "rowLimit": 10000
+              }
+            },
+            "name": "query - 3 - Copy - Copy - Copy",
+            "styleSettings": {
+              "showBorder": true
+            }
+          },
+          {
+            "type": 1,
+            "content": {
+              "json": "<div style=\"margin-right:30px;margin-left:10px;margin-bottom:0px;background-color:#371F76 ;padding-left:20px;padding-right:20px;padding-top:10px;padding-bottom:12px;border: 1px solid #000;filter: drop-shadow(0.2rem 0.2rem 0.2rem rgba(0, 0, 30, 0.5));color:#fff2df;border-radius: 10px / 30px;background: linear-gradient(to right, #371F76 0%,#371F76 100%);display:felx\">\r\n<span style=\"font-size:12pt;font-weight:bold;color:#ffffff;\">📖 {Table_5_3}</span></div>"
+            },
+            "customWidth": "100",
+            "name": "text - 4 - Copy - Copy - Copy - Copy",
+            "styleSettings": {
+              "maxWidth": "100"
+            }
+          },
+          {
+            "type": 3,
+            "content": {
+              "version": "KqlItem/1.0",
+              "query": "{Table_5_3}\r\n| where (* contains \"{Search_String}\" {OR_AND} * contains \"{Search_String2}\")",
+              "size": 1,
+              "showAnalytics": true,
+              "noDataMessage": "No Events to show",
+              "timeContextFromParameter": "TimeRange",
+              "showRefreshButton": true,
+              "showExportToExcel": true,
+              "exportToExcelOptions": "all",
+              "queryType": 0,
+              "resourceType": "microsoft.operationalinsights/workspaces",
+              "gridSettings": {
+                "rowLimit": 10000
+              }
+            },
+            "name": "query - 3 - Copy - Copy - Copy - Copy",
+            "styleSettings": {
+              "showBorder": true
+            }
+          }
+        ]
+      },
+      "conditionalVisibility": {
+        "parameterName": "SelectedTab",
+        "comparison": "isEqualTo",
+        "value": "Alerts"
+      },
+      "name": "group - 6 - Copy - Copy"
+    },
+    {
+      "type": 12,
+      "content": {
+        "version": "NotebookGroup/1.0",
+        "groupType": "editable",
+        "items": [
+          {
+            "type": 9,
+            "content": {
+              "version": "KqlParameterItem/1.0",
+              "parameters": [
+                {
+                  "id": "bf839284-dfba-4309-b284-1cdb159c3484",
+                  "version": "KqlParameterItem/1.0",
+                  "name": "Search_String",
+                  "type": 1,
+                  "description": "Search by this string",
+                  "isRequired": true,
+                  "timeContext": {
+                    "durationMs": 86400000
+                  },
+                  "value": "truv.is"
+                },
+                {
+                  "id": "78844fb9-c019-4b2c-bb87-e8fa5c2fca8b",
+                  "version": "KqlParameterItem/1.0",
+                  "name": "OR_AND",
+                  "type": 2,
+                  "description": "OR_AND",
+                  "isRequired": true,
+                  "typeSettings": {
+                    "additionalResourceOptions": [],
+                    "showDefault": false
+                  },
+                  "jsonData": "[\r\n    { \"value\":\"and\", \"label\":\"AND\" },\r\n    { \"value\":\"or\", \"label\":\"OR\", \"selected\":true }\r\n]",
+                  "timeContext": {
+                    "durationMs": 86400000
+                  }
+                },
+                {
+                  "id": "6a5f8b56-d178-4c30-a24a-cedceb32bb90",
+                  "version": "KqlParameterItem/1.0",
+                  "name": "Search_String2",
+                  "type": 1,
+                  "description": "Search_String2",
+                  "isRequired": true,
+                  "timeContext": {
+                    "durationMs": 86400000
+                  },
+                  "value": "192.168.2.2"
+                }
+              ],
+              "style": "above",
+              "queryType": 0,
+              "resourceType": "microsoft.operationalinsights/workspaces"
+            },
+            "name": "parameters - 6"
+          },
+          {
+            "type": 1,
+            "content": {
+              "json": "<div style=\"background-color:#AC94F4;padding-left:20px;padding-right:20px;padding-top:10px;padding-bottom:20px;border: 1px solid #000;filter: drop-shadow(0.2rem 0.2rem 0.2rem rgba(0, 0, 30, 0.5));color:#fff2df;border-radius: 10px / 30px;background: linear-gradient(to right, #643B9F 0%,#AC94F4 100%);display:felx\">\r\n<span style=\"font-size:18pt;font-weight:bold;color:#F8F8F8;\">👥 Identity</span><br>\r\nEvents associated to this end point by ➡️ {Search_String} {OR_AND} {Search_String2}\r\n</div>"
+            },
+            "name": "text - 3"
+          },
+          {
+            "type": 1,
+            "content": {
+              "json": "<div style=\"margin-right:30px;margin-left:10px;margin-bottom:0px;background-color:#371F76 ;padding-left:20px;padding-right:20px;padding-top:10px;padding-bottom:12px;border: 1px solid #000;filter: drop-shadow(0.2rem 0.2rem 0.2rem rgba(0, 0, 30, 0.5));color:#fff2df;border-radius: 10px / 30px;background: linear-gradient(to right, #371F76 0%,#371F76 100%);display:felx\">\r\n<span style=\"font-size:12pt;font-weight:bold;color:#ffffff;\">📖 AuditLogs</span></div>"
+            },
+            "customWidth": "100",
+            "name": "text - 4 - Copy",
+            "styleSettings": {
+              "maxWidth": "100"
+            }
+          },
+          {
+            "type": 3,
+            "content": {
+              "version": "KqlItem/1.0",
+              "query": "AuditLogs\r\n| where (* contains \"{Search_String}\" {OR_AND} * contains \"{Search_String2}\")",
+              "size": 1,
+              "showAnalytics": true,
+              "noDataMessage": "No Events to show",
+              "timeContextFromParameter": "TimeRange",
+              "showRefreshButton": true,
+              "showExportToExcel": true,
+              "exportToExcelOptions": "all",
+              "queryType": 0,
+              "resourceType": "microsoft.operationalinsights/workspaces",
+              "gridSettings": {
+                "rowLimit": 10000
+              }
+            },
+            "name": "query - 3 - Copy",
+            "styleSettings": {
+              "showBorder": true
+            }
+          },
+          {
+            "type": 1,
+            "content": {
+              "json": "<div style=\"margin-right:30px;margin-left:10px;margin-bottom:0px;background-color:#371F76 ;padding-left:20px;padding-right:20px;padding-top:10px;padding-bottom:12px;border: 1px solid #000;filter: drop-shadow(0.2rem 0.2rem 0.2rem rgba(0, 0, 30, 0.5));color:#fff2df;border-radius: 10px / 30px;background: linear-gradient(to right, #371F76 0%,#371F76 100%);display:felx\">\r\n<span style=\"font-size:12pt;font-weight:bold;color:#ffffff;\">📖 AzureActivity</span></div>"
+            },
+            "customWidth": "100",
+            "name": "text - 4",
+            "styleSettings": {
+              "maxWidth": "100"
+            }
+          },
+          {
+            "type": 3,
+            "content": {
+              "version": "KqlItem/1.0",
+              "query": "AzureActivity\r\n| where (* contains \"{Search_String}\" {OR_AND} * contains \"{Search_String2}\")",
+              "size": 1,
+              "showAnalytics": true,
+              "noDataMessage": "No Events to show",
+              "timeContextFromParameter": "TimeRange",
+              "showRefreshButton": true,
+              "showExportToExcel": true,
+              "exportToExcelOptions": "all",
+              "queryType": 0,
+              "resourceType": "microsoft.operationalinsights/workspaces",
+              "gridSettings": {
+                "rowLimit": 10000
+              }
+            },
+            "name": "query - 3",
+            "styleSettings": {
+              "showBorder": true
+            }
+          },
+          {
+            "type": 1,
+            "content": {
+              "json": "<div style=\"margin-right:30px;margin-left:10px;margin-bottom:0px;background-color:#371F76 ;padding-left:20px;padding-right:20px;padding-top:10px;padding-bottom:12px;border: 1px solid #000;filter: drop-shadow(0.2rem 0.2rem 0.2rem rgba(0, 0, 30, 0.5));color:#fff2df;border-radius: 10px / 30px;background: linear-gradient(to right, #371F76 0%,#371F76 100%);display:felx\">\r\n<span style=\"font-size:12pt;font-weight:bold;color:#ffffff;\">📖 BehaviorAnalytics</span></div>"
+            },
+            "customWidth": "100",
+            "name": "text - 4 - Copy",
+            "styleSettings": {
+              "maxWidth": "100"
+            }
+          },
+          {
+            "type": 3,
+            "content": {
+              "version": "KqlItem/1.0",
+              "query": "BehaviorAnalytics\r\n| where (* contains \"{Search_String}\" {OR_AND} * contains \"{Search_String2}\")",
+              "size": 1,
+              "showAnalytics": true,
+              "noDataMessage": "No Events to show",
+              "timeContextFromParameter": "TimeRange",
+              "showRefreshButton": true,
+              "showExportToExcel": true,
+              "exportToExcelOptions": "all",
+              "queryType": 0,
+              "resourceType": "microsoft.operationalinsights/workspaces",
+              "gridSettings": {
+                "rowLimit": 10000
+              }
+            },
+            "name": "query - 3 - Copy",
+            "styleSettings": {
+              "showBorder": true
+            }
+          },
+          {
+            "type": 1,
+            "content": {
+              "json": "<div style=\"margin-right:30px;margin-left:10px;margin-bottom:0px;background-color:#371F76 ;padding-left:20px;padding-right:20px;padding-top:10px;padding-bottom:12px;border: 1px solid #000;filter: drop-shadow(0.2rem 0.2rem 0.2rem rgba(0, 0, 30, 0.5));color:#fff2df;border-radius: 10px / 30px;background: linear-gradient(to right, #371F76 0%,#371F76 100%);display:felx\">\r\n<span style=\"font-size:12pt;font-weight:bold;color:#ffffff;\">📖 Anomalies</span></div>"
+            },
+            "customWidth": "100",
+            "name": "text - 4 - Copy - Copy",
+            "styleSettings": {
+              "maxWidth": "100"
+            }
+          },
+          {
+            "type": 3,
+            "content": {
+              "version": "KqlItem/1.0",
+              "query": "Anomalies\r\n| where (* contains \"{Search_String}\" {OR_AND} * contains \"{Search_String2}\")",
+              "size": 1,
+              "showAnalytics": true,
+              "noDataMessage": "No Events to show",
+              "timeContextFromParameter": "TimeRange",
+              "showRefreshButton": true,
+              "showExportToExcel": true,
+              "exportToExcelOptions": "all",
+              "queryType": 0,
+              "resourceType": "microsoft.operationalinsights/workspaces",
+              "gridSettings": {
+                "rowLimit": 10000
+              }
+            },
+            "name": "query - 3 - Copy - Copy",
+            "styleSettings": {
+              "showBorder": true
+            }
+          },
+          {
+            "type": 1,
+            "content": {
+              "json": "<div style=\"margin-right:30px;margin-left:10px;margin-bottom:0px;background-color:#371F76 ;padding-left:20px;padding-right:20px;padding-top:10px;padding-bottom:12px;border: 1px solid #000;filter: drop-shadow(0.2rem 0.2rem 0.2rem rgba(0, 0, 30, 0.5));color:#fff2df;border-radius: 10px / 30px;background: linear-gradient(to right, #371F76 0%,#371F76 100%);display:felx\">\r\n<span style=\"font-size:12pt;font-weight:bold;color:#ffffff;\">📖 AADNonInteractiveUserSignInLogs</span></div>"
+            },
+            "customWidth": "100",
+            "name": "text - 4 - Copy - Copy - Copy",
+            "styleSettings": {
+              "maxWidth": "100"
+            }
+          },
+          {
+            "type": 3,
+            "content": {
+              "version": "KqlItem/1.0",
+              "query": "AADNonInteractiveUserSignInLogs\r\n| where (* contains \"{Search_String}\" {OR_AND} * contains \"{Search_String2}\")",
+              "size": 1,
+              "showAnalytics": true,
+              "noDataMessage": "No Events to show",
+              "timeContextFromParameter": "TimeRange",
+              "showRefreshButton": true,
+              "showExportToExcel": true,
+              "exportToExcelOptions": "all",
+              "queryType": 0,
+              "resourceType": "microsoft.operationalinsights/workspaces",
+              "gridSettings": {
+                "rowLimit": 10000
+              }
+            },
+            "name": "query - 3 - Copy - Copy - Copy",
+            "styleSettings": {
+              "showBorder": true
+            }
+          },
+          {
+            "type": 1,
+            "content": {
+              "json": "<div style=\"margin-right:30px;margin-left:10px;margin-bottom:0px;background-color:#371F76 ;padding-left:20px;padding-right:20px;padding-top:10px;padding-bottom:12px;border: 1px solid #000;filter: drop-shadow(0.2rem 0.2rem 0.2rem rgba(0, 0, 30, 0.5));color:#fff2df;border-radius: 10px / 30px;background: linear-gradient(to right, #371F76 0%,#371F76 100%);display:felx\">\r\n<span style=\"font-size:12pt;font-weight:bold;color:#ffffff;\">📖 AADProvisioningLogs</span></div>"
+            },
+            "customWidth": "100",
+            "name": "text - 4 - Copy - Copy - Copy - Copy",
+            "styleSettings": {
+              "maxWidth": "100"
+            }
+          },
+          {
+            "type": 3,
+            "content": {
+              "version": "KqlItem/1.0",
+              "query": "AADProvisioningLogs\r\n| where (* contains \"{Search_String}\" {OR_AND} * contains \"{Search_String2}\")",
+              "size": 1,
+              "showAnalytics": true,
+              "noDataMessage": "No Events to show",
+              "timeContextFromParameter": "TimeRange",
+              "showRefreshButton": true,
+              "showExportToExcel": true,
+              "exportToExcelOptions": "all",
+              "queryType": 0,
+              "resourceType": "microsoft.operationalinsights/workspaces",
+              "gridSettings": {
+                "rowLimit": 10000
+              }
+            },
+            "showPin": true,
+            "name": "query - 3 - Copy - Copy - Copy - Copy",
+            "styleSettings": {
+              "showBorder": true
+            }
+          },
+          {
+            "type": 1,
+            "content": {
+              "json": "<div style=\"margin-right:30px;margin-left:10px;margin-bottom:0px;background-color:#371F76 ;padding-left:20px;padding-right:20px;padding-top:10px;padding-bottom:12px;border: 1px solid #000;filter: drop-shadow(0.2rem 0.2rem 0.2rem rgba(0, 0, 30, 0.5));color:#fff2df;border-radius: 10px / 30px;background: linear-gradient(to right, #371F76 0%,#371F76 100%);display:felx\">\r\n<span style=\"font-size:12pt;font-weight:bold;color:#ffffff;\">📖 AADRiskyUsers</span></div>"
+            },
+            "customWidth": "100",
+            "name": "text - 4 - Copy - Copy - Copy - Copy - Copy",
+            "styleSettings": {
+              "maxWidth": "100"
+            }
+          },
+          {
+            "type": 3,
+            "content": {
+              "version": "KqlItem/1.0",
+              "query": "AADRiskyUsers\r\n| where (* contains \"{Search_String}\" {OR_AND} * contains \"{Search_String2}\")",
+              "size": 1,
+              "showAnalytics": true,
+              "noDataMessage": "No Events to show",
+              "timeContextFromParameter": "TimeRange",
+              "showRefreshButton": true,
+              "showExportToExcel": true,
+              "queryType": 0,
+              "resourceType": "microsoft.operationalinsights/workspaces",
+              "gridSettings": {
+                "rowLimit": 10000
+              }
+            },
+            "name": "query - 3 - Copy - Copy - Copy - Copy - Copy",
+            "styleSettings": {
+              "showBorder": true
+            }
+          },
+          {
+            "type": 1,
+            "content": {
+              "json": "<div style=\"margin-right:30px;margin-left:10px;margin-bottom:0px;background-color:#371F76 ;padding-left:20px;padding-right:20px;padding-top:10px;padding-bottom:12px;border: 1px solid #000;filter: drop-shadow(0.2rem 0.2rem 0.2rem rgba(0, 0, 30, 0.5));color:#fff2df;border-radius: 10px / 30px;background: linear-gradient(to right, #371F76 0%,#371F76 100%);display:felx\">\r\n<span style=\"font-size:12pt;font-weight:bold;color:#ffffff;\">📖 AADServicePrincipalSignInLogs</span></div>"
+            },
+            "customWidth": "100",
+            "name": "text - 4 - Copy - Copy - Copy - Copy - Copy - Copy",
+            "styleSettings": {
+              "maxWidth": "100"
+            }
+          },
+          {
+            "type": 3,
+            "content": {
+              "version": "KqlItem/1.0",
+              "query": "AADServicePrincipalSignInLogs\r\n| where (* contains \"{Search_String}\" {OR_AND} * contains \"{Search_String2}\")",
+              "size": 1,
+              "showAnalytics": true,
+              "noDataMessage": "No Events to show",
+              "timeContextFromParameter": "TimeRange",
+              "showRefreshButton": true,
+              "showExportToExcel": true,
+              "exportToExcelOptions": "all",
+              "queryType": 0,
+              "resourceType": "microsoft.operationalinsights/workspaces",
+              "gridSettings": {
+                "rowLimit": 10000
+              }
+            },
+            "name": "query - 3 - Copy - Copy - Copy - Copy - Copy - Copy",
+            "styleSettings": {
+              "showBorder": true
+            }
+          },
+          {
+            "type": 1,
+            "content": {
+              "json": "<div style=\"margin-right:30px;margin-left:10px;margin-bottom:0px;background-color:#371F76 ;padding-left:20px;padding-right:20px;padding-top:10px;padding-bottom:12px;border: 1px solid #000;filter: drop-shadow(0.2rem 0.2rem 0.2rem rgba(0, 0, 30, 0.5));color:#fff2df;border-radius: 10px / 30px;background: linear-gradient(to right, #371F76 0%,#371F76 100%);display:felx\">\r\n<span style=\"font-size:12pt;font-weight:bold;color:#ffffff;\">📖 Dynamics365Activity</span></div>"
+            },
+            "customWidth": "100",
+            "name": "text - 4 - Copy - Copy - Copy - Copy - Copy - Copy - Copy",
+            "styleSettings": {
+              "maxWidth": "100"
+            }
+          },
+          {
+            "type": 3,
+            "content": {
+              "version": "KqlItem/1.0",
+              "query": "Dynamics365Activity\r\n| where (* contains \"{Search_String}\" {OR_AND} * contains \"{Search_String2}\")",
+              "size": 1,
+              "showAnalytics": true,
+              "noDataMessage": "No Events to show",
+              "timeContextFromParameter": "TimeRange",
+              "showRefreshButton": true,
+              "showExportToExcel": true,
+              "exportToExcelOptions": "all",
+              "queryType": 0,
+              "resourceType": "microsoft.operationalinsights/workspaces",
+              "gridSettings": {
+                "rowLimit": 10000
+              }
+            },
+            "name": "query - 3 - Copy - Copy - Copy - Copy - Copy - Copy - Copy",
+            "styleSettings": {
+              "showBorder": true
+            }
+          },
+          {
+            "type": 1,
+            "content": {
+              "json": "<div style=\"margin-right:30px;margin-left:10px;margin-bottom:0px;background-color:#371F76 ;padding-left:20px;padding-right:20px;padding-top:10px;padding-bottom:12px;border: 1px solid #000;filter: drop-shadow(0.2rem 0.2rem 0.2rem rgba(0, 0, 30, 0.5));color:#fff2df;border-radius: 10px / 30px;background: linear-gradient(to right, #371F76 0%,#371F76 100%);display:felx\">\r\n<span style=\"font-size:12pt;font-weight:bold;color:#ffffff;\">📖 IdentityInfo</span></div>"
+            },
+            "customWidth": "100",
+            "name": "text - 4 - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy",
+            "styleSettings": {
+              "maxWidth": "100"
+            }
+          },
+          {
+            "type": 3,
+            "content": {
+              "version": "KqlItem/1.0",
+              "query": "IdentityInfo\r\n| where (* contains \"{Search_String}\" {OR_AND} * contains \"{Search_String2}\")",
+              "size": 1,
+              "showAnalytics": true,
+              "noDataMessage": "No Events to show",
+              "timeContextFromParameter": "TimeRange",
+              "showRefreshButton": true,
+              "showExportToExcel": true,
+              "exportToExcelOptions": "all",
+              "queryType": 0,
+              "resourceType": "microsoft.operationalinsights/workspaces",
+              "gridSettings": {
+                "rowLimit": 10000
+              }
+            },
+            "name": "query - 3 - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy",
+            "styleSettings": {
+              "showBorder": true
+            }
+          },
+          {
+            "type": 1,
+            "content": {
+              "json": "<div style=\"margin-right:30px;margin-left:10px;margin-bottom:0px;background-color:#371F76 ;padding-left:20px;padding-right:20px;padding-top:10px;padding-bottom:12px;border: 1px solid #000;filter: drop-shadow(0.2rem 0.2rem 0.2rem rgba(0, 0, 30, 0.5));color:#fff2df;border-radius: 10px / 30px;background: linear-gradient(to right, #371F76 0%,#371F76 100%);display:felx\">\r\n<span style=\"font-size:12pt;font-weight:bold;color:#ffffff;\">📖 SignInLogs</span></div>"
+            },
+            "customWidth": "100",
+            "name": "text - 4 - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy",
+            "styleSettings": {
+              "maxWidth": "100"
+            }
+          },
+          {
+            "type": 3,
+            "content": {
+              "version": "KqlItem/1.0",
+              "query": "SigninLogs\r\n| where (* contains \"{Search_String}\" {OR_AND} * contains \"{Search_String2}\")",
+              "size": 1,
+              "showAnalytics": true,
+              "noDataMessage": "No Events to show",
+              "timeContextFromParameter": "TimeRange",
+              "showRefreshButton": true,
+              "showExportToExcel": true,
+              "exportToExcelOptions": "all",
+              "queryType": 0,
+              "resourceType": "microsoft.operationalinsights/workspaces",
+              "gridSettings": {
+                "rowLimit": 10000
+              }
+            },
+            "name": "query - 3 - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy",
+            "styleSettings": {
+              "showBorder": true
+            }
+          },
+          {
+            "type": 1,
+            "content": {
+              "json": "<div style=\"margin-right:30px;margin-left:10px;margin-bottom:0px;background-color:#371F76 ;padding-left:20px;padding-right:20px;padding-top:10px;padding-bottom:12px;border: 1px solid #000;filter: drop-shadow(0.2rem 0.2rem 0.2rem rgba(0, 0, 30, 0.5));color:#fff2df;border-radius: 10px / 30px;background: linear-gradient(to right, #371F76 0%,#371F76 100%);display:felx\">\r\n<span style=\"font-size:12pt;font-weight:bold;color:#ffffff;\">📖 UserPeerAnalytics</span></div>"
+            },
+            "customWidth": "100",
+            "name": "text - 4 - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy",
+            "styleSettings": {
+              "maxWidth": "100"
+            }
+          },
+          {
+            "type": 3,
+            "content": {
+              "version": "KqlItem/1.0",
+              "query": "UserPeerAnalytics\r\n| where (* contains \"{Search_String}\" {OR_AND} * contains \"{Search_String2}\")",
+              "size": 1,
+              "showAnalytics": true,
+              "noDataMessage": "No Events to show",
+              "timeContextFromParameter": "TimeRange",
+              "showRefreshButton": true,
+              "showExportToExcel": true,
+              "exportToExcelOptions": "all",
+              "queryType": 0,
+              "resourceType": "microsoft.operationalinsights/workspaces",
+              "gridSettings": {
+                "rowLimit": 10000
+              }
+            },
+            "name": "query - 3 - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy",
+            "styleSettings": {
+              "showBorder": true
+            }
+          },
+          {
+            "type": 1,
+            "content": {
+              "json": "<div style=\"margin-right:30px;margin-left:10px;margin-bottom:0px;background-color:#371F76 ;padding-left:20px;padding-right:20px;padding-top:10px;padding-bottom:12px;border: 1px solid #000;filter: drop-shadow(0.2rem 0.2rem 0.2rem rgba(0, 0, 30, 0.5));color:#fff2df;border-radius: 10px / 30px;background: linear-gradient(to right, #371F76 0%,#371F76 100%);display:felx\">\r\n<span style=\"font-size:12pt;font-weight:bold;color:#ffffff;\">📖 IdentityLogonEvents</span></div>"
+            },
+            "customWidth": "100",
+            "name": "text - 4 - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy",
+            "styleSettings": {
+              "maxWidth": "100"
+            }
+          },
+          {
+            "type": 3,
+            "content": {
+              "version": "KqlItem/1.0",
+              "query": "IdentityLogonEvents\r\n| where (* contains \"{Search_String}\" {OR_AND} * contains \"{Search_String2}\")",
+              "size": 1,
+              "showAnalytics": true,
+              "noDataMessage": "No Events to show",
+              "timeContextFromParameter": "TimeRange",
+              "showRefreshButton": true,
+              "showExportToExcel": true,
+              "exportToExcelOptions": "all",
+              "queryType": 0,
+              "resourceType": "microsoft.operationalinsights/workspaces",
+              "gridSettings": {
+                "rowLimit": 10000
+              }
+            },
+            "name": "query - 3 - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy",
+            "styleSettings": {
+              "showBorder": true
+            }
+          },
+          {
+            "type": 1,
+            "content": {
+              "json": "<div style=\"margin-right:30px;margin-left:10px;margin-bottom:0px;background-color:#371F76 ;padding-left:20px;padding-right:20px;padding-top:10px;padding-bottom:12px;border: 1px solid #000;filter: drop-shadow(0.2rem 0.2rem 0.2rem rgba(0, 0, 30, 0.5));color:#fff2df;border-radius: 10px / 30px;background: linear-gradient(to right, #371F76 0%,#371F76 100%);display:felx\">\r\n<span style=\"font-size:12pt;font-weight:bold;color:#ffffff;\">📖 {Table_3_1}</span></div>"
+            },
+            "customWidth": "100",
+            "name": "text - 4 - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy",
+            "styleSettings": {
+              "maxWidth": "100"
+            }
+          },
+          {
+            "type": 3,
+            "content": {
+              "version": "KqlItem/1.0",
+              "query": "{Table_3_1}\r\n| where (* contains \"{Search_String}\" {OR_AND} * contains \"{Search_String2}\")",
+              "size": 1,
+              "showAnalytics": true,
+              "noDataMessage": "No Events to show",
+              "timeContextFromParameter": "TimeRange",
+              "showRefreshButton": true,
+              "showExportToExcel": true,
+              "exportToExcelOptions": "all",
+              "queryType": 0,
+              "resourceType": "microsoft.operationalinsights/workspaces",
+              "gridSettings": {
+                "rowLimit": 10000
+              }
+            },
+            "name": "query - 3 - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy",
+            "styleSettings": {
+              "showBorder": true
+            }
+          },
+          {
+            "type": 1,
+            "content": {
+              "json": "<div style=\"margin-right:30px;margin-left:10px;margin-bottom:0px;background-color:#371F76 ;padding-left:20px;padding-right:20px;padding-top:10px;padding-bottom:12px;border: 1px solid #000;filter: drop-shadow(0.2rem 0.2rem 0.2rem rgba(0, 0, 30, 0.5));color:#fff2df;border-radius: 10px / 30px;background: linear-gradient(to right, #371F76 0%,#371F76 100%);display:felx\">\r\n<span style=\"font-size:12pt;font-weight:bold;color:#ffffff;\">📖 {Table_3_2}</span></div>"
+            },
+            "customWidth": "100",
+            "name": "text - 4 - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy",
+            "styleSettings": {
+              "maxWidth": "100"
+            }
+          },
+          {
+            "type": 3,
+            "content": {
+              "version": "KqlItem/1.0",
+              "query": "{Table_3_2}\r\n| where (* contains \"{Search_String}\" {OR_AND} * contains \"{Search_String2}\")",
+              "size": 1,
+              "showAnalytics": true,
+              "noDataMessage": "No Events to show",
+              "timeContextFromParameter": "TimeRange",
+              "showRefreshButton": true,
+              "showExportToExcel": true,
+              "exportToExcelOptions": "all",
+              "queryType": 0,
+              "resourceType": "microsoft.operationalinsights/workspaces",
+              "gridSettings": {
+                "rowLimit": 10000
+              }
+            },
+            "name": "query - 3 - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy",
+            "styleSettings": {
+              "showBorder": true
+            }
+          },
+          {
+            "type": 1,
+            "content": {
+              "json": "<div style=\"margin-right:30px;margin-left:10px;margin-bottom:0px;background-color:#371F76 ;padding-left:20px;padding-right:20px;padding-top:10px;padding-bottom:12px;border: 1px solid #000;filter: drop-shadow(0.2rem 0.2rem 0.2rem rgba(0, 0, 30, 0.5));color:#fff2df;border-radius: 10px / 30px;background: linear-gradient(to right, #371F76 0%,#371F76 100%);display:felx\">\r\n<span style=\"font-size:12pt;font-weight:bold;color:#ffffff;\">📖 {Table_3_3}</span></div>"
+            },
+            "customWidth": "100",
+            "name": "text - 4 - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy",
+            "styleSettings": {
+              "maxWidth": "100"
+            }
+          },
+          {
+            "type": 3,
+            "content": {
+              "version": "KqlItem/1.0",
+              "query": "{Table_3_3}\r\n| where (* contains \"{Search_String}\" {OR_AND} * contains \"{Search_String2}\")",
+              "size": 1,
+              "showAnalytics": true,
+              "noDataMessage": "No Events to show",
+              "timeContextFromParameter": "TimeRange",
+              "showRefreshButton": true,
+              "showExportToExcel": true,
+              "exportToExcelOptions": "all",
+              "queryType": 0,
+              "resourceType": "microsoft.operationalinsights/workspaces",
+              "gridSettings": {
+                "rowLimit": 10000
+              }
+            },
+            "name": "query - 3 - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy",
+            "styleSettings": {
+              "showBorder": true
+            }
+          }
+        ]
+      },
+      "conditionalVisibility": {
+        "parameterName": "SelectedTab",
+        "comparison": "isEqualTo",
+        "value": "Identity"
+      },
+      "name": "group - 6 - Copy - Copy"
+    },
+    {
+      "type": 12,
+      "content": {
+        "version": "NotebookGroup/1.0",
+        "groupType": "editable",
+        "items": [
+          {
+            "type": 9,
+            "content": {
+              "version": "KqlParameterItem/1.0",
+              "parameters": [
+                {
+                  "id": "bf839284-dfba-4309-b284-1cdb159c3484",
+                  "version": "KqlParameterItem/1.0",
+                  "name": "Search_String",
+                  "type": 1,
+                  "description": "Search by this string",
+                  "isRequired": true,
+                  "timeContext": {
+                    "durationMs": 86400000
+                  },
+                  "value": "truv.is"
+                },
+                {
+                  "id": "78844fb9-c019-4b2c-bb87-e8fa5c2fca8b",
+                  "version": "KqlParameterItem/1.0",
+                  "name": "OR_AND",
+                  "type": 2,
+                  "description": "OR_AND",
+                  "isRequired": true,
+                  "typeSettings": {
+                    "additionalResourceOptions": [],
+                    "showDefault": false
+                  },
+                  "jsonData": "[\r\n    { \"value\":\"and\", \"label\":\"AND\" },\r\n    { \"value\":\"or\", \"label\":\"OR\", \"selected\":true }\r\n]",
+                  "timeContext": {
+                    "durationMs": 86400000
+                  }
+                },
+                {
+                  "id": "6a5f8b56-d178-4c30-a24a-cedceb32bb90",
+                  "version": "KqlParameterItem/1.0",
+                  "name": "Search_String2",
+                  "type": 1,
+                  "description": "Search_String2",
+                  "isRequired": true,
+                  "timeContext": {
+                    "durationMs": 86400000
+                  },
+                  "value": "192.168.2.2"
+                }
+              ],
+              "style": "above",
+              "queryType": 0,
+              "resourceType": "microsoft.operationalinsights/workspaces"
+            },
+            "name": "parameters - 6"
+          },
+          {
+            "type": 1,
+            "content": {
+              "json": "<div style=\"background-color:#AC94F4;padding-left:20px;padding-right:20px;padding-top:10px;padding-bottom:20px;border: 1px solid #000;filter: drop-shadow(0.2rem 0.2rem 0.2rem rgba(0, 0, 30, 0.5));color:#fff2df;border-radius: 10px / 30px;background: linear-gradient(to right, #643B9F 0%,#AC94F4 100%);display:felx\">\r\n<span style=\"font-size:18pt;font-weight:bold;color:#F8F8F8;\">☁️ Cloud</span><br>\r\nEvents associated to this end point by ➡️ {Search_String} {OR_AND} {Search_String2}\r\n</div>"
+            },
+            "name": "text - 3"
+          },
+          {
+            "type": 1,
+            "content": {
+              "json": "<div style=\"margin-right:30px;margin-left:10px;margin-bottom:0px;background-color:#371F76 ;padding-left:20px;padding-right:20px;padding-top:10px;padding-bottom:12px;border: 1px solid #000;filter: drop-shadow(0.2rem 0.2rem 0.2rem rgba(0, 0, 30, 0.5));color:#fff2df;border-radius: 10px / 30px;background: linear-gradient(to right, #371F76 0%,#371F76 100%);display:felx\">\r\n<span style=\"font-size:12pt;font-weight:bold;color:#ffffff;\">📖 AuditLogs</span></div>"
+            },
+            "customWidth": "100",
+            "name": "text - 4 - Copy",
+            "styleSettings": {
+              "maxWidth": "100"
+            }
+          },
+          {
+            "type": 3,
+            "content": {
+              "version": "KqlItem/1.0",
+              "query": "AuditLogs\r\n| where (* contains \"{Search_String}\" {OR_AND} * contains \"{Search_String2}\")",
+              "size": 1,
+              "showAnalytics": true,
+              "noDataMessage": "No Events to show",
+              "timeContextFromParameter": "TimeRange",
+              "showRefreshButton": true,
+              "showExportToExcel": true,
+              "exportToExcelOptions": "all",
+              "queryType": 0,
+              "resourceType": "microsoft.operationalinsights/workspaces",
+              "gridSettings": {
+                "rowLimit": 10000
+              }
+            },
+            "name": "query - 3 - Copy",
+            "styleSettings": {
+              "showBorder": true
+            }
+          },
+          {
+            "type": 1,
+            "content": {
+              "json": "<div style=\"margin-right:30px;margin-left:10px;margin-bottom:0px;background-color:#371F76 ;padding-left:20px;padding-right:20px;padding-top:10px;padding-bottom:12px;border: 1px solid #000;filter: drop-shadow(0.2rem 0.2rem 0.2rem rgba(0, 0, 30, 0.5));color:#fff2df;border-radius: 10px / 30px;background: linear-gradient(to right, #371F76 0%,#371F76 100%);display:felx\">\r\n<span style=\"font-size:12pt;font-weight:bold;color:#ffffff;\">📖 AzureActivity</span></div>"
+            },
+            "customWidth": "100",
+            "name": "text - 4",
+            "styleSettings": {
+              "maxWidth": "100"
+            }
+          },
+          {
+            "type": 3,
+            "content": {
+              "version": "KqlItem/1.0",
+              "query": "AzureActivity\r\n| where (* contains \"{Search_String}\" {OR_AND} * contains \"{Search_String2}\")",
+              "size": 1,
+              "showAnalytics": true,
+              "noDataMessage": "No Events to show",
+              "timeContextFromParameter": "TimeRange",
+              "showRefreshButton": true,
+              "showExportToExcel": true,
+              "exportToExcelOptions": "all",
+              "queryType": 0,
+              "resourceType": "microsoft.operationalinsights/workspaces",
+              "gridSettings": {
+                "rowLimit": 10000
+              }
+            },
+            "name": "query - 3",
+            "styleSettings": {
+              "showBorder": true
+            }
+          },
+          {
+            "type": 1,
+            "content": {
+              "json": "<div style=\"margin-right:30px;margin-left:10px;margin-bottom:0px;background-color:#371F76 ;padding-left:20px;padding-right:20px;padding-top:10px;padding-bottom:12px;border: 1px solid #000;filter: drop-shadow(0.2rem 0.2rem 0.2rem rgba(0, 0, 30, 0.5));color:#fff2df;border-radius: 10px / 30px;background: linear-gradient(to right, #371F76 0%,#371F76 100%);display:felx\">\r\n<span style=\"font-size:12pt;font-weight:bold;color:#ffffff;\">📖 AWSCloudTrail</span></div>"
+            },
+            "customWidth": "100",
+            "name": "text - 4 - Copy",
+            "styleSettings": {
+              "maxWidth": "100"
+            }
+          },
+          {
+            "type": 3,
+            "content": {
+              "version": "KqlItem/1.0",
+              "query": "AWSCloudTrail\r\n| where (* contains \"{Search_String}\" {OR_AND} * contains \"{Search_String2}\")",
+              "size": 1,
+              "showAnalytics": true,
+              "noDataMessage": "No Events to show",
+              "timeContextFromParameter": "TimeRange",
+              "showRefreshButton": true,
+              "showExportToExcel": true,
+              "exportToExcelOptions": "all",
+              "queryType": 0,
+              "resourceType": "microsoft.operationalinsights/workspaces",
+              "gridSettings": {
+                "rowLimit": 10000
+              }
+            },
+            "name": "query - 3 - Copy",
+            "styleSettings": {
+              "showBorder": true
+            }
+          },
+          {
+            "type": 1,
+            "content": {
+              "json": "<div style=\"margin-right:30px;margin-left:10px;margin-bottom:0px;background-color:#371F76 ;padding-left:20px;padding-right:20px;padding-top:10px;padding-bottom:12px;border: 1px solid #000;filter: drop-shadow(0.2rem 0.2rem 0.2rem rgba(0, 0, 30, 0.5));color:#fff2df;border-radius: 10px / 30px;background: linear-gradient(to right, #371F76 0%,#371F76 100%);display:felx\">\r\n<span style=\"font-size:12pt;font-weight:bold;color:#ffffff;\">📖 AWSGuardDuty</span></div>"
+            },
+            "customWidth": "100",
+            "name": "text - 4 - Copy - Copy",
+            "styleSettings": {
+              "maxWidth": "100"
+            }
+          },
+          {
+            "type": 3,
+            "content": {
+              "version": "KqlItem/1.0",
+              "query": "AWSGuardDuty\r\n| where (* contains \"{Search_String}\" {OR_AND} * contains \"{Search_String2}\")",
+              "size": 1,
+              "showAnalytics": true,
+              "noDataMessage": "No Events to show",
+              "timeContextFromParameter": "TimeRange",
+              "showRefreshButton": true,
+              "showExportToExcel": true,
+              "exportToExcelOptions": "all",
+              "queryType": 0,
+              "resourceType": "microsoft.operationalinsights/workspaces",
+              "gridSettings": {
+                "rowLimit": 10000
+              }
+            },
+            "name": "query - 3 - Copy - Copy",
+            "styleSettings": {
+              "showBorder": true
+            }
+          },
+          {
+            "type": 1,
+            "content": {
+              "json": "<div style=\"margin-right:30px;margin-left:10px;margin-bottom:0px;background-color:#371F76 ;padding-left:20px;padding-right:20px;padding-top:10px;padding-bottom:12px;border: 1px solid #000;filter: drop-shadow(0.2rem 0.2rem 0.2rem rgba(0, 0, 30, 0.5));color:#fff2df;border-radius: 10px / 30px;background: linear-gradient(to right, #371F76 0%,#371F76 100%);display:felx\">\r\n<span style=\"font-size:12pt;font-weight:bold;color:#ffffff;\">📖 AWSVPCFlow</span></div>"
+            },
+            "customWidth": "100",
+            "name": "text - 4 - Copy - Copy - Copy",
+            "styleSettings": {
+              "maxWidth": "100"
+            }
+          },
+          {
+            "type": 3,
+            "content": {
+              "version": "KqlItem/1.0",
+              "query": "AWSVPCFlow\r\n| where (* contains \"{Search_String}\" {OR_AND} * contains \"{Search_String2}\")",
+              "size": 1,
+              "showAnalytics": true,
+              "noDataMessage": "No Events to show",
+              "timeContextFromParameter": "TimeRange",
+              "showRefreshButton": true,
+              "showExportToExcel": true,
+              "exportToExcelOptions": "all",
+              "queryType": 0,
+              "resourceType": "microsoft.operationalinsights/workspaces",
+              "gridSettings": {
+                "rowLimit": 10000
+              }
+            },
+            "name": "query - 3 - Copy - Copy - Copy",
+            "styleSettings": {
+              "showBorder": true
+            }
+          },
+          {
+            "type": 1,
+            "content": {
+              "json": "<div style=\"margin-right:30px;margin-left:10px;margin-bottom:0px;background-color:#371F76 ;padding-left:20px;padding-right:20px;padding-top:10px;padding-bottom:12px;border: 1px solid #000;filter: drop-shadow(0.2rem 0.2rem 0.2rem rgba(0, 0, 30, 0.5));color:#fff2df;border-radius: 10px / 30px;background: linear-gradient(to right, #371F76 0%,#371F76 100%);display:felx\">\r\n<span style=\"font-size:12pt;font-weight:bold;color:#ffffff;\">📖 AzureDiagnostics</span></div>"
+            },
+            "customWidth": "100",
+            "name": "text - 4 - Copy - Copy - Copy - Copy",
+            "styleSettings": {
+              "maxWidth": "100"
+            }
+          },
+          {
+            "type": 3,
+            "content": {
+              "version": "KqlItem/1.0",
+              "query": "AzureDiagnostics\r\n| where (* contains \"{Search_String}\" {OR_AND} * contains \"{Search_String2}\")",
+              "size": 1,
+              "showAnalytics": true,
+              "noDataMessage": "No Events to show",
+              "timeContextFromParameter": "TimeRange",
+              "showRefreshButton": true,
+              "showExportToExcel": true,
+              "exportToExcelOptions": "all",
+              "queryType": 0,
+              "resourceType": "microsoft.operationalinsights/workspaces",
+              "gridSettings": {
+                "rowLimit": 10000
+              }
+            },
+            "showPin": true,
+            "name": "query - 3 - Copy - Copy - Copy - Copy",
+            "styleSettings": {
+              "showBorder": true
+            }
+          },
+          {
+            "type": 1,
+            "content": {
+              "json": "<div style=\"margin-right:30px;margin-left:10px;margin-bottom:0px;background-color:#371F76 ;padding-left:20px;padding-right:20px;padding-top:10px;padding-bottom:12px;border: 1px solid #000;filter: drop-shadow(0.2rem 0.2rem 0.2rem rgba(0, 0, 30, 0.5));color:#fff2df;border-radius: 10px / 30px;background: linear-gradient(to right, #371F76 0%,#371F76 100%);display:felx\">\r\n<span style=\"font-size:12pt;font-weight:bold;color:#ffffff;\">📖 CloudAppEvents</span></div>"
+            },
+            "customWidth": "100",
+            "name": "text - 4 - Copy - Copy - Copy - Copy - Copy",
+            "styleSettings": {
+              "maxWidth": "100"
+            }
+          },
+          {
+            "type": 3,
+            "content": {
+              "version": "KqlItem/1.0",
+              "query": "CloudAppEvents\r\n| where (* contains \"{Search_String}\" {OR_AND} * contains \"{Search_String2}\")",
+              "size": 1,
+              "showAnalytics": true,
+              "noDataMessage": "No Events to show",
+              "timeContextFromParameter": "TimeRange",
+              "showRefreshButton": true,
+              "showExportToExcel": true,
+              "queryType": 0,
+              "resourceType": "microsoft.operationalinsights/workspaces",
+              "gridSettings": {
+                "rowLimit": 10000
+              }
+            },
+            "name": "query - 3 - Copy - Copy - Copy - Copy - Copy",
+            "styleSettings": {
+              "showBorder": true
+            }
+          },
+          {
+            "type": 1,
+            "content": {
+              "json": "<div style=\"margin-right:30px;margin-left:10px;margin-bottom:0px;background-color:#371F76 ;padding-left:20px;padding-right:20px;padding-top:10px;padding-bottom:12px;border: 1px solid #000;filter: drop-shadow(0.2rem 0.2rem 0.2rem rgba(0, 0, 30, 0.5));color:#fff2df;border-radius: 10px / 30px;background: linear-gradient(to right, #371F76 0%,#371F76 100%);display:felx\">\r\n<span style=\"font-size:12pt;font-weight:bold;color:#ffffff;\">📖 EmailEvents</span></div>"
+            },
+            "customWidth": "100",
+            "name": "text - 4 - Copy - Copy - Copy - Copy - Copy - Copy",
+            "styleSettings": {
+              "maxWidth": "100"
+            }
+          },
+          {
+            "type": 3,
+            "content": {
+              "version": "KqlItem/1.0",
+              "query": "EmailEvents\r\n| where (* contains \"{Search_String}\" {OR_AND} * contains \"{Search_String2}\")",
+              "size": 1,
+              "showAnalytics": true,
+              "noDataMessage": "No Events to show",
+              "timeContextFromParameter": "TimeRange",
+              "showRefreshButton": true,
+              "showExportToExcel": true,
+              "exportToExcelOptions": "all",
+              "queryType": 0,
+              "resourceType": "microsoft.operationalinsights/workspaces",
+              "gridSettings": {
+                "rowLimit": 10000
+              }
+            },
+            "name": "query - 3 - Copy - Copy - Copy - Copy - Copy - Copy",
+            "styleSettings": {
+              "showBorder": true
+            }
+          },
+          {
+            "type": 1,
+            "content": {
+              "json": "<div style=\"margin-right:30px;margin-left:10px;margin-bottom:0px;background-color:#371F76 ;padding-left:20px;padding-right:20px;padding-top:10px;padding-bottom:12px;border: 1px solid #000;filter: drop-shadow(0.2rem 0.2rem 0.2rem rgba(0, 0, 30, 0.5));color:#fff2df;border-radius: 10px / 30px;background: linear-gradient(to right, #371F76 0%,#371F76 100%);display:felx\">\r\n<span style=\"font-size:12pt;font-weight:bold;color:#ffffff;\">📖 EmailPostDeliveryEvents</span></div>"
+            },
+            "customWidth": "100",
+            "name": "text - 4 - Copy - Copy - Copy - Copy - Copy - Copy - Copy",
+            "styleSettings": {
+              "maxWidth": "100"
+            }
+          },
+          {
+            "type": 3,
+            "content": {
+              "version": "KqlItem/1.0",
+              "query": "EmailPostDeliveryEvents\r\n| where (* contains \"{Search_String}\" {OR_AND} * contains \"{Search_String2}\")",
+              "size": 1,
+              "showAnalytics": true,
+              "noDataMessage": "No Events to show",
+              "timeContextFromParameter": "TimeRange",
+              "showRefreshButton": true,
+              "showExportToExcel": true,
+              "exportToExcelOptions": "all",
+              "queryType": 0,
+              "resourceType": "microsoft.operationalinsights/workspaces",
+              "gridSettings": {
+                "rowLimit": 10000
+              }
+            },
+            "name": "query - 3 - Copy - Copy - Copy - Copy - Copy - Copy - Copy",
+            "styleSettings": {
+              "showBorder": true
+            }
+          },
+          {
+            "type": 1,
+            "content": {
+              "json": "<div style=\"margin-right:30px;margin-left:10px;margin-bottom:0px;background-color:#371F76 ;padding-left:20px;padding-right:20px;padding-top:10px;padding-bottom:12px;border: 1px solid #000;filter: drop-shadow(0.2rem 0.2rem 0.2rem rgba(0, 0, 30, 0.5));color:#fff2df;border-radius: 10px / 30px;background: linear-gradient(to right, #371F76 0%,#371F76 100%);display:felx\">\r\n<span style=\"font-size:12pt;font-weight:bold;color:#ffffff;\">📖 EmailUrlInfo</span></div>"
+            },
+            "customWidth": "100",
+            "name": "text - 4 - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy",
+            "styleSettings": {
+              "maxWidth": "100"
+            }
+          },
+          {
+            "type": 3,
+            "content": {
+              "version": "KqlItem/1.0",
+              "query": "EmailUrlInfo\r\n| where (* contains \"{Search_String}\" {OR_AND} * contains \"{Search_String2}\")",
+              "size": 1,
+              "showAnalytics": true,
+              "noDataMessage": "No Events to show",
+              "timeContextFromParameter": "TimeRange",
+              "showRefreshButton": true,
+              "showExportToExcel": true,
+              "exportToExcelOptions": "all",
+              "queryType": 0,
+              "resourceType": "microsoft.operationalinsights/workspaces",
+              "gridSettings": {
+                "rowLimit": 10000
+              }
+            },
+            "name": "query - 3 - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy",
+            "styleSettings": {
+              "showBorder": true
+            }
+          },
+          {
+            "type": 1,
+            "content": {
+              "json": "<div style=\"margin-right:30px;margin-left:10px;margin-bottom:0px;background-color:#371F76 ;padding-left:20px;padding-right:20px;padding-top:10px;padding-bottom:12px;border: 1px solid #000;filter: drop-shadow(0.2rem 0.2rem 0.2rem rgba(0, 0, 30, 0.5));color:#fff2df;border-radius: 10px / 30px;background: linear-gradient(to right, #371F76 0%,#371F76 100%);display:felx\">\r\n<span style=\"font-size:12pt;font-weight:bold;color:#ffffff;\">📖 FunctionAppLogs</span></div>"
+            },
+            "customWidth": "100",
+            "name": "text - 4 - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy",
+            "styleSettings": {
+              "maxWidth": "100"
+            }
+          },
+          {
+            "type": 3,
+            "content": {
+              "version": "KqlItem/1.0",
+              "query": "FunctionAppLogs\r\n| where (* contains \"{Search_String}\" {OR_AND} * contains \"{Search_String2}\")",
+              "size": 1,
+              "showAnalytics": true,
+              "noDataMessage": "No Events to show",
+              "timeContextFromParameter": "TimeRange",
+              "showRefreshButton": true,
+              "showExportToExcel": true,
+              "exportToExcelOptions": "all",
+              "queryType": 0,
+              "resourceType": "microsoft.operationalinsights/workspaces",
+              "gridSettings": {
+                "rowLimit": 10000
+              }
+            },
+            "name": "query - 3 - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy",
+            "styleSettings": {
+              "showBorder": true
+            }
+          },
+          {
+            "type": 1,
+            "content": {
+              "json": "<div style=\"margin-right:30px;margin-left:10px;margin-bottom:0px;background-color:#371F76 ;padding-left:20px;padding-right:20px;padding-top:10px;padding-bottom:12px;border: 1px solid #000;filter: drop-shadow(0.2rem 0.2rem 0.2rem rgba(0, 0, 30, 0.5));color:#fff2df;border-radius: 10px / 30px;background: linear-gradient(to right, #371F76 0%,#371F76 100%);display:felx\">\r\n<span style=\"font-size:12pt;font-weight:bold;color:#ffffff;\">📖 IntuneAuditLogs</span></div>"
+            },
+            "customWidth": "100",
+            "name": "text - 4 - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy",
+            "styleSettings": {
+              "maxWidth": "100"
+            }
+          },
+          {
+            "type": 3,
+            "content": {
+              "version": "KqlItem/1.0",
+              "query": "IntuneAuditLogs\r\n| where (* contains \"{Search_String}\" {OR_AND} * contains \"{Search_String2}\")",
+              "size": 1,
+              "showAnalytics": true,
+              "noDataMessage": "No Events to show",
+              "timeContextFromParameter": "TimeRange",
+              "showRefreshButton": true,
+              "showExportToExcel": true,
+              "exportToExcelOptions": "all",
+              "queryType": 0,
+              "resourceType": "microsoft.operationalinsights/workspaces",
+              "gridSettings": {
+                "rowLimit": 10000
+              }
+            },
+            "name": "query - 3 - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy",
+            "styleSettings": {
+              "showBorder": true
+            }
+          },
+          {
+            "type": 1,
+            "content": {
+              "json": "<div style=\"margin-right:30px;margin-left:10px;margin-bottom:0px;background-color:#371F76 ;padding-left:20px;padding-right:20px;padding-top:10px;padding-bottom:12px;border: 1px solid #000;filter: drop-shadow(0.2rem 0.2rem 0.2rem rgba(0, 0, 30, 0.5));color:#fff2df;border-radius: 10px / 30px;background: linear-gradient(to right, #371F76 0%,#371F76 100%);display:felx\">\r\n<span style=\"font-size:12pt;font-weight:bold;color:#ffffff;\">📖 IntuneDevices</span></div>"
+            },
+            "customWidth": "100",
+            "name": "text - 4 - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy",
+            "styleSettings": {
+              "maxWidth": "100"
+            }
+          },
+          {
+            "type": 3,
+            "content": {
+              "version": "KqlItem/1.0",
+              "query": "IntuneDevices\r\n| where (* contains \"{Search_String}\" {OR_AND} * contains \"{Search_String2}\")",
+              "size": 1,
+              "showAnalytics": true,
+              "noDataMessage": "No Events to show",
+              "timeContextFromParameter": "TimeRange",
+              "showRefreshButton": true,
+              "showExportToExcel": true,
+              "exportToExcelOptions": "all",
+              "queryType": 0,
+              "resourceType": "microsoft.operationalinsights/workspaces",
+              "gridSettings": {
+                "rowLimit": 10000
+              }
+            },
+            "name": "query - 3 - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy",
+            "styleSettings": {
+              "showBorder": true
+            }
+          },
+          {
+            "type": 1,
+            "content": {
+              "json": "<div style=\"margin-right:30px;margin-left:10px;margin-bottom:0px;background-color:#371F76 ;padding-left:20px;padding-right:20px;padding-top:10px;padding-bottom:12px;border: 1px solid #000;filter: drop-shadow(0.2rem 0.2rem 0.2rem rgba(0, 0, 30, 0.5));color:#fff2df;border-radius: 10px / 30px;background: linear-gradient(to right, #371F76 0%,#371F76 100%);display:felx\">\r\n<span style=\"font-size:12pt;font-weight:bold;color:#ffffff;\">📖 IntuneOperationalLogs</span></div>"
+            },
+            "customWidth": "100",
+            "name": "text - 4 - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy",
+            "styleSettings": {
+              "maxWidth": "100"
+            }
+          },
+          {
+            "type": 3,
+            "content": {
+              "version": "KqlItem/1.0",
+              "query": "IntuneOperationalLogs\r\n| where (* contains \"{Search_String}\" {OR_AND} * contains \"{Search_String2}\")",
+              "size": 1,
+              "showAnalytics": true,
+              "noDataMessage": "No Events to show",
+              "timeContextFromParameter": "TimeRange",
+              "showRefreshButton": true,
+              "showExportToExcel": true,
+              "exportToExcelOptions": "all",
+              "queryType": 0,
+              "resourceType": "microsoft.operationalinsights/workspaces",
+              "gridSettings": {
+                "rowLimit": 10000
+              }
+            },
+            "name": "query - 3 - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy",
+            "styleSettings": {
+              "showBorder": true
+            }
+          },
+          {
+            "type": 1,
+            "content": {
+              "json": "<div style=\"margin-right:30px;margin-left:10px;margin-bottom:0px;background-color:#371F76 ;padding-left:20px;padding-right:20px;padding-top:10px;padding-bottom:12px;border: 1px solid #000;filter: drop-shadow(0.2rem 0.2rem 0.2rem rgba(0, 0, 30, 0.5));color:#fff2df;border-radius: 10px / 30px;background: linear-gradient(to right, #371F76 0%,#371F76 100%);display:felx\">\r\n<span style=\"font-size:12pt;font-weight:bold;color:#ffffff;\">📖 MicrosoftAzureBastionAuditLogs</span></div>"
+            },
+            "customWidth": "100",
+            "name": "text - 4 - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy",
+            "styleSettings": {
+              "maxWidth": "100"
+            }
+          },
+          {
+            "type": 3,
+            "content": {
+              "version": "KqlItem/1.0",
+              "query": "MicrosoftAzureBastionAuditLogs\r\n| where (* contains \"{Search_String}\" {OR_AND} * contains \"{Search_String2}\")",
+              "size": 1,
+              "showAnalytics": true,
+              "noDataMessage": "No Events to show",
+              "timeContextFromParameter": "TimeRange",
+              "showRefreshButton": true,
+              "showExportToExcel": true,
+              "exportToExcelOptions": "all",
+              "queryType": 0,
+              "resourceType": "microsoft.operationalinsights/workspaces",
+              "gridSettings": {
+                "rowLimit": 10000
+              }
+            },
+            "name": "query - 3 - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy",
+            "styleSettings": {
+              "showBorder": true
+            }
+          },
+          {
+            "type": 1,
+            "content": {
+              "json": "<div style=\"margin-right:30px;margin-left:10px;margin-bottom:0px;background-color:#371F76 ;padding-left:20px;padding-right:20px;padding-top:10px;padding-bottom:12px;border: 1px solid #000;filter: drop-shadow(0.2rem 0.2rem 0.2rem rgba(0, 0, 30, 0.5));color:#fff2df;border-radius: 10px / 30px;background: linear-gradient(to right, #371F76 0%,#371F76 100%);display:felx\">\r\n<span style=\"font-size:12pt;font-weight:bold;color:#ffffff;\">📖 MicrosoftPurviewInformationProtection</span></div>"
+            },
+            "customWidth": "100",
+            "name": "text - 4 - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy",
+            "styleSettings": {
+              "maxWidth": "100"
+            }
+          },
+          {
+            "type": 3,
+            "content": {
+              "version": "KqlItem/1.0",
+              "query": "MicrosoftPurviewInformationProtection\r\n| where (* contains \"{Search_String}\" {OR_AND} * contains \"{Search_String2}\")",
+              "size": 1,
+              "showAnalytics": true,
+              "noDataMessage": "No Events to show",
+              "timeContextFromParameter": "TimeRange",
+              "showRefreshButton": true,
+              "showExportToExcel": true,
+              "exportToExcelOptions": "all",
+              "queryType": 0,
+              "resourceType": "microsoft.operationalinsights/workspaces",
+              "gridSettings": {
+                "rowLimit": 10000
+              }
+            },
+            "name": "query - 3 - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy",
+            "styleSettings": {
+              "showBorder": true
+            }
+          },
+          {
+            "type": 1,
+            "content": {
+              "json": "<div style=\"margin-right:30px;margin-left:10px;margin-bottom:0px;background-color:#371F76 ;padding-left:20px;padding-right:20px;padding-top:10px;padding-bottom:12px;border: 1px solid #000;filter: drop-shadow(0.2rem 0.2rem 0.2rem rgba(0, 0, 30, 0.5));color:#fff2df;border-radius: 10px / 30px;background: linear-gradient(to right, #371F76 0%,#371F76 100%);display:felx\">\r\n<span style=\"font-size:12pt;font-weight:bold;color:#ffffff;\">📖 OfficeActivity</span></div>"
+            },
+            "customWidth": "100",
+            "name": "text - 4 - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy",
+            "styleSettings": {
+              "maxWidth": "100"
+            }
+          },
+          {
+            "type": 3,
+            "content": {
+              "version": "KqlItem/1.0",
+              "query": "OfficeActivity\r\n| where (* contains \"{Search_String}\" {OR_AND} * contains \"{Search_String2}\")",
+              "size": 1,
+              "showAnalytics": true,
+              "noDataMessage": "No Events to show",
+              "timeContextFromParameter": "TimeRange",
+              "showRefreshButton": true,
+              "showExportToExcel": true,
+              "exportToExcelOptions": "all",
+              "queryType": 0,
+              "resourceType": "microsoft.operationalinsights/workspaces",
+              "gridSettings": {
+                "rowLimit": 10000
+              }
+            },
+            "name": "query - 3 - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy",
+            "styleSettings": {
+              "showBorder": true
+            }
+          },
+          {
+            "type": 1,
+            "content": {
+              "json": "<div style=\"margin-right:30px;margin-left:10px;margin-bottom:0px;background-color:#371F76 ;padding-left:20px;padding-right:20px;padding-top:10px;padding-bottom:12px;border: 1px solid #000;filter: drop-shadow(0.2rem 0.2rem 0.2rem rgba(0, 0, 30, 0.5));color:#fff2df;border-radius: 10px / 30px;background: linear-gradient(to right, #371F76 0%,#371F76 100%);display:felx\">\r\n<span style=\"font-size:12pt;font-weight:bold;color:#ffffff;\">📖 SentinelAudit</span></div>"
+            },
+            "customWidth": "100",
+            "name": "text - 4 - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy",
+            "styleSettings": {
+              "maxWidth": "100"
+            }
+          },
+          {
+            "type": 3,
+            "content": {
+              "version": "KqlItem/1.0",
+              "query": "SentinelAudit\r\n| where (* contains \"{Search_String}\" {OR_AND} * contains \"{Search_String2}\")",
+              "size": 1,
+              "showAnalytics": true,
+              "noDataMessage": "No Events to show",
+              "timeContextFromParameter": "TimeRange",
+              "showRefreshButton": true,
+              "showExportToExcel": true,
+              "exportToExcelOptions": "all",
+              "queryType": 0,
+              "resourceType": "microsoft.operationalinsights/workspaces",
+              "gridSettings": {
+                "rowLimit": 10000
+              }
+            },
+            "name": "query - 3 - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy",
+            "styleSettings": {
+              "showBorder": true
+            }
+          },
+          {
+            "type": 1,
+            "content": {
+              "json": "<div style=\"margin-right:30px;margin-left:10px;margin-bottom:0px;background-color:#371F76 ;padding-left:20px;padding-right:20px;padding-top:10px;padding-bottom:12px;border: 1px solid #000;filter: drop-shadow(0.2rem 0.2rem 0.2rem rgba(0, 0, 30, 0.5));color:#fff2df;border-radius: 10px / 30px;background: linear-gradient(to right, #371F76 0%,#371F76 100%);display:felx\">\r\n<span style=\"font-size:12pt;font-weight:bold;color:#ffffff;\">📖 StorageBlobLogs</span></div>"
+            },
+            "customWidth": "100",
+            "name": "text - 4 - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy",
+            "styleSettings": {
+              "maxWidth": "100"
+            }
+          },
+          {
+            "type": 3,
+            "content": {
+              "version": "KqlItem/1.0",
+              "query": "StorageBlobLogs\r\n| where (* contains \"{Search_String}\" {OR_AND} * contains \"{Search_String2}\")",
+              "size": 1,
+              "showAnalytics": true,
+              "noDataMessage": "No Events to show",
+              "timeContextFromParameter": "TimeRange",
+              "showRefreshButton": true,
+              "showExportToExcel": true,
+              "exportToExcelOptions": "all",
+              "queryType": 0,
+              "resourceType": "microsoft.operationalinsights/workspaces",
+              "gridSettings": {
+                "rowLimit": 10000
+              }
+            },
+            "name": "query - 3 - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy",
+            "styleSettings": {
+              "showBorder": true
+            }
+          },
+          {
+            "type": 1,
+            "content": {
+              "json": "<div style=\"margin-right:30px;margin-left:10px;margin-bottom:0px;background-color:#371F76 ;padding-left:20px;padding-right:20px;padding-top:10px;padding-bottom:12px;border: 1px solid #000;filter: drop-shadow(0.2rem 0.2rem 0.2rem rgba(0, 0, 30, 0.5));color:#fff2df;border-radius: 10px / 30px;background: linear-gradient(to right, #371F76 0%,#371F76 100%);display:felx\">\r\n<span style=\"font-size:12pt;font-weight:bold;color:#ffffff;\">📖 StorageFileLogs</span></div>"
+            },
+            "customWidth": "100",
+            "name": "text - 4 - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy",
+            "styleSettings": {
+              "maxWidth": "100"
+            }
+          },
+          {
+            "type": 3,
+            "content": {
+              "version": "KqlItem/1.0",
+              "query": "StorageFileLogs\r\n| where (* contains \"{Search_String}\" {OR_AND} * contains \"{Search_String2}\")",
+              "size": 1,
+              "showAnalytics": true,
+              "noDataMessage": "No Events to show",
+              "timeContextFromParameter": "TimeRange",
+              "showRefreshButton": true,
+              "showExportToExcel": true,
+              "exportToExcelOptions": "all",
+              "queryType": 0,
+              "resourceType": "microsoft.operationalinsights/workspaces",
+              "gridSettings": {
+                "rowLimit": 10000
+              }
+            },
+            "name": "query - 3 - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy",
+            "styleSettings": {
+              "showBorder": true
+            }
+          },
+          {
+            "type": 1,
+            "content": {
+              "json": "<div style=\"margin-right:30px;margin-left:10px;margin-bottom:0px;background-color:#371F76 ;padding-left:20px;padding-right:20px;padding-top:10px;padding-bottom:12px;border: 1px solid #000;filter: drop-shadow(0.2rem 0.2rem 0.2rem rgba(0, 0, 30, 0.5));color:#fff2df;border-radius: 10px / 30px;background: linear-gradient(to right, #371F76 0%,#371F76 100%);display:felx\">\r\n<span style=\"font-size:12pt;font-weight:bold;color:#ffffff;\">📖 StorageTableLogs</span></div>"
+            },
+            "customWidth": "100",
+            "name": "text - 4 - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy",
+            "styleSettings": {
+              "maxWidth": "100"
+            }
+          },
+          {
+            "type": 3,
+            "content": {
+              "version": "KqlItem/1.0",
+              "query": "StorageTableLogs\r\n| where (* contains \"{Search_String}\" {OR_AND} * contains \"{Search_String2}\")",
+              "size": 1,
+              "showAnalytics": true,
+              "noDataMessage": "No Events to show",
+              "timeContextFromParameter": "TimeRange",
+              "showRefreshButton": true,
+              "showExportToExcel": true,
+              "exportToExcelOptions": "all",
+              "queryType": 0,
+              "resourceType": "microsoft.operationalinsights/workspaces",
+              "gridSettings": {
+                "rowLimit": 10000
+              }
+            },
+            "name": "query - 3 - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy",
+            "styleSettings": {
+              "showBorder": true
+            }
+          },
+          {
+            "type": 1,
+            "content": {
+              "json": "<div style=\"margin-right:30px;margin-left:10px;margin-bottom:0px;background-color:#371F76 ;padding-left:20px;padding-right:20px;padding-top:10px;padding-bottom:12px;border: 1px solid #000;filter: drop-shadow(0.2rem 0.2rem 0.2rem rgba(0, 0, 30, 0.5));color:#fff2df;border-radius: 10px / 30px;background: linear-gradient(to right, #371F76 0%,#371F76 100%);display:felx\">\r\n<span style=\"font-size:12pt;font-weight:bold;color:#ffffff;\">📖 UrlClickEvents</span></div>"
+            },
+            "customWidth": "100",
+            "name": "text - 4 - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy",
+            "styleSettings": {
+              "maxWidth": "100"
+            }
+          },
+          {
+            "type": 3,
+            "content": {
+              "version": "KqlItem/1.0",
+              "query": "UrlClickEvents\r\n| where (* contains \"{Search_String}\" {OR_AND} * contains \"{Search_String2}\")",
+              "size": 1,
+              "showAnalytics": true,
+              "noDataMessage": "No Events to show",
+              "timeContextFromParameter": "TimeRange",
+              "showRefreshButton": true,
+              "showExportToExcel": true,
+              "exportToExcelOptions": "all",
+              "queryType": 0,
+              "resourceType": "microsoft.operationalinsights/workspaces",
+              "gridSettings": {
+                "rowLimit": 10000
+              }
+            },
+            "name": "query - 3 - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy",
+            "styleSettings": {
+              "showBorder": true
+            }
+          },
+          {
+            "type": 1,
+            "content": {
+              "json": "<div style=\"margin-right:30px;margin-left:10px;margin-bottom:0px;background-color:#371F76 ;padding-left:20px;padding-right:20px;padding-top:10px;padding-bottom:12px;border: 1px solid #000;filter: drop-shadow(0.2rem 0.2rem 0.2rem rgba(0, 0, 30, 0.5));color:#fff2df;border-radius: 10px / 30px;background: linear-gradient(to right, #371F76 0%,#371F76 100%);display:felx\">\r\n<span style=\"font-size:12pt;font-weight:bold;color:#ffffff;\">📖 VMBoundPort</span></div>"
+            },
+            "customWidth": "100",
+            "name": "text - 4 - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy",
+            "styleSettings": {
+              "maxWidth": "100"
+            }
+          },
+          {
+            "type": 3,
+            "content": {
+              "version": "KqlItem/1.0",
+              "query": "VMBoundPort\r\n| where (* contains \"{Search_String}\" {OR_AND} * contains \"{Search_String2}\")",
+              "size": 1,
+              "showAnalytics": true,
+              "noDataMessage": "No Events to show",
+              "timeContextFromParameter": "TimeRange",
+              "showRefreshButton": true,
+              "showExportToExcel": true,
+              "exportToExcelOptions": "all",
+              "queryType": 0,
+              "resourceType": "microsoft.operationalinsights/workspaces",
+              "gridSettings": {
+                "rowLimit": 10000
+              }
+            },
+            "name": "query - 3 - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy",
+            "styleSettings": {
+              "showBorder": true
+            }
+          },
+          {
+            "type": 1,
+            "content": {
+              "json": "<div style=\"margin-right:30px;margin-left:10px;margin-bottom:0px;background-color:#371F76 ;padding-left:20px;padding-right:20px;padding-top:10px;padding-bottom:12px;border: 1px solid #000;filter: drop-shadow(0.2rem 0.2rem 0.2rem rgba(0, 0, 30, 0.5));color:#fff2df;border-radius: 10px / 30px;background: linear-gradient(to right, #371F76 0%,#371F76 100%);display:felx\">\r\n<span style=\"font-size:12pt;font-weight:bold;color:#ffffff;\">📖 VMComputer</span></div>"
+            },
+            "customWidth": "100",
+            "name": "text - 4 - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy",
+            "styleSettings": {
+              "maxWidth": "100"
+            }
+          },
+          {
+            "type": 3,
+            "content": {
+              "version": "KqlItem/1.0",
+              "query": "VMComputer\r\n| where (* contains \"{Search_String}\" {OR_AND} * contains \"{Search_String2}\")",
+              "size": 1,
+              "showAnalytics": true,
+              "noDataMessage": "No Events to show",
+              "timeContextFromParameter": "TimeRange",
+              "showRefreshButton": true,
+              "showExportToExcel": true,
+              "exportToExcelOptions": "all",
+              "queryType": 0,
+              "resourceType": "microsoft.operationalinsights/workspaces",
+              "gridSettings": {
+                "rowLimit": 10000
+              }
+            },
+            "name": "query - 3 - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy",
+            "styleSettings": {
+              "showBorder": true
+            }
+          },
+          {
+            "type": 1,
+            "content": {
+              "json": "<div style=\"margin-right:30px;margin-left:10px;margin-bottom:0px;background-color:#371F76 ;padding-left:20px;padding-right:20px;padding-top:10px;padding-bottom:12px;border: 1px solid #000;filter: drop-shadow(0.2rem 0.2rem 0.2rem rgba(0, 0, 30, 0.5));color:#fff2df;border-radius: 10px / 30px;background: linear-gradient(to right, #371F76 0%,#371F76 100%);display:felx\">\r\n<span style=\"font-size:12pt;font-weight:bold;color:#ffffff;\">📖 VMConnection</span></div>"
+            },
+            "customWidth": "100",
+            "name": "text - 4 - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy",
+            "styleSettings": {
+              "maxWidth": "100"
+            }
+          },
+          {
+            "type": 3,
+            "content": {
+              "version": "KqlItem/1.0",
+              "query": "VMConnection\r\n| where (* contains \"{Search_String}\" {OR_AND} * contains \"{Search_String2}\")",
+              "size": 1,
+              "showAnalytics": true,
+              "noDataMessage": "No Events to show",
+              "timeContextFromParameter": "TimeRange",
+              "showRefreshButton": true,
+              "showExportToExcel": true,
+              "exportToExcelOptions": "all",
+              "queryType": 0,
+              "resourceType": "microsoft.operationalinsights/workspaces",
+              "gridSettings": {
+                "rowLimit": 10000
+              }
+            },
+            "name": "query - 3 - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy",
+            "styleSettings": {
+              "showBorder": true
+            }
+          },
+          {
+            "type": 1,
+            "content": {
+              "json": "<div style=\"margin-right:30px;margin-left:10px;margin-bottom:0px;background-color:#371F76 ;padding-left:20px;padding-right:20px;padding-top:10px;padding-bottom:12px;border: 1px solid #000;filter: drop-shadow(0.2rem 0.2rem 0.2rem rgba(0, 0, 30, 0.5));color:#fff2df;border-radius: 10px / 30px;background: linear-gradient(to right, #371F76 0%,#371F76 100%);display:felx\">\r\n<span style=\"font-size:12pt;font-weight:bold;color:#ffffff;\">📖 VMProcess</span></div>"
+            },
+            "customWidth": "100",
+            "name": "text - 4 - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy",
+            "styleSettings": {
+              "maxWidth": "100"
+            }
+          },
+          {
+            "type": 3,
+            "content": {
+              "version": "KqlItem/1.0",
+              "query": "VMProcess\r\n| where (* contains \"{Search_String}\" {OR_AND} * contains \"{Search_String2}\")",
+              "size": 1,
+              "showAnalytics": true,
+              "noDataMessage": "No Events to show",
+              "timeContextFromParameter": "TimeRange",
+              "showRefreshButton": true,
+              "showExportToExcel": true,
+              "exportToExcelOptions": "all",
+              "queryType": 0,
+              "resourceType": "microsoft.operationalinsights/workspaces",
+              "gridSettings": {
+                "rowLimit": 10000
+              }
+            },
+            "name": "query - 3 - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy",
+            "styleSettings": {
+              "showBorder": true
+            }
+          },
+          {
+            "type": 1,
+            "content": {
+              "json": "<div style=\"margin-right:30px;margin-left:10px;margin-bottom:0px;background-color:#371F76 ;padding-left:20px;padding-right:20px;padding-top:10px;padding-bottom:12px;border: 1px solid #000;filter: drop-shadow(0.2rem 0.2rem 0.2rem rgba(0, 0, 30, 0.5));color:#fff2df;border-radius: 10px / 30px;background: linear-gradient(to right, #371F76 0%,#371F76 100%);display:felx\">\r\n<span style=\"font-size:12pt;font-weight:bold;color:#ffffff;\">📖 MicrosoftGraphActivityLogs</span></div>"
+            },
+            "customWidth": "100",
+            "name": "text - 4 - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy",
+            "styleSettings": {
+              "maxWidth": "100"
+            }
+          },
+          {
+            "type": 3,
+            "content": {
+              "version": "KqlItem/1.0",
+              "query": "MicrosoftGraphActivityLogs\r\n| where (* contains \"{Search_String}\" {OR_AND} * contains \"{Search_String2}\")",
+              "size": 1,
+              "showAnalytics": true,
+              "noDataMessage": "No Events to show",
+              "timeContextFromParameter": "TimeRange",
+              "showRefreshButton": true,
+              "showExportToExcel": true,
+              "exportToExcelOptions": "all",
+              "queryType": 0,
+              "resourceType": "microsoft.operationalinsights/workspaces",
+              "gridSettings": {
+                "rowLimit": 10000
+              }
+            },
+            "name": "query - 3 - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy",
+            "styleSettings": {
+              "showBorder": true
+            }
+          },
+          {
+            "type": 1,
+            "content": {
+              "json": "<div style=\"margin-right:30px;margin-left:10px;margin-bottom:0px;background-color:#371F76 ;padding-left:20px;padding-right:20px;padding-top:10px;padding-bottom:12px;border: 1px solid #000;filter: drop-shadow(0.2rem 0.2rem 0.2rem rgba(0, 0, 30, 0.5));color:#fff2df;border-radius: 10px / 30px;background: linear-gradient(to right, #371F76 0%,#371F76 100%);display:felx\">\r\n<span style=\"font-size:12pt;font-weight:bold;color:#ffffff;\">📖 {Table_4_1}</span></div>"
+            },
+            "customWidth": "100",
+            "name": "text - 4 - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy",
+            "styleSettings": {
+              "maxWidth": "100"
+            }
+          },
+          {
+            "type": 3,
+            "content": {
+              "version": "KqlItem/1.0",
+              "query": "{Table_4_1}\r\n| where (* contains \"{Search_String}\" {OR_AND} * contains \"{Search_String2}\")",
+              "size": 1,
+              "showAnalytics": true,
+              "noDataMessage": "No Events to show",
+              "timeContextFromParameter": "TimeRange",
+              "showRefreshButton": true,
+              "showExportToExcel": true,
+              "exportToExcelOptions": "all",
+              "queryType": 0,
+              "resourceType": "microsoft.operationalinsights/workspaces",
+              "gridSettings": {
+                "rowLimit": 10000
+              }
+            },
+            "name": "query - 3 - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy",
+            "styleSettings": {
+              "showBorder": true
+            }
+          },
+          {
+            "type": 1,
+            "content": {
+              "json": "<div style=\"margin-right:30px;margin-left:10px;margin-bottom:0px;background-color:#371F76 ;padding-left:20px;padding-right:20px;padding-top:10px;padding-bottom:12px;border: 1px solid #000;filter: drop-shadow(0.2rem 0.2rem 0.2rem rgba(0, 0, 30, 0.5));color:#fff2df;border-radius: 10px / 30px;background: linear-gradient(to right, #371F76 0%,#371F76 100%);display:felx\">\r\n<span style=\"font-size:12pt;font-weight:bold;color:#ffffff;\">📖 {Table_4_2}</span></div>"
+            },
+            "customWidth": "100",
+            "name": "text - 4 - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy",
+            "styleSettings": {
+              "maxWidth": "100"
+            }
+          },
+          {
+            "type": 3,
+            "content": {
+              "version": "KqlItem/1.0",
+              "query": "{Table_4_2}\r\n| where (* contains \"{Search_String}\" {OR_AND} * contains \"{Search_String2}\")",
+              "size": 1,
+              "showAnalytics": true,
+              "noDataMessage": "No Events to show",
+              "timeContextFromParameter": "TimeRange",
+              "showRefreshButton": true,
+              "showExportToExcel": true,
+              "exportToExcelOptions": "all",
+              "queryType": 0,
+              "resourceType": "microsoft.operationalinsights/workspaces",
+              "gridSettings": {
+                "rowLimit": 10000
+              }
+            },
+            "name": "query - 3 - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy",
+            "styleSettings": {
+              "showBorder": true
+            }
+          },
+          {
+            "type": 1,
+            "content": {
+              "json": "<div style=\"margin-right:30px;margin-left:10px;margin-bottom:0px;background-color:#371F76 ;padding-left:20px;padding-right:20px;padding-top:10px;padding-bottom:12px;border: 1px solid #000;filter: drop-shadow(0.2rem 0.2rem 0.2rem rgba(0, 0, 30, 0.5));color:#fff2df;border-radius: 10px / 30px;background: linear-gradient(to right, #371F76 0%,#371F76 100%);display:felx\">\r\n<span style=\"font-size:12pt;font-weight:bold;color:#ffffff;\">📖 {Table_4_3}</span></div>"
+            },
+            "customWidth": "100",
+            "name": "text - 4 - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy",
+            "styleSettings": {
+              "maxWidth": "100"
+            }
+          },
+          {
+            "type": 3,
+            "content": {
+              "version": "KqlItem/1.0",
+              "query": "{Table_4_3}\r\n| where (* contains \"{Search_String}\" {OR_AND} * contains \"{Search_String2}\")",
+              "size": 1,
+              "showAnalytics": true,
+              "noDataMessage": "No Events to show",
+              "timeContextFromParameter": "TimeRange",
+              "showRefreshButton": true,
+              "showExportToExcel": true,
+              "exportToExcelOptions": "all",
+              "queryType": 0,
+              "resourceType": "microsoft.operationalinsights/workspaces",
+              "gridSettings": {
+                "rowLimit": 10000
+              }
+            },
+            "name": "query - 3 - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy - Copy",
+            "styleSettings": {
+              "showBorder": true
+            }
+          }
+        ]
+      },
+      "conditionalVisibility": {
+        "parameterName": "SelectedTab",
+        "comparison": "isEqualTo",
+        "value": "Cloud"
+      },
+      "name": "group - 6 - Copy - Copy - Copy"
+    },
+    {
+      "type": 1,
+      "content": {
+        "json": "<div style=\"background-color:#efefef;padding-left:20px;padding-right:20px;padding-top:30px;padding-bottom:30px;border-top: 2px solid #120052;border-bottom: 2px solid #120052;color:#120052;\">\r\n\r\n<img src=\"https://i.postimg.cc/ZK73CJZX/sentinelcat.png\" style=\"float: left;padding-right: 20px;border-radius: 25px;\">\r\n**Version:** 1.24.6.01 (June 2024 Rev 1)<br>\r\n**Download:** https://truv.is/go/[ID]<br>\r\n**Support:** support@truv.is<br>\r\n**Author:** Truvis Thornton - <a href=\"https://www.linkedin.com/in/truvis\" target=\"_blank\">LinkedIn</a> | <a href=\"https://x.com/thattechkitten\" target=\"_blank\">Twitter</a> | <a href=\"https://github.com/truvis\" target=\"_blank\">GitHub</a><br>\r\n_Copyright 2024 TruValue Information Security. All rights reservered._<br><br>\r\nThis dashboard is used to quickly view events triggered by a pentest or an engagement. Fill in the endpoint and then search for specific strings that were used in the engagement<br>\r\n</div>"
+      },
+      "name": "text - 6"
+    }
+  ],
+  "fallbackResourceIds": [
+    "/subscriptions/18fedf52-f250-4dc7-896d-d96dd4e10430/resourcegroups/security/providers/microsoft.operationalinsights/workspaces/security-instance"
+  ],
+  "fromTemplateId": "sentinel-UserWorkbook",
+  "$schema": "https://github.com/Microsoft/Application-Insights-Workbooks/blob/master/schema/workbook.json"
+}
