@@ -1,0 +1,16 @@
+Syslog
+| where ProcessName == "AuditD"
+| extend AuditDID = extract(@":([0-9]{1,99})",1,tostring(parse_json(SyslogMessage).ID))
+| extend ExecutionFrom = tostring(parse_json(tostring(parse_json(SyslogMessage).CWD)).cwd)
+| extend User = tostring(parse_json(tostring(parse_json(SyslogMessage).SYSCALL)).UID)
+| extend UserID = tostring(parse_json(tostring(parse_json(SyslogMessage).SYSCALL)).uid)
+| extend ProcessID = toint(parse_json(tostring(parse_json(SyslogMessage).SYSCALL)).pid)
+| extend ProcessFile = tostring(parse_json(tostring(parse_json(SyslogMessage).SYSCALL)).exe)
+| extend SYSCALLUsed = tostring(parse_json(tostring(parse_json(SyslogMessage).SYSCALL)).syscall)
+| extend ParentProcessID = toint(parse_json(tostring(parse_json(tostring(parse_json(SyslogMessage).SYSCALL)).PPID)).ppid)
+| extend ParentProcessFile = tostring(parse_json(tostring(parse_json(tostring(parse_json(SyslogMessage).SYSCALL)).PPID)).exe)
+| extend full_cli_EXE = replace_strings(tostring(pack_array(parse_json(tostring(parse_json(tostring(parse_json(SyslogMessage).EXECVE)).ARGV)))), dynamic(['[', ']', '"', ","]), dynamic(['', '', '', ' ']))
+| extend full_cli_PROCTITLE = replace_strings(tostring(pack_array(parse_json(tostring(parse_json(tostring(parse_json(SyslogMessage).PROCTITLE)).ARGV)))), dynamic(['[', ']', '"', ","]), dynamic(['', '', '', ' ']))
+| extend full_cli = iff(isnotnull(full_cli_PROCTITLE),full_cli_PROCTITLE,full_cli_EXE)
+| lookup kind=inner _GetWatchlist('SYSCALL_REFS') on $left.SYSCALLUsed == $right.SearchKey
+| project-away full_cli_EXE,full_cli_PROCTITLE
