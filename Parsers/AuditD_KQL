@@ -1,0 +1,82 @@
+let EXECVE =() {
+Syslog
+| where ProcessName == "tag_audit_log"
+| parse SyslogMessage with "type=" type " msg=" EventData
+| project TimeGenerated, type, Computer, EventData
+| where type == "EXECVE"
+| parse EventData with * "audit(" timestampid  "): argc=" argc " a0=\"" a0 "\"" args
+| extend AuditD = extract(":([0-9].*)", 1, timestampid)
+| extend argc = toint(argc)
+| extend a1 = iif(argc >= 2, (extract("a1=\"([^\"]+)\"[[:space:]]?",1,args)),"")
+| extend a2 = iif(argc >= 3, (extract("a2=\"([^\"]+)\"[[:space:]]?",1,args)),"")
+| extend a3 = iif(argc >= 4, (extract("a3=\"([^\"]+)\"[[:space:]]?",1,args)),"")
+| extend a4 = iif(argc >= 5, (extract("a4=\"([^\"]+)\"[[:space:]]?",1,args)),"")
+| extend a5 = iif(argc >= 6, (extract("a5=\"([^\"]+)\"[[:space:]]?",1,args)),"")
+| extend a6 = iif(argc >= 7, (extract("a6=\"([^\"]+)\"[[:space:]]?",1,args)),"")
+| extend a7 = iif(argc >= 8, (extract("a7=\"([^\"]+)\"[[:space:]]?",1,args)),"")
+| extend a8 = iif(argc >= 9, (extract("a8=\"([^\"]+)\"[[:space:]]?",1,args)),"")
+| extend a9 = iif(argc >= 10, (extract("a9=\"([^\"]+)\"[[:space:]]?",1,args)),"")
+| extend a10 = iif(argc >= 11, (extract("a10=\"([^\"]+)\"[[:space:]]?",1,args)),"")
+| extend a11 = iif(argc >= 12, (extract("a11=\"([^\"]+)\"[[:space:]]?",1,args)),"")
+| extend a12 = iif(argc >= 13, (extract("a12=\"([^\"]+)\"[[:space:]]?",1,args)),"")
+| extend a13 = iif(argc >= 14, (extract("a13=\"([^\"]+)\"[[:space:]]?",1,args)),"")
+| extend a14 = iif(argc >= 15, (extract("a14=\"([^\"]+)\"[[:space:]]?",1,args)),"")
+| extend a15 = iif(argc >= 16, (extract("a15=\"([^\"]+)\"[[:space:]]?",1,args)),"")
+| extend a16 = iif(argc >= 17, (extract("a16=\"([^\"]+)\"[[:space:]]?",1,args)),"")
+| extend a17 = iif(argc >= 18, (extract("a17=\"([^\"]+)\"[[:space:]]?",1,args)),"")
+| extend a18 = iif(argc >= 19, (extract("a18=\"([^\"]+)\"[[:space:]]?",1,args)),"")
+| extend a19 = iif(argc >= 20, (extract("a19=\"([^\"]+)\"[[:space:]]?",1,args)),"")
+| extend a20 = iif(argc >= 21, (extract("a20=\"([^\"]+)\"[[:space:]]?",1,args)),"")
+| extend full_cli = strcat(a0," ",a1," ",a2," ",a3," ",a4," ",a5," ",a6," ",a7," ",a8," ",a9," ",a10," ",a11," ",a12," ",a13," ",a14," ",a15," ",a16," ",a17," ",a18," ",a19," ",a20)
+};
+let PATH =() {
+Syslog
+| where ProcessName == "tag_audit_log"
+| parse SyslogMessage with "type=" type " msg=" EventData
+| project TimeGenerated, type, Computer, EventData
+| where type == "PATH"
+| parse EventData with * "audit(" timestampid  "): item=" item "name=\"" name "\" inode=" inode "dev=" dev "mode=" mode "ouid=" ouid "ogid=" ogid "rdev=" rdev "nametype=" nametype "cap_fp=" cap_fp "cap_fi=" cap_fi "cap_fe=" cap_fe "cap_fver=" cap_fver "cap_frootid=" cap_frootid "OUID=\"" OUID "\" OGID=\"" OGID "\""
+| extend AuditD = extract(":([0-9].*)", 1, timestampid)
+};
+let SYSCALL =() {
+Syslog
+| where ProcessName == "tag_audit_log"
+| parse SyslogMessage with "type=" type " msg=" EventData
+| project TimeGenerated, type, Computer, EventData
+| where type == "SYSCALL"
+| parse EventData with * "audit(" timestampid  "):" arch "syscall=" syscall "success=" success "exit=" exit "a0=" a0 "a1=" a1 "a2=" a2 "a3=" a3 "items=" items "ppid=" ppid "pid=" pid "auid=" auid "uid=" uid "gid=" gid "euid=" euid "suid=" suid "fsuid=" fsuid "egid=" egid "sgid=" sgid "fsgid=" fsgid "tty=" tty "ses=" ses "comm=\"" comm "\" exe=\"" exe "\" subj=" subj "key=" key "ARCH=" ARCH "SYSCALL=" SYSCALL "AUID=\"" AUID "\" UID=\"" UID "\" GID=\"" GID "\" EUID=\"" EUID "\" SUID=\"" SUID "\" FSUID=\"" FSUID "\" EGID=\"" EGID "\" SGID=\"" SGID "\" FSGID=\"" FSGID "\""
+| extend AuditD = extract(":([0-9].*)", 1, timestampid)
+};
+let CWD =() {
+Syslog
+| where ProcessName == "tag_audit_log"
+| parse SyslogMessage with "type=" type " msg=" EventData
+| project TimeGenerated, type, Computer, EventData
+| where type == "CWD"
+| parse EventData with * "audit(" timestampid  "): cwd=" cwd
+| extend AuditD = extract(":([0-9].*)", 1, timestampid)
+};
+let PROCTITLE =() {
+Syslog
+| where ProcessName == "tag_audit_log"
+| parse SyslogMessage with "type=" type " msg=" EventData
+| project TimeGenerated, type, Computer, EventData
+| where type == "PROCTITLE"
+| parse EventData with * "audit(" timestampid  "): proctitle=" hex_commandline
+| extend AuditD = extract(":([0-9].*)", 1, timestampid)
+| extend str = replace_regex(hex_commandline, @"(.{2})",@"\1 ")
+| mv-apply num_as_string = split(str, " ") on (
+    summarize nums = make_list(tolong(strcat("0x", num_as_string)))
+)
+| extend clean_commandline = make_string(nums)
+};
+let SOCKADDR =() {
+Syslog
+| where ProcessName == "tag_audit_log"
+| parse SyslogMessage with "type=" type " msg=" EventData
+| project TimeGenerated, type, Computer, EventData
+| where type == "SOCKADDR"
+| parse EventData with * "audit(" timestampid  "): saddr=" saddr "saddr_fam=" saddr_fam "nlnk-fam=" nlnk_fam "nlnk-pid=" nlnk_pid
+| extend AuditD = extract(":([0-9].*)", 1, timestampid)
+};
+(union isfuzzy=true EXECVE, PATH, SYSCALL, CWD, PROCTITLE, SOCKADDR)
