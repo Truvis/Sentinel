@@ -1,0 +1,8 @@
+let GetAuditDEventsByParentProcessID = (id: string, device: string) {
+AuditDLaurel
+| where ParentProcessID == id
+| where Computer == device
+| summarize AuditIDList=make_list(SyslogMessage) by AuditDID, ProcessID
+| summarize List=make_list(AuditIDList) by ProcessID
+};
+GetAuditDEventsByParentProcessID(id, device);
